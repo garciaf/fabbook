@@ -1,0 +1,40 @@
+{%block header %}
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>{% block titlepage %}Fabfoto {% endblock titlepage %}</title> 
+        {% block importcss %}
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery.mobile-1.0rc2.min.css')}}" />
+        {% endblock importcss %}
+
+ 	{%block importjs %}
+        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery-1.6.4.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery.mobile-1.0rc2.min.js')}}"></script>
+        {%endblock importjs%}
+    </head> 
+
+{% endblock header %}
+    <body>
+        <div data-role="page" {% block optionpage %}{% endblock optionpage %} data-theme="c"> 
+            <div data-role="header">
+                <h1>{% block title %}Fabfoto{%endblock title%}</h1>
+            </div> 
+            <div data-role="content">
+                {% block content %}
+                Welcome on Fabfoto Mobile
+                {% endblock %}
+            </div> 
+            <div data-role="footer">
+                <div data-role="navbar" data-position="fixed">
+                    <ul>
+                        <li><a href="{{path('index_mobile')}}" >Index</a></li>
+                        <li><a href="{{path('albums_mobile')}}" rel="external">Albums</a></li>
+                        <li><a href="">Contact</a></li>
+                        <li><a href="{{path('show_articles')}}" rel="external">Classique</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div> 
+        </div> 
+    </body>
+</html>

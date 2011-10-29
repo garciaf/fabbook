@@ -1,0 +1,55 @@
+{% extends 'FabfotoGalleryBundle::layoutAdmin.html.twig'%}
+{% block content %}
+<h1>Picture list</h1>
+<ul>
+    <li>
+        <a href="{{ path('adminPicture_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>view</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Album</th>
+            <th>Location</th>
+            <th>Createdat</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for picture in pictures %}
+        <tr>
+            <td><image src="/{{picture.thumbpath}}" class ="image_index_admin"/></td>
+            <td><a href="{{ path('adminPicture_show', { 'id': picture.id }) }}">{{ picture.id }}</a></td>
+            <td>{{ picture}}</td>
+            <td>{{picture.album}}</td>
+            <td>{{ picture.location }}</td>
+            <td>{% if picture.createdAt %}{{ picture.createdAt|date('Y-m-d H:i:s') }}{% endif%}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('adminPicture_show', { 'id': picture.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('adminPicture_edit', { 'id': picture.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('adminPicture_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+{% endblock content %}
+

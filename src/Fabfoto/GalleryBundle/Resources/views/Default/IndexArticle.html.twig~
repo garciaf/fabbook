@@ -1,0 +1,15 @@
+{% extends 'FabfotoGalleryBundle::layout.html.twig'%}
+{% block titlepage %}Fabfoto-News{% endblock titlepage %}
+{% block content %}
+<div class="list_articles">
+    {% for article in articles %}
+    <div class="article">
+        <h1>{{article.title}}</h1>
+        <h2>{{article.subtitle}}</h2>
+        <h3>{{article.author}}</h3>
+        <p>{{article.content}}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
+

@@ -1,0 +1,164 @@
+/* 
+    Document   : style
+    Created on : 26 oct. 2011, 18:49:01
+    Author     : garciaf
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    text-decoration: none;
+    color: darkgray;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: black;
+    margin: 0px 0px 0px 0px;
+}
+#header {
+    width: 100%;
+    height: 100px;
+    margin: 0px 0px 0px 0px;
+    background-attachment: fixed;
+    background: url(../image/header.png) no-repeat left bottom;
+    background-position: top center;
+}
+#logo {
+    text-align: center;    
+    padding: 20px 0 0 15px;
+}
+#logo h1 {
+    margin: 0;
+    padding: 0;
+    font: italic 36px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+#logo h2 {
+    margin: -5px 0 0 0;
+    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 10px;
+    font-weight: bold;
+    color: black;
+}
+#logo a {
+    text-decoration: none;
+    color: black;
+}
+#footer {
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 0 0 0;
+    background-position: top center;
+    color: black;
+}
+#footer p {
+    margin: 0;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    text-align: center;
+    font-size: 77%;
+}
+#content{
+    margin: 0 auto;
+    border-style:solid;
+    border-width:thin;
+}
+#fullscreen {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+#fullscreen img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -400;
+}
+#nav {
+    z-index: 540;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    -moz-border-radius: 20px;
+    border-bottom-left-radius: 10px 10px;
+    border-bottom-right-radius: 10px 10px;
+    height: 50px;
+}
+#nav li {
+    display: inline;
+    padding: 15px
+}
+#nav a{
+    text-decoration: none;
+    font-size: 2em;
+    color: black;
+}
+#nav a:hover{
+    text-decoration: none;
+    font-size: 2em;
+
+    color: darkgray;
+}
+#page {
+    margin-top: 110px;
+    margin-left: 30px;
+    display: block;
+    z-index: 300;
+    background: url(../image/bg_fff_90.png);
+    width: 800px;
+    padding: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.list_album{
+    display: block;
+}
+album_sum_up{
+    float: left;
+    text-align: center;
+}
+.album_comment{
+    margin: auto;
+    font-style: italic;
+    color: gray;
+
+}
+#title_album{
+    text-align: center;
+    
+}
+#subtitle_album{
+    text-align: center;
+    font-weight: lighter;
+}

@@ -1,0 +1,45 @@
+{% extends 'FabfotoGalleryBundle::layoutAdmin.html.twig'%}
+{% block content %}
+<h1>Album</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ album.id }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ album.name }}</td>
+        </tr>
+        <tr>
+            <th>Comment</th>
+            <td>{{ album.comment }}</td>
+        </tr>
+        <tr>
+            <th>Createdat</th>
+            <td>{{ album.createdAt|date('Y-m-d H:i:s') }}</td>
+        </tr>
+
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('adminAlbums') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('adminAlbums_edit', { 'id': album.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('adminAlbums_delete', { 'id': album.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock content %}

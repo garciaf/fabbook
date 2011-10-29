@@ -1,0 +1,27 @@
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        in_memory:
+            users:
+                garciaf: { password: fafaZIZIOlga, roles: [ 'ROLE_ADMIN' ] }
+
+    firewalls:
+
+        fabfoto:
+          pattern: ^/
+          form_login:
+            check_path: /security/login-check
+            login_path: /security/login
+            default_target_path:  /albums
+          logout:
+            path:   /security/logout
+            target: /albums
+          anonymous: ~ 
+    access_control:
+      - { path: ^/admin/, roles: IS_AUTHENTICATED_FULLY}

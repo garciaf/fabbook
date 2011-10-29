@@ -1,0 +1,12 @@
+parameters:
+#    knp_upload.example.class: Knp\UploadBundle\Example
+
+services:
+#    knp_upload.example:
+#        class: %knp_upload.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+
+    fabfoto_gallery.picture_uploader:
+        class:      Fabfoto\GalleryBundle\Uploader\PictureUploader
+        arguments:  [%fabfoto_gallery.picture_directory%]

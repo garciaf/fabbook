@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> {% block title %}Admin FabFoto{%endblock title%}</title>
+        <link rel="stylesheet" media="all" href="{{ asset('bundles/fabfotogallery/css/styleAdmin.css')}}" />
+        <link rel="icon" type="image/png" href="{{ asset('bundles/fabfotogallery/image/icon/iconemain.png')}}">
+    </head>
+    <body>
+        <div id="headerAdmin">
+            <div id="menuAdmin">
+                <ul>
+                    <li><a href="{{path('adminPicture')}}">Photos</a> </li>
+                    <li><a href="{{path('adminAlbums')}}">Album</a> </li>
+                    <li><a href="{{path('article')}}">Articles</a></li>
+                    <li><a href="{{path('fabfoto_logout')}}">Logout</a> </li>                    
+            </div>
+        </div>
+        {% if app.session.flashes %}
+        <div id="flashes">
+            {% for type, message in app.session.flashes%}
+            <div class="flash {{type}}">
+                <div class="wrap">
+                    {{message}}
+                </div>
+            </div>
+            {% endfor%}
+        </div>
+        {% endif%}
+        <div id="contentAdmin">
+            <div class="wrap">
+                {% block content %}lipso lium{%endblock%}     
+            </div>
+        </div>
+            <div id="footerAdmin">
+
+
+            </div>
+    </body>
+</html>

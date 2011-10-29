@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> {% block title %}Fabfoto{%endblock title%}</title>
+        <link rel="stylesheet" media="all" href="{{ asset('bundles/fabfotogallery/css/style.css')}}" />
+        {%block importcss %}{%endblock importcss %}
+        <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/css/carroussel.css')}}"/>
+        <link rel="icon" type="image/png" href="{{ asset('bundles/fabfotogallery/image/icon/iconemain.png')}}">
+        <script src="{{ asset('bundles/fabfotogallery/js/jquery.min.js')}}"></script>
+        <script src="{{ asset('bundles/fabfotogallery/js/slides.jquery.js')}}"></script>
+
+        {%block importjs %}
+        {%endblock importjs%}
+        <script>
+            $(function(){
+                $('#slides').slides({
+                    preload: true,
+                    preloadImage: "{{ asset('bundles/fabfotogallery/image/loading.gif')}}",
+                    randomize: true,
+                    effect: 'fade',
+                    fadeSpeed: 500,
+                    play: 7000
+
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="nav" class="clearfix">
+            <ul class="primary">
+                <li><a href="{{path('show_articles')}}">News</a></li>
+                <li><a href="{{path('index_album')}}">Albums</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="{{path('index_mobile')}}">Mobile</a></li>
+
+            </ul>
+        </div>
+        <div id="page">
+            {% if app.session.flashes %}
+            <div id="flashes">
+                {% for type, message in app.session.flashes%}
+                <div class="flash {{type}}">
+                    <div class="wrap">
+                        {{message}}
+                    </div>
+                </div>
+                {% endfor%}
+            </div>
+            {% endif%}
+
+            {% block content %}lipso lium{%endblock%}     
+
+            <div id="footer">
+                <p id="legal">Copyright © Fab photo. All Rights Reserved.</p>
+            </div>
+        </div>
+        
+
+        <div id="fullscreen">
+            <div id="slides">
+                <div class="slides_container">
+                    {% block carroussel %}
+                    {% render 'FabfotoGalleryBundle:Default:allBackground' with {'max': 10} %}
+                    {% endblock carroussel %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

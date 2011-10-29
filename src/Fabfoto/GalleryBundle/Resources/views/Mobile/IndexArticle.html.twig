@@ -1,0 +1,13 @@
+{% extends 'FabfotoGalleryBundle::layoutMobile.html.twig'%}
+{% block content %}
+<div data-role="collapsible-set">
+{% for article in articles %}
+<div data-role="collapsible" data-collapsed="false">
+<h3>{{article.title}}</h3>
+<h4>{{article.subtitle}}</h4>
+<h4>{{article.author}}</h4>
+<p>{{article.content}}</p>
+</div>
+{% endfor %}
+</div>
+{% endblock content %}
