@@ -28,12 +28,18 @@
     </head>
     <body>
         <div id="nav" class="clearfix">
+            <form id="search" method="get" action="{{path('fabfoto_search')}}">
+                <input type="text" name="q" value="{% block search_query %}{%endblock search_query%}"/>
+                <button type="submit">search</button>
+            </form>     
             <ul class="primary">
                 <li><a href="{{path('show_articles')}}">News</a></li>
                 <li><a href="{{path('index_album')}}">Albums</a></li>
                 <li><a href="{{path('contact_new')}}">Contact</a></li>
                 <li><a href="{{path('index_mobile')}}">Mobile</a></li>
             </ul>
+
+
         </div>
         <div id="page">
             {% if app.session.flashes %}

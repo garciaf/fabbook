@@ -5,6 +5,7 @@ namespace Fabfoto\GalleryBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -84,26 +85,31 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("{keywords}/search", name="picture_search")
+     * @Route("/search", name="fabfoto_search")
      * @Template()
      */
-    public function searchPictureAction($keywords)
-    {
-        $pictures = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Picture')
-                ->search($keywords);
-        $albums = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Album')
-                ->search($keywords);
+    public function searchPictureAction(Request $request)
+    {   
+        $pictures = array();
+        $albums = array();
+        if ($request->query->get('q'))
+        {
+            $pictures = $this
+                    ->getDoctrine()
+                    ->getRepository('FabfotoGalleryBundle:Picture')
+                    ->search($request->query->get('q'));
+            $albums = $this
+                    ->getDoctrine()
+                    ->getRepository('FabfotoGalleryBundle:Album')
+                    ->search($request->query->get('q'));
+        }
         return $this->render('FabfotoGalleryBundle:Default:SearchResult.html.twig',
                         array(
-                            'albums' => $albums,
-                            'pictures' => $pictures,
-                            'keywords' => $keywords,
-                            )
-                            );
+                    'albums' => $albums,
+                    'pictures' => $pictures,
+                    'keywords' => $request->query->get('q'),
+                        )
+        );
     }
 
 }

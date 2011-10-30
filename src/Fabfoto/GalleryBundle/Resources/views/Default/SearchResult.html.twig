@@ -20,7 +20,7 @@
 <h1 id="picture_search"> Result in Pictures :</h1>
 <div id="gallery">
     {% for picture in pictures%}
-    <a rel = "{{album.id}}" href="/{{picture.webpath}}" title="{{picture}}" class="fancypicture">
+    <a rel = "search_result" href="/{{picture.webpath}}" title="{{picture}}" class="fancypicture">
         <img src="/{{picture.thumbpath}}" width="128" height="128" alt="{{picture}}" />
     </a>
     {% endfor %}
@@ -28,7 +28,6 @@
 <h1 id="album_search"> Result in Album :</h1>
 {% for album in albums%}
     <div class="album_sum_up">
-
         <a href="{{path('show_album', {'id':album.id})}}" >
             <h1 class="album_tile">{{album.name}}</h1>
         </a>
@@ -37,7 +36,9 @@
         </a>
         <p class="album_comment">{{album.comment}}</p>
     </div>
-    {% endfor %}
+{% endfor %}
 {% endblock content %}
-
+{% block search_query %}
+{{keywords}}
+{%endblock search_query%}
 

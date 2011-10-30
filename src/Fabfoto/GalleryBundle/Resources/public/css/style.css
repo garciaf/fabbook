@@ -162,3 +162,43 @@ album_sum_up{
     text-align: center;
     font-weight: lighter;
 }
+
+#search {
+    float: right; margin: 10px 10px;
+    border-radius: 50px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+}
+#search input {
+    float: left;
+    width: 180px;
+    padding: 5px 9px;
+    height: 23px;
+    border-radius: 50px 0 0 50px;
+    -moz-border-radius: 50px 0 0 50px;
+    -webkit-border-radius: 50px 0 0 50px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+#search button {
+    background: lightgrey;
+    background-image: -moz-linear-gradient(#95d788, #6cbb6b);
+    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #6cbb6b),color-stop(1, #95d788));
+    -moz-border-radius: 3px 50px 50px 3px;
+    border-radius: 3px 50px 50px 3px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #7eba7c #578e57 #447d43;
+	height: 35px;
+	margin: 0;
+	padding: 0;
+	width: 90px;
+	cursor: pointer;
+	font: bold 14px Arial, Helvetica;
+	color: #23441e;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
