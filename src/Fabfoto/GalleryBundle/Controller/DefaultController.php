@@ -26,7 +26,7 @@ class DefaultController extends Controller
                 ));
     }
      /**
-     * @Route("/albums", name="index_album")
+     * @Route("albums", name="index_album")
      * @Template()
      */
     public function indexAlbumsAction()
@@ -39,7 +39,7 @@ class DefaultController extends Controller
                         array('albums' => $albums));
     }
     /**
-     * @Route("/rss", name="rss_news")
+     * @Route("rss", name="rss_news")
      * @Template()
      */
     public function rssNewsAction()
@@ -53,7 +53,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/{id}/album", name="show_album")
+     * @Route("{id}/album", name="show_album")
      * @Template()
      */
     public function showAlbumAction($id)
@@ -97,7 +97,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/search", name="fabfoto_search")
+     * @Route("search", name="fabfoto_search")
      * @Template()
      */
     public function searchPictureAction(Request $request)

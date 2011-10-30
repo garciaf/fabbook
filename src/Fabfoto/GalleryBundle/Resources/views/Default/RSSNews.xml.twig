@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>Fabfoto</title> 
+        <link>{{url('show_articles')}}</link> 
+        <description>News du site fabfoto, nouveaux albums reflexions critiques</description> 
+        <language>fr</language> 
+        <copyright>Fabfoto</copyright>
+        {%for article in articles%}
+        <item>
+            <title>{{article.title}}</title> 
+            <link{{url('show_articles')}}</link> 
+            <description>{{article.subtitle}}</description>
+            <content>{{article.content}}</content>
+            <pubDate>{{article.createdAt|date(constant("DATE_W3C")) }}</pubDate>
+        </item>
+        {%endfor%}
+    </channel>
+</rss>
