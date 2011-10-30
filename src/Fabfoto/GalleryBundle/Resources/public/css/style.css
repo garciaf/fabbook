@@ -156,7 +156,7 @@ album_sum_up{
 }
 #title_album{
     text-align: center;
-    
+
 }
 #subtitle_album{
     text-align: center;
@@ -185,20 +185,22 @@ album_sum_up{
     box-shadow: none;
 }
 #search button {
-    background: lightgrey;
-    background-image: -moz-linear-gradient(#95d788, #6cbb6b);
-    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #6cbb6b),color-stop(1, #95d788));
+    background: whitesmoke;
     -moz-border-radius: 3px 50px 50px 3px;
     border-radius: 3px 50px 50px 3px;
     border-width: 1px;
     border-style: solid;
     border-color: #7eba7c #578e57 #447d43;
-	height: 35px;
-	margin: 0;
-	padding: 0;
-	width: 90px;
-	cursor: pointer;
-	font: bold 14px Arial, Helvetica;
-	color: #23441e;
-	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+    height: 35px;
+    margin: 0;
+    padding: 0;
+    width: 90px;
+    cursor: pointer;
+    font: bold 14px Arial, Helvetica;
+    color: #23441e;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+#rss{
+    margin-left: 95%;
+    height: 20px;
 }

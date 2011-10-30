@@ -25,8 +25,7 @@ class DefaultController extends Controller
                     'articles' => $articles
                 ));
     }
-
-    /**
+     /**
      * @Route("/albums", name="index_album")
      * @Template()
      */
@@ -38,6 +37,19 @@ class DefaultController extends Controller
                 ->findAll();
         return $this->render('FabfotoGalleryBundle:Default:indexAlbum.html.twig',
                         array('albums' => $albums));
+    }
+    /**
+     * @Route("/rss", name="rss_news")
+     * @Template()
+     */
+    public function rssNewsAction()
+    {
+        $articles = $this
+                ->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:Article')
+                ->findAll();
+        return $this->render('FabfotoGalleryBundle:Default:RSSNews.xml.twig',
+                        array('articles' => $articles));
     }
 
     /**
