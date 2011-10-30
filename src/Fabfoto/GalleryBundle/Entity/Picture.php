@@ -9,7 +9,7 @@ use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
  * Fabfoto\GalleryBundle\Entity\Picture
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Fabfoto\GalleryBundle\Entity\PictureRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Picture

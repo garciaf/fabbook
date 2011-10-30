@@ -2,9 +2,10 @@
 <!DOCTYPE html> 
 <html> 
     <head> 
-        <title>{% block titlepage %}Fabfoto {% endblock titlepage %}</title> 
+        <title>{% block titlepage %}Fabfoto {% endblock titlepage %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+	<link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/css/fabfoto-theme/fabfoto-mobile-theme.css')}}" />
         {% block importcss %}
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery.mobile-1.0rc2.min.css')}}" />
         {% endblock importcss %}
 
@@ -17,15 +18,15 @@
 {% endblock header %}
     <body>
         <div data-role="page" {% block optionpage %}{% endblock optionpage %} data-theme="c"> 
-            <div data-role="header">
+            <div data-role="header" >
                 <h1>{% block title %}Fabfoto{%endblock title%}</h1>
             </div> 
-            <div data-role="content">
+            <div data-role="content" >
                 {% block content %}
                 Welcome on Fabfoto Mobile
                 {% endblock %}
             </div> 
-            <div data-role="footer">
+            <div data-role="footer" >
                 <div data-role="navbar" data-position="fixed">
                     <ul>
                         <li><a href="{{path('index_mobile')}}" >Index</a></li>

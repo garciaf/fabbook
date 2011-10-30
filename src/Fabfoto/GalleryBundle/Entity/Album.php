@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\Collection;
  * Fabfoto\GalleryBundle\Entity\Album
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Fabfoto\GalleryBundle\Entity\AlbumRepository")
  */
 class Album
 {

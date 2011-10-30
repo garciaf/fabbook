@@ -83,4 +83,27 @@ class DefaultController extends Controller
                 ));
     }
 
+    /**
+     * @Route("{keywords}/search", name="picture_search")
+     * @Template()
+     */
+    public function searchPictureAction($keywords)
+    {
+        $pictures = $this
+                ->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:Picture')
+                ->search($keywords);
+        $albums = $this
+                ->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:Album')
+                ->search($keywords);
+        return $this->render('FabfotoGalleryBundle:Default:SearchResult.html.twig',
+                        array(
+                            'albums' => $albums,
+                            'pictures' => $pictures,
+                            'keywords' => $keywords,
+                            )
+                            );
+    }
+
 }
