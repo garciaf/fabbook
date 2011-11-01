@@ -3,7 +3,8 @@
 <div class="list_album">
     {% for album in albums%}
     <a href="{{path('show_album', {'id':album.id})}}" >
-        <div class="album_sum_up" style="background: url(/{{album.picturecover.webpath}})" >
+        <div class="album_sum_up" >
+            <image src="/{{album.picturecover.webpath}}" />
       <h1 class="album_title">{{album.name}}</h1>
 
             <p class="album_comment">{{album.comment}}</p>
