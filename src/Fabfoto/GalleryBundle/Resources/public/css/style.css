@@ -148,13 +148,8 @@ album_sum_up{
     float: left;
     text-align: center;
 }
-.album_comment{
-    margin: auto;
-    font-style: italic;
-    color: gray;
 
-}
-#title_album{
+.title_album{
     text-align: center;
 
 }
@@ -203,4 +198,18 @@ album_sum_up{
 #rss{
     margin-left: 95%;
     height: 20px;
+}
+.album_title{
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+}
+.album_comment{
+    margin: auto;
+    text-align: center;
+    font-style: italic;
+    font-size: 1.5em;
+}
+
+.album_comment:hover{
 }
