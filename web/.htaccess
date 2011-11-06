@@ -1,5 +1,254 @@
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^(.*)$ app.php [QSA,L]
-</IfModule>
+# skip "real" requests
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule .* - [QSA,L]
+
+# _wdt
+RewriteCond %{REQUEST_URI} ^/_wdt/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:_wdt,E=_ROUTING_token:%1,E=_ROUTING__controller:Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController\:\:toolbarAction]
+
+# _profiler_search
+RewriteCond %{REQUEST_URI} ^/_profiler/search$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:_profiler_search,E=_ROUTING__controller:Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController\:\:searchAction]
+
+# _profiler_purge
+RewriteCond %{REQUEST_URI} ^/_profiler/purge$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:_profiler_purge,E=_ROUTING__controller:Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController\:\:purgeAction]
+
+# _profiler_import
+RewriteCond %{REQUEST_URI} ^/_profiler/import$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:_profiler_import,E=_ROUTING__controller:Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController\:\:importAction]
+
+# _profiler_export
+RewriteCond %{REQUEST_URI} ^/_profiler/export/([^/\.]+?)\.txt$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:_profiler_export,E=_ROUTING_token:%1,E=_ROUTING__controller:Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController\:\:exportAction]
+
+# _profiler_search_results
+RewriteCond %{REQUEST_URI} ^/_profiler/([^/]+?)/search/results$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:_profiler_search_results,E=_ROUTING_token:%1,E=_ROUTING__controller:Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController\:\:searchResultsAction]
+
+# _profiler
+RewriteCond %{REQUEST_URI} ^/_profiler/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:_profiler,E=_ROUTING_token:%1,E=_ROUTING__controller:Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController\:\:panelAction]
+
+# _configurator_home
+RewriteCond %{REQUEST_URI} ^/_configurator$
+RewriteRule .* $0/ [QSA,L,R=301]
+RewriteCond %{REQUEST_URI} ^/_configurator/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:_configurator_home,E=_ROUTING__controller:Sensio\\Bundle\\DistributionBundle\\Controller\\ConfiguratorController\:\:checkAction]
+
+# _configurator_step
+RewriteCond %{REQUEST_URI} ^/_configurator/step/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:_configurator_step,E=_ROUTING_index:%1,E=_ROUTING__controller:Sensio\\Bundle\\DistributionBundle\\Controller\\ConfiguratorController\:\:stepAction]
+
+# _configurator_final
+RewriteCond %{REQUEST_URI} ^/_configurator/final$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:_configurator_final,E=_ROUTING__controller:Sensio\\Bundle\\DistributionBundle\\Controller\\ConfiguratorController\:\:finalAction]
+
+# show_articles
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:show_articles,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\DefaultController\:\:showArticlesAction]
+
+# index_album
+RewriteCond %{REQUEST_URI} ^/albums$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:index_album,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\DefaultController\:\:indexAlbumsAction]
+
+# rss_news
+RewriteCond %{REQUEST_URI} ^/rss$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:rss_news,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\DefaultController\:\:rssNewsAction]
+
+# show_album
+RewriteCond %{REQUEST_URI} ^/([^/]+?)/album$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:show_album,E=_ROUTING_id:%1,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\DefaultController\:\:showAlbumAction]
+
+# fabfoto_search
+RewriteCond %{REQUEST_URI} ^/search$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:fabfoto_search,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\DefaultController\:\:searchPictureAction]
+
+# article
+RewriteCond %{REQUEST_URI} ^/admin/article$
+RewriteRule .* $0/ [QSA,L,R=301]
+RewriteCond %{REQUEST_URI} ^/admin/article/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:article,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\ArticleController\:\:indexAction]
+
+# article_show
+RewriteCond %{REQUEST_URI} ^/admin/article/([^/]+?)/show$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:article_show,E=_ROUTING_id:%1,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\ArticleController\:\:showAction]
+
+# article_new
+RewriteCond %{REQUEST_URI} ^/admin/article/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:article_new,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\ArticleController\:\:newAction]
+
+# article_create
+RewriteCond %{REQUEST_URI} ^/admin/article/create$
+RewriteCond %{REQUEST_METHOD} !^(POST)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_POST:1]
+RewriteCond %{REQUEST_URI} ^/admin/article/create$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:article_create,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\ArticleController\:\:createAction]
+
+# article_edit
+RewriteCond %{REQUEST_URI} ^/admin/article/([^/]+?)/edit$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:article_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\ArticleController\:\:editAction]
+
+# article_update
+RewriteCond %{REQUEST_URI} ^/admin/article/([^/]+?)/update$
+RewriteCond %{REQUEST_METHOD} !^(POST)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_POST:1]
+RewriteCond %{REQUEST_URI} ^/admin/article/([^/]+?)/update$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:article_update,E=_ROUTING_id:%1,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\ArticleController\:\:updateAction]
+
+# article_delete
+RewriteCond %{REQUEST_URI} ^/admin/article/([^/]+?)/delete$
+RewriteCond %{REQUEST_METHOD} !^(POST)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_POST:1]
+RewriteCond %{REQUEST_URI} ^/admin/article/([^/]+?)/delete$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:article_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\ArticleController\:\:deleteAction]
+
+# adminPicture
+RewriteCond %{REQUEST_URI} ^/admin/picture$
+RewriteRule .* $0/ [QSA,L,R=301]
+RewriteCond %{REQUEST_URI} ^/admin/picture/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:adminPicture,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\PictureController\:\:indexAction]
+
+# adminPicture_show
+RewriteCond %{REQUEST_URI} ^/admin/picture/([^/]+?)/show$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:adminPicture_show,E=_ROUTING_id:%1,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\PictureController\:\:showAction]
+
+# adminPicture_new
+RewriteCond %{REQUEST_URI} ^/admin/picture/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:adminPicture_new,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\PictureController\:\:newAction]
+
+# adminPicture_create
+RewriteCond %{REQUEST_URI} ^/admin/picture/create$
+RewriteCond %{REQUEST_METHOD} !^(POST)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_POST:1]
+RewriteCond %{REQUEST_URI} ^/admin/picture/create$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:adminPicture_create,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\PictureController\:\:createAction]
+
+# adminPicture_edit
+RewriteCond %{REQUEST_URI} ^/admin/picture/([^/]+?)/edit$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:adminPicture_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\PictureController\:\:editAction]
+
+# adminPicture_update
+RewriteCond %{REQUEST_URI} ^/admin/picture/([^/]+?)/update$
+RewriteCond %{REQUEST_METHOD} !^(POST)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_POST:1]
+RewriteCond %{REQUEST_URI} ^/admin/picture/([^/]+?)/update$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:adminPicture_update,E=_ROUTING_id:%1,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\PictureController\:\:updateAction]
+
+# adminPicture_delete
+RewriteCond %{REQUEST_URI} ^/admin/picture/([^/]+?)/delete$
+RewriteCond %{REQUEST_METHOD} !^(POST)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_POST:1]
+RewriteCond %{REQUEST_URI} ^/admin/picture/([^/]+?)/delete$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:adminPicture_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\PictureController\:\:deleteAction]
+
+# adminAlbums
+RewriteCond %{REQUEST_URI} ^/admin/albums$
+RewriteRule .* $0/ [QSA,L,R=301]
+RewriteCond %{REQUEST_URI} ^/admin/albums/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:adminAlbums,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\AlbumController\:\:indexAction]
+
+# adminAlbums_show
+RewriteCond %{REQUEST_URI} ^/admin/albums/([^/]+?)/show$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:adminAlbums_show,E=_ROUTING_id:%1,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\AlbumController\:\:showAction]
+
+# adminAlbums_new
+RewriteCond %{REQUEST_URI} ^/admin/albums/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:adminAlbums_new,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\AlbumController\:\:newAction]
+
+# adminAlbums_create
+RewriteCond %{REQUEST_URI} ^/admin/albums/create$
+RewriteCond %{REQUEST_METHOD} !^(POST)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_POST:1]
+RewriteCond %{REQUEST_URI} ^/admin/albums/create$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:adminAlbums_create,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\AlbumController\:\:createAction]
+
+# adminAlbums_edit
+RewriteCond %{REQUEST_URI} ^/admin/albums/([^/]+?)/edit$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:adminAlbums_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\AlbumController\:\:editAction]
+
+# adminAlbums_update
+RewriteCond %{REQUEST_URI} ^/admin/albums/([^/]+?)/update$
+RewriteCond %{REQUEST_METHOD} !^(POST)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_POST:1]
+RewriteCond %{REQUEST_URI} ^/admin/albums/([^/]+?)/update$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:adminAlbums_update,E=_ROUTING_id:%1,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\AlbumController\:\:updateAction]
+
+# adminAlbums_delete
+RewriteCond %{REQUEST_URI} ^/admin/albums/([^/]+?)/delete$
+RewriteCond %{REQUEST_METHOD} !^(POST)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_POST:1]
+RewriteCond %{REQUEST_URI} ^/admin/albums/([^/]+?)/delete$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:adminAlbums_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\AlbumController\:\:deleteAction]
+
+# fabfoto_login
+RewriteCond %{REQUEST_URI} ^/security/login$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:fabfoto_login,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\SecurityController\:\:loginAction]
+
+# fabfoto_login_check
+RewriteCond %{REQUEST_URI} ^/security/login\-check$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:fabfoto_login_check,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\SecurityController\:\:securityCheckAction]
+
+# fabfoto_logout
+RewriteCond %{REQUEST_URI} ^/security/logout$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:fabfoto_logout,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\SecurityController\:\:logoutAction]
+
+# index_mobile
+RewriteCond %{REQUEST_URI} ^/mobile$
+RewriteRule .* $0/ [QSA,L,R=301]
+RewriteCond %{REQUEST_URI} ^/mobile/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:index_mobile,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\DefaultMobileController\:\:showArticlesAction]
+
+# albums_mobile
+RewriteCond %{REQUEST_URI} ^/mobile/albums$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:albums_mobile,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\DefaultMobileController\:\:indexAlbumsAction]
+
+# show_album_mobile
+RewriteCond %{REQUEST_URI} ^/mobile/([^/]+?)/album$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:show_album_mobile,E=_ROUTING_id:%1,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\DefaultMobileController\:\:showAlbumAction]
+
+# show_album_mobile_ajax
+RewriteCond %{REQUEST_URI} ^/mobile/([^/]+?)/ajaxalbum$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:show_album_mobile_ajax,E=_ROUTING_id:%1,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\DefaultMobileController\:\:showAlbumAjaxAction]
+
+# contact
+RewriteCond %{REQUEST_URI} ^//admin/messages$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:contact,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\MessageController\:\:indexAction]
+
+# contact_show
+RewriteCond %{REQUEST_URI} ^/admin/([^/]+?)/showmessage$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:contact_show,E=_ROUTING_id:%1,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\MessageController\:\:showAction]
+
+# contact_new
+RewriteCond %{REQUEST_URI} ^/contact$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:contact_new,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\MessageController\:\:newAction]
+
+# contact_create
+RewriteCond %{REQUEST_URI} ^//create$
+RewriteCond %{REQUEST_METHOD} !^(POST)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_POST:1]
+RewriteCond %{REQUEST_URI} ^//create$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:contact_create,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\MessageController\:\:createAction]
+
+# contact_edit
+RewriteCond %{REQUEST_URI} ^//([^/]+?)/edit$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:contact_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\MessageController\:\:editAction]
+
+# contact_update
+RewriteCond %{REQUEST_URI} ^/admin/([^/]+?)/update$
+RewriteCond %{REQUEST_METHOD} !^(POST)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_POST:1]
+RewriteCond %{REQUEST_URI} ^/admin/([^/]+?)/update$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:contact_update,E=_ROUTING_id:%1,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\MessageController\:\:updateAction]
+
+# contact_delete
+RewriteCond %{REQUEST_URI} ^/admin/([^/]+?)/delete$
+RewriteCond %{REQUEST_METHOD} !^(POST)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_POST:1]
+RewriteCond %{REQUEST_URI} ^/admin/([^/]+?)/delete$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:contact_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Fabfoto\\GalleryBundle\\Controller\\MessageController\:\:deleteAction]
+
+# 405 Method Not Allowed
+RewriteCond %{_ROUTING__allow_POST} !-z
+RewriteRule .* app.php [QSA,L]
+
