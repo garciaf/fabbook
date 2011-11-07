@@ -12,7 +12,6 @@ class DefaultController extends Controller
 
     /**
      * @Route("/", name="show_articles")
-     * @Template()
      */
     public function showArticlesAction()
     {
@@ -26,8 +25,7 @@ class DefaultController extends Controller
                 ));
     }
      /**
-     * @Route("/albums", name="index_album")
-     * @Template()
+     * @Route("albums", name="index_album")
      */
     public function indexAlbumsAction()
     {
@@ -39,8 +37,7 @@ class DefaultController extends Controller
                         array('albums' => $albums));
     }
     /**
-     * @Route("/rss", name="rss_news")
-     * @Template()
+     * @Route("rss", name="rss_news")
      */
     public function rssNewsAction()
     {
@@ -54,7 +51,6 @@ class DefaultController extends Controller
 
     /**
      * @Route("{id}/album", name="show_album")
-     * @Template()
      */
     public function showAlbumAction($id)
     {
@@ -98,7 +94,6 @@ class DefaultController extends Controller
 
     /**
      * @Route("search", name="fabfoto_search")
-     * @Template()
      */
     public function searchPictureAction(Request $request)
     {   
@@ -123,5 +118,4 @@ class DefaultController extends Controller
                         )
         );
     }
-
 }
