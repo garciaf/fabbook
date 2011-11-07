@@ -1,40 +1,40 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title> {% block title %}Admin FabFoto{%endblock title%}</title>
-        <link rel="stylesheet" media="all" href="{{ asset('bundles/fabfotogallery/css/styleAdmin.css')}}" />
-        <link rel="icon" type="image/png" href="{{ asset('bundles/fabfotogallery/image/icon/iconemain.png')}}">
-    </head>
+{%block header %}
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>{% block titlepage %}Fabfoto {% endblock titlepage %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+	<link rel="stylesheet" href="{{asset('bundles/fabfotogallery/css/fabfoto-theme/fabfoto-mobile-theme.css')}}" />
+        {% block importcss %}
+        <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery.mobile-1.0rc2.min.css')}}" />
+        {% endblock importcss %}
+
+ 	{%block importjs %}
+        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery-1.6.4.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery.mobile-1.0rc2.min.js')}}"></script>
+        {%endblock importjs%}
+    </head> 
+
+{% endblock header %}
     <body>
-        <div id="headerAdmin">
-            <div id="menuAdmin">
-                <ul>
+        <div data-role="page" {% block optionpage %}{% endblock optionpage %} data-theme="c" > 
+            <div data-role="header" >
+                <h1>{% block title %}Fabfoto{%endblock title%}</h1>
+            </div> 
+            <div data-role="content" >
+                {% block content %}
+                Welcome on Fabfoto Mobile
+                {% endblock %}
+            </div> 
+            <div data-role="footer" >
+                <div data-role="navbar" data-position="fixed" data-fullscreen="true">
+                    <ul>
                     <li><a href="{{path('adminPicture')}}">Photos</a> </li>
                     <li><a href="{{path('adminAlbums')}}">Album</a> </li>
                     <li><a href="{{path('article')}}">Articles</a></li>
-                    <li><a href="{{path('fabfoto_logout')}}">Logout</a> </li>                    
-            </div>
-        </div>
-        {% if app.session.flashes %}
-        <div id="flashes">
-            {% for type, message in app.session.flashes%}
-            <div class="flash {{type}}">
-                <div class="wrap">
-                    {{message}}
-                </div>
-            </div>
-            {% endfor%}
-        </div>
-        {% endif%}
-        <div id="contentAdmin">
-            <div class="wrap">
-                {% block content %}lipso lium{%endblock%}     
-            </div>
-        </div>
-            <div id="footerAdmin">
-
-
-            </div>
+                    <li><a href="{{path('fabfoto_logout')}}">Logout</a> </li>                     </ul>
+                </div><!-- /navbar -->
+            </div> 
+        </div> 
     </body>
 </html>

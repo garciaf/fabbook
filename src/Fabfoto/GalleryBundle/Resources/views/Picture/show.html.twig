@@ -27,27 +27,19 @@
     </tbody>
 </table>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('adminPicture') }}">
+ <div data-role="controlgroup" data-type="horizontal" class="localnav">
+        <a href="{{ path('adminPicture') }}" data-role="button">
             Back to the list
         </a>
-    </li>
-    <li>
-        <a href="{{ path('adminPicture_new') }}">
+        <a href="{{ path('adminPicture_new') }}" data-role="button">
              new Picture
         </a>
-    </li>
-    <li>
-        <a href="{{ path('adminPicture_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('adminPicture_edit', { 'id': entity.id }) }}" data-role="button">
             Edit
         </a>
-    </li>
-    <li>
-        <form action="{{ path('adminPicture_delete', { 'id': entity.id }) }}" method="post">
+</div>
+        <form action="{{ path('adminPicture_delete', { 'id': entity.id }) }}" method="post" >
             {{ form_widget(delete_form) }}
             <button type="submit">Delete</button>
         </form>
-    </li>
-</ul>
 {% endblock content %}
