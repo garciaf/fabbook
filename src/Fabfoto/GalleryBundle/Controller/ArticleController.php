@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Fabfoto\GalleryBundle\Entity\Article;
-use Fabfoto\GalleryBundle\Form\ArticleType;
+use Fabfoto\GalleryBundle\Form\Type\ArticleType;
 
 /**
  * Article controller.
