@@ -1,13 +1,16 @@
 {% extends 'FabfotoGalleryBundle::layoutMobile.html.twig'%}
 {% block content %}
-<div data-role="collapsible-set">
-{% for article in articles %}
-<div data-role="collapsible" data-collapsed="false">
-<h3>{{article.title}}</h3>
-<h4>{{article.subtitle}}</h4>
-<h4>{{article.author}}</h4>
-<p>{{article.content}}</p>
-</div>
-{% endfor %}
-</div>
+<h1>FabFoto Mobile </h1>
+    <ul data-role="listview" data-filter="true">
+        {% for article in articles %}
+        <li data-role="list-divider">{% if article.createdAt %}{{ article.createdAt|date('Y-m-d H:i:s') }}{% endif%}</li>
+        <li><a href="{{ path('show_article_mobile', { 'id': article.id }) }}">
+                <h3>{{ article.title }}</h3>
+                <p><strong>{{ article.subtitle }}</strong></p>
+                <p>{{ article.content }}</p>
+
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
 {% endblock content %}

@@ -29,6 +29,20 @@ class DefaultMobileController extends Controller
                 ));
     }
     /**
+     * @Route("/{id}/article", name="show_article_mobile")
+     */
+    public function showArticleAction($id)
+    {
+        $article = $this
+                ->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:Article')
+                ->find($id);
+        return $this->render('FabfotoGalleryBundle:Mobile:showArticle.html.twig',
+                        array(
+                    'article' => $article
+                ));
+    }
+    /**
      * @Route("/albums", name="albums_mobile")
      * @Template()
      */

@@ -2,47 +2,21 @@
 {% block content %}
 <h1>Article list</h1>
 
-<table class="records_list">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Subtitle</th>
-            <th>Createdat</th>
-            <th>Content</th>
-            <th>Author</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
+    <ul data-role="listview" data-filter="true" data-inset="true">
     {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('article_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.title }}</td>
-            <td>{{ entity.subtitle }}</td>
-            <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif%}</td>
-            <td>{{ entity.content }}</td>
-            <td>{{ entity.author }}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('article_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('article_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-            </td>
-        </tr>
+    <li><a href="{{ path('article_show', { 'id': entity.id }) }}">
+            <h3>{{ entity.title }}</h3>
+            <p><strong>{{ entity.subtitle }}</strong></p>
+            <p>{{ entity.content }}</p>
+            {% if entity.createdAt %}<p class="ui-li-aside"><strong>{{ entity.createdAt|date('Y-m-d H:i:s') }}</strong></p>{% endif%}
+          </a>
+    </li>
     {% endfor %}
-    </tbody>
-</table>
+    </ul>
 
-<ul>
-    <li>
-        <a href="{{ path('article_new') }}">
+
+        <a href="{{ path('article_new') }}" data-role="button">
             Create a new entry
         </a>
-    </li>
-</ul>
+
 {% endblock content %}
