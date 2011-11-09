@@ -81,7 +81,7 @@ class MessageController extends Controller
      *
      * @Route("/create", name="contact_create")
      * @Method("post")
-     * @Template("FabfotoGalleryBundle:Message:new.html.twig")
+     * @Template("FabfotoGalleryBundle:Default:contact.html.twig")
      */
     public function createAction()
     {

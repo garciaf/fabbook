@@ -19,6 +19,7 @@ class MessageType extends AbstractType
             ->add('content', 'textarea', array(
                 
             ))
+            ->add('captcha', 'captcha')
         ;
     }
 

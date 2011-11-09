@@ -61,3 +61,4 @@ jms_security_extra:
 #GalleryBundle Configuration
 fabfoto_gallery:
     picture_directory: %upload_directory%
+gregwar_captcha: ~
