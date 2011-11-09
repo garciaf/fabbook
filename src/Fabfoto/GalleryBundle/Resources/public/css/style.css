@@ -257,3 +257,35 @@ album_sum_up{
     color: grey;
     float: right;
 }
+fieldset {
+ padding:20px;
+ margin-bottom:10px;
+ }
+legend {
+ color:#a0522d;
+ font-weight:bold
+ }
+label {
+ margin-top:20px;
+ display:block;
+ }
+label.inline {
+ display:inline
+ }
+input {
+ border:1px solid black;
+ background-color: whitesmoke;
+ }
+input:focus {
+ background-color: lightgray;
+}
+select, option {
+ background-color: whitesmoke;
+ }
+textarea {
+ border:1px solid black;
+ background-color: whitesmoke;
+ }
+textarea:focus {
+ background-color: lightgray;
+}
