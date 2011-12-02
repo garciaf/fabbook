@@ -80,3 +80,7 @@ border-width:thin;
     width: 50px;
     
 }
+.element_picture{
+    width: 250px;
+    float: left;
+}
