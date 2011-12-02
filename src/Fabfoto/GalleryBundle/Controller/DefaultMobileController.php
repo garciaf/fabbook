@@ -22,7 +22,7 @@ class DefaultMobileController extends Controller
         $articles = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Article')
-                ->findAll();
+                ->findBy(array(), array('createdAt'=> 'DESC'));
         return $this->render('FabfotoGalleryBundle:Mobile:IndexArticle.html.twig',
                         array(
                     'articles' => $articles
@@ -51,7 +51,7 @@ class DefaultMobileController extends Controller
         $albums = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Album')
-                ->findAll();
+                ->findBy(array(), array('createdAt'=> 'DESC'));
         return $this->render('FabfotoGalleryBundle:Mobile:indexAlbum.html.twig',
                         array('albums' => $albums));
     }
