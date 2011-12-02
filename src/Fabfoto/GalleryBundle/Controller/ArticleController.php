@@ -26,7 +26,8 @@ class ArticleController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('FabfotoGalleryBundle:Article')->findAll();
+        $entities = $em->getRepository('FabfotoGalleryBundle:Article')
+                ->findAll();
 
         return array('entities' => $entities);
     }
