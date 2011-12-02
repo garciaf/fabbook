@@ -2,16 +2,13 @@
 <!DOCTYPE html> 
 <html> 
     <head> 
-        <title>{% block titlepage %}Fabfoto {% endblock titlepage %}</title>
+        <title>{% block titlepage %}Fabbook Admin {% endblock titlepage %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">  
-	<link rel="stylesheet" href="{{asset('bundles/fabfotogallery/css/fabfoto-theme/fabfoto-mobile-theme.css')}}" />
         {% block importcss %}
-        <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery.mobile-1.0rc2.min.css')}}" />
         {% endblock importcss %}
+        <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/css/styleAdmin.css')}}"/>
 
  	{%block importjs %}
-        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery-1.6.4.min.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery.mobile-1.0rc2.min.js')}}"></script>
         {%endblock importjs%}
     </head> 
 

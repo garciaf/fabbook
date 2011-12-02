@@ -28,7 +28,8 @@ class PictureController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $pictures = $em->getRepository('FabfotoGalleryBundle:Picture')->findAll();
+        $pictures = $em->getRepository('FabfotoGalleryBundle:Picture')->
+                findBy(array(), array('name' => 'ASC'));
 
         return array('pictures' => $pictures);
     }

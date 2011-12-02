@@ -9,18 +9,18 @@
 
 
 
-<ul data-role="listview" data-filter="true">
+<div class="listview" >
     {% for picture in pictures %}
-    <li>
+    <div class="element_picture">
         <a href="{{ path('adminPicture_show', { 'id': picture.id }) }}">
             <image src="/{{picture.thumbpath}}" class ="image_index_admin"/>
             <h3>{{ picture}}</h3>
             <p>{{ picture.location }}</p>
             <p>{% if picture.createdAt %}{{ picture.createdAt|date('Y-m-d H:i:s') }}{% endif%}</p>
         </a>
-    </li>
+    </div>
     {% endfor %}
-</ul>
+</div>
 
 
 <a href="{{ path('adminPicture_new') }}" data-role="button">
