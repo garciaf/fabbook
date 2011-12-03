@@ -21,7 +21,7 @@ class MessageController extends Controller
     /**
      * Lists all Message entities.
      *
-     * @Route("/admin/messages", name="contact")
+     * @Route("admin/messages", name="contact")
      * @Template()
      */
     public function indexAction()
