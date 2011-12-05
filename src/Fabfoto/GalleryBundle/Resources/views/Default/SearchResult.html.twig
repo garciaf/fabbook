@@ -26,17 +26,18 @@
     {% endfor %}
 </div>
 <h1 id="album_search"> Result in Album :</h1>
-{% for album in albums%}
-    <div class="album_sum_up">
-        <a href="{{path('show_album', {'id':album.id})}}" >
-            <h1 class="album_tile">{{album.name}}</h1>
-        </a>
-        <a href="{{path('show_album', {'id':album.id})}}" >
-            <image class ="album_cover" src="/{{album.picturecover.thumbpath}}"/>
-        </a>
-        <p class="album_comment">{{album.comment}}</p>
-    </div>
-{% endfor %}
+<div class="list_album">
+    {% for album in albums%}
+    <a href="{{path('show_album', {'id':album.id})}}" >
+        <div class="album_sum_up" style="background: url(/{{album.picturecover.webpath}})" >
+            <h1 class="album_title">{{album.name}}</h1>
+
+            <p class="album_comment">{{album.comment}}</p>
+        </div>
+    </a>
+
+    {% endfor %}
+</div>
 {% endblock content %}
 {% block search_query %}
 {{keywords}}
