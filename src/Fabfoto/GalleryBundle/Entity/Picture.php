@@ -163,7 +163,7 @@ class Picture
 
     public function getWebPath()
     {
-        return null === $this->location ? null :  $this->getUploadDir() . '/' . $this->location;
+        return null === $this->location ? null : $this->getUploadDir() . '/' . $this->location;
     }
 
     public function getThumbPath()
@@ -190,7 +190,7 @@ class Picture
 
     protected function getDomainName()
     {
-        return '';
+        return 'fabfoto2/';
     }
 
     /**

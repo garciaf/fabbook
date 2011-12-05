@@ -86,7 +86,7 @@ class DefaultController extends Controller
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Picture')
                 ->findByisBackground(true);
-        return $this->render('FabfotoGalleryBundle:Default:Background.html.twig',
+        return $this->render('FabfotoGalleryBundle:Default:BackgroundVegas.html.twig',
                         array(
                     'backgrounds' => $backgrounds
                 ));
@@ -117,5 +117,15 @@ class DefaultController extends Controller
                     'keywords' => $request->query->get('q'),
                         )
         );
+    }
+    
+    private function getAlbumBackground($id){
+                return $this
+                ->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:Picture')
+                ->findBy(array(
+            'album' => $id,
+            'isBackground' => true
+                ));
     }
 }

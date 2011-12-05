@@ -5,26 +5,13 @@
         <title> {% block title %}Fabbook{%endblock title%}</title>
         <link rel="stylesheet" media="all" href="{{ asset('bundles/fabfotogallery/css/style.css')}}" />
         {%block importcss %}{%endblock importcss %}
-        <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/css/carroussel.css')}}"/>
+        <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/vegas/jquery.vegas.css')}}"/>
         <link rel="icon" type="image/png" href="{{ asset('bundles/fabfotogallery/image/icon/iconemain.png')}}">
         <script src="{{ asset('bundles/fabfotogallery/js/jquery.min.js')}}"></script>
-        <script src="{{ asset('bundles/fabfotogallery/js/slides.jquery.js')}}"></script>
+        <script src="{{ asset('bundles/fabfotogallery/vegas/jquery.vegas.js')}}"></script>
 
         {%block importjs %}
         {%endblock importjs%}
-        <script>
-            $(function(){
-                $('#slides').slides({
-                    preload: true,
-                    preloadImage: "{{ asset('bundles/fabfotogallery/image/loading.gif')}}",
-                    randomize: true,
-                    effect: 'fade',
-                    fadeSpeed: 500,
-                    play: 7000
-
-                });
-            });
-        </script>
     </head>
     <body>
         <div id="nav" class="clearfix">
@@ -58,19 +45,13 @@
 
             <div id="footer">
                 <p id="legal">Copyright © Fab photo. All Rights Reserved.</p>
-                <a  href="{{path('rss_news')}}"><image id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" </a>
+                <a  href="{{path('rss_news')}}"><img id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
             </div>
         </div>
 
+        {% block carroussel %}
+        {% render 'FabfotoGalleryBundle:Default:allBackground' with {'max': 10} %}
+        {% endblock carroussel %}
 
-        <div id="fullscreen">
-            <div id="slides">
-                <div class="slides_container">
-                    {% block carroussel %}
-                    {% render 'FabfotoGalleryBundle:Default:allBackground' with {'max': 10} %}
-                    {% endblock carroussel %}
-                </div>
-            </div>
-        </div>
     </body>
 </html>
