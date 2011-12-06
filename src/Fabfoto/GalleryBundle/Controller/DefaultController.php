@@ -86,6 +86,7 @@ class DefaultController extends Controller
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Picture')
                 ->findByisBackground(true);
+        shuffle($backgrounds);
         return $this->render('FabfotoGalleryBundle:Default:BackgroundVegas.html.twig',
                         array(
                     'backgrounds' => $backgrounds
