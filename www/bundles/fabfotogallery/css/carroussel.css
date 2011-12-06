@@ -8,10 +8,19 @@
         Set the width of your slides container
         Set to display none, prevents content flash
 */
+#slides{
+    height:100%;width:100%;
+    overflow:hidden;
+    position: absolute;
+}
 .slides_container {
-    width:2050px;
-    top: 0;
+
     display:none;
+    position:absolute;
+    top:-50%;left:-50%;height:200%;width:200%;
+}
+.slides_container div img{
+    min-height:50%;min-width:50%;
 }
 
 /*
@@ -21,9 +30,11 @@
         If height not specified height will be set by the slide content
         Set to display block
 */
+
 .slides_container div {
-    width:1550px;
-    height:1024px;
+    height:100%;
+    width:100%;
+    overflow:hidden;
     top: 0;
     right: 0;
     display:block;
