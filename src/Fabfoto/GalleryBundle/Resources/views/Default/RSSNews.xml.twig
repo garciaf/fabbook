@@ -8,10 +8,10 @@
         <copyright>Fabfoto</copyright>
         {%for article in articles%}
         <item>
-            <title>{{article.title}}</title> 
-            <link{{url('show_articles')}}</link> 
-            <description>{{article.subtitle}}</description>
-            <content>{{article.content}}</content>
+            <title>{{article.title|raw}}</title> 
+            <link>{{url('show_articles')}}</link> 
+            <description>{{article.subtitle|raw}}</description>
+            <content>{{article.content|raw}}</content>
             <pubDate>{{article.createdAt|date(constant("DATE_W3C")) }}</pubDate>
         </item>
         {%endfor%}
