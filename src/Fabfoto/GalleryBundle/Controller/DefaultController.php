@@ -25,6 +25,35 @@ class DefaultController extends Controller
                 ));
     }
      /**
+     * @Route("blog", name="index_blog")
+     */
+    public function indexBlogsAction()
+    {
+        $articlesBlogs = $this
+                ->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
+                ->findBy(array(), array('createdAt'=> 'DESC'));
+        return $this->render('FabfotoGalleryBundle:Default:IndexArticleBlog.html.twig',
+                        array(
+                    'ArticlesBlogs' => $articlesBlogs,
+                ));
+    }
+    
+     /**
+     * @Route("/{id}/blogarticle", name="show_article_blog")
+     */
+    public function showBlogArticleAction($id)
+    {
+        $article = $this
+                ->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
+                ->find($id);
+        return $this->render('FabfotoGalleryBundle:Default:ShowArticleBlog.html.twig',
+                        array(
+                    'article' => $article
+                ));
+    }
+     /**
      * @Route("albums", name="index_album")
      */
     public function indexAlbumsAction()

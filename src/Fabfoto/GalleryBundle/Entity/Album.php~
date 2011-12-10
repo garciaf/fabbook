@@ -4,14 +4,17 @@ namespace Fabfoto\GalleryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
+use Doctrine\Common\Collections\Collection;
+
 /**
  * Fabfoto\GalleryBundle\Entity\Album
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Fabfoto\GalleryBundle\Entity\AlbumRepository")
  */
 class Album
 {
+
     /**
      * @var integer $id
      *
@@ -42,12 +45,12 @@ class Album
      */
     private $createdAt;
 
-    
     /**
      *
      * @ORM\OneToMany(targetEntity = "Picture",mappedBy="album")
      */
     private $pictures;
+
     /**
      * Get id
      *
@@ -78,14 +81,11 @@ class Album
         return $this->name;
     }
 
-
     public function __construct()
     {
-        $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
         $this->createdAt = new \DateTime();
-        
     }
-    
+
     /**
      * Set comment
      *
@@ -145,4 +145,22 @@ class Album
     {
         return $this->pictures;
     }
+
+    public function __toString()
+    {
+        return (string) $this->name;
+    }
+
+    public function getPictureCover()
+    {
+        if ($this->pictures[0])
+        {
+            return $this->pictures[0];
+        }
+                else
+        {
+            return 'defaultsPicture.jpg';
+        }
+    }
+
 }
