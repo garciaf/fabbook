@@ -64,3 +64,6 @@
 [GregwarCaptchaBundle] 
     git=git://github.com/Gregwar/CaptchaBundle.git 
     target=/bundles/Gregwar/CaptchaBundle
+[IoFormBundle] 
+    git=git://github.com/ioalessio/IoFormBundle.git 
+    target=/bundles/Io/FormBundle
