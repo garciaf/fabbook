@@ -20,6 +20,9 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    form:
+        resources:
+            - 'IoFormBundle:Form:fields.html.twig'
 
 # Assetic Configuration
 assetic:
@@ -62,3 +65,8 @@ jms_security_extra:
 fabfoto_gallery:
     picture_directory: %upload_directory%
 gregwar_captcha: ~
+
+io_form:
+    jquery_tinymce:
+      source: /fabfoto2/bundles/fabfotogallery/tiny_mce/tiny_mce.js
+      theme:  advanced

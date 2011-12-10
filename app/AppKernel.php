@@ -18,7 +18,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Fabfoto\GalleryBundle\FabfotoGalleryBundle(),
-            new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),   
+            new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
+	    new Io\FormBundle\IoFormBundle(),   
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test','prod'))) {

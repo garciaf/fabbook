@@ -12,10 +12,8 @@ class ArticleType extends AbstractType
         $builder
             ->add('title')
             ->add('subtitle')
-            ->add('createdAt')
-            ->add('content','textarea', array(
-                'max_length'=>500,
-            ))
+            ->add('createdAt','jquery_date', array('format' => 'dd/MM/y'))
+            ->add('content','jquery_tinymce')
             ->add('author')
         ;
     }

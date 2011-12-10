@@ -88,3 +88,7 @@ border-width:thin;
 .preview{
     width: 500px;
 }
+textarea{
+    width: 500px;
+    height: 300px;
+}
