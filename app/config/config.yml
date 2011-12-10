@@ -68,5 +68,5 @@ gregwar_captcha: ~
 
 io_form:
     jquery_tinymce:
-      source: /fabfoto2/bundles/fabfotogallery/tiny_mce/tiny_mce.js
+      source: /bundles/fabfotogallery/tiny_mce/tiny_mce.js
       theme:  advanced
