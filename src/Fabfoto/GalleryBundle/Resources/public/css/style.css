@@ -296,3 +296,69 @@ textarea {
 textarea:focus {
  background-color: lightgray;
 }
+.article_blog h1, .article_blog_full h1{
+    padding-left: 20px;    
+    margin-bottom: 0px;
+}
+.article_blog h2, .article_blog_full h2{
+    font-style: oblique;
+    font-size: 1.3em;
+    margin-left: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.article_blog{
+padding: 10px 10px 10px 10px;   
+margin: 20px 20px 20px 20px;   
+    
+-webkit-border-radius: 20px;
+-moz-border-radius: 20px;
+border-radius: 20px;
+
+background: #ffffff; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #ffffff 0%, #e5e5e5 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(-45deg,  #ffffff 0%,#e5e5e5 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(-45deg,  #ffffff 0%,#e5e5e5 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(-45deg,  #ffffff 0%,#e5e5e5 100%); /* IE10+ */
+background: linear-gradient(-45deg,  #ffffff 0%,#e5e5e5 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+
+}
+.extra_info_blog{
+font-size: 12px;
+font-style: normal;
+padding-top: 10px;
+margin-left: 50px;
+}
+.tag{
+    margin-top: 10px;
+    margin-left: 50px;
+}
+.tag a
+{
+    font-style: italic;
+}
+.tag a:hover
+{
+    font-weight: bold;
+    font-style: italic;
+}
+.more{
+    margin: 10px 10px 10px 50px;
+}
+.more a{
+    padding-top: 10px;
+    padding-left: 15px;
+    background: url(../image/plus.png) no-repeat left bottom;
+}
+
+.blog_content{
+    margin-left: 20px;
+}
+.signature_blog{
+    text-align: right;
+    font-size: 12px;
+    font-style: italic;
+}
