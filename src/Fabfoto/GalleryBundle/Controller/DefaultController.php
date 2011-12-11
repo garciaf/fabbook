@@ -53,6 +53,23 @@ class DefaultController extends Controller
                     'article' => $article
                 ));
     }
+    /**
+     * @Route("/{tag_id}/tag/blogarticle", name="show_articles_blog_by_tags")
+     */
+    public function showBlogArticleByTagAction($tag_id)
+    {
+        $tag = $this
+                ->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:Tag')
+                ->find($tag_id);
+        $articlesBlogs = $tag->getArticles();
+
+        return $this->render('FabfotoGalleryBundle:Default:IndexTagArticleBlog.html.twig',
+                        array(
+                    'ArticlesBlogs' => $articlesBlogs,
+                    'tag' => $tag,
+                ));
+    }
      /**
      * @Route("albums", name="index_album")
      */

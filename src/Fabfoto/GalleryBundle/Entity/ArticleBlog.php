@@ -3,6 +3,11 @@
 namespace Fabfoto\GalleryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use \Fabfoto\GalleryBundle\Entity\Tag as Tag;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping\JoinColumn as JoinColumn;
+use Doctrine\ORM\Mapping\JoinTable as JoinTable;
+use Doctrine\ORM\Mapping\ManyToMany as ManyToMany;
 
 /**
  * Fabfoto\GalleryBundle\Entity\ArticleBlog
@@ -64,11 +69,17 @@ class ArticleBlog
     private $author;
 
      /**
-     * @ORM\ManyToMany(targetEntity="Fabfoto\GalleryBundle\Entity\Tag")
+      *  
+      * @ORM\ManyToMany(targetEntity="Tag", inversedBy="articles")
+      * @JoinTable(name="ArticleBlog_tags")
      */
      private $tags;
 
-
+     
+     public function __toString()
+     {
+         return $this->getTitle();
+     }
      /**
      * Get id
      *
@@ -202,14 +213,16 @@ class ArticleBlog
     {
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
+
     /**
      * Add tags
      *
      * @param Fabfoto\GalleryBundle\Entity\Tag $tags
      */
-    public function addTag(\Fabfoto\GalleryBundle\Entity\Tag $tags)
+    public function addTag(\Tag $tags)
     {
+        $tags->addArticleBlog($this);
         $this->tags[] = $tags;
     }
 

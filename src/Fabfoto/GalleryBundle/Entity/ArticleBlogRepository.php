@@ -12,4 +12,24 @@ use Doctrine\ORM\EntityRepository;
  */
 class ArticleBlogRepository extends EntityRepository
 {
+    public function getByTag($tag)
+    {
+        $tags = array($tag);
+        return $this->findByTags($tags);
+    }
+    public function getByTags(array $tags)
+    {
+ 
+        //return $qb->getQuery()->getResult();
+    }
+    public function OrderByDate()
+    {
+        return $this->queryOrderBydate()->execute();
+    }
+    
+    private function queryOrderBydate()
+    {
+        return $this->_em
+                        ->createQuery('SELECT s FROM FabfotoGalleryBundle:ArticleBlog s ORDER BY s.createdAt DESC');
+    }
 }

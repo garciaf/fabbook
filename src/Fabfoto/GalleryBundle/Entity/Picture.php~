@@ -80,7 +80,7 @@ class Picture
      *
      * @param string $name
      */
-    public function setName($name)
+    public function setName($PictureRepositoryname)
     {
         $this->name = $name;
     }

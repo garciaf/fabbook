@@ -3,7 +3,9 @@
 namespace Fabfoto\GalleryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use \Fabfoto\GalleryBundle\Entity\ArticleBlog as ArticleBlog;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping\ManyToMany as ManyToMany;
 /**
  * Fabfoto\GalleryBundle\Entity\Tag
  *
@@ -28,6 +30,11 @@ class Tag
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+    
+     /**
+     * @ManyToMany(targetEntity="ArticleBlog", mappedBy="tags")
+     */
+    private $articles;
 
     /**
      * Get id
@@ -64,4 +71,28 @@ class Tag
         return $this->getName();
     }
 
+    public function __construct()
+    {
+        $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add articles
+     *
+     * @param Fabfoto\GalleryBundle\Entity\ArticleBlog $articles
+     */
+    public function addArticleBlog(\Fabfoto\GalleryBundle\Entity\ArticleBlog $articles)
+    {
+        $this->articles[] = $articles;
+    }
+
+    /**
+     * Get articles
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
 }

@@ -1,7 +1,6 @@
-{% extends 'FabfotoGalleryBundle::layout.html.twig'%}
-{% block title %} {{article.title}} {% endblock title %}
-{% block content %}
-    <div class="article_blog_full">
+<div class="list_articles_blog">
+    {% for article in ArticlesBlogs %}
+    <div class="article_blog">
         <h1>{{article.title}}</h1>
         <h2>{{article.subtitle}}</h2>
         {% for tag in article.tags %}
@@ -11,5 +10,7 @@
         <h3 class="author">{{article.author}}</h3>
         <h4>{{article.createdAt|date('d/m/Y')}}</h4>
         <h4>{{article.updatedAt|date('d/m/Y') }}</h4>
+        <a href="{{path('show_article_blog', {'id':article.id})}}" >En savoir plus</a>
     </div>
-{% endblock content %}
+    {% endfor %}
+</div>
