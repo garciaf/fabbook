@@ -1,5 +1,5 @@
 {% extends 'FabfotoGalleryBundle::layout.html.twig'%}
-{% block titlepage %}Fabfoto-Blog{% endblock titlepage %}
+{% block title %} {{tag}} {% endblock title %}
 {% block content %}
 <h1> Tag : {{tag}} </h1>
 {% include "FabfotoGalleryBundle:Default:ListArticleBlog.html.twig" %}
