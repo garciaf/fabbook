@@ -1,3 +1,5 @@
+{% extends 'FabfotoGalleryBundle::layoutAdmin.html.twig'%}
+{% block content %}
 <h1>Message creation</h1>
 
 <form action="{{ path('contact_create') }}" method="post" {{ form_enctype(form) }}>
@@ -14,3 +16,4 @@
         </a>
     </li>
 </ul>
+{% endblock content %}
