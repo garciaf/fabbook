@@ -7,11 +7,11 @@
         <div class="tag">
         Tags : 
         {% for tag in article.tags %}
-        <a href="{{path('show_articles_blog_by_tags', {'tag_id':tag.id})}} "> {{tag}}</a> 
+        <a href="{{path('show_articles_blog_by_tags', {'tag_slug':tag.slug})}} "> {{tag}}</a> 
         {% endfor %}
         </div>
         <div class="more">
-            <a href="{{path('show_article_blog', {'id':article.id})}}" >Plus</a>
+            <a href="{{path('show_article_blog', {'slugblog':article.slugblog})}}" >Plus</a>
         </div>
     </div>
     {% endfor %}

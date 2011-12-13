@@ -47,6 +47,7 @@ class ArticleBlog
      */
     private $title;
 
+    
     /**
      * @var string $subtitle
      *
@@ -75,7 +76,13 @@ class ArticleBlog
      */
      private $tags;
 
-     
+
+    /**
+     *
+     * @ORM\Column(name="slugblog", type="string", length=255)
+     */
+    private $slugblog;
+    
      public function __toString()
      {
          return $this->getTitle();
@@ -214,4 +221,73 @@ class ArticleBlog
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+
+    /**
+     * Add tags
+     *
+     * @param Fabfoto\GalleryBundle\Entity\Tag $tags
+     */
+    public function addTag(\Tag $tags)
+    {
+        $tags->addArticleBlog($this);
+        $this->tags[] = $tags;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+    
+        public function slugify($text)
+    {
+        // replace non letter or digits by -
+        $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
+
+        // trim
+        $text = trim($text, '-');
+
+        // transliterate
+        if (function_exists('iconv'))
+        {
+            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        }
+
+        // lowercase
+        $text = strtolower($text);
+
+        // remove unwanted characters
+        $text = preg_replace('#[^-\w]+#', '', $text);
+
+        if (empty($text))
+        {
+            return 'n-a';
+        }
+
+        return $text;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
 }

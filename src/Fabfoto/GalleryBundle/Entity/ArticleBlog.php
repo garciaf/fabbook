@@ -47,6 +47,7 @@ class ArticleBlog
      */
     private $title;
 
+    
     /**
      * @var string $subtitle
      *
@@ -75,7 +76,13 @@ class ArticleBlog
      */
      private $tags;
 
-     
+
+    /**
+     *
+     * @ORM\Column(name="slugblog", type="string", length=255)
+     */
+    private $slugblog;
+    
      public function __toString()
      {
          return $this->getTitle();
@@ -138,6 +145,8 @@ class ArticleBlog
     public function setTitle($title)
     {
         $this->title = $title;
+        
+        $this->setSlugblog($this->slugify($title));
     }
 
     /**
@@ -234,5 +243,53 @@ class ArticleBlog
     public function getTags()
     {
         return $this->tags;
+    }
+    
+        public function slugify($text)
+    {
+        // replace non letter or digits by -
+        $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
+
+        // trim
+        $text = trim($text, '-');
+
+        // transliterate
+        if (function_exists('iconv'))
+        {
+            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        }
+
+        // lowercase
+        $text = strtolower($text);
+
+        // remove unwanted characters
+        $text = preg_replace('#[^-\w]+#', '', $text);
+
+        if (empty($text))
+        {
+            return 'n-a';
+        }
+
+        return $text;
+    }
+
+    /**
+     * Set slugblog
+     *
+     * @param string $slugblog
+     */
+    public function setSlugblog($slugblog)
+    {
+        $this->slugblog = $slugblog;
+    }
+
+    /**
+     * Get slugblog
+     *
+     * @return string 
+     */
+    public function getSlugblog()
+    {
+        return $this->slugblog;
     }
 }

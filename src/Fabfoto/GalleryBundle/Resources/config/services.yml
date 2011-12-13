@@ -10,3 +10,4 @@ services:
     fabfoto_gallery.picture_uploader:
         class:      Fabfoto\GalleryBundle\Uploader\PictureUploader
         arguments:  [%fabfoto_gallery.picture_directory%]
+        

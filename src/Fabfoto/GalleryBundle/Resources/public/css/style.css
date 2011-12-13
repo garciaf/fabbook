@@ -362,3 +362,18 @@ margin-left: 50px;
     font-size: 12px;
     font-style: italic;
 }
+blockquote{
+    background-color: black;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    border-color: black;
+    border-left-width: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 5px;
+}

@@ -5,7 +5,7 @@
         <div class="tag">
         Tags : 
         {% for tag in article.tags %}
-        <a href="{{path('show_articles_blog_by_tags', {'tag_id':tag.id})}} "> {{tag}}</a> 
+        <a href="{{path('show_articles_blog_by_tags', {'tag_slug':tag.slug})}} "> {{tag}}</a> 
         {% endfor %}
         </div>
         <h1>{{article.title}}</h1>
@@ -18,4 +18,5 @@
 {% endblock content %}
 {% block metainfo %}
 <meta name="Keywords" CONTENT="{% for tag in article.tags %} {{ tag }},{% endfor %}" />
+<meta name="Description" CONTENT="{{ article.subtitle }}" />
 {% endblock metainfo %}

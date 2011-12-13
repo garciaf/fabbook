@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use \Fabfoto\GalleryBundle\Entity\ArticleBlog as ArticleBlog;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping\ManyToMany as ManyToMany;
+use Fabfoto\GalleryBundle\Resources\lib as StringTools;
 /**
  * Fabfoto\GalleryBundle\Entity\Tag
  *
@@ -35,7 +36,11 @@ class Tag
      * @ManyToMany(targetEntity="ArticleBlog", mappedBy="tags")
      */
     private $articles;
-
+    
+    /**
+     * @ORM\Column(name="slug", type="string", length=255 )
+     */
+    protected $slug;
     /**
      * Get id
      *
@@ -54,6 +59,8 @@ class Tag
     public function setName($name)
     {
         $this->name = $name;
+        
+        $this->setSlug($this->slugify($name));
     }
 
     /**
@@ -94,5 +101,53 @@ class Tag
     public function getArticles()
     {
         return $this->articles;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+    
+    public function slugify($text)
+    {
+        // replace non letter or digits by -
+        $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
+
+        // trim
+        $text = trim($text, '-');
+
+        // transliterate
+        if (function_exists('iconv'))
+        {
+            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        }
+
+        // lowercase
+        $text = strtolower($text);
+
+        // remove unwanted characters
+        $text = preg_replace('#[^-\w]+#', '', $text);
+
+        if (empty($text))
+        {
+            return 'n-a';
+        }
+
+        return $text;
     }
 }

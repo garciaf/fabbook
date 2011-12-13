@@ -40,28 +40,28 @@ class DefaultController extends Controller
     }
     
      /**
-     * @Route("/{id}/blogarticle", name="show_article_blog")
+     * @Route("/{slugblog}/blogarticle", name="show_article_blog")
      */
-    public function showBlogArticleAction($id)
+    public function showBlogArticleAction($slugblog)
     {
         $article = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
-                ->find($id);
+                ->findOneBySlugblog($slugblog);
         return $this->render('FabfotoGalleryBundle:Default:ShowArticleBlog.html.twig',
                         array(
                     'article' => $article
                 ));
     }
     /**
-     * @Route("/{tag_id}/tag/blogarticle", name="show_articles_blog_by_tags")
+     * @Route("/{tag_slug}/tag/blogarticle", name="show_articles_blog_by_tags")
      */
-    public function showBlogArticleByTagAction($tag_id)
+    public function showBlogArticleByTagAction($tag_slug)
     {
         $tag = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Tag')
-                ->find($tag_id);
+                ->findOneBySlug($tag_slug);
         $articlesBlogs = $tag->getArticles();
 
         return $this->render('FabfotoGalleryBundle:Default:IndexTagArticleBlog.html.twig',
