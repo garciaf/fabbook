@@ -1,9 +1,9 @@
 <script>
   $.vegas('slideshow', {
-  delay:5000,    
+  delay:8000,    
   backgrounds:[
 {% for background in backgrounds %}
-    { src:'/{{background.webpath}}' , fade:1000 },
+    { src:'/{{background.webpath}}' , fade:4000 },
 {% endfor %}
 
   ]
