@@ -50,7 +50,14 @@ class Album
      * @ORM\OneToMany(targetEntity = "Picture",mappedBy="album")
      */
     private $pictures;
-
+    
+    /**
+     * @var string $name
+     *
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
+    
     /**
      * Get id
      *

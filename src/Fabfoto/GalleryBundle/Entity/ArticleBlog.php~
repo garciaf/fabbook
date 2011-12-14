@@ -145,6 +145,8 @@ class ArticleBlog
     public function setTitle($title)
     {
         $this->title = $title;
+        
+        $this->setSlugblog($this->slugify($title));
     }
 
     /**
@@ -272,22 +274,22 @@ class ArticleBlog
     }
 
     /**
-     * Set slug
+     * Set slugblog
      *
-     * @param string $slug
+     * @param string $slugblog
      */
-    public function setSlug($slug)
+    public function setSlugblog($slugblog)
     {
-        $this->slug = $slug;
+        $this->slugblog = $slugblog;
     }
 
     /**
-     * Get slug
+     * Get slugblog
      *
      * @return string 
      */
-    public function getSlug()
+    public function getSlugblog()
     {
-        return $this->slug;
+        return $this->slugblog;
     }
 }

@@ -11,3 +11,7 @@ services:
         class:      Fabfoto\GalleryBundle\Uploader\PictureUploader
         arguments:  [%fabfoto_gallery.picture_directory%]
         
+#    fabfoto_gallery.string_tools:
+#        class:      Fabfoto\GalleryBundle\StringTools\StringTools
+      
+        

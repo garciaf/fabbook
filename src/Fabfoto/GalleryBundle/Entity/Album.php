@@ -50,7 +50,14 @@ class Album
      * @ORM\OneToMany(targetEntity = "Picture",mappedBy="album")
      */
     private $pictures;
-
+    
+    /**
+     * @var string $name
+     *
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
+    
     /**
      * Get id
      *
@@ -69,6 +76,8 @@ class Album
     public function setName($name)
     {
         $this->name = $name;
+        
+        $this->setSlug(\StringTools::slugify($name));
     }
 
     /**
@@ -163,4 +172,24 @@ class Album
         }
     }
 
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
 }

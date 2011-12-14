@@ -96,28 +96,29 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("{id}/album", name="show_album")
+     * @Route("{slug}/album", name="show_album")
      */
-    public function showAlbumAction($id)
+    public function showAlbumAction($slug)
     {
+        $album = $this
+                ->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:Album')
+                ->findOneBySlug($slug);
         $pictures = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Picture')
                 ->findBy(array(
-            'album' => $id,
+            'album' => $album->getId(),
             'isBackground' => false
                 ));
         $backgrounds = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Picture')
                 ->findBy(array(
-            'album' => $id,
+            'album' => $album->getId(),
             'isBackground' => true
                 ));
-        $album = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Album')
-                ->find($id);
+        
         return $this->render('FabfotoGalleryBundle:Default:ShowAlbum.html.twig',
                         array(
                     'pictures' => $pictures,
