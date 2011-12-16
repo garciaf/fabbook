@@ -82,7 +82,7 @@ class Picture
      */
     public function setName($PictureRepositoryname)
     {
-        $this->name = $name;
+        $this->name = $PictureRepositoryname;
     }
 
     /**
