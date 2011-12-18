@@ -35,7 +35,7 @@ class PictureRepository extends EntityRepository
             ->createQuery('SELECT s FROM FabfotoGalleryBundle:Picture WHERE s.isBackground == TRUE');
     }
     private function queryOrderBydate()
-    {
+    {   
         return $this->_em
                         ->createQuery('SELECT s FROM FabfotoGalleryBundle:Picture s ORDER BY s.createdAt DESC');
     }

@@ -75,12 +75,33 @@ class DefaultController extends Controller
      */
     public function indexAlbumsAction()
     {
+        if(!$this->testIsOnlyOneAlbum()){
         $albums = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Album')
                 ->findBy(array(), array('createdAt'=> 'DESC'));
         return $this->render('FabfotoGalleryBundle:Default:indexAlbum.html.twig',
                         array('albums' => $albums));
+        }else{
+            $album = $this
+                    ->getDoctrine()
+                    ->getRepository('FabfotoGalleryBundle:Album')
+                    ->findOneBy(array());
+            $pictures = $this
+                    ->getDoctrine()
+                    ->getRepository('FabfotoGalleryBundle:Picture')
+                    ->findByIsBackground(false);
+            $backgrounds = $this
+                    ->getDoctrine()
+                    ->getRepository('FabfotoGalleryBundle:Picture')
+                    ->findByIsBackground(true);
+            return $this->render('FabfotoGalleryBundle:Default:ShowAlbum.html.twig',
+                        array(
+                    'pictures' => $pictures,
+                    'album' => $album,
+                    'backgrounds' => $backgrounds
+                ));
+        }
     }
     /**
      * @Route("rss", name="rss_news")
@@ -175,5 +196,20 @@ class DefaultController extends Controller
             'album' => $id,
             'isBackground' => true
                 ));
+    }
+    
+    private function testIsOnlyOneAlbum(){
+        $albums = $this
+                ->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:Album')
+                ->findBy(array());
+       $nbAlbums = count($albums);
+        if($nbAlbums <= 1)
+            {
+            return true;
+        }else
+            {
+            return false;
+        }
     }
 }
