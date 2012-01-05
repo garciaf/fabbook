@@ -13,3 +13,7 @@
     {% endfor %}
 </div>
 {% endblock content %}
+
+{% block carroussel %}
+{% render 'FabfotoGalleryBundle:Default:allBackground' with {'max': 10} %}
+{% endblock carroussel %}
