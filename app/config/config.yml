@@ -64,6 +64,8 @@ jms_security_extra:
 #GalleryBundle Configuration
 fabfoto_gallery:
     picture_directory: %upload_directory%
+    google_plus: https://plus.google.com/100538506120158032985/about
+    github: https://github.com/garciaf
 gregwar_captcha: ~
 
 io_form:
