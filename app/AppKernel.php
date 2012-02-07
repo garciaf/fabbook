@@ -21,6 +21,9 @@ class AppKernel extends Kernel
             new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
 	    new Io\FormBundle\IoFormBundle(),
             new Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle(),
+            new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
+	    new Mopa\BootstrapBundle\MopaBootstrapBundle(),
+            new Mopa\BarcodeBundle\MopaBarcodeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test','prod'))) {

@@ -21,7 +21,7 @@ class DefaultController extends Controller
                 ->findBy(array(), array('createdAt'=> 'DESC'));
         return $this->render('FabfotoGalleryBundle:Default:IndexArticle.html.twig',
                         array(
-                    'articles' => $articles
+                    'articles' => $articles,
                 ));
     }
      /**
