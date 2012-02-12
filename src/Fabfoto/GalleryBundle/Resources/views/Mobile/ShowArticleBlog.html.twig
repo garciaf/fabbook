@@ -1,0 +1,8 @@
+{% extends 'FabfotoGalleryBundle::layoutMobile.html.twig'%}
+{% block content %}
+<h1>{{ article.title }}</h1>
+<h2>{{ article.subtitle }}</h2>
+<p>{{ article.content |raw }}</p>
+<blockquote><em>{{ article.author }}</em></blockquote>
+{% if article.createdAt %}<h6>{{ article.createdAt|date('Y-m-d') }}</h6>{% endif%}
+{% endblock content %}
