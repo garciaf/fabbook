@@ -102,6 +102,33 @@ class DefaultMobileController extends Controller
                     'album' => $album,
                 ));
     }
-
+     /**
+     * @Route("/blog", name="index_blog_mobile")
+     */
+    public function indexBlogsAction()
+    {
+        $articlesBlogs = $this
+                ->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
+                ->findBy(array(), array('createdAt'=> 'DESC'));
+        return $this->render('FabfotoGalleryBundle:Mobile:IndexArticleBlog.html.twig',
+                        array(
+                    'articlesBlogs' => $articlesBlogs,
+                ));
+    }
+     /**
+     * @Route("/{slugblog}/blogarticle", name="show_article_blog_mobile")
+     */
+    public function showBlogArticleAction($slugblog)
+    {
+        $article = $this
+                ->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
+                ->findOneBySlugblog($slugblog);
+        return $this->render('FabfotoGalleryBundle:Mobile:ShowArticleBlog.html.twig',
+                        array(
+                    'article' => $article
+                ));
+    }
 
 }

@@ -2,7 +2,7 @@
 {% block title %} {{article.title}} {% endblock title %}
 {% block content %}
     <div class="article_blog_full">
-        <img alt="[barcode]" src="/{{ mopa_barcode_url('qr', url('show_article_blog', {'slugblog':article.slugblog}) ) }}"/>
+        <img alt="[barcode]" src="/{{ mopa_barcode_url('qr', url('show_article_blog_mobile', {'slugblog':article.slugblog}) ) }}"/>
         <div class="tag">
         Tags : 
         {% for tag in article.tags %}
