@@ -97,6 +97,7 @@ html, body {
     right: 0;
     z-index: -400;
 }
+
 #nav {
     z-index: 540;
     position: fixed;
@@ -111,25 +112,34 @@ html, body {
     -moz-border-radius: 20px;
     border-bottom-left-radius: 10px 10px;
     border-bottom-right-radius: 10px 10px;
-    height: 50px;
+    height: 110px;
+}
+#nav ul{
+    padding-left: 20px;
+    margin: 0;
 }
 #nav li {
+    float: left;
+    width: 100px;
+    padding-right: 20px;
     display: inline;
-    padding: 15px
+    text-align: center;
 }
 #nav a{
+    width: 40px;
     text-decoration: none;
-    font-size: 2em;
+    font-size: 1.3em;
     color: black;
 }
 #nav a:hover{
     text-decoration: none;
-    font-size: 2em;
-
     color: darkgray;
 }
+.navbarLink{
+    width: 40px;
+}
 #page {
-    margin-top: 110px;
+    margin-top: 130px;
     margin-left: 30px;
     display: block;
     z-index: 300;
@@ -166,7 +176,7 @@ album_sum_up{
 }
 
 #search {
-    float: right; margin: 10px 10px;
+    float: right; margin: 60px 10px;
     border-radius: 50px;
     -moz-border-radius: 50px;
     -webkit-border-radius: 50px;
@@ -250,19 +260,22 @@ album_sum_up{
     font-family: 'Terminal Dosis', Arial, sans-serif;
 }
 .article h1{
-    font-size: 3em;
+    font-size: 1.8em;
     text-align: center;
 }
 .article h2{
-    font-size: 2em;
+    font-size: 1.5em;
 }
 .article p{
-    font-size: 1.3em;
+    font-size: 1em;
 }
 .author{
+        font-size: 0.9em;
     font-style: oblique;
-    color: grey;
-    float: right;
+    color: black;
+    font-weight: normal;
+text-align: right;
+padding-right: 8em;
 }
 fieldset {
     padding:20px;
@@ -376,4 +389,28 @@ blockquote{
     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     -moz-border-radius: 20px;
     -webkit-border-radius: 5px;
+}
+
+#nav img{
+    display: inline-block;
+    width: 80px;
+    height: 80px; 
+}
+.title_news{
+    text-align: center;
+    width: 100%;
+    height: 2em;
+   }
+.title_label{
+    font-size: 1.9em;
+    font-weight: bold;
+}
+.createdAt{
+    margin-top: 1em;
+    font-size: 0.8em;
+    font-weight: normal;
+    font-style: italic;
+    color: grey;
+    float: right;
+
 }
