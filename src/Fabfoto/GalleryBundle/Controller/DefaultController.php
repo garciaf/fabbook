@@ -21,7 +21,22 @@ class DefaultController extends Controller
                 ->findBy(array(), array('createdAt'=> 'DESC'));
         return $this->render('FabfotoGalleryBundle:Default:IndexArticle.html.twig',
                         array(
-                    'articles' => $articles
+                    'articles' => $articles,
+                ));
+    }
+     /**
+     * @Route("about", name="show_about")
+     */
+    public function showAboutAction()
+    {
+        
+            $author = $this
+                ->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:Author')
+                ->findOneBy(array());
+        return $this->render('FabfotoGalleryBundle:Default:ShowAbout.html.twig',
+                        array(
+                            'author' => $author
                 ));
     }
      /**
@@ -32,14 +47,15 @@ class DefaultController extends Controller
         $articlesBlogs = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
-                ->findBy(array(), array('createdAt'=> 'DESC'));
+                ->findBy(array(), array('createdAt' => 'DESC'));
+
         return $this->render('FabfotoGalleryBundle:Default:IndexArticleBlog.html.twig',
                         array(
                     'ArticlesBlogs' => $articlesBlogs,
                 ));
     }
-    
-     /**
+
+    /**
      * @Route("/{slugblog}/blogarticle", name="show_article_blog")
      */
     public function showBlogArticleAction($slugblog)
@@ -48,6 +64,10 @@ class DefaultController extends Controller
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->findOneBySlugblog($slugblog);
+        if (!$article)
+        {
+            throw $this->createNotFoundException("Pas d'article");
+        }
         return $this->render('FabfotoGalleryBundle:Default:ShowArticleBlog.html.twig',
                         array(
                     'article' => $article

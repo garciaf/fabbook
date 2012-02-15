@@ -1,0 +1,14 @@
+{% extends 'FabfotoGalleryBundle::layoutMobile.html.twig'%}
+{% block content %}
+<h1>FabFoto Mobile </h1>
+    <ul data-role="listview" data-filter="true">
+        {% for article in articlesBlogs %}
+        <li data-role="list-divider">{% if article.createdAt %}{{ article.createdAt|date('Y-m-d H:i:s') }}{% endif%}</li>
+        <li><a href="{{ path('show_article_blog_mobile', { 'slugblog': article.slugblog }) }}">
+                <h3>{{ article.title }}</h3>
+                <p><strong>{{ article.subtitle }}</strong></p>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

@@ -20,18 +20,19 @@
     <body>
         <div data-role="page" {% block optionpage %}{% endblock optionpage %} data-theme="c" > 
             <div data-role="header" >
-                <h1>{% block title %}Fabfoto{%endblock title%}</h1>
+                <h1>{% block title %}Fabbook Mobile{%endblock title%}</h1>
             </div> 
             <div data-role="content" >
                 {% block content %}
                 Welcome on Fabfoto Mobile
                 {% endblock %}
             </div> 
-            <div data-role="footer" >
-                <div data-role="navbar" data-position="fixed">
+            <div data-role="footer" data-position="fixed" >
+                <div data-role="navbar">
                     <ul>
                         <li><a href="{{path('index_mobile')}}" >Index</a></li>
                         <li><a href="{{path('albums_mobile')}}" rel="external">Albums</a></li>
+                        <li><a href="{{path('index_blog_mobile')}}" rel="external">Blog</a></li>
                         <li><a href="">Contact</a></li>
                         <li><a href="{{path('show_articles')}}" rel="external">Classique</a></li>
                     </ul>

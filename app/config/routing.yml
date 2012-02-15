@@ -2,9 +2,13 @@ _fabfoto:
     resource: "@FabfotoGalleryBundle/Controller/"
     type:     annotation
     prefix:   /
-    
-
-
+_imagine: 
+  resource: . 
+  type: imagine
+  
+my_barcode_playground:
+    resource: "@MopaBarcodeBundle/Resources/config/routing/barcode_playground.yml"
+    prefix:   /
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"

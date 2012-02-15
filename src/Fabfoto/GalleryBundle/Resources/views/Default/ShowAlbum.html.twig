@@ -29,6 +29,12 @@
 </div>
 {% endblock content %}
 
+{%block qrLink %}
+<a href="{{path('albums_mobile') }}">
+<img alt="[QR Code]" src="/{{ mopa_barcode_url('qr', url('albums_mobile') ) }}"/>
+Mobile
+</a>
+{%endblock qrLink %}
 
 {% block carroussel %}
 {% include 'FabfotoGalleryBundle:Default:BackgroundVegas.html.twig' %}

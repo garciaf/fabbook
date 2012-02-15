@@ -5,3 +5,9 @@
 {% include "FabfotoGalleryBundle:Default:ListArticleBlog.html.twig" %}
 
 {% endblock content %}
+{%block qrLink %}
+<a href="{{path('index_blog_mobile') }}">
+<img alt="[QR Code]" src="/{{ mopa_barcode_url('qr', url('index_blog_mobile') ) }}"/>
+Mobile
+</a>
+{%endblock qrLink %}

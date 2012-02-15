@@ -16,7 +16,14 @@
         <div class="signature_blog">Par {{article.author}} - {{article.createdAt|date('d/m/Y')}} - Mise à jour : {{article.updatedAt|date('d/m/Y') }}</div>
     </div>
 {% endblock content %}
+
 {% block metainfo %}
 <meta name="Keywords" CONTENT="{% for tag in article.tags %} {{ tag }},{% endfor %}" />
 <meta name="Description" CONTENT="{{ article.subtitle }}" />
 {% endblock metainfo %}
+{%block qrLink %}
+                    <a href="{{path('show_article_blog_mobile', { 'slugblog': article.slugblog }) }}">
+<img alt="[QR Code]" src="/{{ mopa_barcode_url('qr', url('show_article_blog_mobile', { 'slugblog': article.slugblog }) ) }}"/>
+                    Mobile
+                    </a>
+{%endblock qrLink %}

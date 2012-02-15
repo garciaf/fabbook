@@ -1,0 +1,22 @@
+{% extends 'FabfotoGalleryBundle::layout.html.twig'%}
+{% block title %} About me {% endblock title %}
+{% block content %}
+    <div id="about">
+        <div id="about_name">{{author.name}} {{author.firstName}} </div>
+        <div id="title_about">{{author.title}}</div>
+        <div id="about_description">{{author.description}} </div>
+        <div id ="social">
+            <div><a href="{{author.googleLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/googleplus.png')}}"/></a></div>
+            <div><a href="{{author.facebookLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/facebook.png')}}"/></a></div>
+            <div><a href="{{author.gitHubLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/github.png')}}"/></a></div>
+            <div><a href="{{author.twitterLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/twitter.png')}}"/></a></div>
+            <div><a href="{{author.linkedLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/linkedin.png')}}"/></a></div>            
+
+        </div>
+    </div>
+{% endblock content %}
+
+{% block carroussel %}
+{% set backgroundImage = asset('bundles/fabfotogallery/image/about_me.jpg')%}
+{% include 'FabfotoGalleryBundle:Default:Background.html.twig' %}
+{% endblock carroussel %}

@@ -4,7 +4,10 @@
 <div class="list_articles">
     {% for article in articles %}
     <div class="article">
-        <h1>{{article.title}}</h1>
+        <div class="title_news">
+            <span class="title_label">{{article.title}}</span>
+            <span class="createdAt">le {{article.createdAt|date('d/m/Y')}}</span>
+        </div>
         <h2>{{article.subtitle}}</h2>
         <p>{{article.content|raw}}</p>
         <h3 class="author">{{article.author}}</h3>

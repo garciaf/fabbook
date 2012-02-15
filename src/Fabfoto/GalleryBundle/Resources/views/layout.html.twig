@@ -21,11 +21,44 @@
                 <button type="submit">search</button>
             </form>     
             <ul class="primary">
-                <li><a href="{{path('show_articles')}}">News</a></li>
-                <li><a href="{{path('index_album')}}">Albums</a></li>
-                <li><a href="{{path('index_blog')}}">Blog</a></li>                
-                <li><a href="{{path('contact_new')}}">Contact</a></li>
-                <li><a href="{{path('index_mobile')}}">Mobile</a></li>
+                <li>
+                    <a href="{{path('show_articles')}}">
+                        <img src="{{ asset('bundles/fabfotogallery/css/images/home.png')}}" />
+                        News
+                    </a>
+                    </li>
+                <li>
+                    <a href="{{path('index_album')}}">
+                        <img src="{{ asset('bundles/fabfotogallery/css/images/photo.png')}}" />
+                        Albums
+                    </a>
+                    </li>
+                <li>
+                    <a href="{{path('index_blog')}}">
+                        <img src="{{ asset('bundles/fabfotogallery/css/images/blog.png')}}" />
+                        Blog
+                    </a>
+                </li>                
+                <li>
+                    <a href="{{path('contact_new')}}">
+                        <img src="{{ asset('bundles/fabfotogallery/css/images/mail.png')}}" />
+                        Contact
+                    </a>
+                    </li>
+                    <li>                                            
+                        {%block qrLink %}
+                    <a href="{{path('index_mobile')}}">
+                        <img alt="[QR Code]" src="/{{ mopa_barcode_url('qr', url('index_mobile') ) }}"/>
+                        Mobile
+                    </a>
+                        {%endblock qrLink %}
+                </li>
+                <li>
+                    <a href="{{path('show_about')}}">
+                        <img alt="about" src="{{ asset('bundles/fabfotogallery/css/images/about.png')}}" />
+                        About me
+                    </a>
+                </li>                
             </ul>
 
 
@@ -46,14 +79,15 @@
             {% block content %}lipso lium{%endblock%}     
 
             <div id="footer">
-                <p id="legal">Copyright © Fab photo. All Rights Reserved.</p>
+                <p id="legal">Copyright © Fabbook All Rights Reserved.</p>
                 <a  href="{{path('rss_news')}}"><img id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
             </div>
         </div>
 
-        {% block carroussel %}
-        {% include 'FabfotoGalleryBundle:Default:Background.html.twig' %}
-        {% endblock carroussel %}
+    {% block carroussel %}
+    {% set backgroundImage = asset('bundles/fabfotogallery/image/neutralBackground.png')%}
+    {% include 'FabfotoGalleryBundle:Default:Background.html.twig' %}
+    {% endblock carroussel %}
 
     </body>
 </html>
