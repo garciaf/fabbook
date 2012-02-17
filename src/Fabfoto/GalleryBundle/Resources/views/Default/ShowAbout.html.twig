@@ -21,6 +21,7 @@
             {% if author.linkedLink is not empty %}
             <div><a target="_blanck" href="{{author.linkedLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/linkedin.png')}}"/></a></div>            
             {% endif %}
+            <div><a href="{{path('contact_new')}}"><img src="{{asset('bundles/fabfotogallery/image/icon/mail.png')}}"/></a></div>                        
         </div>
     </div>
 {% endblock content %}
