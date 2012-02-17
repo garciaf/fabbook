@@ -1,0 +1,59 @@
+/*
+        Load CSS before JavaScript
+*/
+
+/*
+        Slides container
+        Important:
+        Set the width of your slides container
+        Set to display none, prevents content flash
+*/
+#slides{
+    height:100%;width:100%;
+    overflow:hidden;
+    position: absolute;
+}
+.slides_container {
+
+    display:none;
+    position:absolute;
+    top:-50%;left:-50%;height:200%;width:200%;
+}
+.slides_container div img{
+    min-height:50%;min-width:50%;
+}
+
+/*
+        Each slide
+        Important:
+        Set the width of your slides
+        If height not specified height will be set by the slide content
+        Set to display block
+*/
+
+.slides_container div {
+    height:100%;
+    width:100%;
+    overflow:hidden;
+    top: 0;
+    right: 0;
+    display:block;
+}
+
+/*
+        Optional:
+        Reset list default style
+*/
+.pagination {
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+/*
+        Optional:
+        Show the current slide in the pagination
+*/
+.pagination .current a {
+    color:red;
+}
