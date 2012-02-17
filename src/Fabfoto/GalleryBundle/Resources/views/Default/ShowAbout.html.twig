@@ -6,16 +6,25 @@
         <div id="title_about">{{author.title}}</div>
         <div id="about_description">{{author.description}} </div>
         <div id ="social">
+            {% if author.googleLink is not empty %}
             <div><a href="{{author.googleLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/googleplus.png')}}"/></a></div>
+            {% endif %}
+            {% if author.facebookLink is not empty %}
             <div><a href="{{author.facebookLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/facebook.png')}}"/></a></div>
+            {% endif %}
+            {% if author.gitHubLink is not empty %}
             <div><a href="{{author.gitHubLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/github.png')}}"/></a></div>
+            {% endif %}
+            {% if author.twitterLink is not empty %}
             <div><a href="{{author.twitterLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/twitter.png')}}"/></a></div>
+            {% endif %}
+            {% if author.linkedLink is not empty %}
             <div><a href="{{author.linkedLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/linkedin.png')}}"/></a></div>            
-
+            {% endif %}
         </div>
     </div>
 {% endblock content %}
-
+{% block stylePage%}"pageAbout"{% endblock stylePage%}
 {% block carroussel %}
 {% set backgroundImage = asset('bundles/fabfotogallery/image/about_me.jpg')%}
 {% include 'FabfotoGalleryBundle:Default:Background.html.twig' %}

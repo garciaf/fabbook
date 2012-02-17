@@ -63,7 +63,7 @@
 
 
         </div>
-        <div id="page">
+        <div id={% block stylePage%}"page"{% endblock stylePage%}>
             {% if app.session.flashes %}
             <div id="flashes">
                 {% for type, message in app.session.flashes%}
