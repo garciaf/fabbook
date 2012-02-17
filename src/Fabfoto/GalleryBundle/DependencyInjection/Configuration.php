@@ -27,8 +27,6 @@ class Configuration implements ConfigurationInterface
         $rootNode
                 ->children()
                 ->scalarNode('picture_directory')->isRequired()->end()
-                ->scalarNode('google_plus')->isRequired()->end()
-                ->scalarNode('github')->isRequired()->end()
                 ->end()
         ;
 
