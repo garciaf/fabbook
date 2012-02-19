@@ -24,6 +24,9 @@ class AppKernel extends Kernel
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
 	    new Mopa\BootstrapBundle\MopaBootstrapBundle(),
             new Mopa\BarcodeBundle\MopaBarcodeBundle(),
+            new Ps\PdfBundle\PsPdfBundle(),
+
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test','prod'))) {

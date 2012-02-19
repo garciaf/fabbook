@@ -22,7 +22,11 @@ $loader->registerNamespaces(array(
     'Doctrine\\DBAL'             => __DIR__.'/../vendor/doctrine-dbal/lib',
     'Imagine'          => __DIR__.'/../vendor/imagine/lib',
     'Avalanche'        => __DIR__.'/../vendor/bundles',
-    'Mopa'        => __DIR__.'/../vendor/bundles',    
+    'Mopa'        => __DIR__.'/../vendor/bundles', 
+    'Ps' => __DIR__.'/../vendor/bundles',
+    'PHPPdf' => __DIR__.'/../vendor/PHPPdf/lib',
+    'Zend' => __DIR__.'/../vendor/PHPPdf/lib/vendor/Zend/library',
+
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',
