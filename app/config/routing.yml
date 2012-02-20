@@ -2,6 +2,7 @@ _fabfoto:
     resource: "@FabfotoGalleryBundle/Controller/"
     type:     annotation
     prefix:   /
+     
 _imagine: 
   resource: . 
   type: imagine
