@@ -11,7 +11,7 @@
             <title>{{article.title|raw}}</title> 
             <link>{{url('show_articles')}}</link> 
             <description>{{article.subtitle|raw}}</description>
-            <content>{{article.content|raw}}</content>
+            <content>{{article.content}}</content>
             <pubDate>{{article.createdAt|date(constant("DATE_W3C")) }}</pubDate>
         </item>
         {%endfor%}

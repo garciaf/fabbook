@@ -124,7 +124,7 @@ class DefaultController extends Controller
         }
     }
     /**
-     * @Route("rss", name="rss_news")
+     * @Route("rss", defaults={"_format"="xml"}, name="rss_news")
      */
     public function rssNewsAction()
     {
