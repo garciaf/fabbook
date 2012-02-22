@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0">
+<rss version="2.0"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/" >
     <channel>
         <title>Fabfoto</title> 
         <link>{{url('show_articles')}}</link> 
@@ -11,8 +12,8 @@
             <title>{{article.title|raw}}</title> 
             <link>{{url('show_articles')}}</link> 
             <description>{{article.subtitle|raw}}</description>
-            <content>{{article.content}}</content>
-            <pubDate>{{article.createdAt|date(constant("DATE_W3C")) }}</pubDate>
+            <content:encoded><![CDATA[ {{article.content|raw}} ]]></content:encoded>
+            <pubDate>{{article.createdAt|date('Y-m-dTH:M:SZ') }}</pubDate>
         </item>
         {%endfor%}
     </channel>
