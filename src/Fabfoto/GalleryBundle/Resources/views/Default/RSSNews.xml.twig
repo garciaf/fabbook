@@ -10,10 +10,10 @@
         {%for article in articles%}
         <item>
             <title>{{article.title|raw}}</title> 
-            <link>{{url('show_articles')}}</link> 
+            <link rel="self">{{url('show_articles')}}</link> 
             <description>{{article.subtitle|raw}}</description>
             <content:encoded><![CDATA[ {{article.content|raw}} ]]></content:encoded>
-            <pubDate>{{article.createdAt|date('Y-m-dTH:M:SZ') }}</pubDate>
+            <pubDate>{{article.createdAt|date(constant('DATE_RFC822')) }}</pubDate>
         </item>
         {%endfor%}
     </channel>
