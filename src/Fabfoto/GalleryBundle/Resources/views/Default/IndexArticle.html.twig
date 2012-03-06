@@ -2,6 +2,7 @@
 {% block titlepage %}Fabfoto-News{% endblock titlepage %}
 {% block content %}
 <div class="list_articles">
+    {% render "KnpLastTweetsBundle:Twitter:lastTweets" with {'username': 'FabbookFr'} %}
     {% for article in articles %}
     <div class="article">
         <div class="title_news">

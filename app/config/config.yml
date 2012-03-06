@@ -82,3 +82,6 @@ ps_pdf:
     markdown_stylesheet_filepath: ~
     markdown_document_template_filepath: ~
     document_parser_type: ~
+knp_last_tweets:
+    fetcher:
+        driver: api

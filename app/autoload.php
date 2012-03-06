@@ -26,6 +26,7 @@ $loader->registerNamespaces(array(
     'Ps' => __DIR__.'/../vendor/bundles',
     'PHPPdf' => __DIR__.'/../vendor/PHPPdf/lib',
     'Zend' => __DIR__.'/../vendor/PHPPdf/lib/vendor/Zend/library',
+    'Knp\\Bundle'                    => __DIR__.'/../vendor/bundles',    
 
 ));
 $loader->registerPrefixes(array(

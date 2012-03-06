@@ -25,6 +25,7 @@ class AppKernel extends Kernel
 	    new Mopa\BootstrapBundle\MopaBootstrapBundle(),
             new Mopa\BarcodeBundle\MopaBarcodeBundle(),
             new Ps\PdfBundle\PsPdfBundle(),
+	    new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),            
 
 
         );
