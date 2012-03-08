@@ -14,7 +14,7 @@
         {{article.content|raw}}
         </div>
         <div class="signature_blog">Par {{article.author}} - {{article.createdAt|date('d/m/Y')}} - Mise à jour : {{article.updatedAt|date('d/m/Y') }}</div>
-        <div class="pdf"><a href="{{path('show_article_blog_pdf', {'slugblog':article.slugblog})}}">pdf</a> </div>
+        <div class="pdf"><a href="{{path('show_article_blog_pdf', {'slugblog':article.slugblog})}}"><img src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')}}"/></a> </div>
     </div>
 {% endblock content %}
 
