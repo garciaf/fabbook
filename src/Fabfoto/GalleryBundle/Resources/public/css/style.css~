@@ -119,12 +119,12 @@ html, body {
     height: 110px;
 }
 #nav ul{
+    padding-left: 20px;
     margin: 0;
 }
 #nav li {
     float: left;
     width: 100px;
-    padding-right: 20px;
     display: inline;
     text-align: center;
 }
@@ -495,3 +495,5 @@ blockquote{
     float: right;
     margin-right: 20%;
 }
+.ribbonArticle{
+	text-align: center;

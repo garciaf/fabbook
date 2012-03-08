@@ -2,14 +2,21 @@
 {% block titlepage %}Fabfoto-News{% endblock titlepage %}
 {% block content %}
 <div class="list_articles">
+    <div class="ribbon"><h1>un peu de twitter ...</h1></div>
+    {% render "KnpLastTweetsBundle:Twitter:lastTweets" with {'username': 'FabbookFr'} %}
+    <div class="ribbon"><h1>un peu de news ...</h1></div>
     {% for article in articles %}
+
     <div class="article">
-        <h1>{{article.title}}</h1>
+        <div class="title_news">
+            <span class="title_label">{{article.title}}</span>
+            <span class="createdAt">le {{article.createdAt|date('d/m/Y')}}</span>
+        </div>
         <h2>{{article.subtitle}}</h2>
-        <h3>{{article.author}}</h3>
-        <p>{{article.content}}</p>
+        <p>{{article.content|raw}}</p>
+        <h3 class="author">{{article.author}}</h3>
+
     </div>
     {% endfor %}
 </div>
 {% endblock content %}
-

@@ -2,9 +2,6 @@
     <dynamic-page>
         <h1>{{article.title}}</h1>
         <h2>{{article.subtitle}}</h2>
-        <div>
-            {{article.content}}
-        </div>
         <img src="{{ mopa_barcode_url('qr', url('show_article_blog_mobile', { 'slugblog': article.slugblog }) , true) }}"/>
     </dynamic-page>
 </pdf>
