@@ -25,8 +25,8 @@ $loader->registerNamespaces(array(
     'Mopa'        => __DIR__.'/../vendor/bundles', 
     'Ps' => __DIR__.'/../vendor/bundles',
     'PHPPdf' => __DIR__.'/../vendor/PHPPdf/lib',
-    'Zend' => __DIR__.'/../vendor/PHPPdf/lib/vendor/Zend/library',
-    'Knp\\Bundle'                    => __DIR__.'/../vendor/bundles',    
+    'Zend' => __DIR__.'/../vendor/Zend',
+    'Knp'                    => __DIR__.'/../vendor/bundles',    
 
 ));
 $loader->registerPrefixes(array(
