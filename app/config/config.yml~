@@ -75,7 +75,7 @@ ps_pdf:
     fonts_file: ~
     complex_attributes_file: ~
     colors_file: ~
-    use_cache_in_stylesheet: ~
+    use_cache_in_stylesheet: false
     cache:
       type: ~
       options: ~
@@ -85,3 +85,17 @@ ps_pdf:
 knp_last_tweets:
     fetcher:
         driver: api
+        options:
+            cache_name: knp_last_tweets
+knp_zend_cache:
+    templates:
+        knp_last_tweets:
+            frontend:
+                name: Core
+                options:
+                    lifetime: 300
+                    automatic_serialization: true
+            backend:
+                name: File
+                options:
+                    cache_dir: %kernel.root_dir%/cache/%kernel.environment%

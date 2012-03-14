@@ -24,10 +24,10 @@ class AppKernel extends Kernel
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
 	    new Mopa\BootstrapBundle\MopaBootstrapBundle(),
             new Mopa\BarcodeBundle\MopaBarcodeBundle(),
-            new Ps\PdfBundle\PsPdfBundle(),
 	    new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),            
             new Knp\Bundle\ZendCacheBundle\KnpZendCacheBundle(),
-
+            new Fabfoto\ZendTweetBundle\FabfotoZendTweetBundle(),
+            new WhiteOctober\TCPDFBundle\WhiteOctoberTCPDFBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test','prod'))) {
