@@ -1,0 +1,16 @@
+parameters:
+#    knp_upload.example.class: Knp\UploadBundle\Example
+
+services:
+#    knp_upload.example:
+#        class: %knp_upload.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+
+    fabfoto_zend_tweet.last_tweets:
+        class:      Fabfoto\Controller\DefaultController
+        
+#    fabfoto_gallery.string_tools:
+#        class:      Fabfoto\GalleryBundle\StringTools\StringTools
+      
+        

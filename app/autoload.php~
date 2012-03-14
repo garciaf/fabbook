@@ -24,11 +24,9 @@ $loader->registerNamespaces(array(
     'Avalanche'        => __DIR__.'/../vendor/bundles',
     'Mopa'        => __DIR__.'/../vendor/bundles', 
     'Ps' => __DIR__.'/../vendor/bundles',
-    'PHPPdf' => __DIR__.'/../vendor/PHPPdf/lib',
-    'Zend' => __DIR__.'/../vendor/bundles/Zend/library',
-    'Zend\\Application\\Resource' => __DIR__.'/../vendor/bundles/Zend/modules/ZendFramework1Mvc/library/Zend/Application/Resource',
+    'Zend' => __DIR__.'/../vendor/bundles',
     'Knp'                    => __DIR__.'/../vendor/bundles',    
-
+    'WhiteOctober' => __DIR__.'/../vendor/bundles',
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',
@@ -59,3 +57,4 @@ require_once __DIR__.'/../vendor/swiftmailer/lib/classes/Swift.php';
 Swift::registerAutoload(__DIR__.'/../vendor/swiftmailer/lib/swift_init.php');
 
 require_once __DIR__.'/../vendor/string-tools/StringTools.class.php';
+require_once __DIR__.'/../vendor/tcpdf/tcpdf.php';

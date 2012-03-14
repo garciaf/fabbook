@@ -24,7 +24,7 @@ $loader->registerNamespaces(array(
     'Avalanche'        => __DIR__.'/../vendor/bundles',
     'Mopa'        => __DIR__.'/../vendor/bundles', 
     'Ps' => __DIR__.'/../vendor/bundles',
-    'Zend' => __DIR__.'/../vendor/bundles',
+    'Zend'                   => __DIR__.'/../vendor',
     'Knp'                    => __DIR__.'/../vendor/bundles',    
     'WhiteOctober' => __DIR__.'/../vendor/bundles',
 ));

@@ -91,14 +91,6 @@
 [MopaBarcodeBundle]
     git=git://github.com/garciaf/MopaBarcodeBundle.git
     target=/bundles/Mopa/BarcodeBundle
-
-[PdfBundle]
-      git=git://github.com/psliwa/PdfBundle.git
-      target=/bundles/Ps/PdfBundle
-
-[PHPPdf]
-      git=git://github.com/psliwa/PHPPdf.git
-      version=origin/1.1.x
       
 [KnpLastTweetsBundles]
       git=git://github.com/garciaf/KnpLastTweetsBundle.git
@@ -106,13 +98,19 @@
 [string-tools]
       git=git://github.com/garciaf/string-tools.git
       target=string-tools	
+      
 [KnpZendCacheBundle]
       git=git://github.com/KnpLabs/KnpZendCacheBundle.git
       target=/bundles/Knp/Bundle/ZendCacheBundle
-[zend2]
-      git=git://github.com/zendframework/zf2.git
-      target=/bundles/Zend
-
+      
+[zend-cache]
+      git=git://github.com/KnpLabs/zend-cache.git
+      target=Zend/Cache
+      
+[zend-filter]
+      git=git://github.com/KnpLabs/zend-filter.git
+      target=Zend/Filter
+      
 [WhiteOctoberTCPDFBundle]
     git=git://github.com/whiteoctober/WhiteOctoberTCPDFBundle.git
     target=/bundles/WhiteOctober/TCPDFBundle

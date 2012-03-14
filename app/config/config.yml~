@@ -65,26 +65,15 @@ jms_security_extra:
 fabfoto_gallery:
     picture_directory: %upload_directory%
 gregwar_captcha: ~
-
+fabfoto_zend_tweet: ~
 io_form:
     jquery_tinymce:
       source: /bundles/fabfotogallery/tiny_mce/tiny_mce.js
       theme:  advanced
-ps_pdf:
-    nodes_file: ~
-    fonts_file: ~
-    complex_attributes_file: ~
-    colors_file: ~
-    use_cache_in_stylesheet: false
-    cache:
-      type: ~
-      options: ~
-    markdown_stylesheet_filepath: ~
-    markdown_document_template_filepath: ~
-    document_parser_type: ~
+
 knp_last_tweets:
     fetcher:
-        driver: api
+        driver: zend_cache
         options:
             cache_name: knp_last_tweets
 knp_zend_cache:
