@@ -119,3 +119,7 @@
 [TCPDF]
     git=git://tcpdf.git.sourceforge.net/gitroot/tcpdf/tcpdf
     target=tcpdf
+    
+[ZenstruckMobileBundle]
+    git=git://github.com/kbond/ZenstruckMobileBundle.git
+    target=bundles/Zenstruck/Bundle/MobileBundle    

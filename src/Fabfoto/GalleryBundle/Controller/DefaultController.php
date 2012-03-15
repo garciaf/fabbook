@@ -15,6 +15,9 @@ class DefaultController extends Controller
      */
     public function showArticlesAction()
     {
+	if(!$this->get('zenstruck_mobile.manager')->isMobile()){
+    		//die('pas mobile');
+    	}
         $articles = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Article')

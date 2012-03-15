@@ -89,3 +89,10 @@ knp_last_tweets:
         driver: zend_cache
         options:
             cache_name: knp_last_tweets
+zenstruck_mobile:
+    mobile: false
+    use_listener: true
+    use_helper: true
+    use_twig_engine: false
+    full_host: fabbook.fr
+    mobile_host: fabbook.fr/mobile            
