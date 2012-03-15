@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
-
+use Symfony\Component\Finder\Finder;
 /**
  * Article controller.
  *
@@ -59,8 +59,15 @@ class PDFController extends Controller
         $pdfObj->SetFont('dejavusans', '', 6);
         $pdfObj->setPrintHeader(false);
 	$pdfObj->setPrintFooter(false);
+        $finder = new Finder();
+        $files = $finder->in('..')->in('..')->name('backgroundCard.png');
+        foreach($files as $file){
+        	$BackgroundUrl= $file->getRealpath();
+        }
+        //$BackgroundUrl = $this->get('templating.helper.assets')->getUrl('bundles/fabfotogallery/image/about_me.jpg');
         $pdfObj->AddPage('P','BUSINESS_CARD_FR');
         $pdfObj->writeHTML($html, true, false, true, false, '');
+        $pdfObj->Image($BackgroundUrl,0,0,110,170,'','','B', false, 300, '', false, false, 0, true);
         $pdfObj->lastPage();
         $pdfObj->Output('carte.pdf');
     }
