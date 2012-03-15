@@ -95,6 +95,7 @@
 [KnpLastTweetsBundles]
       git=git://github.com/garciaf/KnpLastTweetsBundle.git
       target=/bundles/Knp/Bundle/LastTweetsBundle
+      
 [string-tools]
       git=git://github.com/garciaf/string-tools.git
       target=string-tools	
@@ -114,9 +115,7 @@
 [WhiteOctoberTCPDFBundle]
     git=git://github.com/whiteoctober/WhiteOctoberTCPDFBundle.git
     target=/bundles/WhiteOctober/TCPDFBundle
-[IoTcpdfBundle]
-    git=git://github.com/ioalessio/IoTcpdfBundle.git 
-    target=/bundles/Io/TcpdfBundle
+    
 [TCPDF]
     git=git://tcpdf.git.sourceforge.net/gitroot/tcpdf/tcpdf
     target=tcpdf
