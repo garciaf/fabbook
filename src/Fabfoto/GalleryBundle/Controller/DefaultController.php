@@ -14,9 +14,9 @@ class DefaultController extends Controller {
      */
     public function redirectMobileFullAction() {
         if ($this->get('zenstruck_mobile.manager')->isMobile()) {
-            $this->redirect($this->generateUrl('index_mobile'));
+           return $this->redirect($this->generateUrl('index_mobile'));
         }
-        $this->redirect($this->generateUrl('show_articles'));
+        return $this->redirect($this->generateUrl('show_articles'));
     }
 
     /**
