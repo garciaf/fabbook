@@ -27,6 +27,7 @@ $loader->registerNamespaces(array(
     'Zend'                   => __DIR__.'/../vendor',
     'Knp'                    => __DIR__.'/../vendor/bundles',    
     'WhiteOctober' => __DIR__.'/../vendor/bundles',
+    'Zenstruck' => __DIR__.'/../vendor/bundles',
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',

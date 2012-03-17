@@ -71,11 +71,6 @@ io_form:
       source: /bundles/fabfotogallery/tiny_mce/tiny_mce.js
       theme:  advanced
 
-knp_last_tweets:
-    fetcher:
-        driver: zend_cache
-        options:
-            cache_name: knp_last_tweets
 knp_zend_cache:
     templates:
         knp_last_tweets:
@@ -88,3 +83,16 @@ knp_zend_cache:
                 name: File
                 options:
                     cache_dir: %kernel.root_dir%/cache/%kernel.environment%
+
+knp_last_tweets:
+    fetcher:
+        driver: zend_cache
+        options:
+            cache_name: knp_last_tweets
+zenstruck_mobile:
+    mobile: false
+    use_listener: true
+    use_helper: true
+    use_twig_engine: false
+    full_host: ~ # Required
+    mobile_host: ~ # Required            

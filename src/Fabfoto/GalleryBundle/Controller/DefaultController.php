@@ -7,50 +7,55 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
-{
+class DefaultController extends Controller {
 
     /**
-     * @Route("/", name="show_articles")
+     * @Route("/", name="index")
      */
-    public function showArticlesAction()
-    {
+    public function redirectMobileFullAction() {
+        if ($this->get('zenstruck_mobile.manager')->isMobile()) {
+           return $this->redirect($this->generateUrl('index_mobile'));
+        }
+        return $this->redirect($this->generateUrl('show_articles'));
+    }
+
+    /**
+     * @Route("/news", name="show_articles")
+     */
+    public function showArticlesAction() {
         $articles = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Article')
-                ->findBy(array(), array('createdAt'=> 'DESC'));
-        return $this->render('FabfotoGalleryBundle:Default:IndexArticle.html.twig',
-                        array(
+                ->findBy(array(), array('createdAt' => 'DESC'));
+        return $this->render('FabfotoGalleryBundle:Default:IndexArticle.html.twig', array(
                     'articles' => $articles,
                 ));
     }
-     /**
+
+    /**
      * @Route("about", name="show_about")
      */
-    public function showAboutAction()
-    {
-        
-            $author = $this
+    public function showAboutAction() {
+
+        $author = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Author')
                 ->findOneBy(array());
-        return $this->render('FabfotoGalleryBundle:Default:ShowAbout.html.twig',
-                        array(
-                            'author' => $author
+        return $this->render('FabfotoGalleryBundle:Default:ShowAbout.html.twig', array(
+                    'author' => $author
                 ));
     }
-     /**
+
+    /**
      * @Route("blog", name="index_blog")
      */
-    public function indexBlogsAction()
-    {
+    public function indexBlogsAction() {
         $articlesBlogs = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->findBy(array(), array('createdAt' => 'DESC'));
 
-        return $this->render('FabfotoGalleryBundle:Default:IndexArticleBlog.html.twig',
-                        array(
+        return $this->render('FabfotoGalleryBundle:Default:IndexArticleBlog.html.twig', array(
                     'ArticlesBlogs' => $articlesBlogs,
                 ));
     }
@@ -58,51 +63,46 @@ class DefaultController extends Controller
     /**
      * @Route("/{slugblog}/blogarticle", name="show_article_blog")
      */
-    public function showBlogArticleAction($slugblog)
-    {
+    public function showBlogArticleAction($slugblog) {
         $article = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->findOneBySlugblog($slugblog);
-        if (!$article)
-        {
+        if (!$article) {
             throw $this->createNotFoundException("Pas d'article");
         }
-        return $this->render('FabfotoGalleryBundle:Default:ShowArticleBlog.html.twig',
-                        array(
+        return $this->render('FabfotoGalleryBundle:Default:ShowArticleBlog.html.twig', array(
                     'article' => $article
                 ));
     }
+
     /**
      * @Route("/{tag_slug}/tag/blogarticle", name="show_articles_blog_by_tags")
      */
-    public function showBlogArticleByTagAction($tag_slug)
-    {
+    public function showBlogArticleByTagAction($tag_slug) {
         $tag = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Tag')
                 ->findOneBySlug($tag_slug);
         $articlesBlogs = $tag->getArticles();
 
-        return $this->render('FabfotoGalleryBundle:Default:IndexTagArticleBlog.html.twig',
-                        array(
+        return $this->render('FabfotoGalleryBundle:Default:IndexTagArticleBlog.html.twig', array(
                     'ArticlesBlogs' => $articlesBlogs,
                     'tag' => $tag,
                 ));
     }
-     /**
+
+    /**
      * @Route("albums", name="index_album")
      */
-    public function indexAlbumsAction()
-    {
-        if(!$this->testIsOnlyOneAlbum()){
-        $albums = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Album')
-                ->findBy(array(), array('createdAt'=> 'DESC'));
-        return $this->render('FabfotoGalleryBundle:Default:indexAlbum.html.twig',
-                        array('albums' => $albums));
-        }else{
+    public function indexAlbumsAction() {
+        if (!$this->testIsOnlyOneAlbum()) {
+            $albums = $this
+                    ->getDoctrine()
+                    ->getRepository('FabfotoGalleryBundle:Album')
+                    ->findBy(array(), array('createdAt' => 'DESC'));
+            return $this->render('FabfotoGalleryBundle:Default:indexAlbum.html.twig', array('albums' => $albums));
+        } else {
             $album = $this
                     ->getDoctrine()
                     ->getRepository('FabfotoGalleryBundle:Album')
@@ -115,32 +115,29 @@ class DefaultController extends Controller
                     ->getDoctrine()
                     ->getRepository('FabfotoGalleryBundle:Picture')
                     ->findByIsBackground(true);
-            return $this->render('FabfotoGalleryBundle:Default:ShowAlbum.html.twig',
-                        array(
-                    'pictures' => $pictures,
-                    'album' => $album,
-                    'backgrounds' => $backgrounds
-                ));
+            return $this->render('FabfotoGalleryBundle:Default:ShowAlbum.html.twig', array(
+                        'pictures' => $pictures,
+                        'album' => $album,
+                        'backgrounds' => $backgrounds
+                    ));
         }
     }
+
     /**
      * @Route("rss", defaults={"_format"="xml"}, name="rss_news")
      */
-    public function rssNewsAction()
-    {
+    public function rssNewsAction() {
         $articles = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Article')
-                ->findBy(array(), array('createdAt'=> 'DESC'));
-        return $this->render('FabfotoGalleryBundle:Default:RSSNews.xml.twig',
-                        array('articles' => $articles));
+                ->findBy(array(), array('createdAt' => 'DESC'));
+        return $this->render('FabfotoGalleryBundle:Default:RSSNews.xml.twig', array('articles' => $articles));
     }
 
     /**
      * @Route("{slug}/album", name="show_album")
      */
-    public function showAlbumAction($slug)
-    {
+    public function showAlbumAction($slug) {
         $album = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Album')
@@ -159,24 +156,21 @@ class DefaultController extends Controller
             'album' => $album->getId(),
             'isBackground' => true
                 ));
-        
-        return $this->render('FabfotoGalleryBundle:Default:ShowAlbum.html.twig',
-                        array(
+
+        return $this->render('FabfotoGalleryBundle:Default:ShowAlbum.html.twig', array(
                     'pictures' => $pictures,
                     'album' => $album,
                     'backgrounds' => $backgrounds
                 ));
     }
 
-    public function allBackgroundAction($max)
-    {
+    public function allBackgroundAction($max) {
         $backgrounds = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Picture')
                 ->findByisBackground(true);
         shuffle($backgrounds);
-        return $this->render('FabfotoGalleryBundle:Default:BackgroundVegas.html.twig',
-                        array(
+        return $this->render('FabfotoGalleryBundle:Default:BackgroundVegas.html.twig', array(
                     'backgrounds' => $backgrounds
                 ));
     }
@@ -184,12 +178,10 @@ class DefaultController extends Controller
     /**
      * @Route("search", name="fabfoto_search")
      */
-    public function searchPictureAction(Request $request)
-    {   
+    public function searchPictureAction(Request $request) {
         $pictures = array();
         $albums = array();
-        if ($request->query->get('q'))
-        {
+        if ($request->query->get('q')) {
             $pictures = $this
                     ->getDoctrine()
                     ->getRepository('FabfotoGalleryBundle:Picture')
@@ -199,37 +191,35 @@ class DefaultController extends Controller
                     ->getRepository('FabfotoGalleryBundle:Album')
                     ->search($request->query->get('q'));
         }
-        return $this->render('FabfotoGalleryBundle:Default:SearchResult.html.twig',
-                        array(
+        return $this->render('FabfotoGalleryBundle:Default:SearchResult.html.twig', array(
                     'albums' => $albums,
                     'pictures' => $pictures,
                     'keywords' => $request->query->get('q'),
                         )
         );
     }
-    
-    private function getAlbumBackground($id){
-                return $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Picture')
-                ->findBy(array(
-            'album' => $id,
-            'isBackground' => true
-                ));
+
+    private function getAlbumBackground($id) {
+        return $this
+                        ->getDoctrine()
+                        ->getRepository('FabfotoGalleryBundle:Picture')
+                        ->findBy(array(
+                            'album' => $id,
+                            'isBackground' => true
+                        ));
     }
-    
-    private function testIsOnlyOneAlbum(){
+
+    private function testIsOnlyOneAlbum() {
         $albums = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Album')
                 ->findBy(array());
-       $nbAlbums = count($albums);
-        if($nbAlbums <= 1)
-            {
+        $nbAlbums = count($albums);
+        if ($nbAlbums <= 1) {
             return true;
-        }else
-            {
+        } else {
             return false;
         }
     }
+
 }
