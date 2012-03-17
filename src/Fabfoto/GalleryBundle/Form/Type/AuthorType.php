@@ -14,6 +14,7 @@ class AuthorType extends AbstractType
             ->add('firstname')
                 ->add('title')
                 ->add('description')
+                ->add('phone')
                 ->add('googleLink', 'text',
                         array(
                     'required' => false

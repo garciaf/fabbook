@@ -22,7 +22,8 @@
             <div><a target="_blanck" href="{{author.linkedLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/linkedin.png')}}"/></a></div>            
             {% endif %}
             <div><a href="{{path('contact_new')}}"><img src="{{asset('bundles/fabfotogallery/image/icon/mail.png')}}"/></a></div>                        
-            <div><a href="{{path('show_about_pdf')}}"><img src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')}}"/></a></div>                         
+            <div><a target="_blanck" href="{{path('show_about_pdf')}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')}}"/></a></div>                         
+            <div><a target="_blanck" href="{{path('show_vcard')}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/vcard.png')}}"/></a></div>                         
         </div>
     </div>
 {% endblock content %}

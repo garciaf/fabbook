@@ -91,7 +91,13 @@ class Author
      */
     private $mail;
 
-
+    /**
+     * @var string $firstname
+     *
+     * @ORM\Column(name="phone", type="string", length=255)
+     */
+    private $phone;
+    
     /**
      * Get id
      *
@@ -308,23 +314,39 @@ class Author
         return sprintf(          
 "BEGIN:VCARD
 VERSION:3.0
-N:%s;%s
+N:%s;%s;;;
 FN:%s %s
-ORG:
 TITLE:%s
-PHOTO;
-TEL;TYPE=WORK,VOICE:(111) 555-1212
-TEL;TYPE=HOME,VOICE:(404) 555-1212
-ADR;TYPE=WORK:;;100 Waters Edge;Baytown;LA;30314;United States of America
-LABEL;TYPE=WORK:100 Waters Edge\nBaytown, LA 30314\nUnited States of America
-ADR;TYPE=HOME:;;42 Plantation St.;Baytown;LA;30314;United States of America
-LABEL;TYPE=HOME:42 Plantation St.\nBaytown, LA 30314\nUnited States of America
+TEL;TYPE=CELL,VOICE: %s
+TEL;TYPE=HOME,VOICE:%s
 EMAIL;TYPE=PREF,INTERNET:%s
 REV:20080424T195243Z
 END:VCARD", $this->getName(), $this->getFirstName(), 
          $this->getFirstName(), $this->getName(), 
          $this->getTitle(),
+         $this->getPhone(),
+         $this->getPhone(),
          $this->getMail());
          
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string 
+     */
+    public function getPhone()
+    {
+        return $this->phone;
     }
 }
