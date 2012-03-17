@@ -23,7 +23,7 @@ class FabfotoGalleryExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
         
         $container->setParameter('fabfoto_gallery.picture_directory', $config['picture_directory']);
-
+        $container->setParameter('fabfoto_gallery.mailsender', $config['mailsender']);
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }

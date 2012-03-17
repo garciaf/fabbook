@@ -21,7 +21,10 @@ monolog:
 
 assetic:
     use_controller: true
-    
+
+fabfoto_gallery:
+    picture_directory: %upload_directory%
+    mailsender: %mail_sender_adress_dev%    
 # Swiftmailer Configuration
 swiftmailer:
     transport: %mailer_transport_dev%

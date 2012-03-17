@@ -52,10 +52,9 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: %mailer_transport%
-    host:      %mailer_host%
-    username:  %mailer_user%
-    password:  %mailer_password%
+    transport: %mailer_transport_dev%
+    username:  %mailer_user_dev%
+    password:  %mailer_password_dev%
 
 jms_security_extra:
     secure_controllers:  true
@@ -64,6 +63,7 @@ jms_security_extra:
 #GalleryBundle Configuration
 fabfoto_gallery:
     picture_directory: %upload_directory%
+    mailsender: %mail_sender_adress%
 gregwar_captcha: ~
 fabfoto_zend_tweet: ~
 io_form:

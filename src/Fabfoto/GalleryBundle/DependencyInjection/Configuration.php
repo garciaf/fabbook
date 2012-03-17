@@ -27,6 +27,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
                 ->children()
                 ->scalarNode('picture_directory')->isRequired()->end()
+                ->scalarNode('mailsender')->isRequired()->end()
                 ->end()
         ;
 

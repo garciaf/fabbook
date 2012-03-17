@@ -220,8 +220,8 @@ class MessageController extends Controller
     protected function sendMail(Message $message)
     {
     	$messageToSend = \Swift_Message::newInstance()
-        ->setSubject('from: '.$message->getSender().' : '.$message->getSubject())
-        ->setFrom($message->getSender())
+        ->setSubject('[fabbook] from: '.$message->getSender().' : '.$message->getSubject())
+        ->setFrom('fab0670312047@gmail.com')
         ->setTo('fab0670312047@gmail.com')
         ->setBody($message->getContent())
     ;
