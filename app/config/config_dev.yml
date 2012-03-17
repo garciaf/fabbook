@@ -21,3 +21,9 @@ monolog:
 
 assetic:
     use_controller: true
+    
+# Swiftmailer Configuration
+swiftmailer:
+    transport: %mailer_transport_dev%
+    username:  %mailer_user_dev%
+    password:  %mailer_password_dev%
