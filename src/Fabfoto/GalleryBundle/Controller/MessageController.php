@@ -101,7 +101,8 @@ class MessageController extends Controller
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);
             $em->flush();
-
+            $this->sendMail($entity);
+            
             return $this->redirect($this->generateUrl('show_articles'));
         }
 
@@ -216,5 +217,14 @@ class MessageController extends Controller
                         ->getForm()
         ;
     }
-
+    protected function sendMail(Message $message)
+    {
+    	$messageToSend = \Swift_Message::newInstance()
+        ->setSubject('from: '.$message->getSender().' : '.$message->getSubject())
+        ->setFrom($message->getSender())
+        ->setTo('fab0670312047@gmail.com')
+        ->setBody($message->getContent())
+    ;
+    $this->get('mailer')->send($messageToSend);
+    }	
 }
