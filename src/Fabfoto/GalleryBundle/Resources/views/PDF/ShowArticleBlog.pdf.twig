@@ -3,7 +3,7 @@
        <img src="{{ mopa_barcode_url('qr', url('show_article_blog', { 'slugblog': article.slugblog }) , true) }}"/>
         </div>
         <div class="urlArticle">
-        {{ url('show_article_blog', { 'slugblog': article.slugblog }) }}
+        <a href="{{ url('show_article_blog', { 'slugblog': article.slugblog }) }}" >{{ url('show_article_blog', { 'slugblog': article.slugblog }) }}</a>
         </div>
         <div class="tag">
         Tags : 
