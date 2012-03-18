@@ -1,5 +1,10 @@
  <div class="article_blog_full">
+       <div class="qrcode">
        <img src="{{ mopa_barcode_url('qr', url('show_article_blog', { 'slugblog': article.slugblog }) , true) }}"/>
+        </div>
+        <div class="urlArticle">
+        {{ url('show_article_blog', { 'slugblog': article.slugblog }) }}
+        </div>
         <div class="tag">
         Tags : 
         {% for tag in article.tags %}
