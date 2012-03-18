@@ -39,7 +39,7 @@ class PDFController extends Controller
         $pdfObj->AddPage();
         $pdfObj->writeHTML($html, true, false, true, false, '');
         $pdfObj->lastPage();
-        $pdfObj->Output($article->getSlugblog().'.pdf');
+        return $pdfObj->Output($article->getSlugblog().'.pdf');
     }
      /**
      * @Route("about", name="show_about_pdf")
@@ -59,17 +59,11 @@ class PDFController extends Controller
         $pdfObj->SetFont('dejavusans', '', 6);
         $pdfObj->setPrintHeader(false);
 	$pdfObj->setPrintFooter(false);
-        $finder = new Finder();
-        $files = $finder->in('..')->in('..')->name('backgroundCard.png');
-        foreach($files as $file){
-        	$BackgroundUrl= $file->getRealpath();
-        }
         //$BackgroundUrl = $this->get('templating.helper.assets')->getUrl('bundles/fabfotogallery/image/about_me.jpg');
         $pdfObj->AddPage('P','BUSINESS_CARD_FR');
         $pdfObj->writeHTML($html, true, false, true, false, '');
-        $pdfObj->Image($BackgroundUrl,0,0,110,170,'','','B', false, 300, '', false, false, 0, true);
         $pdfObj->lastPage();
-        $pdfObj->Output('carte.pdf');
+        return $pdfObj->Output('carte.pdf');
     }
  
 }

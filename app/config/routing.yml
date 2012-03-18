@@ -7,10 +7,8 @@ _fabfoto:
     resource: "@FabfotoGalleryBundle/Controller/"
     type:     annotation
     prefix:   /
-
-       
+   
 _imagine: 
-  defaults: {_controller: imagine.controller:filter, filter: thumb_square}
   resource: . 
   type: imagine
   
