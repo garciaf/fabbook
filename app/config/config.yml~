@@ -94,7 +94,7 @@ avalanche_imagine:
     cache_prefix: media/cache
     driver:       gd
     filters:
-        thumb_square:
+        thumb_scare:
             type:    thumbnail
             options: { size: [128, 128], mode: outbound }            
 zenstruck_mobile:
