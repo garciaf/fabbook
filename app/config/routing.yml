@@ -7,14 +7,19 @@ _fabfoto:
     resource: "@FabfotoGalleryBundle/Controller/"
     type:     annotation
     prefix:   /
-     
+
+       
 _imagine: 
+  defaults: {_controller: imagine.controller:filter, filter: thumb_square}
   resource: . 
   type: imagine
   
 my_barcode_playground:
     resource: "@MopaBarcodeBundle/Resources/config/routing/barcode_playground.yml"
     prefix:   /
+
+#_imagine_thumb_square:
+#    pattern: /media/cache/thumb_square/{path}
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"

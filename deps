@@ -81,7 +81,7 @@
     target=imagine
 
 [AvalancheImagineBundle]
-    git=git://github.com/garciaf/AvalancheImagineBundle.git
+    git=git://github.com/avalanche123/AvalancheImagineBundle.git
     target=bundles/Avalanche/Bundle/ImagineBundle
 
 [MopaBootstrapBundle]

@@ -93,8 +93,8 @@ avalanche_imagine:
     web_root:     %kernel.root_dir%/../www
     cache_prefix: media/cache
     driver:       gd
-    filters:
-        thumb_scare:
+    filter:
+        thumb_square:
             type:    thumbnail
             options: { size: [128, 128], mode: outbound }            
 zenstruck_mobile:
