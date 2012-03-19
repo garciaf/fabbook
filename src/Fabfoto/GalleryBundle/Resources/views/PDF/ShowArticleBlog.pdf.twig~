@@ -1,0 +1,20 @@
+ <div class="article_blog_full">
+       <div class="qrcode">
+       <img src="{{ mopa_barcode_url('qr', url('show_article_blog', { 'slugblog': article.slugblog }) , true) }}"/>
+        </div>
+        <div class="urlArticle">
+        {{ url('show_article_blog', { 'slugblog': article.slugblog }) }}
+        </div>
+        <div class="tag">
+        Tags : 
+        {% for tag in article.tags %}
+        {{tag}}
+        {% endfor %}
+        </div>
+        <h1>{{article.title}}</h1>
+        <h2>{{article.subtitle}}</h2>
+        <div class="blog_content">
+        {{article.content|raw}}
+        </div>
+        <div class="signature_blog">Par {{article.author}} - {{article.createdAt|date('d/m/Y')}} - Mise à jour : {{article.updatedAt|date('d/m/Y') }}</div>
+    </div>

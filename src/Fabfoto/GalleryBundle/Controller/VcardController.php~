@@ -30,7 +30,9 @@ class VcardController extends Controller
             $response->headers->set('Content-Type','text/x-vcard');
             $response->headers->set('Content-Disposition', 'attachment;filename="FGcard.vcf"');
             
-            $vcard=$author->getVcard();
+            $vcard=$this->renderView('FabfotoGalleryBundle:Vcard:ShowAbout.vcf.twig', array(
+             'author' => $author
+         ));
             $response->setContent($vcard);
             return $response;
          
