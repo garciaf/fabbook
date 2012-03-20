@@ -13,7 +13,7 @@
     {% for picture in pictures %}
     <div class="element_picture">
         <a href="{{ path('adminPicture_show', { 'id': picture.id }) }}">
-            <image src="/{{picture.thumbpath}}" class ="image_index_admin"/>
+            <image src="{{picture.webpath | apply_filter('thumb_square') }}" class ="image_index_admin"/>
             <h3>{{ picture}}</h3>
             <p>{{ picture.location }}</p>
             <p>{% if picture.createdAt %}{{ picture.createdAt|date('Y-m-d H:i:s') }}{% endif%}</p>
