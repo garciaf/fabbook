@@ -178,7 +178,7 @@ class DefaultController extends Controller {
     /**
      * @Route("search", name="fabfoto_search")
      */
-    public function searchPictureAction(Request $request) {
+    public function searchAction(Request $request) {
         $pictures = array();
         $albums = array();
         if ($request->query->get('q')) {
@@ -190,11 +190,16 @@ class DefaultController extends Controller {
                     ->getDoctrine()
                     ->getRepository('FabfotoGalleryBundle:Album')
                     ->search($request->query->get('q'));
+            $articlesBlogs = $this
+                    ->getDoctrine()
+                    ->getRepository('FabfotoGalleryBundle:ArticleBlog')
+                    ->search($request->query->get('q'));
         }
         return $this->render('FabfotoGalleryBundle:Default:SearchResult.html.twig', array(
                     'albums' => $albums,
                     'pictures' => $pictures,
                     'keywords' => $request->query->get('q'),
+                    'ArticlesBlogs' => $articlesBlogs,
                         )
         );
     }

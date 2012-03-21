@@ -22,6 +22,14 @@ class ArticleBlogRepository extends EntityRepository
  
         //return $qb->getQuery()->getResult();
     }
+    public function search($keywords){
+        return $this
+                ->createQueryBuilder('s')
+                ->where('s.title LIKE :keywords')
+                ->setParameter('keywords', sprintf('%%%s%%', $keywords))
+                ->getQuery()
+                ->execute();
+    }
     public function OrderByDate()
     {
         return $this->queryOrderBydate()->execute();
@@ -32,4 +40,5 @@ class ArticleBlogRepository extends EntityRepository
         return $this->_em
                         ->createQuery('SELECT s FROM FabfotoGalleryBundle:ArticleBlog s ORDER BY s.createdAt DESC');
     }
+    
 }

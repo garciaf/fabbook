@@ -17,14 +17,8 @@
 </script>
 {% endblock importjs %}
 {% block content %}
-<h1 id="picture_search"> Result in Pictures :</h1>
-<div id="gallery">
-    {% for picture in pictures%}
-    <a rel = "search_result" href="/{{picture.webpath}}" title="{{picture}}" class="fancypicture">
-        <img src="/{{picture.thumbpath}}" width="128" height="128" alt="{{picture}}" />
-    </a>
-    {% endfor %}
-</div>
+<h1 id="album_search"> Result in Blog :</h1>
+{% include 'FabfotoGalleryBundle:Default:ListArticleBlog.html.twig' with ArticlesBlogs %}
 <h1 id="album_search"> Result in Album :</h1>
 <div class="list_album">
     {% for album in albums%}
@@ -38,6 +32,16 @@
 
     {% endfor %}
 </div>
+<h1 id="picture_search"> Result in Pictures :</h1>
+<div id="gallery">
+    {% for picture in pictures%}
+    <a rel = "search_result" href="/{{picture.webpath}}" title="{{picture}}" class="fancypicture">
+        <img src="/{{picture.thumbpath}}" width="128" height="128" alt="{{picture}}" />
+    </a>
+    {% endfor %}
+</div>
+
+
 {% endblock content %}
 {% block search_query %}
 {{keywords}}
