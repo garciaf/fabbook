@@ -111,6 +111,7 @@ sonata_doctrine_orm_admin:
     templates:
         form:
             - SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig
+            - IoFormBundle:Form:fields.html.twig
         filter:
             - SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig
         types:
@@ -162,7 +163,7 @@ sonata_block:
         
 services:
    fabfoto.admin.article:
-      class: Fabfoto\AdminBundle\ArticleAdmin
+      class: Fabfoto\AdminBundle\Admin\ArticleAdmin
       tags:
         - { name: sonata.admin, manager_type: orm, group: fabfoto_article, label: article }
       arguments: [null, Fabfoto\GalleryBundle\Entity\Article, SonataAdminBundle:CRUD]        

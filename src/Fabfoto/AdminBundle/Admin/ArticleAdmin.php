@@ -1,6 +1,6 @@
 <?php
 
-namespace Fabfoto\AdminBundle;
+namespace Fabfoto\AdminBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -14,7 +14,11 @@ class ArticleAdmin extends Admin
     {
         $formMapper
             ->add('title')
-            ->add('enabled', null, array('required' => false))
+            ->add('subtitle')
+            ->add('createdAt')     
+            ->add('content')
+            ->add('author') 
+            
         ;
     }
 
@@ -22,15 +26,18 @@ class ArticleAdmin extends Admin
     {
         $datagridMapper
             ->add('title')
-            ->add('content')
+            ->add('subtitle')
         ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('title')
+            ->addIdentifier('id')
+            ->add('subtitle')
+            ->add('createdAt')     
             ->add('content')
+            ->add('author')
         ;
     }
 
