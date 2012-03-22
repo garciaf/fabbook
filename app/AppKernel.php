@@ -29,6 +29,14 @@ class AppKernel extends Kernel
             new Fabfoto\ZendTweetBundle\FabfotoZendTweetBundle(),
             new WhiteOctober\TCPDFBundle\WhiteOctoberTCPDFBundle(),
             new Zenstruck\Bundle\MobileBundle\ZenstruckMobileBundle(),
+            new Sonata\AdminBundle\SonataAdminBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Sonata\CacheBundle\SonataCacheBundle(),
+            new Sonata\jQueryBundle\SonatajQueryBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Fabfoto\AdminBundle\FabfotoAdminBundle(),
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            new SimpleThings\EntityAudit\SimpleThingsEntityAuditBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test','prod'))) {

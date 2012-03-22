@@ -25,7 +25,11 @@ $loader->registerNamespaces(array(
     'Mopa'        => __DIR__.'/../vendor/bundles', 
     'Ps' => __DIR__.'/../vendor/bundles',
     'Zend'                   => __DIR__.'/../vendor',
-    'Knp'                    => __DIR__.'/../vendor/bundles',    
+    'Knp'                    => __DIR__.'/../vendor/bundles',   
+    'Knp\Menu'   => __DIR__.'/../vendor/knp/menu/src',
+    'Sonata'     => __DIR__.'/../vendor/bundles',
+    'SimpleThings'      => __DIR__.'/../vendor/bundles',
+    'Exporter'   => __DIR__.'/../vendor/exporter/lib',
     'WhiteOctober' => __DIR__.'/../vendor/bundles',
     'Zenstruck' => __DIR__.'/../vendor/bundles',
 ));
