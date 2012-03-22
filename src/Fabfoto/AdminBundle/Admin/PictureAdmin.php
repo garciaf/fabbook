@@ -8,26 +8,30 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class ArticleAdmin extends Admin
+class PictureAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title')
-            ->add('subtitle')
-            ->add('createdAt')     
-            ->add('content')
-            ->add('author') 
-            
+            ->add('name')
+            ->add('location', 'file',array(
+                'required'=> false,
+                ))
+            ->add('createdAt', 'jquery_date', array('format' => 'dd/MM/y'))
+            ->add('isBackground','checkbox',array(
+                'label'     => 'Mettre cette image en fond ?',
+                'required'=> false,
+
+                ))    
+            ->add('album', 'entity', array('class'=>'FabfotoGalleryBundle:Album'))
         ;
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('title')
-            ->add('subtitle')
-            ->add('author')                 
+            ->add('name')
+            ->add('isBackground')
         ;
     }
 
@@ -35,17 +39,17 @@ class ArticleAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('subtitle')
-            ->add('createdAt')     
-            ->add('content')
-            ->add('author')
+            ->add('name')
+            ->add('createdAt')
+            ->add('album')
+            ->add('isBackground')
         ;
     }
 
     public function validate(ErrorElement $errorElement, $object)
     {
         $errorElement
-            ->with('title')
+            ->with('name')
                 ->assertMaxLength(array('limit' => 255))
             ->end()
         ;

@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class ArticleAdmin extends Admin
+class ArticleBlogAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -16,8 +16,13 @@ class ArticleAdmin extends Admin
             ->add('title')
             ->add('subtitle')
             ->add('createdAt')     
-            ->add('content')
+            ->add('content','jquery_tinymce')
             ->add('author') 
+            ->add('tags','entity', array(
+            'class'=>'FabfotoGalleryBundle:Tag',
+            'multiple' => true,
+            'required' => false,
+            ))
             
         ;
     }
@@ -37,7 +42,6 @@ class ArticleAdmin extends Admin
             ->addIdentifier('id')
             ->add('subtitle')
             ->add('createdAt')     
-            ->add('content')
             ->add('author')
         ;
     }

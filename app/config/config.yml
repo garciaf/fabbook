@@ -165,5 +165,35 @@ services:
    fabfoto.admin.article:
       class: Fabfoto\AdminBundle\Admin\ArticleAdmin
       tags:
-        - { name: sonata.admin, manager_type: orm, group: fabfoto_article, label: article }
-      arguments: [null, Fabfoto\GalleryBundle\Entity\Article, SonataAdminBundle:CRUD]        
+        - { name: sonata.admin, manager_type: orm, group: blog, label: News }
+      arguments: [null, Fabfoto\GalleryBundle\Entity\Article, SonataAdminBundle:CRUD]       
+   fabfoto.admin.articleBlog:
+      class: Fabfoto\AdminBundle\Admin\ArticleBlogAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: blog, label: Blog }
+      arguments: [null, Fabfoto\GalleryBundle\Entity\ArticleBlog, SonataAdminBundle:CRUD]
+   fabfoto.admin.tag:
+      class: Fabfoto\AdminBundle\Admin\TagAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: blog, label: Tag }
+      arguments: [null, Fabfoto\GalleryBundle\Entity\Tag, SonataAdminBundle:CRUD]  
+   fabfoto.admin.author:
+      class: Fabfoto\AdminBundle\Admin\AuthorAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: blog, label: Author }
+      arguments: [null, Fabfoto\GalleryBundle\Entity\Author, SonataAdminBundle:CRUD]
+   fabfoto.admin.message:
+      class: Fabfoto\AdminBundle\Admin\MessageAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: Messages, label: Mail }
+      arguments: [null, Fabfoto\GalleryBundle\Entity\Message, SonataAdminBundle:CRUD]
+   fabfoto.admin.picture:
+      class: Fabfoto\AdminBundle\Admin\PictureAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: Media, label: Picture }
+      arguments: [null, Fabfoto\GalleryBundle\Entity\Picture, SonataAdminBundle:CRUD]  
+   fabfoto.admin.album:
+      class: Fabfoto\AdminBundle\Admin\AlbumAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: Media, label: Album }
+      arguments: [null, Fabfoto\GalleryBundle\Entity\Album, SonataAdminBundle:CRUD]        
