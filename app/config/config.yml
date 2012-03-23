@@ -104,6 +104,7 @@ zenstruck_mobile:
     use_twig_engine: false
     full_host: fabbook.fr
     mobile_host: fabbook.fr/mobile            
+
 sonata_doctrine_orm_admin:
     # default value is null, so doctrine uses the value defined in the configuration
     entity_manager: ~
@@ -197,3 +198,10 @@ services:
       tags:
         - { name: sonata.admin, manager_type: orm, group: Media, label: Album }
       arguments: [null, Fabfoto\GalleryBundle\Entity\Album, SonataAdminBundle:CRUD]        
+
+stof_doctrine_extensions:
+    default_locale: fr_FR
+    orm:
+        default:
+            timestampable: true
+            sluggable: true

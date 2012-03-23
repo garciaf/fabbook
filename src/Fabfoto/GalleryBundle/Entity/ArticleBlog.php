@@ -2,6 +2,7 @@
 
 namespace Fabfoto\GalleryBundle\Entity;
 
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use \Fabfoto\GalleryBundle\Entity\Tag as Tag;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -28,8 +29,9 @@ class ArticleBlog
 
     /**
      * @var datetime $createdAt
-     *
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="createdAt", type="datetime")
+     
      */
     private $createdAt;
 
@@ -37,6 +39,7 @@ class ArticleBlog
      * @var datetime $updatedAt
      *
      * @ORM\Column(name="updatedAt", type="datetime")
+     * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
 
@@ -78,7 +81,7 @@ class ArticleBlog
 
 
     /**
-     *
+     * @Gedmo\Slug(fields={"title"})
      * @ORM\Column(name="slugblog", type="string", length=255)
      */
     private $slugblog;
@@ -145,8 +148,7 @@ class ArticleBlog
     public function setTitle($title)
     {
         $this->title = $title;
-        
-        $this->setSlugblog(\StringTools::slugify($title));
+
     }
 
     /**

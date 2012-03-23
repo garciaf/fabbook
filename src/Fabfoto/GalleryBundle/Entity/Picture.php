@@ -2,6 +2,7 @@
 
 namespace Fabfoto\GalleryBundle\Entity;
 
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
 
@@ -19,12 +20,6 @@ class Picture
     {
         return (string) $this->name;
     }
-
-    public function __construct()
-    {
-        $this->createdAt = new \DateTime();
-    }
-
     /**
      * @var integer $id
      *
@@ -50,7 +45,8 @@ class Picture
 
     /**
      * @var date $createdAt
-     *
+     * 
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="createdAt", type="date", nullable=true)
      */
     private $createdAt;
