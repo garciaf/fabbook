@@ -104,3 +104,9 @@ zenstruck_mobile:
     use_twig_engine: false
     full_host: fabbook.fr
     mobile_host: fabbook.fr/mobile            
+stof_doctrine_extensions:
+    default_locale: fr_FR
+    orm:
+        default:
+            timestampable: true
+            sluggable: true

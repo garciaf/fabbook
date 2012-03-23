@@ -14,7 +14,6 @@ class PictureType extends AbstractType
             ->add('location', 'file',array(
                 'required'=> false,
                 ))
-            ->add('createdAt', 'jquery_date', array('format' => 'dd/MM/y'))
             ->add('isBackground','checkbox',array(
                 'label'     => 'Mettre cette image en fond ?',
                 'required'=> false,

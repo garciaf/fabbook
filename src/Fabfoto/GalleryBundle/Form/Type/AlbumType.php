@@ -13,7 +13,6 @@ class AlbumType extends AbstractType
         $builder
                 ->add('name')
                 ->add('comment','textarea')
-                ->add('createdAt','datetime')
         ;
     }
 

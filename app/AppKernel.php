@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             new Fabfoto\ZendTweetBundle\FabfotoZendTweetBundle(),
             new WhiteOctober\TCPDFBundle\WhiteOctoberTCPDFBundle(),
             new Zenstruck\Bundle\MobileBundle\ZenstruckMobileBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test','prod'))) {

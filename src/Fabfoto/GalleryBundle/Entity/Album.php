@@ -2,6 +2,7 @@
 
 namespace Fabfoto\GalleryBundle\Entity;
 
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
 use Doctrine\Common\Collections\Collection;
@@ -41,6 +42,7 @@ class Album
     /**
      * @var date $createdAt
      *
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="createdAt", type="date", nullable=true)
      */
     private $createdAt;
@@ -53,7 +55,8 @@ class Album
     
     /**
      * @var string $name
-     *
+     * 
+     * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
@@ -77,7 +80,6 @@ class Album
     {
         $this->name = $name;
         
-        $this->setSlug(\StringTools::slugify($name));
     }
 
     /**

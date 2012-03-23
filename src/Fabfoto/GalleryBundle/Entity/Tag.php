@@ -2,6 +2,7 @@
 
 namespace Fabfoto\GalleryBundle\Entity;
 
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use \Fabfoto\GalleryBundle\Entity\ArticleBlog as ArticleBlog;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -38,6 +39,7 @@ class Tag
     private $articles;
     
     /**
+     * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(name="slug", type="string", length=255 )
      */
     protected $slug;
@@ -60,7 +62,6 @@ class Tag
     {
         $this->name = $name;
         
-        $this->setSlug(\StringTools::slugify($name));
     }
 
     /**

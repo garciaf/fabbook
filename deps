@@ -124,3 +124,10 @@
 [ZenstruckMobileBundle]
     git=git://github.com/kbond/ZenstruckMobileBundle.git
     target=bundles/Zenstruck/Bundle/MobileBundle    
+
+[gedmo-doctrine-extensions]
+    git=http://github.com/l3pp4rd/DoctrineExtensions.git
+
+[StofDoctrineExtensionsBundle]
+    git=http://github.com/stof/StofDoctrineExtensionsBundle.git
+    target=/bundles/Stof/DoctrineExtensionsBundle

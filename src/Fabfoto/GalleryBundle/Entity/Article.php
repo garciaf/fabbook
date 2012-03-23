@@ -2,6 +2,7 @@
 
 namespace Fabfoto\GalleryBundle\Entity;
 
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,6 +39,7 @@ class Article
     /**
      * @var date $createdAt
      *
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="createdAt", type="date")
      */
     private $createdAt;
@@ -56,10 +58,6 @@ class Article
      */
     private $author;
 
-    public function __construct()
-    {
-        $this->createdAt = new \DateTime();
-    }
     /**
      * Get id
      *
