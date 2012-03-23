@@ -15,8 +15,6 @@ class ArticleBlogAdmin extends Admin
         $formMapper
             ->add('title')
             ->add('subtitle')
-            ->add('createdAt')
-            ->add('updatedAt')
             ->add('content','jquery_tinymce')
             ->add('author') 
             ->add('tags','entity', array(

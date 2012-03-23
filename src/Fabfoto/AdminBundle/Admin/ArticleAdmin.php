@@ -15,7 +15,6 @@ class ArticleAdmin extends Admin
         $formMapper
             ->add('title')
             ->add('subtitle')
-            ->add('createdAt')     
             ->add('content')
             ->add('author') 
             
