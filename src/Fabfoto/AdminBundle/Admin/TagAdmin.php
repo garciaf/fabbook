@@ -8,16 +8,12 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class ArticleAdmin extends Admin
+class TagAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title')
-            ->add('subtitle')
-            ->add('createdAt')     
-            ->add('content')
-            ->add('author') 
+            ->add('name') 
             
         ;
     }
@@ -25,9 +21,7 @@ class ArticleAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('title')
-            ->add('subtitle')
-            ->add('author')                 
+            ->add('name')                
         ;
     }
 
@@ -35,17 +29,14 @@ class ArticleAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('subtitle')
-            ->add('createdAt')     
-            ->add('content')
-            ->add('author')
+            ->add('name') 
         ;
     }
 
     public function validate(ErrorElement $errorElement, $object)
     {
         $errorElement
-            ->with('title')
+            ->with('name')
                 ->assertMaxLength(array('limit' => 255))
             ->end()
         ;
