@@ -6,7 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 use \Fabfoto\GalleryBundle\Entity\ArticleBlog as ArticleBlog;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping\ManyToMany as ManyToMany;
-use Fabfoto\GalleryBundle\Resources\lib as StringTools;
 /**
  * Fabfoto\GalleryBundle\Entity\Tag
  *
@@ -88,7 +87,7 @@ class Tag
      *
      * @param Fabfoto\GalleryBundle\Entity\ArticleBlog $articles
      */
-    public function addArticleBlog(\Fabfoto\GalleryBundle\Entity\ArticleBlog $articles)
+    public function addArticleBlog(ArticleBlog $articles)
     {
         $this->articles[] = $articles;
     }
