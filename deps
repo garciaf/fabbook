@@ -126,7 +126,7 @@
     target=bundles/Zenstruck/Bundle/MobileBundle    
 
 [SonataAdminBundle]
-    git=http://github.com/sonata-project/SonataAdminBundle.git
+    git=git://github.com/andrewtch/SonataAdminBundle.git
     target=/bundles/Sonata/AdminBundle
 
 [SonataBlockBundle]
@@ -154,8 +154,9 @@
     target=/exporter
 
 [SonataDoctrineORMAdminBundle]
-    git=http://github.com/sonata-project/SonataDoctrineORMAdminBundle.git
+    git=https://github.com/andrewtch/SonataDoctrineORMAdminBundle.git
     target=/bundles/Sonata/DoctrineORMAdminBundle
+    version=origin/date_filters
 
 
 [gedmo-doctrine-extensions]

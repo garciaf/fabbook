@@ -27,6 +27,7 @@ class ArticleAdmin extends Admin
         $datagridMapper
             ->add('title')
             ->add('subtitle')
+            ->add('createdAt') 
             ->add('author')                 
         ;
     }
