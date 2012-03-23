@@ -165,3 +165,7 @@
 [StofDoctrineExtensionsBundle]
     git=http://github.com/stof/StofDoctrineExtensionsBundle.git
     target=/bundles/Stof/DoctrineExtensionsBundle
+
+[ConsoleBundle]
+    git=git://github.com/winzou/ConsoleBundle.git
+    target=bundles/CoreSphere/ConsoleBundle
