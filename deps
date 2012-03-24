@@ -154,4 +154,4 @@
 
 [WhiteOctoberPagerfantaBundle]
     git=git://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git
-    target=bundles/WhiteOctober
+    target=bundles/WhiteOctober/PagerfantaBundle
