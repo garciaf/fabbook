@@ -110,3 +110,7 @@ stof_doctrine_extensions:
         default:
             timestampable: true
             sluggable: true
+knp_menu:
+    twig: true
+admingenerator_generator:
+    base_admin_template: AdmingeneratorGeneratorBundle::base_admin_assetic_less.html.twig    

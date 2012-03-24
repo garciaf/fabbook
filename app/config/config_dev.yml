@@ -30,3 +30,5 @@ swiftmailer:
     transport: %mailer_transport_dev%
     username:  %mailer_user_dev%
     password:  %mailer_password_dev%
+admingenerator_generator:
+    overwrite_if_exists: true    

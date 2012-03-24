@@ -30,6 +30,9 @@ $loader->registerNamespaces(array(
     'Zenstruck' => __DIR__.'/../vendor/bundles',
     'Stof'  => __DIR__.'/../vendor/bundles',
     'Gedmo' => __DIR__.'/../vendor/gedmo-doctrine-extensions/lib',
+    'Admingenerator'    => array(__DIR__.'/../src', __DIR__.'/../vendor/bundles'),
+    'Sensio\Bundle'     => __DIR__.'/../vendor/bundles',
+    'Knp\Menu'  => __DIR__.'/../vendor/KnpMenu/src',
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',
