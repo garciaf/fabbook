@@ -33,6 +33,7 @@ class AppKernel extends Kernel
             new Admingenerator\GeneratorBundle\AdmingeneratorGeneratorBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+            new Fabfoto\AdminBundle\FabfotoAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test','prod'))) {

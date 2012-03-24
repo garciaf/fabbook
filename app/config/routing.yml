@@ -1,3 +1,8 @@
+FabfotoAdminBundle_admin_fabfoto_admin_bundle_Prefix:
+    resource: "@FabfotoAdminBundle/Controller/Prefix/"
+    type:     admingenerator
+    prefix:   /admin/fabfoto_admin_bundle/Prefix
+
 FabfotoZendTweetBundle:
     resource: "@FabfotoZendTweetBundle/Controller/"
     type:     annotation
