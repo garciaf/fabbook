@@ -35,6 +35,7 @@ class AppKernel extends Kernel
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Fabfoto\AdminBundle\FabfotoAdminBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Admingenerator\ActiveAdminThemeBundle\AdmingeneratorActiveAdminThemeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test','prod'))) {
