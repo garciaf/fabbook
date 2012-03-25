@@ -45,7 +45,9 @@ _imagine:
 my_barcode_playground:
     resource: "@MopaBarcodeBundle/Resources/config/routing/barcode_playground.yml"
     prefix:   /
-
+console:
+    resource: "@CoreSphereConsoleBundle/Resources/config/routing.yml"
+    prefix:   /admin
 #_imagine_thumb_square:
 #    pattern: /media/cache/thumb_square/{path}
 # Internal routing configuration to handle ESI

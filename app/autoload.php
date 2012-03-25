@@ -38,6 +38,7 @@ $loader->registerNamespaces(array(
     'Sensio\Bundle'     => __DIR__.'/../vendor/bundles',
     'Knp\Menu'  => __DIR__.'/../vendor/KnpMenu/src',
     'Pagerfanta'                    => __DIR__.'/../vendor/pagerfanta/src',
+    'CoreSphere'          => array(__DIR__ . '/../vendor/bundles'),
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',

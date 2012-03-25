@@ -160,3 +160,6 @@
 [AdmingeneratorActiveAdminThemeBundle]
     git=git://github.com/cedriclombardot/AdmingeneratorActiveAdminThemeBundle.git
     target=/bundles/Admingenerator/ActiveAdminThemeBundle
+[ConsoleBundle]
+    git=git://github.com/winzou/ConsoleBundle.git
+    target=bundles/CoreSphere/ConsoleBundle
