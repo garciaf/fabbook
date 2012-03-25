@@ -20,9 +20,7 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
-    form:
-        resources:
-            - 'IoFormBundle:Form:fields.html.twig'
+
 
 # Assetic Configuration
 assetic:
@@ -113,4 +111,7 @@ stof_doctrine_extensions:
 knp_menu:
     twig: true
 admingenerator_generator:
-    base_admin_template: AdmingeneratorGeneratorBundle::base_admin_assetic_less.html.twig    
+    base_admin_template: AdmingeneratorGeneratorBundle::base_admin_assetic_less.html.twig
+    use_propel: false
+    use_doctrine_orm: true
+    use_doctrine_odm: false

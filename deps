@@ -151,7 +151,9 @@
 [Pagerfanta]
     git=git://github.com/whiteoctober/Pagerfanta.git
     target=pagerfanta
+    
 
 [WhiteOctoberPagerfantaBundle]
     git=git://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git
     target=bundles/WhiteOctober/PagerfantaBundle
+    version=origin/symfony2.0

@@ -5,6 +5,10 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 
 $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
+    'Doctrine\\Bundle' => __DIR__.'/../vendor/bundles',
+    'Doctrine\\Common\\DataFixtures' => __DIR__.'/../vendor/doctrine-fixtures/lib',
+    'WhiteOctober\\PagerfantaBundle' => __DIR__.'/../vendor/bundles',
+    'TwigGenerator' => __DIR__.'/../vendor/twig-generator/src',
     'Symfony'          => array(__DIR__.'/../vendor/symfony/src', __DIR__.'/../vendor/bundles'),
     'Sensio'           => __DIR__.'/../vendor/bundles',
     'JMS'              => __DIR__.'/../vendor/bundles',

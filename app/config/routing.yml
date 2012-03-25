@@ -1,7 +1,32 @@
-FabfotoAdminBundle_admin_fabfoto_admin_bundle_Prefix:
-    resource: "@FabfotoAdminBundle/Controller/Prefix/"
+FabfotoAdminBundle_Message:
+    resource: "@FabfotoAdminBundle/Controller/Message/"
     type:     admingenerator
-    prefix:   /admin/fabfoto_admin_bundle/Prefix
+    prefix:   /admin/bundle/message
+FabfotoAdminBundle_Tag:
+    resource: "@FabfotoAdminBundle/Controller/Tag/"
+    type:     admingenerator
+    prefix:   /admin/bundle/tag
+FabfotoAdminBundle_Author:
+    resource: "@FabfotoAdminBundle/Controller/Author/"
+    type:     admingenerator
+    prefix:   /admin/bundle/author
+FabfotoAdminBundle_Blog:
+    resource: "@FabfotoAdminBundle/Controller/Blog/"
+    type:     admingenerator
+    prefix:   /admin/bundle/blog
+FabfotoAdminBundle_News:
+    resource: "@FabfotoAdminBundle/Controller/News/"
+    type:     admingenerator
+    prefix:   /admin/bundle/news
+FabfotoAdminBundle_Album:
+    resource: "@FabfotoAdminBundle/Controller/Album/"
+    type:     admingenerator
+    prefix:   /admin/bundle/album
+    
+FabfotoAdminBundle_Picture:
+    resource: "@FabfotoAdminBundle/Controller/Picture/"
+    type:     admingenerator
+    prefix:   /admin/bundle/picture
 
 FabfotoZendTweetBundle:
     resource: "@FabfotoZendTweetBundle/Controller/"

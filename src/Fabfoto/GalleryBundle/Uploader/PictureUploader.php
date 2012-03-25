@@ -36,7 +36,6 @@ class PictureUploader
     public function upload(Picture $picture, $randomize=false)
     {
         $file = $picture->getLocation();
-
         if (!$file instanceof UploadedFile)
         {
             throw new \InvalidArgumentException(
