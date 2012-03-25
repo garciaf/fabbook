@@ -9,7 +9,7 @@ builders:
   list:
     params:
       title: List for AdminBundle
-      display: ~
+      display: [id, createdAt, updatedAt, title, subtitle, author ]
       actions:
         new: ~
       object_actions:
@@ -17,17 +17,17 @@ builders:
         delete: ~
   filters:
     params:
-      display: ~
+      display: [ createdAt, updatedAt, title, subtitle, author ]
   new:
     params:
       title: New object for AdminBundle
-      display: ~
+      display: [ title, subtitle, content, author ]
       actions:
         list: ~
   edit:
     params:
       title: You're editing the object "{{ ArticleBlog.title }}"
-      display: ~
+      display: [ title, subtitle, content, author ]
       actions:
         list: ~
   delete: ~

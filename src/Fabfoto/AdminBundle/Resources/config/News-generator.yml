@@ -17,17 +17,17 @@ builders:
         delete: ~
   filters:
     params:
-      display: ~
+      display: [ title, subtitle, createdAt, author]
   new:
     params:
       title: New object for AdminBundle
-      display: ~
+      display: [title, subtitle, content, author]
       actions:
         list: ~
   edit:
     params:
       title: You're editing the object "{{ Article.title }}"
-      display: ~
+      display: [title, subtitle, content, author]
       actions:
         list: ~
   delete: ~

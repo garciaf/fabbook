@@ -20,14 +20,14 @@ builders:
       display: ~
   new:
     params:
-      title: New object for AdminBundle
-      display: ~
+      title: Nouvel album
+      display: [name, comment]
       actions:
         list: ~
   edit:
     params:
       title: You're editing the object "{{ Album.name }}"
-      display: ~
+      display: [name, comment]
       actions:
         list: ~
   delete: ~

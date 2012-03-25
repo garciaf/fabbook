@@ -26,7 +26,7 @@ builders:
         delete: ~
   filters:
     params:
-      display: ~
+      display: [name, createdAt, album, isBackground]
   new:
     params:
       title: New object for AdminBundle
@@ -36,7 +36,7 @@ builders:
   edit:
     params:
       title: You're editing the object "{{ Picture.name }}"
-      display: ~
+      display: [name, album, isBackground]
       actions:
         list: ~
   delete: ~
