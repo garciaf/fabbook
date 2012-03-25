@@ -116,3 +116,8 @@ admingenerator_generator:
     use_propel: false
     use_doctrine_orm: true
     use_doctrine_odm: false
+genemu_form:
+    tinymce:
+        script_url: '/bundles/fabfotogallery/tiny_mce/tiny_mce.js'      
+        enabled: true
+        theme:   advanced      

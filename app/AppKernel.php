@@ -36,6 +36,7 @@ class AppKernel extends Kernel
             new Fabfoto\AdminBundle\FabfotoAdminBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Admingenerator\ActiveAdminThemeBundle\AdmingeneratorActiveAdminThemeBundle(),
+            new Genemu\Bundle\FormBundle\GenemuFormBundle(),
             
         );
 

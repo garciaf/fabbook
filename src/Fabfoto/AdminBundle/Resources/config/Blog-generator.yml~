@@ -5,7 +5,7 @@ params:
   bundle_name: AdminBundle
   fields:
     content:
-      formType: genemu_tinymce
+      formType: file
       addFormOptions:
         required: false     
 builders:
