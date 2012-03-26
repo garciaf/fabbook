@@ -17,7 +17,7 @@ builders:
         delete: ~
   filters:
     params:
-      display: ~
+      display: [name, createdAt]
   new:
     params:
       title: Nouvel album

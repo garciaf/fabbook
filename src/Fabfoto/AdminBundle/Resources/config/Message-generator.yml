@@ -17,7 +17,7 @@ builders:
         delete: ~
   filters:
     params:
-      display: ~
+      display: [sender, subject, createdAt]
   new:
     params:
       title: New object for AdminBundle

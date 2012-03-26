@@ -3,12 +3,16 @@ params:
   model: Fabfoto\GalleryBundle\Entity\Article
   namespace_prefix: Fabfoto
   bundle_name: AdminBundle
-  fields: ~
+  fields: 
+    content:
+      formType: genemu_tinymce
+      addFormOptions:
+        required: false        
 
 builders:
   list:
     params:
-      title: List for AdminBundle
+      title: List of News
       display: ~
       actions:
         new: ~

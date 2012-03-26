@@ -11,7 +11,7 @@ params:
 builders:
   list:
     params:
-      title: List for AdminBundle
+      title: List of Blog articles
       display: [id, createdAt, updatedAt, title, subtitle, author ]
       actions:
         new: ~

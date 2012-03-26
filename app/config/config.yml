@@ -111,7 +111,7 @@ stof_doctrine_extensions:
 knp_menu:
     twig: true
 admingenerator_generator:
-    base_admin_template: AdmingeneratorActiveAdminThemeBundle::base_admin_assetic_less.html.twig
+    base_admin_template: FabfotoAdminBundle::base_admin.html.twig
     knp_menu_class: Fabfoto\AdminBundle\Menu\AdminMenu
     use_propel: false
     use_doctrine_orm: true
