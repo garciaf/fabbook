@@ -1,1 +1,2 @@
 {% extends_admingenerated "FabfotoAdminBundle:NewsList:index.html.twig" %}
+{% block list_td_column_content %}{{ Article.content | raw }}{% endblock %}

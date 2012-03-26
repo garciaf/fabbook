@@ -25,7 +25,11 @@ params:
     twitterLink:
       label: Twitter
       addFormOptions:
-        required: false      
+        required: false  
+    linkedLink:
+      label: Linked
+      addFormOptions:
+        required: false  
     phone:
       label: Phone Number
       addFormOptions:
@@ -47,13 +51,13 @@ builders:
   new:
     params:
       title: New object for AdminBundle
-      display: [name, firstname, title, mail, description, googleLink, facebookLink, gitHubLink, twitterLink, phone]
+      display: [name, firstname, title, mail, description, googleLink, facebookLink, gitHubLink, twitterLink, linkedLink, phone]
       actions:
         list: ~
   edit:
     params:
       title: You're editing the object "{{ Author.firstname }} {{ Author.name }}"
-      display: [name, firstname, title, mail, description, googleLink, facebookLink, gitHubLink, twitterLink, phone]
+      display: [name, firstname, title, mail, description, googleLink, facebookLink, gitHubLink, twitterLink, linkedLink, phone]
       actions:
         list: ~
   delete: ~
