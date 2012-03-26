@@ -22,8 +22,6 @@ $loader->registerNamespaces(array(
     'Doctrine\\DBAL'             => __DIR__.'/../vendor/doctrine-dbal/lib',
     'Gregwar'         => __DIR__.'/../vendor/bundles',
     'Io'              => __DIR__.'/../vendor/bundles',
-    'Doctrine\\DBAL\\Migrations' => __DIR__.'/../vendor/doctrine-migrations/lib',
-    'Doctrine\\DBAL'             => __DIR__.'/../vendor/doctrine-dbal/lib',
     'Imagine'          => __DIR__.'/../vendor/imagine/lib',
     'Avalanche'        => __DIR__.'/../vendor/bundles',
     'Mopa'        => __DIR__.'/../vendor/bundles', 
