@@ -12,7 +12,6 @@ security:
                 garciaf: { password: fafaZIZIOlga, roles: [ 'ROLE_ADMIN' ] }
 
     firewalls:
-
         fabfoto:
           pattern: ^/
           form_login:
@@ -23,5 +22,10 @@ security:
             path:   /security/logout
             target: /albums
           anonymous: ~ 
+          remember_me:
+              key:      UnPetitBoutDeLaClef
+              lifetime: 3600
+              path:     /
+              domain:   ~ # Defaults to the current domain from $_SERVER
     access_control:
       - { path: ^/admin/, roles: IS_AUTHENTICATED_FULLY}
