@@ -1,3 +1,8 @@
+FabfotoUserBundle:
+    resource: "@FabfotoUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 FabfotoAdminBundle_Message:
     resource: "@FabfotoAdminBundle/Controller/Message/"
     type:     admingenerator

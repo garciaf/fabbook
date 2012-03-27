@@ -172,3 +172,7 @@
     git=git://github.com/genemu/GenemuFormBundle.git
     target=bundles/Genemu/Bundle/FormBundle
     version=origin/2.0    
+
+[FOSUserBundle]
+    git=git://github.com/FriendsOfSymfony/FOSUserBundle.git
+    target=bundles/FOS/UserBundle

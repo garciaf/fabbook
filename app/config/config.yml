@@ -121,3 +121,7 @@ genemu_form:
         script_url: '/bundles/fabfotogallery/tiny_mce/tiny_mce.js'      
         enabled: true
         theme:   advanced      
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Fabfoto\UserBundle\Entity\User        
