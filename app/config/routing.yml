@@ -1,3 +1,13 @@
+FabfotoAdminBundle_Item:
+    resource: "@FabfotoAdminBundle/Controller/Item/"
+    type:     admingenerator
+    prefix:   /admin/bundle/item
+    
+FabfotoShoppingListBundle:
+    resource: "@FabfotoShoppingListBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 FabfotoAdminBundle_Message:
     resource: "@FabfotoAdminBundle/Controller/Message/"
     type:     admingenerator

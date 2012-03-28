@@ -37,7 +37,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
             new Admingenerator\ActiveAdminThemeBundle\AdmingeneratorActiveAdminThemeBundle(),
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
-            
+            new Fabfoto\ShoppingListBundle\FabfotoShoppingListBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test','prod'))) {
