@@ -2,6 +2,7 @@
 
 namespace Fabfoto\ShoppingListBundle\Entity;
 
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,16 +16,24 @@ class Item
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="string", length=36)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="remote_id", type="integer")
+     */
+    private $remoteId;
 
     /**
      * @var datetime $_lastChange
      *
      * @ORM\Column(name="_lastChange", type="datetime")
+     * @Gedmo\Timestampable(on="update")
      */
     private $_lastChange;
 
@@ -62,7 +71,6 @@ class Item
      * @ORM\Column(name="quantity", type="integer")
      */
     private $quantity;
-
 
     /**
      * Get id
@@ -192,5 +200,10 @@ class Item
     public function getQuantity()
     {
         return $this->quantity;
+    }
+
+    
+    public function get_lastChange(){
+        return $this->_lastChange;
     }
 }

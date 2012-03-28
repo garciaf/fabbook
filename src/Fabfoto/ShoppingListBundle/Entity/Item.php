@@ -21,6 +21,13 @@ class Item
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="remote_id", type="string", length=26)
+     */
+    private $remoteId;
 
     /**
      * @var datetime $_lastChange
@@ -64,6 +71,10 @@ class Item
      * @ORM\Column(name="quantity", type="integer")
      */
     private $quantity;
+    
+    public function __construct(){
+        $this->setRemoteId(uniqid("",true));
+    }
 
     /**
      * Get id
@@ -198,5 +209,25 @@ class Item
     
     public function get_lastChange(){
         return $this->_lastChange;
+    }
+
+    /**
+     * Set remoteId
+     *
+     * @param integer $remoteId
+     */
+    public function setRemoteId($remoteId)
+    {
+        $this->remoteId = $remoteId;
+    }
+
+    /**
+     * Get remoteId
+     *
+     * @return integer 
+     */
+    public function getRemoteId()
+    {
+        return $this->remoteId;
     }
 }

@@ -1,0 +1,48 @@
+{%block header %}
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>{% block titlepage %}Fabfoto {% endblock titlepage %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+	<link rel="stylesheet" href="{{asset('bundles/fabfotogallery/css/fabfoto-theme/fabfoto-mobile-theme.css')}}" />
+        
+        {% block importcss %}
+        <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery.mobile-1.0rc2.min.css')}}" />
+        {% endblock importcss %}
+
+ 	{%block importjs %}
+        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery-1.6.4.min.js')}}"></script>
+
+
+        <script type="text/javascript" src="{{ asset('bundles/fabfotoshoppinglist/persistencejs/lib/persistence.js')}}" type="application/javascript"></script>
+        <script type="text/javascript" src="{{ asset('bundles/fabfotoshoppinglist/persistencejs/lib/persistence.store.sql.js')}}" type="application/javascript"></script>
+        <script type="text/javascript" src="{{ asset('bundles/fabfotoshoppinglist/persistencejs/lib/persistence.store.websql.js')}}" type="application/javascript"></script>        
+        <script type="text/javascript" src="{{ asset('bundles/fabfotoshoppinglist/persistencejs/lib/persistence.sync.js')}}" type="application/javascript"></script>
+
+        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery-1.6.4.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery.mobile-1.0rc2.min.js')}}"></script>
+        
+        {%endblock importjs%}
+    </head> 
+
+{% endblock header %}
+    <body>
+        <div data-role="page" {% block optionpage %}{% endblock optionpage %} data-theme="c" > 
+            <div data-role="header" >
+                <h1>{% block title %}Fabbook Mobile{%endblock title%}</h1>
+            </div> 
+            <div data-role="content" >
+                {% block content %}
+                Welcome on Fabfoto Mobile
+                {% endblock %}
+            </div> 
+            <div data-role="footer" data-position="fixed" >
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="{{path('index_mobile')}}" >Index</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div> 
+        </div> 
+    </body>
+</html>
