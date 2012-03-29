@@ -45,6 +45,11 @@ class AdminMenu
         //User Part
         $author = $menu->addChild('About', array('route' => 'Fabfoto_AdminBundle_Author_list'));
         
+        //TODO List Part
+        $todo = $menu->addChild('TODO LIst', array('route' => 'Fabfoto_AdminBundle_Item_list'));
+        $todo->setLinkAttributes(array('class'=>'sub main'));
+        $todo->addChild('Web Version', array('route' => 'item'));
+        
         return $menu;
     }
 }
