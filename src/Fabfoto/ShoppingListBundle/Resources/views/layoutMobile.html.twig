@@ -19,6 +19,10 @@
         <script type="text/javascript" src="{{ asset('bundles/fabfotoshoppinglist/persistencejs/lib/persistence.store.websql.js')}}" type="application/javascript"></script>        
         <script type="text/javascript" src="{{ asset('bundles/fabfotoshoppinglist/persistencejs/lib/persistence.sync.js')}}" type="application/javascript"></script>
 
+        <script type="text/javascript" src="{{ asset('bundles/fabfotoshoppinglist/persistencejs/myscript/initiateDataBase.js')}}" type="application/javascript"></script>
+        <script type="text/javascript" src="{{ asset('bundles/fabfotoshoppinglist/persistencejs/myscript/saveItem.js')}}" type="application/javascript"></script>
+        <script type="text/javascript" src="{{ asset('bundles/fabfotoshoppinglist/persistencejs/myscript/initiate.js')}}" type="application/javascript"></script>
+        <script type="text/javascript" src="{{ path('javascript')}}" type="application/javascript"></script>
         <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery-1.6.4.min.js')}}"></script>
         <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery.mobile-1.0rc2.min.js')}}"></script>
         
@@ -28,8 +32,9 @@
 {% endblock header %}
     <body>
         <div data-role="page" {% block optionpage %}{% endblock optionpage %} data-theme="c" > 
-            <div data-role="header" >
-                <h1>{% block title %}Fabbook Mobile{%endblock title%}</h1>
+            <div data-role="header" data-position="inline">
+                <h1>{% block title %}TODO Liste{%endblock title%}</h1>
+                <a id="syncButton" data-icon="forward" onclick="sendStoreData()">Sync</a>
             </div> 
             <div data-role="content" >
                 {% block content %}

@@ -8,7 +8,7 @@ params:
 builders:
   list:
     params:
-      title: List for AdminBundle
+      title: TODO Liste Admin
       display: ~
       actions:
         new: ~
@@ -20,14 +20,14 @@ builders:
       display: ~
   new:
     params:
-      title: New object for AdminBundle
-      display: [name, checked, favorite, onlist, quantity]
+      title: New TODO
+      display: [name]
       actions:
         list: ~
   edit:
     params:
-      title: You're editing the object "{{ Item.name }}"
-      display: [name, checked, favorite, onlist, quantity]
+      title: "{{ Item.name }}"
+      display: [name]
       actions:
         list: ~
   delete: ~

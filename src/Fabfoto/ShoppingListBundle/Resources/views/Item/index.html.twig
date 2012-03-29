@@ -1,0 +1,19 @@
+{% extends 'FabfotoShoppingListBundle::layoutMobile.html.twig'%}
+{% block content %}
+<h1>Remote list</h1>
+  
+    <ul data-role="listview" data-inset="true">
+        {% for entity in entities %}
+            <li><a href="{{ path('item_show', { 'id': entity.id }) }}">{{ entity.name }}</a></li>
+        {% endfor %}
+    </ul>
+<h1>Local list</h1>
+    <ul id="listLocal" data-role="listview" data-inset="true">
+    
+    </ul>
+<!--Action disponible-->
+
+        <a id="showLocalyButton" data-role="button" onclick="displayLocallyItem()" data-inline="true">Show locally Database</a>
+        <a href="{{ path('item_new') }}" data-role="button" data-icon="plus" data-inline="true">New TODO</a>
+
+{% endblock content %}

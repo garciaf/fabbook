@@ -1,0 +1,13 @@
+<!--<script>-->
+function synchronizeToServer(object){
+    jQuery.ajax({
+        type: "POST",
+        url:"{{path('items_sync')}}",
+        data:object,
+        success: function(data) {
+            $('.result').html(data);
+            console.log('Load was performed.');
+        }
+    });
+}
+<!--</script>-->

@@ -25,17 +25,9 @@ class Item
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="remote_id", type="integer")
+     * @ORM\Column(name="remote_id", type="string", length=26)
      */
     private $remoteId;
-
-    /**
-     * @var datetime $_lastChange
-     *
-     * @ORM\Column(name="_lastChange", type="datetime")
-     * @Gedmo\Timestampable(on="update")
-     */
-    private $_lastChange;
 
     /**
      * @var string $name
@@ -44,166 +36,11 @@ class Item
      */
     private $name;
 
-    /**
-     * @var boolean $checked
-     *
-     * @ORM\Column(name="checked", type="boolean")
-     */
-    private $checked;
 
-    /**
-     * @var boolean $favorite
-     *
-     * @ORM\Column(name="favorite", type="boolean")
-     */
-    private $favorite;
-
-    /**
-     * @var boolean $onlist
-     *
-     * @ORM\Column(name="onlist", type="boolean")
-     */
-    private $onlist;
-
-    /**
-     * @var integer $quantity
-     *
-     * @ORM\Column(name="quantity", type="integer")
-     */
-    private $quantity;
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set _lastChange
-     *
-     * @param datetime $lastChange
-     */
-    public function setLastChange($lastChange)
-    {
-        $this->_lastChange = $lastChange;
-    }
-
-    /**
-     * Get _lastChange
-     *
-     * @return datetime 
-     */
-    public function getLastChange()
-    {
-        return $this->_lastChange;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set checked
-     *
-     * @param boolean $checked
-     */
-    public function setChecked($checked)
-    {
-        $this->checked = $checked;
-    }
-
-    /**
-     * Get checked
-     *
-     * @return boolean 
-     */
-    public function getChecked()
-    {
-        return $this->checked;
-    }
-
-    /**
-     * Set favorite
-     *
-     * @param boolean $favorite
-     */
-    public function setFavorite($favorite)
-    {
-        $this->favorite = $favorite;
-    }
-
-    /**
-     * Get favorite
-     *
-     * @return boolean 
-     */
-    public function getFavorite()
-    {
-        return $this->favorite;
-    }
-
-    /**
-     * Set onlist
-     *
-     * @param boolean $onlist
-     */
-    public function setOnlist($onlist)
-    {
-        $this->onlist = $onlist;
-    }
-
-    /**
-     * Get onlist
-     *
-     * @return boolean 
-     */
-    public function getOnlist()
-    {
-        return $this->onlist;
-    }
-
-    /**
-     * Set quantity
-     *
-     * @param integer $quantity
-     */
-    public function setQuantity($quantity)
-    {
-        $this->quantity = $quantity;
-    }
-
-    /**
-     * Get quantity
-     *
-     * @return integer 
-     */
-    public function getQuantity()
-    {
-        return $this->quantity;
+    
+    public function __construct(){
+        $this->setRemoteId(uniqid("",true));
     }
 
     
-    public function get_lastChange(){
-        return $this->_lastChange;
-    }
 }

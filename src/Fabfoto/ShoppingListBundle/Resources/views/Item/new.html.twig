@@ -1,0 +1,16 @@
+{% extends 'FabfotoShoppingListBundle::layoutMobile.html.twig'%}
+{% block content %}
+<h1>Item creation</h1>
+
+<form action="{{ path('item_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+        <button type="submit" data-inline="true">Create</button>
+
+<a id="saveLocalyButton" data-role="button" onclick="saveItem()" data-inline="true">Save localy</a>
+<a id="showLocalyButton" data-role="button" onclick="removeAllEntry()"data-inline="true">Clear Database</a>
+<a id="syncButton" data-role="button" onclick="sendStoreData()"data-inline="true">Sync</a>
+
+<a href="{{ path('item') }}" data-role="button" data-icon="back"> Back to the list </a>
+</form>        
+
+{% endblock content %}
