@@ -9,5 +9,16 @@ function synchronizeToServer(object){
             console.log('Load was performed.');
         }
     });
+    refreshData();
 }
+function refreshData(){
+        jQuery.ajax({
+        type: "POST",
+        url:"{{path('item_refresh')}}",
+        success: function(data) {
+            $('.result').html(data);
+            console.log('Load was performed.');
+        }
+    });
+}    
 <!--</script>-->

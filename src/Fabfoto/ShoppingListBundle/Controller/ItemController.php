@@ -9,21 +9,21 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Fabfoto\ShoppingListBundle\Entity\Item;
 use Fabfoto\ShoppingListBundle\Form\ItemType;
 use \Symfony\Component\HttpFoundation\Response as Response;
+
 /**
  * Item controller.
  *
  * @Route("/item")
  */
-class ItemController extends Controller
-{
+class ItemController extends Controller {
+
     /**
      * Lists all Item entities.
      *
      * @Route("/", name="item")
      * @Template()
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getEntityManager();
 
         $entities = $em->getRepository('FabfotoShoppingListBundle:Item')->findAll();
@@ -37,8 +37,7 @@ class ItemController extends Controller
      * @Route("/{id}/show", name="item_show")
      * @Template()
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('FabfotoShoppingListBundle:Item')->find($id);
@@ -50,8 +49,8 @@ class ItemController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        );
+            'entity' => $entity,
+            'delete_form' => $deleteForm->createView(),);
     }
 
     /**
@@ -60,14 +59,13 @@ class ItemController extends Controller
      * @Route("/new", name="item_new")
      * @Template()
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new Item();
-        $form   = $this->createForm(new ItemType(), $entity);
+        $form = $this->createForm(new ItemType(), $entity);
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView()
+            'form' => $form->createView()
         );
     }
 
@@ -78,11 +76,10 @@ class ItemController extends Controller
      * @Method("post")
      * @Template("FabfotoShoppingListBundle:Item:new.html.twig")
      */
-    public function createAction()
-    {
-        $entity  = new Item();
+    public function createAction() {
+        $entity = new Item();
         $request = $this->getRequest();
-        $form    = $this->createForm(new ItemType(), $entity);
+        $form = $this->createForm(new ItemType(), $entity);
         $form->bindRequest($request);
 
         if ($form->isValid()) {
@@ -91,12 +88,11 @@ class ItemController extends Controller
             $em->flush();
 
             return $this->redirect($this->generateUrl('item_show', array('id' => $entity->getId())));
-            
         }
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView()
+            'form' => $form->createView()
         );
     }
 
@@ -106,8 +102,7 @@ class ItemController extends Controller
      * @Route("/{id}/edit", name="item_edit")
      * @Template()
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('FabfotoShoppingListBundle:Item')->find($id);
@@ -120,8 +115,8 @@ class ItemController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -133,8 +128,7 @@ class ItemController extends Controller
      * @Method("post")
      * @Template("FabfotoShoppingListBundle:Item:edit.html.twig")
      */
-    public function updateAction($id)
-    {
+    public function updateAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('FabfotoShoppingListBundle:Item')->find($id);
@@ -143,7 +137,7 @@ class ItemController extends Controller
             throw $this->createNotFoundException('Unable to find Item entity.');
         }
 
-        $editForm   = $this->createForm(new ItemType(), $entity);
+        $editForm = $this->createForm(new ItemType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         $request = $this->getRequest();
@@ -158,8 +152,8 @@ class ItemController extends Controller
         }
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -170,8 +164,7 @@ class ItemController extends Controller
      * @Route("/{id}/delete", name="item_delete")
      * @Method("post")
      */
-    public function deleteAction($id)
-    {
+    public function deleteAction($id) {
         $form = $this->createDeleteForm($id);
         $request = $this->getRequest();
 
@@ -192,32 +185,60 @@ class ItemController extends Controller
         return $this->redirect($this->generateUrl('item'));
     }
 
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
         return $this->createFormBuilder(array('id' => $id))
-            ->add('id', 'hidden')
-            ->getForm()
+                        ->add('id', 'hidden')
+                        ->getForm()
         ;
     }
-    
+
     /**
-     * Creates a new Item entity.
+     * Synchronize item in this function we prefer local change instead of remote change.
      *
      * @Route("/sync", name="items_sync")
      * @Method("post")
-     * @Template("FabfotoShoppingListBundle:Item:new.html.twig")
      */
-    public function synchronizeAction()
-    {
-        $item  = new Item();
+    public function synchronizeAction() {
         $request = $this->getRequest();
-        
+        $em = $this->getDoctrine()->getEntityManager();
+        $item = $em->getRepository('FabfotoShoppingListBundle:Item')->findOneByRemoteId($request->get('id'));
+        if (!$item) {
+            $item = new Item();
+        }
         $item->setRemoteId($request->get('id'));
         $item->setName($request->get('name'));
-        
+
         $em = $this->getDoctrine()->getEntityManager();
         $em->persist($item);
         $em->flush();
-       return new Response(json_encode("ok"));
+        return new Response(json_encode("ok"));
     }
+
+    /**
+     * Lists all Item entities.
+     *
+     * @Route("/refresh", name="item_refresh")
+     * @Method("post")
+     */
+    public function refreshAction() {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $entities = $em->getRepository('FabfotoShoppingListBundle:Item')->findAll();
+
+        return new Response(json_encode($this->serializeItem($entities)));
+    }
+
+    private function serializeItem(array $items) {
+        $result = array();
+        foreach ($items as $item) {
+
+            $result[] = array(
+                "id" => $item->getId(),
+                "remoteId" => $item->getRemoteId(),
+                "name" => $item->getName(),
+            );
+        }
+        return $result;
+    }
+
 }

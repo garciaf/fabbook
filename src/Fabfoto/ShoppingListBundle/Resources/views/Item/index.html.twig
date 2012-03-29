@@ -4,7 +4,7 @@
   
     <ul data-role="listview" data-inset="true">
         {% for entity in entities %}
-            <li><a href="{{ path('item_show', { 'id': entity.id }) }}">{{ entity.name }}</a></li>
+            <li><a href="{{ path('item_edit', { 'id': entity.id }) }}">{{ entity.name }}</a></li>
         {% endfor %}
     </ul>
 <h1>Local list</h1>

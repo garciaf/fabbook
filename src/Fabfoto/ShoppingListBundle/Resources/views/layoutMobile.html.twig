@@ -25,7 +25,11 @@
         <script type="text/javascript" src="{{ path('javascript')}}" type="application/javascript"></script>
         <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery-1.6.4.min.js')}}"></script>
         <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery.mobile-1.0rc2.min.js')}}"></script>
-        
+        <script>
+            jQuery(document).ready(function(){
+                displayLocallyItem();
+            });
+        </script>
         {%endblock importjs%}
     </head> 
 
