@@ -25,7 +25,7 @@ class Item
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="remote_id", type="string", length=26)
+     * @ORM\Column(name="remote_id", type="string", length=26, unique=true)
      */
     private $remoteId;
 
@@ -36,7 +36,13 @@ class Item
      */
     private $name;
 
-
+    /**
+     * @var datetime $updatedAt
+     *
+     * @ORM\Column(name="updatedAt", type="datetime", nullable=true )
+     * @Gedmo\Timestampable(on="update")
+     */
+    private $updatedAt;
     
     public function __construct(){
         $this->setRemoteId(uniqid("",true));
@@ -90,5 +96,25 @@ class Item
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param datetime $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return datetime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

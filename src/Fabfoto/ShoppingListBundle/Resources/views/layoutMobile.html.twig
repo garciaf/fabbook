@@ -1,6 +1,6 @@
 {%block header %}
 <!DOCTYPE html> 
-<html> 
+<html manifest="{{path('manifest')}}"> 
     <head> 
         <title>{% block titlepage %}Fabfoto {% endblock titlepage %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">  
@@ -17,6 +17,7 @@
         <script type="text/javascript" src="{{ asset('bundles/fabfotoshoppinglist/persistencejs/lib/persistence.js')}}" type="application/javascript"></script>
         <script type="text/javascript" src="{{ asset('bundles/fabfotoshoppinglist/persistencejs/lib/persistence.store.sql.js')}}" type="application/javascript"></script>
         <script type="text/javascript" src="{{ asset('bundles/fabfotoshoppinglist/persistencejs/lib/persistence.store.websql.js')}}" type="application/javascript"></script>        
+       <script type="text/javascript" src="{{ asset('bundles/fabfotoshoppinglist/persistencejs/lib/persistence.store.memory.js')}}" type="application/javascript"></script>        
         <script type="text/javascript" src="{{ asset('bundles/fabfotoshoppinglist/persistencejs/lib/persistence.sync.js')}}" type="application/javascript"></script>
 
         <script type="text/javascript" src="{{ asset('bundles/fabfotoshoppinglist/persistencejs/myscript/initiateDataBase.js')}}" type="application/javascript"></script>

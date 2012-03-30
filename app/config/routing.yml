@@ -6,7 +6,7 @@ FabfotoAdminBundle_Item:
 FabfotoShoppingListBundle:
     resource: "@FabfotoShoppingListBundle/Controller/"
     type:     annotation
-    prefix:   /admin
+    prefix:   /list
 
 FabfotoAdminBundle_Message:
     resource: "@FabfotoAdminBundle/Controller/Message/"

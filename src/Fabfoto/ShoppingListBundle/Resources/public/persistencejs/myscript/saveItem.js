@@ -1,3 +1,12 @@
+var webappCache = window.applicationCache;
+
+webappCache.addEventListener("updateready", updateCache, false);
+webappCache.update();
+
+function updateCache() {
+    webappCache.swapCache();
+    alert("Une nouvelle version est disponible.\nVeuillez rafraîchir la page pour mettre à jour.");
+}
 function saveItem(){
     var item = new Item();
     
@@ -58,8 +67,9 @@ function sendStoreData(){
     itemsCollection.list('', function(items){
         items.forEach(function(item){
             synchronizeToServer(item.toJSON());
-            persistence.remove(item);
+                persistence.remove(item);
         });
         persistence.flush();
+        updateCache();
     });
 }

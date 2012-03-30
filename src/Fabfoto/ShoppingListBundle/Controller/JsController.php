@@ -12,12 +12,12 @@ use \Symfony\Component\HttpFoundation\Response as Response;
 class JsController extends Controller
 {
     /**
-     * @Route("/sync.js", name="javascript"))
+     * @Route("javascript/sync", name="javascript", defaults={"_format"="js"}))
      * @Template()
      */
     public function jsAction()
     {
-        return $this->render("FabfotoShoppingListBundle::syncScript.js.twig");
+        return $this->render("FabfotoShoppingListBundle:Javascript:syncScript.js.twig");
     }
                
 }
