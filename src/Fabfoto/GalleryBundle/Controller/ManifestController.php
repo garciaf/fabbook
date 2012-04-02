@@ -5,7 +5,7 @@ namespace Fabfoto\GalleryBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
+use \Symfony\Component\HttpFoundation\Response as Response;
 /**
  * Article controller.
  *
@@ -18,6 +18,10 @@ class ManifestController extends Controller
      */
     public function buildManifestAction()
     {
+       $response = new Response();
+       $response->headers->set('Content-Type', 'text/cache-manifest');
+       $response->sendHeaders();
+
         $news = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Article')
@@ -26,11 +30,11 @@ class ManifestController extends Controller
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->findBy(array(), array('createdAt'=> 'DESC'));
-        return $this->render('FabfotoGalleryBundle:Manifest:manifest.html.twig',
+        return $this->render('FabfotoGalleryBundle:Manifest:manifest.txt.twig',
                         array(
                     'articles' => $articles,
                     'news' => $news
-                ));
+                ), $response);
     }
     /**
      * @Route("offlinepage", name="manifest_offline")
