@@ -39,6 +39,7 @@ class AppKernel extends Kernel
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Fabfoto\UserBundle\FabfotoUserBundle(),
+            new Admingenerator\UserBundle\AdmingeneratorUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test','prod'))) {

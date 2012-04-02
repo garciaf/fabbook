@@ -21,7 +21,7 @@ class User extends BaseUser
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string $name
@@ -33,7 +33,7 @@ class User extends BaseUser
     /**
      * @var string $firstname
      *
-     * @ORM\Column(name="firstname", type="string", length=255)
+     * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
      */
     private $firstname;
     
@@ -45,63 +45,63 @@ class User extends BaseUser
     /**
      * @var string $mail
      *
-     * @ORM\Column(name="mail", type="string", length=255)
+     * @ORM\Column(name="mail", type="string", length=255, nullable=true)
      */
     private $mail;
 
      /**
      * @var string $firstname
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     private $title;
     
     /**
      * @var text $description
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
     /**
      * @var string $googleLink
      *
-     * @ORM\Column(name="googleLink", type="string", length=255)
+     * @ORM\Column(name="googleLink", type="string", length=255, nullable=true)
      */
     private $googleLink;
 
     /**
      * @var string $facebookLink
      *
-     * @ORM\Column(name="facebookLink", type="string", length=255)
+     * @ORM\Column(name="facebookLink", type="string", length=255, nullable=true)
      */
     private $facebookLink;
 
     /**
      * @var string $gitHubLink
      *
-     * @ORM\Column(name="gitHubLink", type="string", length=255)
+     * @ORM\Column(name="gitHubLink", type="string", length=255, nullable=true)
      */
     private $gitHubLink;
 
     /**
      * @var string $linkedLink
      *
-     * @ORM\Column(name="linkedLink", type="string", length=255)
+     * @ORM\Column(name="linkedLink", type="string", length=255, nullable=true)
      */
     private $linkedLink;
 
     /**
      * @var string $twitterLink
      *
-     * @ORM\Column(name="twitterLink", type="string", length=255)
+     * @ORM\Column(name="twitterLink", type="string", length=255, nullable=true)
      */
     private $twitterLink;
 
     /**
      * @var string $firstname
      *
-     * @ORM\Column(name="phone", type="string", length=255)
+     * @ORM\Column(name="phone", type="string", length=255, nullable=true)
      */
     private $phone;
     
@@ -354,5 +354,13 @@ class User extends BaseUser
     public function getSlug()
     {
         return $this->slug;
+    }
+    
+    public function getExpiresAt(){
+        return $this->expiresAt;
+    }
+    
+    public function getCredentialsExpireAt(){
+        return $this->credentialsExpireAt;
     }
 }

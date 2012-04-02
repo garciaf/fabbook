@@ -116,6 +116,8 @@ admingenerator_generator:
     use_propel: false
     use_doctrine_orm: true
     use_doctrine_odm: false
+admingenerator_user:
+    login_template: AdmingeneratorGeneratorBundle::base_login_assetic_less.html.twig
 genemu_form:
     tinymce:
         script_url: '/bundles/fabfotogallery/tiny_mce/tiny_mce.js'      
@@ -124,4 +126,7 @@ genemu_form:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: Fabfoto\UserBundle\Entity\User        
+    user_class: Fabfoto\UserBundle\Entity\User     
+    registration:
+        form:
+            type: fabfoto_user_registration    

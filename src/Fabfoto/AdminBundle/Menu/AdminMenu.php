@@ -42,9 +42,11 @@ class AdminMenu
         $blog->addChild('Tag', array('route' => 'Fabfoto_AdminBundle_Tag_list'));
         $blog->addChild('Messages', array('route' => 'Fabfoto_AdminBundle_Message_list'));
         
-        //User Part
+        //Author Part
         $author = $menu->addChild('About', array('route' => 'Fabfoto_AdminBundle_Author_list'));
         
+        //User Part
+        $user = $menu->addChild('User', array('route' => 'Fabfoto_AdminBundle_User_list'));
         return $menu;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Fabfoto\UserBundle\Entity;
 
+use FOS\UserBundle\Entity\User as BaseUser;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -11,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="fos_user")
  * @ORM\Entity(repositoryClass="Fabfoto\UserBundle\Entity\UserRepository")
  */
-class User
+class User extends BaseUser
 {
     /**
      * @var integer $id
@@ -20,7 +21,7 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string $name
@@ -32,7 +33,7 @@ class User
     /**
      * @var string $firstname
      *
-     * @ORM\Column(name="firstname", type="string", length=255)
+     * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
      */
     private $firstname;
     
@@ -44,63 +45,63 @@ class User
     /**
      * @var string $mail
      *
-     * @ORM\Column(name="mail", type="string", length=255)
+     * @ORM\Column(name="mail", type="string", length=255, nullable=true)
      */
     private $mail;
 
      /**
      * @var string $firstname
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     private $title;
     
     /**
      * @var text $description
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
     /**
      * @var string $googleLink
      *
-     * @ORM\Column(name="googleLink", type="string", length=255)
+     * @ORM\Column(name="googleLink", type="string", length=255, nullable=true)
      */
     private $googleLink;
 
     /**
      * @var string $facebookLink
      *
-     * @ORM\Column(name="facebookLink", type="string", length=255)
+     * @ORM\Column(name="facebookLink", type="string", length=255, nullable=true)
      */
     private $facebookLink;
 
     /**
      * @var string $gitHubLink
      *
-     * @ORM\Column(name="gitHubLink", type="string", length=255)
+     * @ORM\Column(name="gitHubLink", type="string", length=255, nullable=true)
      */
     private $gitHubLink;
 
     /**
      * @var string $linkedLink
      *
-     * @ORM\Column(name="linkedLink", type="string", length=255)
+     * @ORM\Column(name="linkedLink", type="string", length=255, nullable=true)
      */
     private $linkedLink;
 
     /**
      * @var string $twitterLink
      *
-     * @ORM\Column(name="twitterLink", type="string", length=255)
+     * @ORM\Column(name="twitterLink", type="string", length=255, nullable=true)
      */
     private $twitterLink;
 
     /**
      * @var string $firstname
      *
-     * @ORM\Column(name="phone", type="string", length=255)
+     * @ORM\Column(name="phone", type="string", length=255, nullable=true)
      */
     private $phone;
     
@@ -334,4 +335,24 @@ class User
         return $this->phone;
     }
 
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
 }
