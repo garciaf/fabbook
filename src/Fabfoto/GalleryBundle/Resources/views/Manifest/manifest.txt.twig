@@ -1,0 +1,33 @@
+CACHE MANIFEST
+
+# version
+
+# Style 
+{{asset('bundles/fabfotogallery/css/fabbook.css')}}
+{{ asset('bundles/fabfotogallery/jquery.mobile-1.0.1/jquery.mobile.structure-1.0.1.css')}}
+{{ asset('bundles/fabfotogallery/jquery.mobile-1.0.1/images/icons-18-white.png')}}
+
+#Javascript        
+{{ asset('bundles/fabfotogallery/jquery/jquery-1.7.1.js')}}
+{{ asset('bundles/fabfotogallery/jquery.mobile-1.0.1/jquery.mobile-1.0.1.js')}}
+
+#index new
+{{ path('index_mobile') }}
+#link to each news 
+{% for new in news %}
+{{ path('show_article_mobile', { 'id': new.id }) }}
+    #created the {{ new.createdAt | date(constant('DATE_RFC822')) }}
+{% endfor %}
+
+#index of blog 
+{{ path('index_blog_mobile')}}
+{% for article in articles %}
+{{ path('show_article_blog_mobile', { 'slugblog': article.slugblog }) }}
+    #created the {{ article.createdAt | date(constant('DATE_RFC822')) }} updated the {{ article.updatedAt | date(constant('DATE_RFC822')) }}
+{% endfor %}
+
+FALLBACK:
+{{ path('albums_mobile')}} {{ path('manifest_offline')}}
+{{ path('index')}} {{ path('manifest_offline')}}
+NETWORK:
+*

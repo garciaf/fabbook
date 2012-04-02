@@ -91,7 +91,7 @@
 [MopaBootstrapBundle]
     git=http://github.com/phiamo/MopaBootstrapBundle.git
     target=/bundles/Mopa/BootstrapBundle
-
+    version=origin/v2.x_sf2.0
 [MopaBarcodeBundle]
     git=git://github.com/garciaf/MopaBarcodeBundle.git
     target=/bundles/Mopa/BarcodeBundle
