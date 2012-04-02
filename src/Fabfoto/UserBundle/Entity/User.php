@@ -5,7 +5,8 @@ namespace Fabfoto\UserBundle\Entity;
 use FOS\UserBundle\Entity\User as BaseUser;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\Common\Collections\Collection;
+use Fabfoto\UserBundle\Entity\Portrait as Portrait;
 /**
  * Fabfoto\UserBundle\Entity\User
  *
@@ -55,6 +56,12 @@ class User extends BaseUser
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     private $title;
+    
+    /**
+     *
+     * @ORM\OneToOne(targetEntity = "Portrait")
+     */
+    private $portrait;
     
     /**
      * @var text $description
@@ -362,5 +369,25 @@ class User extends BaseUser
     
     public function getCredentialsExpireAt(){
         return $this->credentialsExpireAt;
+    }
+
+    /**
+     * Set portrait
+     *
+     * @param Fabfoto\UserBundle\Entity\Picture $portrait
+     */
+    public function setPortrait(\Fabfoto\UserBundle\Entity\Picture $portrait)
+    {
+        $this->portrait = $portrait;
+    }
+
+    /**
+     * Get portrait
+     *
+     * @return Fabfoto\UserBundle\Entity\Picture 
+     */
+    public function getPortrait()
+    {
+        return $this->portrait;
     }
 }
