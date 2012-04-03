@@ -13,7 +13,6 @@ class RegistrationFormType extends BaseType
         $builder
             ->add('name')
             ->add('firstname')
-            ->add('mail')
             ->add('title')
             ->add('description')
             ->add('googleLink')

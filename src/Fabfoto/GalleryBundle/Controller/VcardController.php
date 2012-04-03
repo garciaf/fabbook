@@ -35,5 +35,26 @@ class VcardController extends Controller
             return $response;
          
     }
- 
+    /**
+     * @Route("{slug}/vcard",defaults={"_format"="vcf"}, name="show_vcard_from")
+     * 
+     */
+    public function showVcardAction($slug)
+    {
+            $author = $this
+                ->getDoctrine()
+                ->getRepository('FabfotoUserBundle:User')
+                ->findOneBy(array(
+                    'slug' => $slug
+                ));
+            $response = new Response();
+            $response->setStatusCode(200);
+            $response->headers->set('Content-Type','text/x-vcard');
+            $response->headers->set('Content-Disposition', 'attachment;filename="'.$author->getSlug().'Vcard.vcf"');
+            
+            $vcard=$author->getVcard();
+            $response->setContent($vcard);
+            return $response;
+         
+    }
 }

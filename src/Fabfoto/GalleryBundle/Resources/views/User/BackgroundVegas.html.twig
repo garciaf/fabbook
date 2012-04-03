@@ -1,0 +1,19 @@
+<script>
+
+{% if backgrounds.count>1  %}
+  $.vegas('slideshow', {
+  delay:8000,    
+  backgrounds:[
+{% for background in backgrounds %}
+    { src:'/{{background.webpath}}' , fade:4000 },
+{% endfor %}
+
+  ]
+});
+{% endif %}
+{% if backgrounds.count == 1  %}
+$.vegas({
+  src:'/{{backgrounds[0].webpath}}'
+});
+{% endif %}
+</script>

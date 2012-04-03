@@ -43,12 +43,6 @@ class User extends BaseUser
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
-    /**
-     * @var string $mail
-     *
-     * @ORM\Column(name="mail", type="string", length=255, nullable=true)
-     */
-    private $mail;
 
      /**
      * @var string $firstname
@@ -58,8 +52,7 @@ class User extends BaseUser
     private $title;
     
     /**
-     *
-     * @ORM\OneToOne(targetEntity = "Portrait")
+     * @ORM\OneToMany(targetEntity = "Portrait",mappedBy="user")
      */
     private $portrait;
     
@@ -162,25 +155,6 @@ class User extends BaseUser
         return $this->firstname;
     }
 
-    /**
-     * Set mail
-     *
-     * @param string $mail
-     */
-    public function setMail($mail)
-    {
-        $this->mail = $mail;
-    }
-
-    /**
-     * Get mail
-     *
-     * @return string 
-     */
-    public function getMail()
-    {
-        return $this->mail;
-    }
 
     /**
      * Set title
@@ -374,9 +348,9 @@ class User extends BaseUser
     /**
      * Set portrait
      *
-     * @param Fabfoto\UserBundle\Entity\Picture $portrait
+     * @param Fabfoto\UserBundle\Entity\Portrait $portrait
      */
-    public function setPortrait(\Fabfoto\UserBundle\Entity\Picture $portrait)
+    public function setPortrait(\Fabfoto\UserBundle\Entity\Portrait $portrait)
     {
         $this->portrait = $portrait;
     }
@@ -384,10 +358,48 @@ class User extends BaseUser
     /**
      * Get portrait
      *
-     * @return Fabfoto\UserBundle\Entity\Picture 
+     * @return Fabfoto\UserBundle\Entity\Portrait 
      */
     public function getPortrait()
     {
         return $this->portrait;
+    }
+    public function __construct()
+    {
+        parent::__construct();
+        $this->portrait = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add portrait
+     *
+     * @param Fabfoto\UserBundle\Entity\Portrait $portrait
+     */
+    public function addPortrait(\Fabfoto\UserBundle\Entity\Portrait $portrait)
+    {
+        $this->portrait[] = $portrait;
+    }
+    
+        /**
+     * Get the vcard of the contact
+     */
+    public function getVcard(){
+        return sprintf(          
+"BEGIN:VCARD
+VERSION:3.0
+N:%s;%s;;;
+FN:%s %s
+TITLE:%s
+TEL;TYPE=CELL,VOICE: %s
+TEL;TYPE=HOME,VOICE:%s
+EMAIL;TYPE=PREF,INTERNET:%s
+REV:20080424T195243Z
+END:VCARD", $this->getName(), $this->getFirstName(), 
+         $this->getFirstName(), $this->getName(), 
+         $this->getTitle(),
+         $this->getPhone(),
+         $this->getPhone(),
+         $this->getEmail());
+         
     }
 }

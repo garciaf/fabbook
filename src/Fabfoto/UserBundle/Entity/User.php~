@@ -58,8 +58,7 @@ class User extends BaseUser
     private $title;
     
     /**
-     *
-     * @ORM\OneToOne(targetEntity = "Picture",mappedBy="album")
+     * @ORM\OneToMany(targetEntity = "Portrait",mappedBy="user")
      */
     private $portrait;
     

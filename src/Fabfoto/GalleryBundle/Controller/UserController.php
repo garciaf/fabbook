@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller {
     /**
-     * @Route("/{slug}/about", name="show_user")
+     * @Route("/{slug}", name="show_user")
      */
     public function showAboutAction($slug) {
 
@@ -17,7 +17,7 @@ class UserController extends Controller {
                 ->getDoctrine()
                 ->getRepository('FabfotoUserBundle:User')
                 ->findOneBySlug($slug);
-        return $this->render('FabfotoGalleryBundle:Default:ShowAbout.html.twig', array(
+        return $this->render('FabfotoGalleryBundle:User:ShowAbout.html.twig', array(
                     'author' => $author
                 ));
     }
