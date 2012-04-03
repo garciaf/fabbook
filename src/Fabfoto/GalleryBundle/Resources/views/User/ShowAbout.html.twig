@@ -1,5 +1,5 @@
 {% extends 'FabfotoGalleryBundle::layoutUser.html.twig'%}
-{% block title %} About me {% endblock title %}
+{% block title %}{{author.firstName}} {{author.name}}{% endblock title %}
 {% block content %}
     <div id="about">
         <div id="about_name">{{author.firstName}} {{author.name}}</div>
@@ -29,7 +29,6 @@
         </div>
     </div>
 {% endblock content %}
-{% block stylePage%}"pageAbout"{% endblock stylePage%}
 {% block carroussel %}
 {% set backgrounds = author.portrait %}
 {% include 'FabfotoGalleryBundle:User:BackgroundVegas.html.twig' %}

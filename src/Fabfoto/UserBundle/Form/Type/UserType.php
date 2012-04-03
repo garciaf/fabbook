@@ -15,7 +15,7 @@ class UserType extends AbstractType
             ->add('name')
             ->add('firstname')
             ->add('title')
-            ->add('description')
+            ->add('description', 'genemu_tinymce')
             ->add('googleLink')
             ->add('facebookLink')
             ->add('gitHubLink')

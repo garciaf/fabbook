@@ -1,3 +1,5 @@
+{% extends 'FabfotoUserBundle::layoutUser.html.twig'%}
+{% block content %}
 <h1>Portrait creation</h1>
 
 <form action="{{ path('user_portrait_create') }}" method="post" {{ form_enctype(form) }}>
@@ -14,3 +16,4 @@
         </a>
     </li>
 </ul>
+{% endblock content %}

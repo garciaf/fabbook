@@ -15,7 +15,7 @@
         {%endblock importjs%}
     </head>
     <body>
-        <div id={% block stylePage%}"page"{% endblock stylePage%}>
+        <div id="pageAbout">
             {% if app.session.flashes %}
             <div id="flashes">
                 {% for type, message in app.session.flashes%}

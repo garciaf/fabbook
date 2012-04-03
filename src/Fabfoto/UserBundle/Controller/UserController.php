@@ -97,7 +97,6 @@ class UserController extends Controller
         }
 
         $editForm   = $this->createForm(new UserType(), $entity);
-        $deleteForm = $this->createDeleteForm($id);
 
         $request = $this->getRequest();
 
@@ -113,7 +112,6 @@ class UserController extends Controller
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         );
     }
 

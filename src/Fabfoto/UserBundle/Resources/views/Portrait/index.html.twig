@@ -1,4 +1,7 @@
+{% extends 'FabfotoUserBundle::layoutUser.html.twig'%}
+{% block content %}
 <h1>Portrait list</h1>
+<div class="main_content">
 
 <table class="records_list">
     <thead>
@@ -32,11 +35,12 @@
     {% endfor %}
     </tbody>
 </table>
-
-<ul>
+</div>
+<ul class="actions">
     <li>
-        <a href="{{ path('user_portrait_new') }}">
+        <a class="new" href="{{ path('user_portrait_new') }}">
             Create a new entry
         </a>
     </li>
 </ul>
+{% endblock content %}

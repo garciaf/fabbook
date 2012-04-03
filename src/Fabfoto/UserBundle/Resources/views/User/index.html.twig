@@ -1,25 +1,11 @@
-<h1>User list</h1>
-
+{% extends 'FabfotoUserBundle::layoutUser.html.twig'%}
+{% block content %}
+<h1>Your Profile</h1>
+<div class="main_content">
 <table class="records_list">
     <thead>
         <tr>
             <th>Username</th>
-            <th>Usernamecanonical</th>
-            <th>Email</th>
-            <th>Emailcanonical</th>
-            <th>Enabled</th>
-            <th>Salt</th>
-            <th>Password</th>
-            <th>Lastlogin</th>
-            <th>Locked</th>
-            <th>Expired</th>
-            <th>Expiresat</th>
-            <th>Confirmationtoken</th>
-            <th>Passwordrequestedat</th>
-            <th>Roles</th>
-            <th>Credentialsexpired</th>
-            <th>Credentialsexpireat</th>
-            <th>Id</th>
             <th>Name</th>
             <th>Firstname</th>
             <th>Slug</th>
@@ -38,27 +24,11 @@
     {% for entity in entities %}
         <tr>
             <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.username }}</a></td>
-            <td>{{ entity.usernameCanonical }}</td>
-            <td>{{ entity.email }}</td>
-            <td>{{ entity.emailCanonical }}</td>
-            <td>{{ entity.enabled }}</td>
-            <td>{{ entity.salt }}</td>
-            <td>{{ entity.password }}</td>
-            <td>{% if entity.lastLogin %}{{ entity.lastLogin|date('Y-m-d H:i:s') }}{% endif%}</td>
-            <td>{{ entity.locked }}</td>
-            <td>{{ entity.expired }}</td>
-            <td>{% if entity.expiresAt %}{{ entity.expiresAt|date('Y-m-d H:i:s') }}{% endif%}</td>
-            <td>{{ entity.confirmationToken }}</td>
-            <td>{% if entity.passwordRequestedAt %}{{ entity.passwordRequestedAt|date('Y-m-d H:i:s') }}{% endif%}</td>
-            <td>{{ entity.roles }}</td>
-            <td>{{ entity.credentialsExpired }}</td>
-            <td>{% if entity.credentialsExpireAt %}{{ entity.credentialsExpireAt|date('Y-m-d H:i:s') }}{% endif%}</td>
-            <td>{{ entity.id }}</td>
             <td>{{ entity.name }}</td>
             <td>{{ entity.firstname }}</td>
             <td>{{ entity.slug }}</td>
             <td>{{ entity.title }}</td>
-            <td>{{ entity.description }}</td>
+            <td>{{ entity.description | raw }}</td>
             <td>{{ entity.googleLink }}</td>
             <td>{{ entity.facebookLink }}</td>
             <td>{{ entity.gitHubLink }}</td>
@@ -66,7 +36,7 @@
             <td>{{ entity.twitterLink }}</td>
             <td>{{ entity.phone }}</td>
             <td>
-                <ul>
+                <ul class="actions">
                     <li>
                         <a href="{{ path('user_show', { 'id': entity.id }) }}">show</a>
                     </li>
@@ -79,4 +49,5 @@
     {% endfor %}
     </tbody>
 </table>
-
+</div>
+{% endblock content %}
