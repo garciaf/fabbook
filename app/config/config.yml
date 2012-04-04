@@ -88,6 +88,7 @@ knp_last_tweets:
         options:
             cache_name: knp_last_tweets
 avalanche_imagine:
+    source_root:  %kernel.root_dir%/../www
     web_root:     %kernel.root_dir%/../www
     cache_prefix: media/cache
     driver:       gd
