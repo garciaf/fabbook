@@ -17,38 +17,22 @@ use Fabfoto\UserBundle\Form\Type\UserType;
 class UserController extends Controller
 {
     /**
-     * Lists all User entities.
-     *
-     * @Route("/", name="user")
-     * @Template()
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-        $currentUser = $this->get('security.context')->getToken()->getUser();
-        $entities = $em->getRepository('FabfotoUserBundle:User')
-                ->findById($currentUser->getId());
-
-        return array('entities' => $entities);
-    }
-
-    /**
      * Finds and displays a User entity.
      *
-     * @Route("/{id}/show", name="user_show")
+     * @Route("/", name="user_show")
      * @Template()
      */
-    public function showAction($id)
+    public function showAction()
     {
+        $currentUser = $this->get('security.context')->getToken()->getUser();
+        
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('FabfotoUserBundle:User')->find($id);
+        $entity = $em->getRepository('FabfotoUserBundle:User')->find($currentUser->getId());
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
-
-
         return array(
             'entity'      => $entity,
             );
@@ -58,14 +42,16 @@ class UserController extends Controller
     /**
      * Displays a form to edit an existing User entity.
      *
-     * @Route("/{id}/edit", name="user_edit")
+     * @Route("/edit", name="user_edit")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction()
     {
+        $currentUser = $this->get('security.context')->getToken()->getUser();
+
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('FabfotoUserBundle:User')->find($id);
+        $entity = $em->getRepository('FabfotoUserBundle:User')->find($currentUser->getId());
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
@@ -82,15 +68,16 @@ class UserController extends Controller
     /**
      * Edits an existing User entity.
      *
-     * @Route("/{id}/update", name="user_update")
+     * @Route("/update", name="user_update")
      * @Method("post")
      * @Template("FabfotoUserBundle:User:edit.html.twig")
      */
-    public function updateAction($id)
+    public function updateAction()
     {
+        $currentUser = $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('FabfotoUserBundle:User')->find($id);
+        $entity = $em->getRepository('FabfotoUserBundle:User')->find($currentUser->getId());
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');

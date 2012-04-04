@@ -3,38 +3,28 @@
 <h1>Portrait list</h1>
 <div class="main_content">
 
-<table class="records_list">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Location</th>
-            <th>Createdat</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('user_portrait_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td><img width="100px" src="/{{ entity.webPath}}"/></td>
-            <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif%}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('user_portrait_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('user_portrait_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('user_portrait_delete', { 'id': entity.id }) }}">delete</a>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Preview</th>
+                <th>Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entity in entities %}
+            <tr>
+                <td><img width="100px" src="/{{ entity.webPath}}"/></td>
+                <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif%}</td>
+                <td class="actions">
+                    <a class="show" href="{{ path('user_portrait_show', { 'id': entity.id }) }}"></a>
+                    <a class="edit" href="{{ path('user_portrait_edit', { 'id': entity.id }) }}"></a>
+                    <a class="delete" href="{{ path('user_portrait_delete', { 'id': entity.id }) }}"></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 <ul class="actions">
     <li>

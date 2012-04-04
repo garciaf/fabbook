@@ -23,15 +23,15 @@
     </tbody>
 </table>
 
-<ul class="record_actions">
+<ul class="actions">
     <li>
         <a href="{{ path('user_portrait') }}">
-            Back to the list
+            My Pictures
         </a>
     </li>
     <li>
-        <a href="{{ path('user_portrait_edit', { 'id': entity.id }) }}">
-            Edit
+        <a href="{{ path('user_portrait_delete', { 'id': entity.id }) }}">
+            Delete
         </a>
     </li>
 
