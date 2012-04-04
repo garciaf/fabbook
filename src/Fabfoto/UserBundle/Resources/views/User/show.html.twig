@@ -16,6 +16,10 @@
             <td>{{ entity.username }}</td>
         </tr>
         <tr>
+            <th>Lien</th>
+            <td><a target="_blanck" href="{{ url('show_user', { 'slug': entity.slug }) }}">{{ url('show_user', { 'slug': entity.slug }) }}</a></td>
+        </tr>
+        <tr>
             <th>Name</th>
             <td>{{ entity.name }}</td>
         </tr>
