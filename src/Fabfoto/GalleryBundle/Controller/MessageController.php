@@ -21,7 +21,7 @@ class MessageController extends Controller
     /**
      * Lists all Message entities.
      *
-     * @Route("admin/messages", name="contact")
+     * @Route("admin/old/messages", name="contact")
      * @Template()
      */
     public function indexAction()
@@ -36,7 +36,7 @@ class MessageController extends Controller
     /**
      * Finds and displays a Message entity.
      *
-     * @Route("admin/{id}/showmessage", name="contact_show")
+     * @Route("admin/old/{id}/showmessage", name="contact_show")
      * @Template()
      */
     public function showAction($id)
@@ -115,7 +115,7 @@ class MessageController extends Controller
     /**
      * Displays a form to edit an existing Message entity.
      *
-     * @Route("/{id}/edit", name="contact_edit")
+     * @Route("/old/{id}/edit", name="contact_edit")
      * @Template()
      */
     public function editAction($id)
@@ -142,7 +142,7 @@ class MessageController extends Controller
     /**
      * Edits an existing Message entity.
      *
-     * @Route("admin/{id}/update", name="contact_update")
+     * @Route("admin/old/{id}/update", name="contact_update")
      * @Method("post")
      * @Template("FabfotoGalleryBundle:Message:edit.html.twig")
      */
@@ -183,7 +183,7 @@ class MessageController extends Controller
     /**
      * Deletes a Message entity.
      *
-     * @Route("admin/{id}/delete", name="contact_delete")
+     * @Route("admin/old/{id}/delete", name="contact_delete")
      * @Method("post")
      */
     public function deleteAction($id)

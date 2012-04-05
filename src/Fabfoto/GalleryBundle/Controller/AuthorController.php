@@ -12,7 +12,7 @@ use Fabfoto\GalleryBundle\Form\Type\AuthorType;
 /**
  * Author controller.
  *
- * @Route("/admin/author")
+ * @Route("/admin/old/author")
  */
 class AuthorController extends Controller
 {

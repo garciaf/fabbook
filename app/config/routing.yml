@@ -24,36 +24,36 @@ fos_user_change_password:
 FabfotoAdminBundle_User:
     resource: "@FabfotoAdminBundle/Controller/User/"
     type:     admingenerator
-    prefix:   /admin/bundle/user
+    prefix:   /admin/user
 FabfotoAdminBundle_Message:
     resource: "@FabfotoAdminBundle/Controller/Message/"
     type:     admingenerator
-    prefix:   /admin/bundle/message
+    prefix:   /admin/message
 FabfotoAdminBundle_Tag:
     resource: "@FabfotoAdminBundle/Controller/Tag/"
     type:     admingenerator
-    prefix:   /admin/bundle/tag
+    prefix:   /admin/tag
 FabfotoAdminBundle_Author:
     resource: "@FabfotoAdminBundle/Controller/Author/"
     type:     admingenerator
-    prefix:   /admin/bundle/author
+    prefix:   /admin/author
 FabfotoAdminBundle_Blog:
     resource: "@FabfotoAdminBundle/Controller/Blog/"
     type:     admingenerator
-    prefix:   /admin/bundle/blog
+    prefix:   /admin/blog
 FabfotoAdminBundle_News:
     resource: "@FabfotoAdminBundle/Controller/News/"
     type:     admingenerator
-    prefix:   /admin/bundle/news
+    prefix:   /admin/news
 FabfotoAdminBundle_Album:
     resource: "@FabfotoAdminBundle/Controller/Album/"
     type:     admingenerator
-    prefix:   /admin/bundle/album
+    prefix:   /admin/album
     
 FabfotoAdminBundle_Picture:
     resource: "@FabfotoAdminBundle/Controller/Picture/"
     type:     admingenerator
-    prefix:   /admin/bundle/picture
+    prefix:   /admin/picture
 
 FabfotoZendTweetBundle:
     resource: "@FabfotoZendTweetBundle/Controller/"

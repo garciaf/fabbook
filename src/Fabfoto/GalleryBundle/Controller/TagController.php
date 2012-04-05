@@ -12,7 +12,7 @@ use Fabfoto\GalleryBundle\Form\Type\TagType;
 /**
  * Tag controller.
  *
- * @Route("/admin/tags")
+ * @Route("/admin/old/tags")
  */
 class TagController extends Controller
 {

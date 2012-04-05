@@ -368,6 +368,7 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->portrait = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->addRole('ROLE_USER');
     }
     
     /**

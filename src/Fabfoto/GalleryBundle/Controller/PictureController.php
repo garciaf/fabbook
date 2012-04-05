@@ -13,7 +13,7 @@ use Symfony\Component\Finder\Finder;
 /**
  * Picture controller.
  *
- * @Route("/admin/picture")
+ * @Route("/admin/old/picture")
  */
 class PictureController extends Controller
 {
