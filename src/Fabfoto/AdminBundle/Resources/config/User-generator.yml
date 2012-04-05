@@ -51,13 +51,13 @@ builders:
   new:
     params:
       title: New object for AdminBundle
-      display: [username, enabled, locked, roles, name, portrait, firstname, title, description, googleLink, facebookLink, gitHubLink, linkedLink, twitterLink, phone]
+      display: [username, enabled, locked, roles, name, firstname, title, description, googleLink, facebookLink, gitHubLink, linkedLink, twitterLink, phone]
       actions:
         list: ~
   edit:
     params:
       title: You're editing the object "{{ User.name }}"
-      display: [username, enabled, locked, roles, name, portrait, firstname, title, description, googleLink, facebookLink, gitHubLink, linkedLink, twitterLink, phone]
+      display: [username, enabled, locked, roles, name, firstname, title, description, googleLink, facebookLink, gitHubLink, linkedLink, twitterLink, phone]
       actions:
         list: ~
   delete: ~
