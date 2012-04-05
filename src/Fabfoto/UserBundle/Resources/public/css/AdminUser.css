@@ -2715,3 +2715,22 @@ table.dashboard .dashboard_section hr {
 #body_content .full_size {
     width: 95%;
 }
+#form_field_user div {
+    margin: 1em;
+    padding: 1em;    
+}
+#form_field_user div label {
+    width: 20%;
+    float: left;
+}
+#form_field_user div input {
+    width: 70%;
+    float: left;
+}
+#form_field_user div textarea {
+    width: 70%;
+    float: left;
+}
+.required{
+    color: #932419;
+}

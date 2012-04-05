@@ -2,9 +2,11 @@
 {% block content %}
 <h1>User edit</h1>
 
-<form action="{{ path('user_update') }}" method="post" {{ form_enctype(edit_form) }}>
+<form action="{{ path('user_update') }}" method="post" {{ form_enctype(form) }}>
       <fieldset class="form_block form_fieldset_NONE">
-      {{ form_widget(edit_form) }}
+      <div id="form_field_user">
+      {{ form_widget(form) }}
+      </div>
       </fieldset>
       <ul class="actions">
         <li>
