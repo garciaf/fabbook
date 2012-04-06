@@ -42,7 +42,7 @@ class PDFController extends Controller
         return $pdfObj->Output($article->getSlugblog().'.pdf');
     }
      /**
-     * @Route("about", name="show_about_pdf")
+     * @Route("about/", name="show_about_pdf")
      * 
      */
     public function showAboutAction()
