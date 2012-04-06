@@ -381,7 +381,7 @@ class User extends BaseUser
         $this->portrait[] = $portrait;
     }
     
-        /**
+    /**
      * Get the vcard of the contact
      */
     public function getVcard(){

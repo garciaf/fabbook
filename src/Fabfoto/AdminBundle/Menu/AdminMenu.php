@@ -47,6 +47,7 @@ class AdminMenu
         
         //User Part
         $user = $menu->addChild('User', array('route' => 'Fabfoto_AdminBundle_User_list'));
+        $user->addChild('Portrait', array('route' => 'Fabfoto_AdminBundle_Portrait_list'));
         return $menu;
     }
 }
