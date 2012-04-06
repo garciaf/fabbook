@@ -13,7 +13,7 @@ use \Symfony\Component\HttpFoundation\Response as Response;
 class ManifestController extends Controller
 {
     /**
-     * @Route("manifest", name="manifest_mobile")
+     * @Route("manifest/", name="manifest_mobile")
      * @Template()
      */
     public function buildManifestAction()
@@ -37,7 +37,7 @@ class ManifestController extends Controller
                 ), $response);
     }
     /**
-     * @Route("offlinepage", name="manifest_offline")
+     * @Route("offlinepage/", name="manifest_offline")
      * @Template()
      */
     public function buikdOffLinePageAction(){

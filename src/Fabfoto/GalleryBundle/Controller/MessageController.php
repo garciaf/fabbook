@@ -60,7 +60,7 @@ class MessageController extends Controller
     /**
      * Displays a form to create a new Message entity.
      *
-     * @Route("contact", name="contact_new")
+     * @Route("contact/", name="contact_new")
      * @Template()
      */
     public function newAction()
@@ -79,7 +79,7 @@ class MessageController extends Controller
     /**
      * Creates a new Message entity.
      *
-     * @Route("create", name="contact_create")
+     * @Route("create/", name="contact_create")
      * @Method("post")
      * @Template("FabfotoGalleryBundle:Default:contact.html.twig")
      */

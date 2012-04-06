@@ -129,5 +129,7 @@ fos_user:
     firewall_name: main
     user_class: Fabfoto\UserBundle\Entity\User     
     registration:
+        confirmation:
+          enabled: true
         form:
             type: fabfoto_user_registration    
