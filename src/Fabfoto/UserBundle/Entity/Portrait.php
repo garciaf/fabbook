@@ -23,7 +23,7 @@ class Portrait
     }
     /**
      * @var string $location
-     * @Assert\File(maxSize="6000000")
+     * @Assert\File(maxSize="1M")
      */
     
     private $path;
