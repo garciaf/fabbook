@@ -12,10 +12,10 @@ class RegistrationFormType extends BaseType
         parent::buildForm($builder, $options);
         $builder
             ->add('name', 'text', array(
-                'label' => 'Name'
+                'label' => 'name'
             ))
             ->add('firstname', 'text', array(
-                'label' => 'Firstname'
+                'label' => 'firstname'
             ))
         ;
     }
