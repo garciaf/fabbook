@@ -1,0 +1,47 @@
+{%block header %}
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>{% block titlepage %}Fabbook User Admin {% endblock titlepage %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+        {% block importcss %}
+        {% endblock importcss %}
+        <link rel="stylesheet" href="{{ asset('bundles/fabfotouser/css/AdminUser.css')}}"/>
+        <link rel="stylesheet" href="{{asset('bundles/fabfotogallery/css/smoothness/jquery-ui-1.8.16.custom.css')}}" />
+
+        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery/jquery-1.7.1.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/js/jquery-ui-1.8.16.custom.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/tiny_mce/jquery.tinymce.js') }}"></script>
+            {% if form is defined %}
+                {{ form_javascript(form) }}
+            {% endif %}
+        {%block importjs%}
+        {%endblock importjs%}
+    </head> 
+
+{% endblock header %}
+    <body>
+        <div data-role="page" {% block optionpage %}{% endblock optionpage %} data-theme="c" > 
+            <div id="header" >
+                <h1>{% block title %}My account{%endblock title%}</h1>
+                    <ul id="main_navigation">
+                    <li><a class="sub main" href="{{path('user_portrait')}}">Photos</a> </li>
+                    <li><a class="sub main" href="{{path('user_show')}}">User</a> </li>
+                    <li><a class="sub main" href="{{path('fabfoto_logout')}}">Logout</a> </li>                     
+                    </ul>
+            </div> 
+            <div class="main_content" >
+                <div id="body_content">
+                {% block content %}
+                Welcome on Fabfoto Mobile
+                {% endblock %}
+                </div>
+            </div> 
+            <div data-role="footer" >
+                <div data-role="navbar" data-position="fixed" data-fullscreen="true">
+
+                </div><!-- /navbar -->
+            </div> 
+        </div> 
+    </body>
+</html>

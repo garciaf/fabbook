@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        {% block metainfo %}{% endblock metainfo %}
+        <title> {% block title %}Fabbook{%endblock title%}</title>
+        <link rel="stylesheet" media="all" href="{{ asset('bundles/fabfotogallery/css/style.css')}}" />
+        {%block importcss %}{%endblock importcss %}
+        <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/vegas/jquery.vegas.css')}}"/>
+        <link rel="icon" type="image/png" href="{{ asset('bundles/fabfotogallery/image/icon/iconemain.png')}}">
+        <script src="{{ asset('bundles/fabfotogallery/js/jquery.min.js')}}"></script>
+        <script src="{{ asset('bundles/fabfotogallery/vegas/jquery.vegas.js')}}"></script>
+
+        {%block importjs %}
+        {%endblock importjs%}
+    </head>
+    <body>
+        <div id="pageAbout">
+            {% if app.session.flashes %}
+            <div id="flashes">
+                {% for type, message in app.session.flashes%}
+                <div class="flash {{type}}">
+                    <div class="wrap">
+                        {{message}}
+                    </div>
+                </div>
+                {% endfor%}
+            </div>
+            {% endif%}
+
+            {% block content %}lipso lium{%endblock%}     
+
+            <div id="footer">
+               
+            </div>
+        </div>
+
+    {% block carroussel %}
+    {% set backgroundImage = asset('bundles/fabfotogallery/image/neutralBackground.png')%}
+    {% include 'FabfotoGalleryBundle:Default:Background.html.twig' %}
+    {% endblock carroussel %}
+
+    </body>
+</html>

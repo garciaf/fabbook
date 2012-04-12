@@ -1,0 +1,23 @@
+{% extends 'FabfotoUserBundle::layoutUser.html.twig'%}
+{% block content %}
+<h1>User edit</h1>
+
+<form action="{{ path('user_update') }}" method="post" {{ form_enctype(form) }}>
+      <fieldset class="form_block form_fieldset_NONE">
+      <div id="form_field_user">
+      {{ form_widget(form) }}
+      </div>
+      </fieldset>
+      <ul class="actions">
+        <li>
+            <input type="submit" class="submit_button" value="Save">
+        </li>
+        <li>
+            <a href="{{ path('user_show') }}">
+                My Profile
+            </a>
+        </li>
+    </ul>
+</form>
+
+{% endblock content %}

@@ -12,7 +12,7 @@ use Fabfoto\GalleryBundle\Form\Type\ArticleBlogType;
 /**
  * ArticleBlog controller.
  *
- * @Route("/admin/blog")
+ * @Route("/admin/old/blog")
  */
 class ArticleBlogController extends Controller
 {

@@ -1,0 +1,35 @@
+{% extends 'FabfotoUserBundle::layoutUser.html.twig'%}
+{% block content %}
+<h1>Portrait list</h1>
+<div class="main_content">
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Preview</th>
+                <th>Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entity in entities %}
+            <tr>
+                <td><img width="100px" src="{{ entity.webPath | apply_filter('thumb_square')}}"/></td>
+                <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif%}</td>
+                <td class="actions">
+                    <a class="show" href="{{ path('user_portrait_show', { 'id': entity.id }) }}"></a>
+                    <a class="delete" href="{{ path('user_portrait_delete', { 'id': entity.id }) }}"></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<ul class="actions">
+    <li>
+        <a class="new" href="{{ path('user_portrait_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends 'FabfotoUserBundle::layoutUser.html.twig'%}
+{% block content %}
+<h1>Portrait</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Location</th>
+            <td>{{ entity.location }}</td>
+        </tr>
+        <tr>
+            <th>Createdat</th>
+            <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Preview</th>
+            <td><img style="width: 100%;" src="/{{ entity.webPath }}"/></td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="actions">
+    <li>
+        <a href="{{ path('user_portrait') }}">
+            My Pictures
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('user_portrait_delete', { 'id': entity.id }) }}">
+            Delete
+        </a>
+    </li>
+
+</ul>
+{% endblock content %}

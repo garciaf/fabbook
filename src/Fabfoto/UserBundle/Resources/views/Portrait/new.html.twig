@@ -1,0 +1,23 @@
+{% extends 'FabfotoUserBundle::layoutUser.html.twig'%}
+{% block content %}
+<h1>Portrait creation</h1>
+
+<form action="{{ path('user_portrait_create') }}" method="post" {{ form_enctype(form) }}>
+      <fieldset class="form_block form_fieldset_NONE">
+        {{ form_widget(form) }}
+    </fieldset>
+
+    <ul class="actions">
+        <li>
+            <input type="submit"  class="submit_button" value="Save" >
+        </li>
+        <li>
+            <a href="{{ path('user_portrait') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
+</form>
+
+
+{% endblock content %}

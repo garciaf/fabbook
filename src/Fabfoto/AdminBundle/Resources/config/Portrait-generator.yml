@@ -1,0 +1,33 @@
+generator: admingenerator.generator.doctrine
+params:
+  model: Fabfoto\UserBundle\Entity\Portrait
+  namespace_prefix: Fabfoto
+  bundle_name: AdminBundle
+  fields: ~
+
+builders:
+  list:
+    params:
+      title: List for AdminBundle
+      display: ~
+      actions:
+        new: ~
+      object_actions:
+        edit: ~
+        delete: ~
+  filters:
+    params:
+      display: ~
+  new:
+    params:
+      title: New object for AdminBundle
+      display: ~
+      actions:
+        list: ~
+  edit:
+    params:
+      title: You're editing the object
+      display: ~
+      actions:
+        list: ~
+  delete: ~

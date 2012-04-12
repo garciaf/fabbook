@@ -1,0 +1,37 @@
+generator: admingenerator.generator.doctrine
+params:
+  model: Fabfoto\GalleryBundle\Entity\Article
+  namespace_prefix: Fabfoto
+  bundle_name: AdminBundle
+  fields: 
+    content:
+      formType: genemu_tinymce
+      addFormOptions:
+        required: false        
+
+builders:
+  list:
+    params:
+      title: List of News
+      display: ~
+      actions:
+        new: ~
+      object_actions:
+        edit: ~
+        delete: ~
+  filters:
+    params:
+      display: [ title, subtitle, createdAt, author]
+  new:
+    params:
+      title: New object for AdminBundle
+      display: [title, subtitle, content, author]
+      actions:
+        list: ~
+  edit:
+    params:
+      title: You're editing the object "{{ Article.title }}"
+      display: [title, subtitle, content, author]
+      actions:
+        list: ~
+  delete: ~

@@ -1,0 +1,2 @@
+{% extends_admingenerated "FabfotoAdminBundle:PictureList:index.html.twig" %}
+{% block list_td_column_location %}<img src="{{Picture.webpath| apply_filter('thumb_square') }}" width="50" height="50" alt="{{Picture}}" /> {% endblock %}

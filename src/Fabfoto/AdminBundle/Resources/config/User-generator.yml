@@ -1,0 +1,63 @@
+generator: admingenerator.generator.doctrine
+params:
+  model: Fabfoto\UserBundle\Entity\User
+  namespace_prefix: Fabfoto
+  bundle_name: AdminBundle
+  fields:
+    firstname: 
+      label: FistName
+    description:
+      formType: genemu_tinymce
+      addFormOptions:
+        required: true     
+    googleLink:
+      label: Google Plus
+      addFormOptions:
+        required: false
+    facebookLink:
+      label: Facebook
+      addFormOptions:
+        required: false      
+    gitHubLink:
+      label: GitHub
+      addFormOptions:
+        required: false      
+    twitterLink:
+      label: Twitter
+      addFormOptions:
+        required: false  
+    linkedLink:
+      label: Linked
+      addFormOptions:
+        required: false  
+    phone:
+      label: Phone Number
+      addFormOptions:
+        required: false       
+
+builders:
+  list:
+    params:
+      title: List for AdminBundle
+      display: [username, emailcanonical, lastLogin, enabled, locked, roles, name, firstname, title, phone]
+      actions:
+        new: ~
+      object_actions:
+        edit: ~ 
+        delete: ~
+  filters:
+    params:
+      display: ~
+  new:
+    params:
+      title: New object for AdminBundle
+      display: [username, enabled, locked, roles, name, firstname, title, description, googleLink, facebookLink, gitHubLink, linkedLink, twitterLink, phone]
+      actions:
+        list: ~
+  edit:
+    params:
+      title: You're editing the object "{{ User.name }}"
+      display: [username, enabled, locked, roles, name, firstname, title, description, googleLink, facebookLink, gitHubLink, linkedLink, twitterLink, phone]
+      actions:
+        list: ~
+  delete: ~

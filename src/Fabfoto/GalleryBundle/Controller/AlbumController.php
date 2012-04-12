@@ -12,7 +12,7 @@ use Fabfoto\GalleryBundle\Form\Type\AlbumType;
 /**
  * Album controller.
  *
- * @Route("/admin/albums")
+ * @Route("/admin/old/albums")
  */
 class AlbumController extends Controller
 {

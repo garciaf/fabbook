@@ -5,6 +5,10 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 
 $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
+    'Doctrine\\Bundle' => __DIR__.'/../vendor/bundles',
+    'Doctrine\\Common\\DataFixtures' => __DIR__.'/../vendor/doctrine-fixtures/lib',
+    'WhiteOctober\\PagerfantaBundle' => __DIR__.'/../vendor/bundles',
+    'TwigGenerator' => __DIR__.'/../vendor/twig-generator/src',
     'Symfony'          => array(__DIR__.'/../vendor/symfony/src', __DIR__.'/../vendor/bundles'),
     'Sensio'           => __DIR__.'/../vendor/bundles',
     'JMS'              => __DIR__.'/../vendor/bundles',
@@ -18,8 +22,6 @@ $loader->registerNamespaces(array(
     'Doctrine\\DBAL'             => __DIR__.'/../vendor/doctrine-dbal/lib',
     'Gregwar'         => __DIR__.'/../vendor/bundles',
     'Io'              => __DIR__.'/../vendor/bundles',
-    'Doctrine\\DBAL\\Migrations' => __DIR__.'/../vendor/doctrine-migrations/lib',
-    'Doctrine\\DBAL'             => __DIR__.'/../vendor/doctrine-dbal/lib',
     'Imagine'          => __DIR__.'/../vendor/imagine/lib',
     'Avalanche'        => __DIR__.'/../vendor/bundles',
     'Mopa'        => __DIR__.'/../vendor/bundles', 
@@ -33,7 +35,14 @@ $loader->registerNamespaces(array(
     'Zenstruck' => __DIR__.'/../vendor/bundles',
     'Stof'  => __DIR__.'/../vendor/bundles',
     'Gedmo' => __DIR__.'/../vendor/gedmo-doctrine-extensions/lib',
-    'CoreSphere'       => __DIR__.'/../vendor/bundles',
+    'Admingenerator'    => array(__DIR__.'/../src', __DIR__.'/../vendor/bundles'),
+    'Sensio\Bundle'     => __DIR__.'/../vendor/bundles',
+    'Knp\Menu'  => __DIR__.'/../vendor/KnpMenu/src',
+    'Pagerfanta'                    => __DIR__.'/../vendor/pagerfanta/src',
+    'CoreSphere'          => array(__DIR__ . '/../vendor/bundles'),
+    'Genemu' => __DIR__.'/../vendor/bundles',
+    'FOS' => __DIR__.'/../vendor/bundles',
+
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',

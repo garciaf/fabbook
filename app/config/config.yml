@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:      { fallback: %locale% }
     secret:          %secret%
     charset:         UTF-8
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
@@ -15,14 +15,13 @@ framework:
     session:
         default_locale: %locale%
         auto_start:     true
+    translator: ~
 
 # Twig Configuration
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
-    form:
-        resources:
-            - 'IoFormBundle:Form:fields.html.twig'
+
 
 # Assetic Configuration
 assetic:
@@ -90,6 +89,7 @@ knp_last_tweets:
         options:
             cache_name: knp_last_tweets
 avalanche_imagine:
+    source_root:  %kernel.root_dir%/../www
     web_root:     %kernel.root_dir%/../www
     cache_prefix: media/cache
     driver:       gd
@@ -205,3 +205,27 @@ stof_doctrine_extensions:
         default:
             timestampable: true
             sluggable: true
+knp_menu:
+    twig: true
+admingenerator_generator:
+    base_admin_template: FabfotoAdminBundle::base_admin.html.twig
+    knp_menu_class: Fabfoto\AdminBundle\Menu\AdminMenu
+    use_propel: false
+    use_doctrine_orm: true
+    use_doctrine_odm: false
+admingenerator_user:
+    login_template: AdmingeneratorGeneratorBundle::base_login_assetic_less.html.twig
+genemu_form:
+    tinymce:
+        script_url: '/bundles/fabfotogallery/tiny_mce/tiny_mce.js'      
+        enabled: true
+        theme:   advanced      
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Fabfoto\UserBundle\Entity\User     
+    registration:
+        confirmation:
+          enabled: true
+        form:
+            type: fabfoto_user_registration    
