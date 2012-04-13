@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller {
+
     /**
      * @Route("/{slug}", name="show_user")
      */
@@ -17,9 +18,14 @@ class UserController extends Controller {
                 ->getDoctrine()
                 ->getRepository('FabfotoUserBundle:User')
                 ->findOneBySlug($slug);
+        if (!$author) {
+            throw $this->createNotFoundException('Unable to find user');
+        }
         return $this->render('FabfotoGalleryBundle:User:ShowAbout.html.twig', array(
                     'author' => $author
                 ));
     }
+
 }
+
 ?>
