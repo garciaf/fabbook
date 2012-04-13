@@ -6,6 +6,9 @@
         <title> {% block title %}Fabbook{%endblock title%}</title>
         <link rel="stylesheet" media="all" href="{{ asset('bundles/fabfotogallery/css/style.css')}}" />
         {%block importcss %}{%endblock importcss %}
+        {% stylesheets '@FOSCommentBundle/Resources/assets/css/comments.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
         <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/vegas/jquery.vegas.css')}}"/>
         <link rel="icon" type="image/png" href="{{ asset('bundles/fabfotogallery/image/icon/iconemain.png')}}">
         <script src="{{ asset('bundles/fabfotogallery/js/jquery.min.js')}}"></script>
