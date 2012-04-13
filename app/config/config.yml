@@ -2,6 +2,9 @@ imports:
     - { resource: parameters.ini }
     - { resource: security.yml }
 
+sensio_framework_extra:
+  view:
+    annotations: false
 framework:
     #esi:             ~
     translator:      { fallback: %locale% }
@@ -16,6 +19,7 @@ framework:
         default_locale: %locale%
         auto_start:     true
     translator: ~
+    
 
 # Twig Configuration
 twig:
@@ -125,6 +129,34 @@ genemu_form:
         script_url: '/bundles/fabfotogallery/tiny_mce/tiny_mce.js'      
         enabled: true
         theme:   advanced      
+jms_serializer:
+    handlers:
+        object_based: false
+        datetime:
+            format: "Y-m-dTH:i:s" # ISO8601
+            default_timezone: "UTC" # defaults to whatever timezone set in php.ini or via date_default_timezone_set
+        array_collection: true
+        form_error: true
+        constraint_violation: true
+
+    property_naming:
+        separator:  _
+        lower_case: true
+
+    metadata:
+        cache: file
+        debug: "%kernel.debug%"
+        file_cache:
+            dir: "%kernel.cache_dir%/serializer"
+
+        # Using auto-detection, the mapping files for each bundle will be
+        # expected in the Resources/config/serializer directory.
+        #
+        # Example:
+        # class: My\FooBundle\Entity\User
+        # expected path: @MyFooBundle/Resources/config/serializer/Entity.User.(yml|xml|php)
+        auto_detection: true
+
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
@@ -134,3 +166,9 @@ fos_user:
           enabled: true
         form:
             type: fabfoto_user_registration    
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: Fabfoto\GalleryBundle\Entity\Comment
+            thread: Fabfoto\GalleryBundle\Entity\Thread            

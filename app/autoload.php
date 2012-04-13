@@ -39,6 +39,9 @@ $loader->registerNamespaces(array(
     'CoreSphere'          => array(__DIR__ . '/../vendor/bundles'),
     'Genemu' => __DIR__.'/../vendor/bundles',
     'FOS' => __DIR__.'/../vendor/bundles',
+    'FOS\\Rest' => __DIR__.'/../vendor/fos',
+    'JMS'              => __DIR__.'/../vendor/bundles',
+    'Metadata'         => __DIR__.'/../vendor/metadata/src',
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',

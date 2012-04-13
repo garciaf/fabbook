@@ -1,7 +1,7 @@
-FabfotoUserBundle:
-    resource: "@FabfotoUserBundle/Controller/"
-    type:     annotation
-    prefix:   /
+fos_comment_api:
+    type: rest
+    resource: "@FOSCommentBundle/Resources/config/routing.yml"
+    prefix: /api
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
@@ -20,6 +20,11 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+
+FabfotoUserBundle:
+    resource: "@FabfotoUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
 
 FabfotoAdminBundle_Portrait:
     resource: "@FabfotoAdminBundle/Controller/Portrait/"

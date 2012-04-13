@@ -40,6 +40,11 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Fabfoto\UserBundle\FabfotoUserBundle(),
             new Admingenerator\UserBundle\AdmingeneratorUserBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle($this),
+            new FOS\CommentBundle\FOSCommentBundle(),
+
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test','prod'))) {
