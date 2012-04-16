@@ -201,6 +201,7 @@
 [HTMLPurifierBundle]
     git=git://github.com/Exercise/HTMLPurifierBundle.git 
     target = bundles/Exercise/HTMLPurifierBundle
+
 [htmlpurifier]
     git=git://github.com/ezyang/htmlpurifier.git 
     target=htmlpurifier

@@ -4,7 +4,7 @@
     <div id="about">
         <div id="about_name">{{author.firstName}} {{author.name}}</div>
         <div id="title_about">{{author.title}}</div>
-        <div id="about_description">{{author.description | raw }} </div>
+        <div id="about_description">{{author.description | purify  }} </div>
         <div id ="social">
             {% if author.googleLink is not empty %}
             <div><a title="Google plus" target="_blanck" href="{{author.googleLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/googleplus.png')}}"/></a></div>

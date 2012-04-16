@@ -166,13 +166,21 @@ fos_user:
           enabled: true
         form:
             type: fabfoto_user_registration    
+exercise_html_purifier:
+    default:
+        Cache.SerializerPath: '%kernel.cache_dir%/htmlpurifier'
+services:
+    markup.exercise_html_purifier:
+        class: FOS\CommentBundle\Markup\HtmlPurifier
+        arguments: [ @exercise_html_purifier.default ]        
 fos_comment:
     acl: true
     service:
         acl:
             thread: fos_comment.acl.thread.roles
             comment: fos_comment.acl.comment.roles
-            vote: fos_comment.acl.vote.roles    
+            vote: fos_comment.acl.vote.roles
+        markup: markup.exercise_html_purifier         
     db_driver: orm
     class:
         model:
