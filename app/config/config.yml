@@ -167,6 +167,12 @@ fos_user:
         form:
             type: fabfoto_user_registration    
 fos_comment:
+    acl: true
+    service:
+        acl:
+            thread: fos_comment.acl.thread.roles
+            comment: fos_comment.acl.comment.roles
+            vote: fos_comment.acl.vote.roles    
     db_driver: orm
     class:
         model:
