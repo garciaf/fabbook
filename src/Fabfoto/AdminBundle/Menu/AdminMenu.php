@@ -40,6 +40,7 @@ class AdminMenu
         $blog->addChild('News', array('route' => 'Fabfoto_AdminBundle_News_list'));
         $blog->addChild('Blog', array('route' => 'Fabfoto_AdminBundle_Blog_list'));
         $blog->addChild('Tag', array('route' => 'Fabfoto_AdminBundle_Tag_list'));
+        $blog->addChild('Comment', array('route' => 'Fabfoto_AdminBundle_Comment_list'));
         $blog->addChild('Messages', array('route' => 'Fabfoto_AdminBundle_Message_list'));
         
         //Author Part
