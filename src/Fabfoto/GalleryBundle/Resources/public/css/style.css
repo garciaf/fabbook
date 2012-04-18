@@ -350,6 +350,7 @@ textarea:focus {
 }
 .tag{
     margin-top: 10px;
+    margin-bottom: 20px;
     margin-left: 50px;
 }
 .tag a

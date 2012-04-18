@@ -1,15 +1,16 @@
 {% extends 'FabfotoGalleryBundle::layout.html.twig'%}
 {% block title %} {{article.title}} {% endblock title %}
 {% block content %}
+<div class="page-header">
+    <h1>{{article.title}} <small> {{article.subtitle}}</small></h1>
+</div>
     <div class="article_blog_full">
         <div class="tag">
         Tags : 
         {% for tag in article.tags %}
-        <a href="{{path('show_articles_blog_by_tags', {'tag_slug':tag.slug})}} "> {{tag}}</a> 
+        <a href="{{path('show_articles_blog_by_tags', {'tag_slug':tag.slug})}} "> <span class="label label-info">{{tag}}</span></a> 
         {% endfor %}
         </div>
-        <h1>{{article.title}}</h1>
-        <h2>{{article.subtitle}}</h2>
         <div class="blog_content">
         {{article.content|raw}}
         </div>
