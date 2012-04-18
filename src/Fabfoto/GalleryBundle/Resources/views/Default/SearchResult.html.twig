@@ -17,9 +17,13 @@
 </script>
 {% endblock importjs %}
 {% block content %}
-<h1 id="album_search"> Result in Blog :</h1>
+<div class="page-header">
+    <h1>Result <small>for blog </small></h1>
+</div>
 {% include 'FabfotoGalleryBundle:Default:ListArticleBlog.html.twig' with ArticlesBlogs %}
-<h1 id="album_search"> Result in Album :</h1>
+<div class="page-header">
+    <h1>Result <small>in albums </small></h1>
+</div>
 <div class="list_album">
     {% for album in albums%}
     <a href="{{path('show_album', {'slug':album.slug})}}" >
@@ -32,11 +36,13 @@
 
     {% endfor %}
 </div>
-<h1 id="picture_search"> Result in Pictures :</h1>
+<div class="page-header">
+    <h1>Result <small>for pictures </small></h1>
+</div>
 <div id="gallery">
     {% for picture in pictures%}
     <a rel = "search_result" href="/{{picture.webpath}}" title="{{picture}}" class="fancypicture">
-        <img src="/{{picture.thumbpath}}" width="128" height="128" alt="{{picture}}" />
+        <img src="{{picture.webpath| apply_filter('thumb_square')}}" width="128" height="128" alt="{{picture}}" />
     </a>
     {% endfor %}
 </div>
