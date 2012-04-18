@@ -23,9 +23,9 @@
 <meta name="Keywords" CONTENT="{% for tag in article.tags %} {{ tag }},{% endfor %}" />
 <meta name="Description" CONTENT="{{ article.subtitle }}" />
 {% endblock metainfo %}
+
 {%block qrLink %}
-                    <a href="{{path('show_article_blog_mobile', { 'slugblog': article.slugblog }) }}">
-<img alt="[QR Code]" src="/{{ mopa_barcode_url('qr', url('show_article_blog_mobile', { 'slugblog': article.slugblog }) ) }}"/>
-                    Mobile
-                    </a>
+<a id="qrlink" rel="popover" href="{{path('show_article_blog_mobile', { 'slugblog': article.slugblog }) }}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("show_article_blog_mobile", { "slugblog": article.slugblog }) ) }}"/>' data-original-title="QR Code">
+    Mobile
+</a>
 {%endblock qrLink %}

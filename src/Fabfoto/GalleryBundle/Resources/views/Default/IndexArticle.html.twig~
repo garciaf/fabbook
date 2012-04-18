@@ -2,25 +2,28 @@
 {% block titlepage %}Fabfoto-News{% endblock titlepage %}
 {% block content %}
 <div class="list_articles">
-    <div class="ribbonArticle">
-        <h1>un peu de tweet ...</h1>
-    </div>
-    {% render "KnpLastTweetsBundle:Twitter:lastTweets" with {'userName': 'FabbookFr'} %}
-    <div class="ribbonArticle">
+    <div class="page-header">
         <h1>un peu de nouvelles ...</h1>
     </div>
-    {% for article in articles %}
+    <div  class="row">
 
-    <div class="article">
-        <div class="title_news">
-            <span class="title_label">{{article.title}}</span>
-            <span class="createdAt">le {{article.createdAt|date('d/m/Y')}}</span>
-        </div>
-        <h2>{{article.subtitle}}</h2>
-        <p>{{article.content|raw}}</p>
-        <h3 class="author">{{article.author}}</h3>
+        {% for article in articles %}
+        <div class="span2">
+            <h3>{{article.title}}</h3>
+            <h4>{{article.subtitle}}</h4>
+            <h6>le {{article.createdAt|date('d/m/Y')}}</h6>
 
+            <p>{{article.content|raw}}</p>
+            {% if article.author is not null %}
+            <h3 class="author"><a target="_blanck" href="{{ path('show_user', { 'slug': article.author.slug }) }}">{{article.author}}</a></h3>
+            {% endif %}
+        </div> 
+        {% endfor %}
     </div>
-    {% endfor %}
+
+    <div class="page-header">
+        <h1>un peu de tweet ...</h1>
+    </div>
+    {% render "KnpLastTweetsBundle:Twitter:lastTweets" with {'username': 'FabbookFr'} %}
 </div>
 {% endblock content %}

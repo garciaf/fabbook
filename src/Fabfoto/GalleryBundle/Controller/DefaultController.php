@@ -33,14 +33,14 @@ class DefaultController extends Controller {
     }
 
     /**
-     * @Route("about", name="show_about")
+     * @Route("/{slug}/about", name="show_about")
      */
-    public function showAboutAction() {
+    public function showAboutAction($slug) {
 
         $author = $this
                 ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Author')
-                ->findOneBy(array());
+                ->getRepository('FabfotoUserBundle:User')
+                ->findOneBySlug($slug);
         return $this->render('FabfotoGalleryBundle:Default:ShowAbout.html.twig', array(
                     'author' => $author
                 ));

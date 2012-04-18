@@ -142,7 +142,7 @@ html, body {
     width: 40px;
 }
 #page {
-    margin-top: 130px;
+    margin-top: 60px;
     margin-left: 30px;
     display: block;
     z-index: 300;
@@ -527,4 +527,14 @@ blockquote{
 }
 .pdf img{
     width: 44px;
+}
+
+.albumPreview{
+    clip:rect(-100px,0px,0px,-50px);
+
+}
+#myCarousel{
+height: 1000px;
+width: 100%;
+
 }
