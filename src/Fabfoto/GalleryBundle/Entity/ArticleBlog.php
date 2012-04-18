@@ -66,9 +66,7 @@ class ArticleBlog
     private $content;
 
     /**
-     * @var string $author
-     *
-     * @ORM\Column(name="author", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Fabfoto\UserBundle\Entity\User")
      */
     private $author;
 
@@ -201,25 +199,6 @@ class ArticleBlog
         return $this->content;
     }
 
-    /**
-     * Set author
-     *
-     * @param string $author
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-    }
-
-    /**
-     * Get author
-     *
-     * @return string 
-     */
-    public function getAuthor()
-    {
-        return $this->author;
-    }
     public function __construct()
     {
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
@@ -265,5 +244,25 @@ class ArticleBlog
     public function getSlugblog()
     {
         return $this->slugblog;
+    }
+
+    /**
+     * Set author
+     *
+     * @param Fabfoto\UserBundle\Entity\User $author
+     */
+    public function setAuthor(\Fabfoto\UserBundle\Entity\User $author)
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * Get author
+     *
+     * @return Fabfoto\UserBundle\Entity\User 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Fabfoto\GalleryBundle\Entity;
 
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use \Fabfoto\GalleryBundle\Entity\Tag as Tag;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -28,8 +29,9 @@ class ArticleBlog
 
     /**
      * @var datetime $createdAt
-     *
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="createdAt", type="datetime")
+     
      */
     private $createdAt;
 
@@ -37,6 +39,7 @@ class ArticleBlog
      * @var datetime $updatedAt
      *
      * @ORM\Column(name="updatedAt", type="datetime")
+     * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
 
@@ -63,9 +66,7 @@ class ArticleBlog
     private $content;
 
     /**
-     * @var string $author
-     *
-     * @ORM\Column(name="author", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Fabfoto\UserBundle\Entity\User")
      */
     private $author;
 
@@ -78,7 +79,7 @@ class ArticleBlog
 
 
     /**
-     *
+     * @Gedmo\Slug(fields={"title"})
      * @ORM\Column(name="slugblog", type="string", length=255)
      */
     private $slugblog;
@@ -145,8 +146,7 @@ class ArticleBlog
     public function setTitle($title)
     {
         $this->title = $title;
-        
-        $this->setSlugblog($this->slugify($title));
+
     }
 
     /**
@@ -199,25 +199,6 @@ class ArticleBlog
         return $this->content;
     }
 
-    /**
-     * Set author
-     *
-     * @param string $author
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-    }
-
-    /**
-     * Get author
-     *
-     * @return string 
-     */
-    public function getAuthor()
-    {
-        return $this->author;
-    }
     public function __construct()
     {
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
@@ -245,34 +226,6 @@ class ArticleBlog
         return $this->tags;
     }
     
-        public function slugify($text)
-    {
-        // replace non letter or digits by -
-        $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
-
-        // trim
-        $text = trim($text, '-');
-
-        // transliterate
-        if (function_exists('iconv'))
-        {
-            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-        }
-
-        // lowercase
-        $text = strtolower($text);
-
-        // remove unwanted characters
-        $text = preg_replace('#[^-\w]+#', '', $text);
-
-        if (empty($text))
-        {
-            return 'n-a';
-        }
-
-        return $text;
-    }
-
     /**
      * Set slugblog
      *

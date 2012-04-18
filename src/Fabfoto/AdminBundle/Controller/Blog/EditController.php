@@ -6,4 +6,14 @@ use Admingenerated\FabfotoAdminBundle\BaseBlogController\EditController as BaseE
 
 class EditController extends BaseEditController
 {
+    /**
+    * This method is here to make your life better, so overwrite  it
+    *
+    * @param \Symfony\Component\Form\Form $form the valid form
+    * @param \Fabfoto\GalleryBundle\Entity\ArticleBlog $ArticleBlog your \Fabfoto\GalleryBundle\Entity\ArticleBlog object
+    */
+    public function preSave(\Symfony\Component\Form\Form $form, \Fabfoto\GalleryBundle\Entity\ArticleBlog $ArticleBlog)
+    {
+        $ArticleBlog->setAuthor($this->get('security.context')->getToken()->getUser());
+    }
 }

@@ -52,9 +52,7 @@ class Article
     private $content;
 
     /**
-     * @var string $author
-     *
-     * @ORM\Column(name="author", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Fabfoto\UserBundle\Entity\User")
      */
     private $author;
 
@@ -148,12 +146,14 @@ class Article
         return $this->content;
     }
 
+
+
     /**
      * Set author
      *
-     * @param string $author
+     * @param Fabfoto\UserBundle\Entity\User $author
      */
-    public function setAuthor($author)
+    public function setAuthor(\Fabfoto\UserBundle\Entity\User $author)
     {
         $this->author = $author;
     }
@@ -161,7 +161,7 @@ class Article
     /**
      * Get author
      *
-     * @return string 
+     * @return Fabfoto\UserBundle\Entity\User 
      */
     public function getAuthor()
     {

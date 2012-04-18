@@ -18,8 +18,9 @@
         </div>
         <h2>{{article.subtitle}}</h2>
         <p>{{article.content|raw}}</p>
-        <h3 class="author">{{article.author}}</h3>
-
+        {% if article.author is not null %}
+        <h3 class="author"><a target="_blanck" href="{{ path('show_user', { 'slug': article.author.slug }) }}">{{article.author}}</a></h3>
+        {% endif %}
     </div>
     {% endfor %}
 </div>
