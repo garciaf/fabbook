@@ -13,6 +13,9 @@ class DefaultController extends Controller {
      * @Route("/", name="index")
      */
     public function redirectMobileFullAction() {
+        if ($this->get('zenstruck_mobile.manager')->isMobile()) {
+           return $this->redirect($this->generateUrl('index_mobile'));
+        }
         return $this->redirect($this->generateUrl('show_articles'));
     }
 
