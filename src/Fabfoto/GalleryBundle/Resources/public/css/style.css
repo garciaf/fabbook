@@ -441,13 +441,11 @@ blockquote{
     padding-left: 15px;
 
 }
-#social{
-    text-align: center;
-    width : 100%;
-}
+
 #social div{
-    margin-right: 1em;
+    margin: 1em;
     float: right;
+
 }
 #social img{
     width: 44px;
@@ -459,7 +457,7 @@ blockquote{
     display: block;
     z-index: 300;
     background: url(../image/bg_fff_90.png);
-    width: 500px;
+    width: 40%;
     padding: 18px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.3);
