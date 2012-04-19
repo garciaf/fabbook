@@ -11,7 +11,7 @@
             'autoScale'			: true,
             'transitionIn'		: 'elastic',
             'transitionOut'		: 'elastic',
-            'overlayOpacity'	: 0.9
+            'overlayOpacity'            : 0.9
         });
     });
 </script>
@@ -20,19 +20,25 @@
 {% block content %}
 <h1 id="title_album">{{album}}</h1>
 <h2 id="subtitle_album">{{album.comment}}</h2>
+<div class="page-header">
+    <h1>{{album}} <small>{{album.comment}}</small></h1>
+</div>
 <div id="gallery">
+    <ul class="thumbnails">
     {% for picture in pictures%}
-    <a rel = "{{album.id}}" href="/{{picture.webpath}}" title="{{picture}}" class="fancypicture">
-        <img src="{{picture.webpath| apply_filter('thumb_scare') }}" width="128" height="128" alt="{{picture}}" />
+    <li>
+    <a rel = "{{album.id}}" href="/{{picture.webpath}}" title="{{picture}}" class="fancypicture thumbnail">
+        <img src="{{picture.webpath| apply_filter('thumb_square') }}" width="128" height="128" alt="{{picture}}" />
     </a>
+    </li>
     {% endfor %}
+    </ul>
 </div>
 {% endblock content %}
 
 {%block qrLink %}
-<a href="{{path('albums_mobile') }}">
-<img alt="[QR Code]" src="/{{ mopa_barcode_url('qr', url('albums_mobile') ) }}"/>
-Mobile
+<a id="qrlink" rel="popover" href="{{path('albums_mobile') }}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("albums_mobile") ) }}"/>' data-original-title="Mobile version">
+    <i class="icon-qrcode icon-white"></i>
 </a>
 {%endblock qrLink %}
 
