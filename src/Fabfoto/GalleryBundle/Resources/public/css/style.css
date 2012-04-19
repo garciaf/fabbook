@@ -147,18 +147,22 @@ html, body {
     display: block;
     z-index: 300;
     background: url(../image/bg_fff_90.png);
-    width: 800px;
+    width: 70%;
     padding: 18px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .list_album{
     display: block;
+}
+
+.list_album a:hover{
+    text-decoration: none;
 }
 album_sum_up{
     float: left;
@@ -220,6 +224,8 @@ album_sum_up{
     height: 20px;
 }
 .album_title{
+    margin-top: 20px;
+    margin-bottom: 10px;
     font-family: 'Terminal Dosis', Arial, sans-serif;
     text-align: center;
     color: whitesmoke;

@@ -17,8 +17,8 @@
 </div>
 {% endblock content %}
 {%block qrLink %}
-<a id="qrlink" rel="popover" href="{{path('albums_mobile') }}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("albums_mobile") ) }}"/>' data-original-title="QR Code">
-    Mobile
+<a id="qrlink" rel="popover" href="{{path('albums_mobile') }}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("albums_mobile") ) }}"/>' data-original-title="Mobile version">
+    <i class="icon-qrcode icon-white"></i>
 </a>
 {%endblock qrLink %}
 {% block carroussel %}
