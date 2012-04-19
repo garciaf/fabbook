@@ -7,7 +7,7 @@
         <h3>{{article.title}}</h3>
         <h4>{{article.subtitle}}</h4>
             {% if article.author is not null %}
-    	<h6><a target="_blanck" href="{{ path('show_user', { 'slug': article.author.slug }) }}">{{article.author}}</a></h6>
+    	<h6><a target="_blanck" href="{{ path('show_user', { 'slug': article.authorSlug }) }}">{{article.author}}</a></h6>
             {% endif %}
         <h6>Le {{article.createdAt|date('d/m/Y')}}</h6>
         <p>Tags : 

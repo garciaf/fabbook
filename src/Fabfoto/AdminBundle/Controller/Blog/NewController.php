@@ -14,7 +14,10 @@ class NewController extends BaseNewController {
      */
     public function preSave(\Symfony\Component\Form\Form $form, \Fabfoto\GalleryBundle\Entity\ArticleBlog $ArticleBlog) 
     {
-        $ArticleBlog->setAuthor($this->get('security.context')->getToken()->getUser());
+        $curentUser = $this->get('security.context')->getToken()->getUser();
+        $ArticleBlog->setAuthor((string)$curentUser);
+        $ArticleBlog->setAuthorSlug($curentUser->getSlug());
+        
     }
 
 }

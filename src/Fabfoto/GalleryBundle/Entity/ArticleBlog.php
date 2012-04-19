@@ -66,10 +66,20 @@ class ArticleBlog
      */
     private $content;
 
+
     /**
-     * @ORM\ManyToOne(targetEntity="Fabfoto\UserBundle\Entity\User")
+     * @var string $author
+     *
+     * @ORM\Column(name="author", type="string", length=255)
      */
     private $author;
+    
+    /**
+     * @var string $author
+     *
+     * @ORM\Column(name="authorSlug", type="string", length=255)
+     */
+    private $authorSlug;
 
      /**
       *  
@@ -247,12 +257,33 @@ class ArticleBlog
         return $this->slugblog;
     }
 
+
+    /**
+     * Set authorSlug
+     *
+     * @param string $authorSlug
+     */
+    public function setAuthorSlug($authorSlug)
+    {
+        $this->authorSlug = $authorSlug;
+    }
+
+    /**
+     * Get authorSlug
+     *
+     * @return string 
+     */
+    public function getAuthorSlug()
+    {
+        return $this->authorSlug;
+    }
+
     /**
      * Set author
      *
-     * @param Fabfoto\UserBundle\Entity\User $author
+     * @param string $author
      */
-    public function setAuthor(User $author)
+    public function setAuthor($author)
     {
         $this->author = $author;
     }
@@ -260,7 +291,7 @@ class ArticleBlog
     /**
      * Get author
      *
-     * @return Fabfoto\UserBundle\Entity\User 
+     * @return string 
      */
     public function getAuthor()
     {

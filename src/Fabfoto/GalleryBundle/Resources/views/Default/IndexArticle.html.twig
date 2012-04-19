@@ -14,6 +14,12 @@
             <h6>le {{article.createdAt|date('d/m/Y')}}</h6>
 
             <p>{{article.content|raw}}</p>
+<<<<<<< HEAD
+=======
+            {% if article.author is not null %}
+            <h3 class="author"><a target="_blanck" href="{{ path('show_user', { 'slug': article.authorSlug }) }}">{{article.author}}</a></h3>
+            {% endif %}
+>>>>>>> 56ecc5e27f08055bf816305ee3dad8f405e42c83
         </div> 
         {% endfor %}
     </div>

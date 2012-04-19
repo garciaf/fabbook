@@ -65,10 +65,20 @@ class ArticleBlog
      */
     private $content;
 
+
     /**
-     * @ORM\ManyToOne(targetEntity="Fabfoto\UserBundle\Entity\User")
+     * @var string $author
+     *
+     * @ORM\Column(name="author", type="string", length=255)
      */
     private $author;
+    
+    /**
+     * @var string $author
+     *
+     * @ORM\Column(name="authorSlug", type="string", length=255)
+     */
+    private $authorSlug;
 
      /**
       *  
@@ -244,5 +254,26 @@ class ArticleBlog
     public function getSlugblog()
     {
         return $this->slugblog;
+    }
+
+
+    /**
+     * Set authorSlug
+     *
+     * @param string $authorSlug
+     */
+    public function setAuthorSlug($authorSlug)
+    {
+        $this->authorSlug = $authorSlug;
+    }
+
+    /**
+     * Get authorSlug
+     *
+     * @return string 
+     */
+    public function getAuthorSlug()
+    {
+        return $this->authorSlug;
     }
 }
