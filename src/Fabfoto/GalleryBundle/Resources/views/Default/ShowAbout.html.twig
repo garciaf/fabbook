@@ -22,9 +22,9 @@
             {% if author.linkedLink is not empty %}
             <div><a title="Linked" target="_blanck" href="{{author.linkedLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/linkedin.png')}}"/></a></div>            
             {% endif %}
-            <div><a title="Contact me" href="{{path('contact_new')}}"><img src="{{asset('bundles/fabfotogallery/image/icon/mail.png')}}"/></a></div>                        
-            <div><a title="Get my card on pdf" href="{{path('show_about_pdf')}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')}}"/></a></div>                         
-            <div><a title="Get my Vcard" href="{{path('show_vcard')}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/vcard.png')}}"/></a></div>                         
+            <div><a title="Contact me" href="mailto:{{author.email}}"><img src="{{asset('bundles/fabfotogallery/image/icon/mail.png')}}"/></a></div>                        
+            <div><a title="Get my card on pdf" href="{{path('show_about_pdf_from', {'slug': author.slug })}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')}}"/></a></div>                         
+            <div><a title="Get my Vcard" href="{{path('show_vcard_from' , { 'slug': author.slug })}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/vcard.png')}}"/></a></div>                         
         </div>
 {% endblock content %}
 {% block stylePage%}"pageAbout"{% endblock stylePage%}

@@ -1,31 +1,31 @@
 {% extends 'FabfotoGalleryBundle::layout.html.twig'%}
 {% block title %} About me {% endblock title %}
 {% block content %}
-    <div id="about">
-        <div id="about_name">{{author.firstName}} {{author.name}}</div>
-        <div id="title_about">{{author.title}}</div>
-        <div id="about_description">{{author.description}} </div>
+    <div class="page-header">
+        <h1>{{author.firstName}} {{author.name}} <small>{{author.title}}</small></h1>
+        
+    </div>
+        <p>{{author.description | raw }} </p>
         <div id ="social">
             {% if author.googleLink is not empty %}
-            <div><a target="_blanck" href="{{author.googleLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/googleplus.png')}}"/></a></div>
+            <div><a title="Google plus" target="_blanck" href="{{author.googleLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/googleplus.png')}}"/></a></div>
             {% endif %}
             {% if author.facebookLink is not empty %}
-            <div><a target="_blanck" href="{{author.facebookLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/facebook.png')}}"/></a></div>
+            <div><a title="Facebook" target="_blanck" href="{{author.facebookLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/facebook.png')}}"/></a></div>
             {% endif %}
             {% if author.gitHubLink is not empty %}
-            <div><a target="_blanck" href="{{author.gitHubLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/github.png')}}"/></a></div>
+            <div><a title="Fork me on github" target="_blanck" href="{{author.gitHubLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/github.png')}}"/></a></div>
             {% endif %}
             {% if author.twitterLink is not empty %}
-            <div><a target="_blanck" href="{{author.twitterLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/twitter.png')}}"/></a></div>
+            <div><a title="Follow me on twitter" target="_blanck" href="{{author.twitterLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/twitter.png')}}"/></a></div>
             {% endif %}
             {% if author.linkedLink is not empty %}
-            <div><a target="_blanck" href="{{author.linkedLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/linkedin.png')}}"/></a></div>            
+            <div><a title="Linked" target="_blanck" href="{{author.linkedLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/linkedin.png')}}"/></a></div>            
             {% endif %}
-            <div><a href="{{path('contact_new')}}"><img src="{{asset('bundles/fabfotogallery/image/icon/mail.png')}}"/></a></div>                        
-            <div><a href="{{path('show_about_pdf')}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')}}"/></a></div>                         
-            <div><a href="{{path('show_vcard')}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/vcard.png')}}"/></a></div>                         
+            <div><a title="Contact me" href="{{path('contact_new')}}"><img src="{{asset('bundles/fabfotogallery/image/icon/mail.png')}}"/></a></div>                        
+            <div><a title="Get my card on pdf" href="{{path('show_about_pdf')}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')}}"/></a></div>                         
+            <div><a title="Get my Vcard" href="{{path('show_vcard')}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/vcard.png')}}"/></a></div>                         
         </div>
-    </div>
 {% endblock content %}
 {% block stylePage%}"pageAbout"{% endblock stylePage%}
 {% block carroussel %}
