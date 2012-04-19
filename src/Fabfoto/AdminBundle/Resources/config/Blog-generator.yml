@@ -30,13 +30,13 @@ builders:
   new:
     params:
       title: New object for AdminBundle
-      display: [ title, subtitle, content, author, tags ]
+      display: [ title, subtitle, content, tags ]
       actions:
         list: ~
   edit:
     params:
       title: You're editing the object "{{ ArticleBlog.title }}"
-      display: [ title, subtitle, content, author, tags ]
+      display: [ title, subtitle, content, tags ]
       actions:
         list: ~
   delete: ~

@@ -2,9 +2,10 @@
 {% block title %}{{author.firstName}} {{author.name}}{% endblock title %}
 {% block content %}
     <div id="about">
-        <div id="about_name">{{author.firstName}} {{author.name}}</div>
-        <div id="title_about">{{author.title}}</div>
-        <div id="about_description">{{author.description | purify  }} </div>
+        <div class="page-header">
+        <h1>{{author.firstName}} {{author.name}} <small>{{author.title}}</small></h1>   
+    </div>
+        <p>{{author.description | purify  }} </p>
         <div id ="social">
             {% if author.googleLink is not empty %}
             <div><a title="Google plus" target="_blanck" href="{{author.googleLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/googleplus.png')}}"/></a></div>
