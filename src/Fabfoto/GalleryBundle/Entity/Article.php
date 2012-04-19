@@ -4,7 +4,7 @@ namespace Fabfoto\GalleryBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
-
+use \Fabfoto\UserBundle\Entity\User as User;
 /**
  * Fabfoto\GalleryBundle\Entity\Article
  *
@@ -52,7 +52,7 @@ class Article
     private $content;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Fabfoto\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="\Fabfoto\UserBundle\Entity\User")
      */
     private $author;
 
@@ -153,7 +153,7 @@ class Article
      *
      * @param Fabfoto\UserBundle\Entity\User $author
      */
-    public function setAuthor(\Fabfoto\UserBundle\Entity\User $author)
+    public function setAuthor(User $author)
     {
         $this->author = $author;
     }

@@ -4,11 +4,12 @@ namespace Fabfoto\GalleryBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
-use \Fabfoto\GalleryBundle\Entity\Tag as Tag;
+use Fabfoto\GalleryBundle\Entity\Tag as Tag;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping\JoinColumn as JoinColumn;
 use Doctrine\ORM\Mapping\JoinTable as JoinTable;
 use Doctrine\ORM\Mapping\ManyToMany as ManyToMany;
+use Fabfoto\UserBundle\Entity\User as User;
 
 /**
  * Fabfoto\GalleryBundle\Entity\ArticleBlog
@@ -251,7 +252,7 @@ class ArticleBlog
      *
      * @param Fabfoto\UserBundle\Entity\User $author
      */
-    public function setAuthor(\Fabfoto\UserBundle\Entity\User $author)
+    public function setAuthor(User $author)
     {
         $this->author = $author;
     }
