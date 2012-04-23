@@ -115,7 +115,11 @@
 [zend-filter]
       git=git://github.com/KnpLabs/zend-filter.git
       target=Zend/Filter
-      
+
+[zend-feed]
+      git=git://github.com/KnpLabs/zend-feed.git
+      target=Zend/Feed
+        
 [WhiteOctoberTCPDFBundle]
     git=git://github.com/whiteoctober/WhiteOctoberTCPDFBundle.git
     target=/bundles/WhiteOctober/TCPDFBundle

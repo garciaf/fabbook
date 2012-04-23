@@ -539,3 +539,7 @@ height: 1000px;
 width: 100%;
 
 }
+#fos_comment_comment_body{
+width: 50%;
+border-radius: 10px;
+}

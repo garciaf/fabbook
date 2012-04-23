@@ -83,7 +83,7 @@
              <div id="alert">
                                      {% for type, message in app.session.flashes%}
                                      <a class="close" data-dismiss="alert">×</a>
-                                     <div class="alert alert-{{type}}">
+                      g               <div class="alert alert-{{type}}">
                                      <div class="wrap">
                                          {{message}}
                                      </div>
@@ -106,6 +106,7 @@
         <script src="{{ asset('bundles/fabfotogallery/bootstrap/js/bootstrap-popover.js')}}"></script>
         <script src="{{ asset('bundles/fabfotogallery/bootstrap/js/bootstrap-carousel.js')}}"></script>
         <script src="{{ asset('bundles/fabfotogallery/bootstrap/js/bootstrap-collapse.js')}}"></script>
+        <script src="{{ asset('bundles/fabfotogallery/bootstrap/js/bootstrap-alert.js')}}"></script>
         <script>
             $('#qrlink').popover({
                 placement: 'bottom'
