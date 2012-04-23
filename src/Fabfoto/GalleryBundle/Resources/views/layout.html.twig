@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block metainfo %}{% endblock metainfo %}
         <title> {% block title %}Fabbook{%endblock title%}</title>
         <link rel="stylesheet" media="all" href="{{ asset('bundles/fabfotogallery/css/style.css')}}" />
@@ -29,68 +30,73 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
+                    <a class="btn btn-navbar pull-right hidden-desktop" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
                     <a class="brand" href="{{path('show_articles')}}">Fabbook</a>
-                    <ul class="nav" >
-                        <li>
-                            <a class="helper" href="{{path('show_articles')}}" rel="tooltip" title="Home">
-                               <i class="icon-home icon-white"></i> 
-                            </a>
-                        </li>
-                        <li>
-                            <a class="helper" href="{{path('index_album')}}" rel="tooltip" title="Album">
-                                <i class="icon-picture icon-white"></i> 
-                            </a>
-                        </li>
-                        <li>
-                            <a class="helper" href="{{path('index_blog')}}" rel="tooltip" title="Blog">
-                                <i class="icon-pencil icon-white"></i> 
-                            </a>
-                        </li>                
-                        <li>
-                            <a class="helper" href="{{path('contact_new')}}" rel="tooltip" title="Contact">
-                                <i class="icon-envelope icon-white"></i>
-                            </a>
-                        </li>
-                        <li>                                            
-                            {%block qrLink %}
-                            <a id="qrlink" rel="popover" href="{{path('index_mobile')}}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("index_mobile") ) }}"/>' data-original-title="Mobile version">
-                                <i class="icon-qrcode icon-white"></i>
-                            </a>
-                            {%endblock qrLink %}
-                        </li>
-                        <li>
-                            <a class="helper" href="{{path('show_about', {'slug':'fabien-garcia'})}}" rel="tooltip" title="About me">
-                                <i class="icon-user icon-white"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <form class="navbar-search pull-right form-search" method="get" action="{{path('fabfoto_search')}}">
-                        <input type="text" class="search-query span2" name="q" placeholder="{% trans %}Search {% endtrans %}" value="{% block search_query %}{%endblock search_query%}"/>
-                        <i class="icon-search icon-white"></i> 
-                    </form>    
+                    <div class="nav-collapse">
+                        <ul class="nav" >
+                            <li>
+                                <a class="helper" href="{{path('show_articles')}}" rel="tooltip" title="Home">
+                                    <i class="icon-home icon-white"></i> 
+                                </a>
+                            </li>
+                            <li>
+                                <a class="helper" href="{{path('index_album')}}" rel="tooltip" title="Album">
+                                    <i class="icon-picture icon-white"></i> 
+                                </a>
+                            </li>
+                            <li>
+                                <a class="helper" href="{{path('index_blog')}}" rel="tooltip" title="Blog">
+                                    <i class="icon-pencil icon-white"></i> 
+                                </a>
+                            </li>                
+                            <li>
+                                <a class="helper" href="{{path('contact_new')}}" rel="tooltip" title="Contact">
+                                    <i class="icon-envelope icon-white"></i>
+                                </a>
+                            </li>
+                            <li>                                            
+                                {%block qrLink %}
+                                <a id="qrlink" rel="popover" href="{{path('index_mobile')}}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("index_mobile") ) }}"/>' data-original-title="Mobile version">
+                                    <i class="icon-qrcode icon-white"></i>
+                                </a>
+                                {%endblock qrLink %}
+                            </li>
+                            <li>
+                                <a class="helper" href="{{path('show_about', {'slug':'fabien-garcia'})}}" rel="tooltip" title="About me">
+                                    <i class="icon-user icon-white"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <form class="navbar-search pull-right form-search" method="get" action="{{path('fabfoto_search')}}">
+                            <input type="text" class="search-query span2" name="q" placeholder="{% trans %}Search {% endtrans %}" value="{% block search_query %}{%endblock search_query%}"/>
+                        </form>    
+                    </div>
                 </div>
             </div>
         </div>
-        <div id={% block stylePage%}"page"{% endblock stylePage%}>
+        <div class="container" id={% block stylePage%}"page"{% endblock stylePage%}>
              {% if app.session.flashes %}
-             <div id="flashes">
-                 {% for type, message in app.session.flashes%}
-                 <div class="flash {{type}}">
-                 <div class="wrap">
-                     {{message}}
-                 </div>
-             </div>
-             {% endfor%}
-         </div>
-         {% endif%}
+             <div id="alert">
+                                     {% for type, message in app.session.flashes%}
+                                     <a class="close" data-dismiss="alert">×</a>
+                                     <div class="alert alert-{{type}}">
+                                     <div class="wrap">
+                                         {{message}}
+                                     </div>
+                                 </div>
+                                 {% endfor%}
+                             </div>
+                             {% endif%}
+                                     {% block content %}lipso lium{%endblock%}     
+                             <div id="footer">
+                                 <p id="legal"><a href="{{path('fos_user_registration_register')}}">{% trans %}register{% endtrans %}</a></p>
 
-         {% block content %}lipso lium{%endblock%}     
-
-         <div id="footer">
-             <p id="legal"><a href="{{path('fos_user_registration_register')}}">{% trans %}register{% endtrans %}</a></p>
-
-             <a  href="{{path('rss_news')}}"><img id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
-         </div>
+                                 <a  href="{{path('rss_news')}}"><img id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
+                             </div>
         </div>
 
 
@@ -99,6 +105,7 @@
         <script src="{{ asset('bundles/fabfotogallery/bootstrap/js/bootstrap-tooltip.js')}}"></script>
         <script src="{{ asset('bundles/fabfotogallery/bootstrap/js/bootstrap-popover.js')}}"></script>
         <script src="{{ asset('bundles/fabfotogallery/bootstrap/js/bootstrap-carousel.js')}}"></script>
+        <script src="{{ asset('bundles/fabfotogallery/bootstrap/js/bootstrap-collapse.js')}}"></script>
         <script>
             $('#qrlink').popover({
                 placement: 'bottom'
@@ -107,6 +114,8 @@
             $('.helper').tooltip({
                 placement: 'bottom'
             });
+            $(".collapse").collapse();
+            $(".alert").alert();
         </script>
         {%block importjs %}
         {%endblock importjs%}
