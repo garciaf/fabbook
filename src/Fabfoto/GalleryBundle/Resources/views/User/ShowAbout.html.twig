@@ -22,10 +22,12 @@
         {% if author.linkedLink is not empty %}
         <div class="span1" ><a title="Linked" target="_blanck" href="{{author.linkedLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/linkedin.png')}}"/></a></div>            
         {% endif %}
+
         <div class="span1">
-            <a id="qrlink" rel="popover" href="{{path('index_mobile')}}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", author.vcard , true) }}"/>' data-original-title="Scan me">
+            <a class="hidden-phone" id="qrlink" rel="popover" href="{{path('index_mobile')}}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", author.vcard , true) }}"/>' data-original-title="Scan me">
                 <img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/barcode.png')}}"/>
             </a>
+
         </div>
         {% if author.email is not empty %}
         <div class="span1"><a title="Contact me" href="mailto:{{author.email}}"><img src="{{asset('bundles/fabfotogallery/image/icon/mail.png')}}"/></a></div>                        
@@ -34,6 +36,9 @@
         <div class="span1"><a title="Get my Vcard" href="{{path('show_vcard_from' , { 'slug': author.slug })}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/vcard.png')}}"/></a></div>
 
     </div>
+    	<div class="visible-phone">
+	<img alt="get my vcard" src="/{{ mopa_barcode_url("qr", author.vcard , true) }}"/>
+	</div>
 {% endblock content %}
 {% block carroussel %}
 {% set backgrounds = author.portrait %}

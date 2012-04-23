@@ -452,7 +452,7 @@ blockquote{
     display: block;
     z-index: 300;
     background: url(../image/bg_fff_90.png);
-    width: 40%;
+    width: 50%;
     padding: 18px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.3);
