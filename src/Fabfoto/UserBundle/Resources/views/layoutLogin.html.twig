@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        {% block metainfo %}{% endblock metainfo %}
+        <title> {% block title %}Fabbook Login{%endblock title%}</title>
+
+        <!-- Le styles -->
+        <link href="{{ asset('bundles/fabfotogallery/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
+        <link href="{{ asset('bundles/fabfotogallery/bootstrap/css/bootstrap-responsive.css') }}" rel="stylesheet">
+        {%block importcss %}{%endblock importcss %}
+        <script src="{{ asset('bundles/fabfotogallery/jquery/jquery-1.7.2.js')}}"></script>
+
+        <script src="{{ asset('bundles/fabfotogallery/bootstrap/js/bootstrap-tooltip.js')}}"></script>
+        <script src="{{ asset('bundles/fabfotogallery/bootstrap/js/bootstrap-alert.js')}}"></script>
+        <script>
+            $(".alert").alert();
+        </script>
+
+        {%block importjs %}
+        {%endblock importjs%}
+    </head>
+    <body>
+
+        <div class="container">
+             {% if app.session.flashes %}
+             <div id="alert">
+                               {% for type, message in app.session.flashes%}
+                               <a class="close" data-dismiss="alert">×</a>
+                               <div class="alert alert-{{type}}">
+                               <div class="wrap">
+                                   {{message}}
+                               </div>
+                           </div>
+                           {% endfor%}
+                       </div>
+                       {% endif%}
+
+            {% block body %}lipso lium{%endblock%}     
+
+     
+        </div>
+
+    </body>
+</html>
