@@ -7,9 +7,9 @@
 </div>
     
 {% include "FabfotoGalleryBundle:Default:ListArticleBlog.html.twig" %}
-
+<div class="span12 center">
   {{ pagerfanta(ArticlesBlogs, 'twitter_bootstrap_translated') }}
-
+</div>
 {% endblock content %}
 {%block qrLink %}
 <a id="qrlink" rel="popover" href="{{path('index_blog_mobile') }}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("index_blog_mobile") ) }}"/>' data-original-title="Mobile version">

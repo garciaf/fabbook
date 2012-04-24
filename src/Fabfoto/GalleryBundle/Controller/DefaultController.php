@@ -112,11 +112,14 @@ class DefaultController extends Controller {
      */
     public function indexAlbumsAction() {
         if (!$this->testIsOnlyOneAlbum()) {
-            $albums = $this
+            $albumsQuery = $this
                     ->getDoctrine()
                     ->getRepository('FabfotoGalleryBundle:Album')
-                    ->findBy(array(), array('createdAt' => 'DESC'));
-            return $this->render('FabfotoGalleryBundle:Default:indexAlbum.html.twig', array('albums' => $albums));
+                    ->createQueryBuilder('b')
+                    ->orderBy('b.createdAt', 'DESC')
+                    ->getQuery();
+                    
+            return $this->render('FabfotoGalleryBundle:Default:indexAlbum.html.twig', array('albums' => $this->getPager($albumsQuery)));
         } else {
             $album = $this
                     ->getDoctrine()
