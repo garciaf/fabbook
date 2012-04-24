@@ -7,6 +7,33 @@
     </div>
     <div  class="row">
 
+        <div class="span12 columns">
+            <div id="NewsCarousel" class="carousel slide">
+
+                <div class="carousel-inner">
+                    {% for blog in blogs %}
+                    <div class="{% if loop.first %}active {% endif %}item center">
+                        {% if blog.cover is not null %}
+                        <img src="{{blog.cover.webpath| apply_filter('cover') }}" width="100%" alt="{{blog.cover}}" /> 
+                        {% endif %}
+                        {% if blog.cover is null %}
+
+                        <img src="{{asset('bundles/fabfotogallery/image/newIsmage.png')}}" />
+                        {% endif %}
+                        
+                        <div class="carousel-caption">
+                            <a href="{{path('show_article_blog', {'slugblog': blog.slugblog})}}">    
+                            <h4>{{blog.title}}</h4>
+                            <p>{{blog.subtitle}}</p>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <a class="left carousel-control" href="#NewsCarousel" data-slide="prev">‹</a>
+                <a class="right carousel-control" href="#NewsCarousel" data-slide="next">›</a>
+            </div>
+        </div>
         {% for article in articles %}
         <div class="span3 well-small">
             <h3>{{article.title}}</h3>
@@ -20,8 +47,8 @@
         </div> 
         {% endfor %}
         <div class="span12 center">
-              {{ pagerfanta(articles, 'twitter_bootstrap_translated') }}
-            </div>
+            {{ pagerfanta(articles, 'twitter_bootstrap_translated') }}
+        </div>
     </div>
 
     <div class="page-header">

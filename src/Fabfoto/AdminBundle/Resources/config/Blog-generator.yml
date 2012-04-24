@@ -8,6 +8,10 @@ params:
       formType: genemu_tinymce
       addFormOptions:
         required: false 
+    cover:
+      formType: entity
+      addFormOptions:
+        class: "FabfotoGalleryBundle:Cover"
     tags:
       formType: entity
       addFormOptions:
@@ -30,13 +34,13 @@ builders:
   new:
     params:
       title: New object for AdminBundle
-      display: [ title, subtitle, content, tags ]
+      display: [ title, subtitle, content, tags, cover ]
       actions:
         list: ~
   edit:
     params:
       title: You're editing the object "{{ ArticleBlog.title }}"
-      display: [ title, subtitle, content, tags ]
+      display: [ title, subtitle, content, tags, cover ]
       actions:
         list: ~
   delete: ~

@@ -1,23 +1,34 @@
 {% extends 'FabfotoGalleryBundle::layout.html.twig'%}
 {% block title %} {{article.title}} {% endblock title %}
 {% block content %}
+{% if article.cover is not null %}
+
+<div  class="row">
+
+    <div class="span12 columns">
+        <a href="#" class="thumbnail">
+        <img src="{{article.cover.webpath| apply_filter('cover') }}" width="100%" alt="{{article.cover}}" /> 
+        </a>
+    </div>
+</div>
+{% endif %}  
 <div class="page-header">
     <h1>{{article.title}} <small> {{article.subtitle}}</small></h1>
 </div>
-    <div class="article_blog_full">
-        <div class="tag">
+<div class="article_blog_full">
+    <div class="tag">
         <i class="icon-tags icon-black"></i>  : 
         {% for tag in article.tags %}
         <a href="{{path('show_articles_blog_by_tags', {'tag_slug':tag.slug})}} "> <span class="label label-info">{{tag}}</span></a> 
         {% endfor %}
-        </div>
-        <div class="blog_content">
-        {{article.content|raw}}
-        </div>
-        <div class="signature_blog">{% if article.author is not null %}Par <a target="_blanck" href="{{ path('show_user', { 'slug': article.authorSlug }) }}">{{article.author}}</a> - {% endif %}{{article.createdAt|date('d/m/Y')}} - Mise à jour : {{article.updatedAt|date('d/m/Y') }}</div>
-        <div class="pdf"><a href="{{path('show_article_blog_pdf', {'slugblog':article.slugblog})}}"><img src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')}}"/></a> </div>
-    {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': article.id} %}
     </div>
+    <div class="blog_content">
+        {{article.content|raw}}
+    </div>
+    <div class="signature_blog">{% if article.author is not null %}Par <a target="_blanck" href="{{ path('show_user', { 'slug': article.authorSlug }) }}">{{article.author}}</a> - {% endif %}{{article.createdAt|date('d/m/Y')}} - Mise à jour : {{article.updatedAt|date('d/m/Y') }}</div>
+    <div class="pdf"><a href="{{path('show_article_blog_pdf', {'slugblog':article.slugblog})}}"><img src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')}}"/></a> </div>
+    {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': article.id} %}
+</div>
 {% endblock content %}
 
 {% block metainfo %}

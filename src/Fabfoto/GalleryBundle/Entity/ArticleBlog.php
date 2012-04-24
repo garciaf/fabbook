@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping\JoinColumn as JoinColumn;
 use Doctrine\ORM\Mapping\JoinTable as JoinTable;
 use Doctrine\ORM\Mapping\ManyToMany as ManyToMany;
+use Doctrine\ORM\Mapping\ManyToOne as ManyToOne;
 use Fabfoto\UserBundle\Entity\User as User;
 
 /**
@@ -66,7 +67,11 @@ class ArticleBlog
      */
     private $content;
 
-
+    /**
+     * @ManyToOne(targetEntity="Cover") 
+     */
+    private $cover;
+    
     /**
      * @var string $author
      *
@@ -296,5 +301,26 @@ class ArticleBlog
     public function getAuthor()
     {
         return $this->author;
+    }
+
+
+    /**
+     * Set cover
+     *
+     * @param Fabfoto\GalleryBundle\Entity\Cover $cover
+     */
+    public function setCover(\Fabfoto\GalleryBundle\Entity\Cover $cover)
+    {
+        $this->cover = $cover;
+    }
+
+    /**
+     * Get cover
+     *
+     * @return Fabfoto\GalleryBundle\Entity\Cover 
+     */
+    public function getCover()
+    {
+        return $this->cover;
     }
 }
