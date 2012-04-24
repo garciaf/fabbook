@@ -8,7 +8,7 @@
     <div  class="row">
 
         {% for article in articles %}
-        <div class="span3">
+        <div class="span3 well-small">
             <h3>{{article.title}}</h3>
             <h4>{{article.subtitle}}</h4>
             <h6>le {{article.createdAt|date('d/m/Y')}}</h6>
@@ -19,6 +19,9 @@
             {% endif %}
         </div> 
         {% endfor %}
+        <div class="span12">
+              {{ pagerfanta(articles, 'twitter_bootstrap_translated') }}
+            </div>
     </div>
 
     <div class="page-header">
