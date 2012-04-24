@@ -542,3 +542,6 @@ width: 100%;
 width: 50%;
 border-radius: 10px;
 }
+.center{
+    text-align: center;
+}

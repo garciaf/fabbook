@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Pagerfanta\Pagerfanta;
+use Pagerfanta\Adapter\DoctrineORMAdapter as PagerAdapter;
 
 class DefaultController extends Controller {
 
@@ -20,12 +22,14 @@ class DefaultController extends Controller {
      * @Route("/news", name="show_articles")
      */
     public function showArticlesAction() {
-        $articles = $this
+        $articlesQuery = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Article')
-                ->findBy(array(), array('createdAt' => 'DESC'));
+                ->createQueryBuilder('b')
+                ->orderBy('b.createdAt', 'DESC')
+                ->getQuery();
         return $this->render('FabfotoGalleryBundle:Default:IndexArticle.html.twig', array(
-                    'articles' => $articles,
+                    'articles' => $this->getPager($articlesQuery),
                 ));
     }
 
@@ -47,14 +51,28 @@ class DefaultController extends Controller {
      * @Route("blog", name="index_blog")
      */
     public function indexBlogsAction() {
-        $articlesBlogs = $this
+        $articlesBlogsQuery = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
-                ->findBy(array(), array('createdAt' => 'DESC'));
-
+                ->createQueryBuilder('b')
+                ->orderBy('b.createdAt', 'DESC')
+                ->getQuery();
         return $this->render('FabfotoGalleryBundle:Default:IndexArticleBlog.html.twig', array(
-                    'ArticlesBlogs' => $articlesBlogs,
+                    'ArticlesBlogs' => $this->getPager($articlesBlogsQuery),
                 ));
+    }
+
+    protected function getPager($query) {
+        $Currentpage = 1;
+        if ($this->get("request")->query->get('page')) {
+            $Currentpage = $this->get("request")->query->get('page');
+        }
+
+        $paginator = new Pagerfanta(new PagerAdapter($query));
+        $paginator->setMaxPerPage(9);
+        $paginator->setCurrentPage($Currentpage, false, true);
+
+        return $paginator;
     }
 
     /**
@@ -94,11 +112,14 @@ class DefaultController extends Controller {
      */
     public function indexAlbumsAction() {
         if (!$this->testIsOnlyOneAlbum()) {
-            $albums = $this
+            $albumsQuery = $this
                     ->getDoctrine()
                     ->getRepository('FabfotoGalleryBundle:Album')
-                    ->findBy(array(), array('createdAt' => 'DESC'));
-            return $this->render('FabfotoGalleryBundle:Default:indexAlbum.html.twig', array('albums' => $albums));
+                    ->createQueryBuilder('b')
+                    ->orderBy('b.createdAt', 'DESC')
+                    ->getQuery();
+                    
+            return $this->render('FabfotoGalleryBundle:Default:indexAlbum.html.twig', array('albums' => $this->getPager($albumsQuery)));
         } else {
             $album = $this
                     ->getDoctrine()

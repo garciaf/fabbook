@@ -12,8 +12,11 @@
             <p class="album_comment">{{album.comment}}</p>
         </div>
     </a>
-
+    
     {% endfor %}
+    <div class="span12 center">
+        {{ pagerfanta(albums, 'twitter_bootstrap_translated') }}
+    </div>
 </div>
 {% endblock content %}
 {%block qrLink %}
