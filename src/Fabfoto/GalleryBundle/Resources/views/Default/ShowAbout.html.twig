@@ -28,13 +28,13 @@
     <div class="span1"><a title="Get my Vcard" href="{{path('show_vcard_from' , { 'slug': author.slug })}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/vcard.png')}}"/></a>
     </div>
             <div class="span1">
-            <a class="hidden-phone" id="qrCode" rel="popover" href="{{path('index_mobile')}}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", author.vcard , true) }}"/>' data-original-title="Scan me">
+            <a class="visible-desktop " id="qrCode" rel="popover" href="{{path('index_mobile')}}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", author.vcard , true) }}"/>' data-original-title="Scan me">
                 <img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/barcode.png')}}"/>
             </a>
 
         </div>
     </div>
-    	<div class="visible-phone">
+    	<div class="hidden-desktop center">
 	<img alt="get my vcard" src="/{{ mopa_barcode_url("qr", author.vcard , true) }}"/>
 
 </div>
