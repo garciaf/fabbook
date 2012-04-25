@@ -4,7 +4,6 @@ namespace Fabfoto\GalleryBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
-use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -148,7 +147,7 @@ class Cover
     }
 
 
-        /**
+    /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
      */

@@ -28,18 +28,17 @@ class DefaultController extends Controller {
                 ->createQueryBuilder('b')
                 ->orderBy('b.createdAt', 'DESC')
                 ->getQuery();
-        $queryBlog = $this
+        $articlesBlog = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->createQueryBuilder('b')
                 ->orderBy('b.createdAt', 'DESC')
-                ->getQuery();
-        $paginatorBlog = new Pagerfanta(new PagerAdapter($queryBlog));
-        $paginatorBlog->setMaxPerPage(3);
-        $paginatorBlog->setCurrentPage(1, false, true);
+                ->setMaxResults(3)
+                ->getQuery()
+                ->execute();
         return $this->render('FabfotoGalleryBundle:Default:IndexArticle.html.twig', array(
                     'articles' => $this->getPager($articlesQuery),
-                    'blogs' => $paginatorBlog
+                    'blogs' => $articlesBlog
                 ));
     }
 

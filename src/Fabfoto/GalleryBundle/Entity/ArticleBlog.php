@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping\JoinColumn as JoinColumn;
 use Doctrine\ORM\Mapping\JoinTable as JoinTable;
 use Doctrine\ORM\Mapping\ManyToMany as ManyToMany;
 use Doctrine\ORM\Mapping\ManyToOne as ManyToOne;
-use Fabfoto\UserBundle\Entity\User as User;
+use Fabfoto\GalleryBundle\Entity\Cover as Cover;
 
 /**
  * Fabfoto\GalleryBundle\Entity\ArticleBlog
@@ -226,7 +226,7 @@ class ArticleBlog
      *
      * @param Fabfoto\GalleryBundle\Entity\Tag $tags
      */
-    public function addTag(\Tag $tags)
+    public function addTag(Tag $tags)
     {
         $tags->addArticleBlog($this);
         $this->tags[] = $tags;
@@ -309,7 +309,7 @@ class ArticleBlog
      *
      * @param Fabfoto\GalleryBundle\Entity\Cover $cover
      */
-    public function setCover(\Fabfoto\GalleryBundle\Entity\Cover $cover)
+    public function setCover(Cover $cover)
     {
         $this->cover = $cover;
     }
