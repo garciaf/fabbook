@@ -1,6 +1,6 @@
 <?php
 
-namespace Fabfoto\UserBundle\Entity;
+namespace Fabfoto\GalleryBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
@@ -8,18 +8,18 @@ use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Fabfoto\GalleryBundle\Entity\Picture
+ * Fabfoto\GalleryBundle\Entity\Cover
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks
  */
-class Portrait
+class Cover
 {
 
     public function __toString()
     {
-        return (string) $this->id;
+        return $this->getName();
     }
     /**
      * @var string $location
@@ -35,7 +35,8 @@ class Portrait
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    
+    
     /**
      * @var string $location
      *
@@ -51,9 +52,12 @@ class Portrait
      */
     private $createdAt;
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @var string $name
+     *
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    private $user;
+    private $name;
+    
     /**
      * Get id
      *
@@ -144,26 +148,6 @@ class Portrait
     }
 
 
-    /**
-     * Set user
-     *
-     * @param Fabfoto\UserBundle\Entity\User $user
-     */
-    public function setUser(\Fabfoto\UserBundle\Entity\User $user)
-    {
-        $this->user = $user;
-    }
-
-    /**
-     * Get user
-     *
-     * @return Fabfoto\UserBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-    
         /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
@@ -211,5 +195,25 @@ class Portrait
     public function getPath()
     {
         return $this->path;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

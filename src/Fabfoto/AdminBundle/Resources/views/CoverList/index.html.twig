@@ -1,0 +1,2 @@
+{% extends_admingenerated "FabfotoAdminBundle:CoverList:index.html.twig" %}
+{% block list_td_column_location %}<img src="{{Cover.webpath| apply_filter('cover') }}"  height="50" alt="{{Cover}}" /> {% endblock %}

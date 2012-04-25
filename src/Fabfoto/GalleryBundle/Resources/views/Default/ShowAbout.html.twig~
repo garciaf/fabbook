@@ -1,34 +1,46 @@
 {% extends 'FabfotoGalleryBundle::layout.html.twig'%}
 {% block title %} About me {% endblock title %}
 {% block content %}
-    <div class="page-header">
-        <h1>{{author.firstName}} {{author.name}} <small>{{author.title}}</small></h1>
-        
+<div class="page-header">
+    <h1>{{author.firstName}} {{author.name}} <small>{{author.title}}</small></h1>
+
+</div>
+<p>{{author.description | raw }} </p>
+<div id ="social" class="row-fluid">
+    {% if author.googleLink is not empty %}
+    <div class="span1"><a title="Google plus" target="_blanck" href="{{author.googleLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/googleplus.png')}}"/></a></div>
+    {% endif %}
+    {% if author.facebookLink is not empty %}
+    <div class="span1"><a title="Facebook" target="_blanck" href="{{author.facebookLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/facebook.png')}}"/></a></div>
+    {% endif %}
+    {% if author.gitHubLink is not empty %}
+    <div class="span1"><a title="Fork me on github" target="_blanck" href="{{author.gitHubLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/github.png')}}"/></a></div>
+    {% endif %}
+    {% if author.twitterLink is not empty %}
+    <div class="span1"><a title="Follow me on twitter" target="_blanck" href="{{author.twitterLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/twitter.png')}}"/></a></div>
+    {% endif %}
+    {% if author.linkedLink is not empty %}
+    <div class="span1"><a title="Linked" target="_blanck" href="{{author.linkedLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/linkedin.png')}}"/></a></div>            
+    {% endif %}
+
+    <div class="span1"><a title="Contact me" href="mailto:{{author.email}}"><img src="{{asset('bundles/fabfotogallery/image/icon/mail.png')}}"/></a></div>                        
+    <div class="span1"<a title="Get my card on pdf" href="{{path('show_about_pdf_from', {'slug': author.slug })}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')}}"/></a></div>                         
+    <div class="span1"><a title="Get my Vcard" href="{{path('show_vcard_from' , { 'slug': author.slug })}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/vcard.png')}}"/></a>
     </div>
-        <p>{{author.description | raw }} </p>
-        <div id ="social">
-            {% if author.googleLink is not empty %}
-            <div><a title="Google plus" target="_blanck" href="{{author.googleLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/googleplus.png')}}"/></a></div>
-            {% endif %}
-            {% if author.facebookLink is not empty %}
-            <div><a title="Facebook" target="_blanck" href="{{author.facebookLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/facebook.png')}}"/></a></div>
-            {% endif %}
-            {% if author.gitHubLink is not empty %}
-            <div><a title="Fork me on github" target="_blanck" href="{{author.gitHubLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/github.png')}}"/></a></div>
-            {% endif %}
-            {% if author.twitterLink is not empty %}
-            <div><a title="Follow me on twitter" target="_blanck" href="{{author.twitterLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/twitter.png')}}"/></a></div>
-            {% endif %}
-            {% if author.linkedLink is not empty %}
-            <div><a title="Linked" target="_blanck" href="{{author.linkedLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/linkedin.png')}}"/></a></div>            
-            {% endif %}
-            <div><a title="Contact me" href="{{path('contact_new')}}"><img src="{{asset('bundles/fabfotogallery/image/icon/mail.png')}}"/></a></div>                        
-            <div><a title="Get my card on pdf" href="{{path('show_about_pdf')}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')}}"/></a></div>                         
-            <div><a title="Get my Vcard" href="{{path('show_vcard')}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/vcard.png')}}"/></a></div>                         
+            <div class="span1">
+            <a class="visible-desktop " id="qrCode" rel="popover" href="{{path('index_mobile')}}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", author.vcard , true) }}"/>' data-original-title="Scan me">
+                <img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/barcode.png')}}"/>
+            </a>
+
         </div>
+    </div>
+    	<div class="hidden-desktop">
+	<img alt="get my vcard" src="/{{ mopa_barcode_url("qr", author.vcard , true) }}"/>
+
+</div>
 {% endblock content %}
 {% block stylePage%}"pageAbout"{% endblock stylePage%}
 {% block carroussel %}
-{% set backgroundImage = asset('bundles/fabfotogallery/image/about_me.jpg')%}
-{% include 'FabfotoGalleryBundle:Default:Background.html.twig' %}
+{% set backgrounds = author.portrait %}
+{% include 'FabfotoGalleryBundle:User:BackgroundVegas.html.twig' %}
 {% endblock carroussel %}

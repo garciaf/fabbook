@@ -26,6 +26,11 @@ FabfotoUserBundle:
     type:     annotation
     prefix:   /
 
+FabfotoAdminBundle_Cover:
+    resource: "@FabfotoAdminBundle/Controller/Cover/"
+    type:     admingenerator
+    prefix:   /admin/cover
+    
 FabfotoAdminBundle_Comment:
     resource: "@FabfotoAdminBundle/Controller/Comment/"
     type:     admingenerator

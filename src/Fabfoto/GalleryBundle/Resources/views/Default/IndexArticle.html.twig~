@@ -3,26 +3,49 @@
 {% block content %}
 <div class="list_articles">
     <div class="page-header">
-        <h1>un peu de nouvelles ...</h1>
+        <h1>News <small>from fabbook</small></h1>
     </div>
     <div  class="row">
 
+<div class="span12">
+<div id="NewsCarousel" class="carousel slide">
+
+            <div class="carousel-inner">
+            	{% for article in articles %}
+              <div class="{% if loop.first %}active {% endif %}item center">
+              <img src="{{asset('bundles/fabfotogallery/image/newIsmage.png')}}" />
+                <div class="carousel-caption">
+                  <h1>{{article.title}}</h1>
+                  <p>{{article.content|raw}}</p>
+                </div>
+              </div>
+              {% endfor %}
+	    </div>
+            <a class="left carousel-control" href="#NewsCarousel" data-slide="prev">‹</a>
+            <a class="right carousel-control" href="#NewsCarousel" data-slide="next">›</a>
+          </div>
+</div>
+</div>
+    <div  class="row">
         {% for article in articles %}
-        <div class="span2">
+        <div class="span3 well-small">
             <h3>{{article.title}}</h3>
             <h4>{{article.subtitle}}</h4>
             <h6>le {{article.createdAt|date('d/m/Y')}}</h6>
 
             <p>{{article.content|raw}}</p>
             {% if article.author is not null %}
-            <h3 class="author"><a target="_blanck" href="{{ path('show_user', { 'slug': article.author.slug }) }}">{{article.author}}</a></h3>
+            <h3 class="author"><a target="_blanck" href="{{ path('show_user', { 'slug': article.authorSlug }) }}">{{article.author}}</a></h3>
             {% endif %}
         </div> 
         {% endfor %}
+        <div class="span12 center">
+              {{ pagerfanta(articles, 'twitter_bootstrap_translated') }}
+            </div>
     </div>
 
     <div class="page-header">
-        <h1>un peu de tweet ...</h1>
+        <h1>News <small>from tweeter</small></h1>
     </div>
     {% render "KnpLastTweetsBundle:Twitter:lastTweets" with {'username': 'FabbookFr'} %}
 </div>

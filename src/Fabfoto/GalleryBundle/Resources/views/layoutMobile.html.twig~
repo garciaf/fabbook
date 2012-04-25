@@ -1,24 +1,23 @@
 {%block header %}
 <!DOCTYPE html> 
-<html> 
+<html manifest="{{path('manifest_mobile')}}">  
     <head> 
         <title>{% block titlepage %}Fabfoto {% endblock titlepage %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">  
-	<link rel="stylesheet" href="{{asset('bundles/fabfotogallery/css/fabfoto-theme/fabfoto-mobile-theme.css')}}" />
-        
+        <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/css/ios_inspired/styles.css')}}" /> 	 	 
+        <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0.1/jquery.mobile.structure-1.0.1.css')}}" />
         {% block importcss %}
-        <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery.mobile-1.0rc2.min.css')}}" />
         {% endblock importcss %}
+        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery/jquery-1.7.1.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0.1/jquery.mobile-1.0.1.js')}}"></script>
 
  	{%block importjs %}
-        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery-1.6.4.min.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0rc2/jquery.mobile-1.0rc2.min.js')}}"></script>
         {%endblock importjs%}
     </head> 
 
 {% endblock header %}
     <body>
-        <div data-role="page" {% block optionpage %}{% endblock optionpage %} data-theme="c" > 
+        <div data-role="page" {% block optionpage %}{% endblock optionpage %} data-theme="a" > 
             <div data-role="header" >
                 <h1>{% block title %}Fabbook Mobile{%endblock title%}</h1>
             </div> 
@@ -33,7 +32,6 @@
                         <li><a href="{{path('index_mobile')}}" >Index</a></li>
                         <li><a href="{{path('albums_mobile')}}" rel="external">Albums</a></li>
                         <li><a href="{{path('index_blog_mobile')}}" rel="external">Blog</a></li>
-                        <li><a href="">Contact</a></li>
                         <li><a href="{{path('show_articles')}}" rel="external">Classique</a></li>
                     </ul>
                 </div><!-- /navbar -->

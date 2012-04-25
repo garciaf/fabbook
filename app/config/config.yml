@@ -101,6 +101,9 @@ avalanche_imagine:
         thumb_square:
             type:    thumbnail
             options: { size: [128, 128], mode: outbound }            
+        cover:
+            type:    thumbnail
+            options: { size: [650, 180], mode: outbound }            
 zenstruck_mobile:
     mobile: false
     use_listener: true
