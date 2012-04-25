@@ -121,7 +121,9 @@
             });
             $(".collapse").collapse();
             $(".alert").alert();
-            $('.carousel').carousel();
+            $('.carousel').carousel({
+                interval: 5000
+            });
         </script>
         {%block importjs %}
         {%endblock importjs%}
