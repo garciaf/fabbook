@@ -31,12 +31,10 @@
             <a class="visible-desktop " id="qrCode" rel="popover" href="{{path('index_mobile')}}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", author.vcard , true) }}"/>' data-original-title="Scan me">
                 <img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/barcode.png')}}"/>
             </a>
-
         </div>
     </div>
     	<div class="hidden-desktop center">
-	<img alt="get my vcard" src="/{{ mopa_barcode_url("qr", author.vcard , true) }}"/>
-
+	<img alt="get my vcard" src="/{{ mopa_barcode_url('qr', author.vcard , true) }}"/>
 </div>
 {% endblock content %}
 {% block stylePage%}"pageAbout"{% endblock stylePage%}
