@@ -40,34 +40,42 @@
                         <ul class="nav" >
                             <li>
                                 <a class="helper" href="{{path('show_articles')}}" rel="tooltip" title="Home">
-                                    <i class="icon-home icon-white"></i> 
+                                    <div class="visible-desktop"><i class="icon-home icon-white"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-home icon-white"></i> Home</div>
                                 </a>
                             </li>
                             <li>
                                 <a class="helper" href="{{path('index_album')}}" rel="tooltip" title="Album">
-                                    <i class="icon-picture icon-white"></i> 
+                                    <div class="visible-desktop"><i class="icon-picture icon-white"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-picture icon-white"></i> Album</div>
+                                    
                                 </a>
                             </li>
                             <li>
                                 <a class="helper" href="{{path('index_blog')}}" rel="tooltip" title="Blog">
-                                    <i class="icon-pencil icon-white"></i> 
+                                    <div class="visible-desktop"><i class="icon-pencil icon-white"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-pencil icon-white"></i> Blog</div>
+                                    
                                 </a>
                             </li>                
                             <li>
                                 <a class="helper" href="{{path('contact_new')}}" rel="tooltip" title="Contact">
-                                    <i class="icon-envelope icon-white"></i>
+                                    <div class="visible-desktop"><i class="icon-envelope icon-white"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-envelope icon-white"></i> Contact</div>
                                 </a>
                             </li>
                             <li>                                            
                                 {%block qrLink %}
                                 <a id="qrlink" rel="popover" href="{{path('index_mobile')}}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("index_mobile") ) }}"/>' data-original-title="Mobile version">
-                                    <i class="icon-qrcode icon-white"></i>
+                                    <div class="visible-desktop"><i class="icon-qrcode icon-white"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-qrcode icon-white"></i> Mobile</div>
                                 </a>
                                 {%endblock qrLink %}
                             </li>
                             <li>
                                 <a class="helper" href="{{path('show_about', {'slug':'fabien-garcia'})}}" rel="tooltip" title="About me">
-                                    <i class="icon-user icon-white"></i>
+                                    <div class="visible-desktop"><i class="icon-user icon-white"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-user icon-white"></i> About</div>
                                 </a>
                             </li>
                         </ul>
