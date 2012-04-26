@@ -36,9 +36,18 @@ class DefaultController extends Controller {
                 ->setMaxResults(3)
                 ->getQuery()
                 ->execute();
+        $albums = $this
+                ->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:Album')
+                ->createQueryBuilder('a')
+                ->orderBy('a.createdAt', 'DESC')
+                ->setMaxResults(1)
+                ->getQuery()
+                ->execute();
         return $this->render('FabfotoGalleryBundle:Default:IndexArticle.html.twig', array(
                     'articles' => $this->getPager($articlesQuery),
-                    'blogs' => $articlesBlog
+                    'blogs' => $articlesBlog,
+                    'albums' => $albums
                 ));
     }
 
