@@ -43,7 +43,9 @@ class AdminMenu
         $blog->addChild('Tag', array('route' => 'Fabfoto_AdminBundle_Tag_list'));
         $blog->addChild('Comment', array('route' => 'Fabfoto_AdminBundle_Comment_list'));
         $blog->addChild('Messages', array('route' => 'Fabfoto_AdminBundle_Message_list'));
-                
+        
+        //Me 
+        $me = $menu->addChild('You', array('route' => 'user_show'));
         //User Part
         $user = $menu->addChild('User', array('route' => 'Fabfoto_AdminBundle_User_list'));
         $user->addChild('Portrait', array('route' => 'Fabfoto_AdminBundle_Portrait_list'));
