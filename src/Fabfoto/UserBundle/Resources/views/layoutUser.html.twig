@@ -3,7 +3,7 @@
 <html> 
     <head> 
         <title>{% block titlepage %}Fabbook User Admin {% endblock titlepage %}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block importcss %}
         {% endblock importcss %}
         <link rel="stylesheet" href="{{ asset('bundles/fabfotouser/css/AdminUser.css')}}"/>
@@ -12,29 +12,35 @@
         <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery/jquery-1.7.1.js')}}"></script>
         <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/js/jquery-ui-1.8.16.custom.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/tiny_mce/jquery.tinymce.js') }}"></script>
-            {% if form is defined %}
-                {{ form_javascript(form) }}
-            {% endif %}
+        {% if form is defined %}
+        {{ form_javascript(form) }}
+        {% endif %}
         {%block importjs%}
         {%endblock importjs%}
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
     </head> 
 
-{% endblock header %}
+    {% endblock header %}
     <body>
         <div data-role="page" {% block optionpage %}{% endblock optionpage %} data-theme="c" > 
-            <div id="header" >
+             <div id="header" >
                 <h1>{% block title %}My account{%endblock title%}</h1>
-                    <ul id="main_navigation">
+                <ul id="main_navigation">
                     <li><a class="sub main" href="{{path('user_portrait')}}">Photos</a> </li>
                     <li><a class="sub main" href="{{path('user_show')}}">User</a> </li>
                     <li><a class="sub main" href="{{path('fabfoto_logout')}}">Logout</a> </li>                     
-                    </ul>
+                </ul>
             </div> 
             <div class="main_content" >
                 <div id="body_content">
-                {% block content %}
-                Welcome on Fabfoto Mobile
-                {% endblock %}
+                    {% block content %}
+                    Welcome on Fabfoto Mobile
+                    {% endblock %}
                 </div>
             </div> 
             <div data-role="footer" >
