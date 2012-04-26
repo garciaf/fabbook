@@ -33,7 +33,7 @@ class DefaultController extends Controller {
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->createQueryBuilder('b')
                 ->orderBy('b.createdAt', 'DESC')
-                ->setMaxResults(3)
+                ->setMaxResults($this->container->getParameter('nbArticle'))
                 ->getQuery()
                 ->execute();
         $albums = $this
@@ -41,7 +41,7 @@ class DefaultController extends Controller {
                 ->getRepository('FabfotoGalleryBundle:Album')
                 ->createQueryBuilder('a')
                 ->orderBy('a.createdAt', 'DESC')
-                ->setMaxResults(1)
+                ->setMaxResults($this->container->getParameter('nbAlbum'))
                 ->getQuery()
                 ->execute();
         return $this->render('FabfotoGalleryBundle:Default:IndexArticle.html.twig', array(

@@ -67,6 +67,9 @@ jms_security_extra:
 fabfoto_gallery:
     picture_directory: %upload_directory%
     mailsender: %mail_sender_adress%
+    #Element of each last blog and album display in last home page
+    nbArticle: 4
+    nbAlbum: 2
 gregwar_captcha: ~
 fabfoto_zend_tweet: ~
 io_form:
