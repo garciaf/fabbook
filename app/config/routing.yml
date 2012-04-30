@@ -82,9 +82,9 @@ _fabfoto:
     resource: "@FabfotoGalleryBundle/Controller/"
     type:     annotation
     prefix:   /{_locale}/
-    defaults:  { _controller: FabfotoGalleryBundle:Default:showArticlesindex, _locale: fr }
+    defaults:  { _controller: FabfotoGalleryBundle:Default:showArticles, _locale: fr }
     requirements:
-        _locale: en|fr|de    
+        _locale: en|fr
    
 _imagine: 
   resource: . 
