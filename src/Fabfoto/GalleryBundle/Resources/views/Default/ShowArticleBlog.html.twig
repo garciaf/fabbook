@@ -10,7 +10,7 @@
 
     <div class="span12 columns">
         <a href="#" class="thumbnail">
-        <img src="{{article.cover.webpath| apply_filter('cover') }}" width="100%" alt="{{article.cover}}" /> 
+            <img src="{{article.cover.webpath| apply_filter('cover') }}" width="100%" alt="{{article.cover}}" /> 
         </a>
     </div>
 </div>
@@ -37,7 +37,8 @@
 {% endblock metainfo %}
 
 {%block qrLink %}
-<a id="qrlink" rel="popover" href="{{path('show_article_blog_mobile', { 'slugblog': article.slugblog }) }}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("show_article_blog_mobile", { "slugblog": article.slugblog }) ) }}"/>' data-original-title="QR Code">
-    <i class="icon-qrcode icon-white"></i>
+<a id="qrlink" rel="popover" href="{{path('show_article_blog_mobile', { 'slugblog': article.slugblog }) }}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("show_article_blog_mobile", { "slugblog": article.slugblog }) ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">
+    <div class="visible-desktop"><i class="icon-qrcode icon-white"></i></div>
+    <div class="hidden-desktop"><i class="icon-qrcode icon-white"></i> {% trans %}mobile{% endtrans %}</div>
 </a>
 {%endblock qrLink %}

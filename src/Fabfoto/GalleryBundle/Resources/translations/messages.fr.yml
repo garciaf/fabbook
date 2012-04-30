@@ -1,2 +1,14 @@
 register: Enregistrez vous 
-      
+about: A propos
+album: Album
+home: Accueil
+blog: blog
+mobile: Version mobile
+contact: me contacter
+search: rechercher
+
+news: nouvelles
+last.article: derniers articles
+from:
+  fabbook: de fabbook
+  tweeter: de tweeter

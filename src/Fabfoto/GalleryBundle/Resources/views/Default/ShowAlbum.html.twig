@@ -23,20 +23,21 @@
 </div>
 <div id="gallery">
     <ul class="thumbnails">
-    {% for picture in pictures%}
-    <li>
-    <a rel = "{{album.id}}" href="/{{picture.webpath}}" title="{{picture}}" class="fancypicture thumbnail">
-        <img src="{{picture.webpath| apply_filter('thumb_square') }}" width="128" height="128" alt="{{picture}}" />
-    </a>
-    </li>
-    {% endfor %}
+        {% for picture in pictures%}
+        <li>
+            <a rel = "{{album.id}}" href="/{{picture.webpath}}" title="{{picture}}" class="fancypicture thumbnail">
+                <img src="{{picture.webpath| apply_filter('thumb_square') }}" width="128" height="128" alt="{{picture}}" />
+            </a>
+        </li>
+        {% endfor %}
     </ul>
 </div>
 {% endblock content %}
 
 {%block qrLink %}
-<a id="qrlink" rel="popover" href="{{path('albums_mobile') }}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("albums_mobile") ) }}"/>' data-original-title="Mobile version">
-    <i class="icon-qrcode icon-white"></i>
+<a id="qrlink" rel="popover" href="{{path('albums_mobile') }}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("albums_mobile") ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">
+    <div class="visible-desktop"><i class="icon-qrcode icon-white"></i></div>
+    <div class="hidden-desktop"><i class="icon-qrcode icon-white"></i> {% trans %}mobile{% endtrans %}</div>
 </a>
 {%endblock qrLink %}
 

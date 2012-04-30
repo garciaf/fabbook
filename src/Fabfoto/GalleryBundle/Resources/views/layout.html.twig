@@ -39,48 +39,48 @@
                     <div class="nav-collapse">
                         <ul class="nav" >
                             <li>
-                                <a class="helper" href="{{path('show_articles')}}" rel="tooltip" title="Home">
+                                <a class="helper" href="{{path('show_articles')}}" rel="tooltip" title="{% trans %}home{% endtrans %}">
                                     <div class="visible-desktop"><i class="icon-home icon-white"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-home icon-white"></i> Home</div>
+                                    <div class="hidden-desktop"><i class="icon-home icon-white"></i> {% trans %}home{% endtrans %}</div>
                                 </a>
                             </li>
                             <li>
-                                <a class="helper" href="{{path('index_album')}}" rel="tooltip" title="Album">
+                                <a class="helper" href="{{path('index_album')}}" rel="tooltip" title="{% trans %}album{% endtrans %}">
                                     <div class="visible-desktop"><i class="icon-picture icon-white"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-picture icon-white"></i> Album</div>
+                                    <div class="hidden-desktop"><i class="icon-picture icon-white"></i> {% trans %}album{% endtrans %}</div>
                                     
                                 </a>
                             </li>
                             <li>
-                                <a class="helper" href="{{path('index_blog')}}" rel="tooltip" title="Blog">
+                                <a class="helper" href="{{path('index_blog')}}" rel="tooltip" title="{% trans %}blog{% endtrans %}">
                                     <div class="visible-desktop"><i class="icon-pencil icon-white"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-pencil icon-white"></i> Blog</div>
+                                    <div class="hidden-desktop"><i class="icon-pencil icon-white"></i> {% trans %}blog{% endtrans %}</div>
                                     
                                 </a>
                             </li>                
                             <li>
-                                <a class="helper" href="{{path('contact_new')}}" rel="tooltip" title="Contact">
+                                <a class="helper" href="{{path('contact_new')}}" rel="tooltip" title="{% trans %}contact{% endtrans %}">
                                     <div class="visible-desktop"><i class="icon-envelope icon-white"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-envelope icon-white"></i> Contact</div>
+                                    <div class="hidden-desktop"><i class="icon-envelope icon-white"></i> {% trans %}contact{% endtrans %}</div>
                                 </a>
                             </li>
                             <li>                                            
                                 {%block qrLink %}
-                                <a id="qrlink" rel="popover" href="{{path('index_mobile')}}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("index_mobile") ) }}"/>' data-original-title="Mobile version">
+                                <a id="qrlink" rel="popover" href="{{path('index_mobile')}}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("index_mobile") ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">
                                     <div class="visible-desktop"><i class="icon-qrcode icon-white"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-qrcode icon-white"></i> Mobile</div>
+                                    <div class="hidden-desktop"><i class="icon-qrcode icon-white"></i> {% trans %}mobile{% endtrans %}</div>
                                 </a>
                                 {%endblock qrLink %}
                             </li>
                             <li>
-                                <a class="helper" href="{{path('show_about', {'slug':'fabien-garcia'})}}" rel="tooltip" title="About me">
+                                <a class="helper" href="{{path('show_about', {'slug':'fabien-garcia'})}}" rel="tooltip" title="{% trans %}about{% endtrans %}">
                                     <div class="visible-desktop"><i class="icon-user icon-white"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-user icon-white"></i> About</div>
+                                    <div class="hidden-desktop"><i class="icon-user icon-white"></i> {% trans %}about{% endtrans %}</div>
                                 </a>
                             </li>
                         </ul>
                         <form class="navbar-search pull-right form-search" method="get" action="{{path('fabfoto_search')}}">
-                            <input type="text" class="search-query span2" name="q" placeholder="{% trans %}Search {% endtrans %}" value="{% block search_query %}{%endblock search_query%}"/>
+                            <input type="text" class="search-query span2" name="q" placeholder="{% trans %}search{% endtrans %}" value="{% block search_query %}{%endblock search_query%}"/>
                         </form>    
                     </div>
                 </div>

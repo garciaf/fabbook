@@ -3,7 +3,7 @@
 {% block content %}
 <div class="list_articles">
     <div class="page-header">
-        <h1>News <small>last articles</small></h1>
+        <h1>{% trans %}news{% endtrans %} <small>{% trans %}last.article{% endtrans %}</small></h1>
     </div>
     <div  class="row">
 
@@ -46,7 +46,7 @@
         </div>
     </div>
     <div class="page-header">
-        <h1>News <small>from fabbook</small></h1>
+        <h1>{% trans %}news{% endtrans %} <small>{% trans %}from.fabbook{% endtrans %}</small></h1>
     </div>
         <div  class="row">
 
@@ -68,7 +68,7 @@
     </div>
 
     <div class="page-header">
-        <h1>News <small>from tweeter</small></h1>
+        <h1>{% trans %}news{% endtrans %} <small>{% trans %}from.tweeter{% endtrans %}</small></h1>
     </div>
     {% render "KnpLastTweetsBundle:Twitter:lastTweets" with {'username': 'FabbookFr'} %}
 </div>
