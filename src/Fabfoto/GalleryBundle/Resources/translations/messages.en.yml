@@ -1,0 +1,14 @@
+register: Register 
+about: about us
+album: Album
+home: home
+blog: Blog
+mobile: Mobile Version
+contact: contact me
+search: search
+
+news: news
+last.article: last articles
+from:
+  fabbook: from fabbook
+  tweeter: from tweeter
