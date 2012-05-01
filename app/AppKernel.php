@@ -44,8 +44,7 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle($this),
             new FOS\CommentBundle\FOSCommentBundle(),
             new Exercise\HTMLPurifierBundle\ExerciseHTMLPurifierBundle(),
-
-
+            new Fabfoto\I18nBundle\FabfotoI18nBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test','prod'))) {

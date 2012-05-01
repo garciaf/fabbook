@@ -6,9 +6,10 @@ blog: blog
 mobile: Version mobile
 contact: me contacter
 search: rechercher
-
+about.it: à propos d'informatique et plus ...
 news: nouvelles
 last.article: derniers articles
+the: le
 from:
   fabbook: de fabbook
   tweeter: de tweeter

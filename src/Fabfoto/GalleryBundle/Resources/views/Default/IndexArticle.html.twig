@@ -54,7 +54,7 @@
         <div class="span3 well-small">
             <h3>{{article.title}}</h3>
             <h4>{{article.subtitle}}</h4>
-            <h6>le {{article.createdAt|date('d/m/Y')}}</h6>
+            <h6>{% trans %}the{% endtrans %} {{article.createdAt|date('d/m/Y')}}</h6>
 
             <p>{{article.content|raw}}</p>
             {% if article.author is not null %}

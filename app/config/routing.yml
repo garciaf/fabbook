@@ -1,3 +1,8 @@
+FabfotoI18nBundle:
+    resource: "@FabfotoI18nBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 fos_comment_api:
     type: rest
     resource: "@FOSCommentBundle/Resources/config/routing.yml"
@@ -82,7 +87,7 @@ _fabfoto:
     resource: "@FabfotoGalleryBundle/Controller/"
     type:     annotation
     prefix:   /{_locale}/
-    defaults:  { _controller: FabfotoGalleryBundle:Default:showArticles, _locale: fr }
+    defaults:  { _controller: FabfotoI18nBundle:Default:index, _locale: fr }
     requirements:
         _locale: en|fr
    
