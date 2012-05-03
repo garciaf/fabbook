@@ -5,6 +5,8 @@ namespace Fabfoto\UserBundle\Entity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
+use Fabfoto\GalleryBundle\Entity\AbstractImage as AbstractImage;
+use Fabfoto\UserBundle\Entity\User as User;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -14,7 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class Portrait
+class Portrait extends AbstractImage 
 {
 
     public function __toString()
@@ -106,29 +108,6 @@ class Portrait
     }
 
 
-    public function getAbsolutePath()
-    {
-        return null === $this->location ? null : $this->getUploadRootDir() . '/' . $this->location;
-    }
-
-    public function getWebPath()
-    {
-        return null === $this->location ? null : $this->getUploadDir() . '/' . $this->location;
-    }
-
-    protected function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded documents should be saved
-        return __DIR__ . '/../../../../www/' . $this->getUploadDir();
-    }
-
-    protected function getUploadDir()
-    {
-        // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
-        return 'uploads';
-    }
-
-
     /**
      * @ORM\PostRemove()
      */
@@ -149,7 +128,7 @@ class Portrait
      *
      * @param Fabfoto\UserBundle\Entity\User $user
      */
-    public function setUser(\Fabfoto\UserBundle\Entity\User $user)
+    public function setUser(User $user)
     {
         $this->user = $user;
     }

@@ -14,9 +14,6 @@ class EditType extends BaseEditType
     public function buildForm(FormBuilder $builder, array $options)
     {
 
-        $builder->add('path', 'file', array('required' => false,));
-
-
         $builder->add('name', 'text', array('required' => true,));
     }
 }

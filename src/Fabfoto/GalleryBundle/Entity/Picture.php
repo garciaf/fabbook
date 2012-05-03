@@ -13,13 +13,12 @@ use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
  * @ORM\Entity(repositoryClass="Fabfoto\GalleryBundle\Entity\PictureRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Picture
-{
+class Picture extends AbstractImage {
 
-    public function __toString()
-    {
+    public function __toString() {
         return (string) $this->name;
     }
+
     /**
      * @var integer $id
      *
@@ -66,8 +65,7 @@ class Picture
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -76,8 +74,7 @@ class Picture
      *
      * @param string $name
      */
-    public function setName($PictureRepositoryname)
-    {
+    public function setName($PictureRepositoryname) {
         $this->name = $PictureRepositoryname;
     }
 
@@ -86,11 +83,46 @@ class Picture
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
+    /**
+     * Set createdAt
+     *
+     * @param date $createdAt
+     */
+    public function setCreatedAt($createdAt) {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return date 
+     */
+    public function getCreatedAt() {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set album
+     *
+     * @param Fabfoto\GalleryBundle\Entity\Picture $album
+     */
+    public function setAlbum(Album $album) {
+        $this->album = $album;
+    }
+
+    /**
+     * Get album
+     *
+     * @return Fabfoto\GalleryBundle\Entity\Album 
+     */
+    public function getAlbum() {
+
+        return $this->album;
+    }
     /**
      * Set location
      *
@@ -110,94 +142,16 @@ class Picture
     {
         return $this->location;
     }
-
-    /**
-     * Set createdAt
-     *
-     * @param date $createdAt
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return date 
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set album
-     *
-     * @param Fabfoto\GalleryBundle\Entity\Picture $album
-     */
-    public function setAlbum(Album $album)
-    {
-        $this->album = $album;
-    }
-
-    /**
-     * Get album
-     *
-     * @return Fabfoto\GalleryBundle\Entity\Album 
-     */
-    public function getAlbum()
-    {
-
-        return $this->album;
-    }
-
-    public function getAbsolutePath()
-    {
-        return null === $this->location ? null : $this->getUploadRootDir() . '/' . $this->location;
-    }
-
-    public function getWebPath()
-    {
-        return null === $this->location ? null : $this->getUploadDir() . '/' . $this->location;
-    }
-
-    public function getThumbPath()
-    {
-        return null === $this->location ? null : $this->getUploadDir() . '/mini' . $this->location;
-    }
-
-    public function getAbsoluteThumbPath()
-    {
-        return null === $this->location ? null : $this->getUploadRootDir() . '/mini' . $this->location;
-    }
-
-    protected function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded documents should be saved
-        return __DIR__ . '/../../../../www/' . $this->getUploadDir();
-    }
-
-    protected function getUploadDir()
-    {
-        // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
-        return 'uploads';
-    }
-
-
     /**
      * @ORM\PostRemove()
      */
-    public function removeUpload()
-    {
-        if (file_exists($this->getAbsolutePath()))
-        {
+    public function removeUpload() {
+        if (file_exists($this->getAbsolutePath())) {
             if ($file = $this->getAbsolutePath()) {
 
                 unlink($file);
             }
-            if ($fileThumb = $this->getAbsoluteThumbPath())
-            {
+            if ($fileThumb = $this->getAbsoluteThumbPath()) {
                 unlink($fileThumb);
             }
         }
@@ -208,8 +162,7 @@ class Picture
      *
      * @param boolean $isBackground
      */
-    public function setIsBackground($isBackground)
-    {
+    public function setIsBackground($isBackground) {
         $this->isBackground = $isBackground;
     }
 
@@ -218,8 +171,7 @@ class Picture
      *
      * @return boolean 
      */
-    public function getIsBackground()
-    {
+    public function getIsBackground() {
         return $this->isBackground;
     }
 

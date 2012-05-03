@@ -5,6 +5,7 @@ namespace Fabfoto\GalleryBundle\Uploader;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\File;
 use Fabfoto\GalleryBundle\Entity\Picture;
+use Fabfoto\GalleryBundle\Entity\AbstractImage;
 
 class PictureUploader
 {

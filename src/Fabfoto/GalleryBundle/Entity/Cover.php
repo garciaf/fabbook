@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks
  */
-class Cover
+class Cover extends AbstractImage 
 {
 
     public function __toString()
@@ -106,29 +106,6 @@ class Cover
     public function getCreatedAt()
     {
         return $this->createdAt;
-    }
-
-
-    public function getAbsolutePath()
-    {
-        return null === $this->location ? null : $this->getUploadRootDir() . '/' . $this->location;
-    }
-
-    public function getWebPath()
-    {
-        return null === $this->location ? null : $this->getUploadDir() . '/' . $this->location;
-    }
-
-    protected function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded documents should be saved
-        return __DIR__ . '/../../../../www/' . $this->getUploadDir();
-    }
-
-    protected function getUploadDir()
-    {
-        // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
-        return 'uploads';
     }
 
 
