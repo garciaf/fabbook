@@ -19,7 +19,9 @@ class MessageType extends AbstractType
             ->add('content', 'textarea', array(
                 
             ))
-            ->add('captcha', 'captcha')
+            ->add('captcha', 'genemu_recaptcha', array(
+                'property_path' => false
+            ))
         ;
     }
 
