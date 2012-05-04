@@ -107,6 +107,9 @@ avalanche_imagine:
         cover:
             type:    thumbnail
             options: { size: [650, 180], mode: outbound }            
+        background:
+            type:    thumbnail
+            options: { size: [1024, 768], mode: inset }            
 zenstruck_mobile:
     mobile: false
     use_listener: true
@@ -134,7 +137,15 @@ genemu_form:
     tinymce:
         script_url: '/bundles/fabfotogallery/tiny_mce/tiny_mce.js'      
         enabled: true
-        theme:   advanced      
+        theme:   advanced 
+    recaptcha:
+            enabled:    true
+            public_key:  6LcIEtESAAAAACk_Mc02xR3nwFw5RdnEkkkdwuXm
+            private_key: 6LcIEtESAAAAAD1sT0-8wNoxCWmBSecK97wRQA25            
+            server_url: 'http://api.recaptcha.net'
+            ssl:
+                use:        true
+                server_url: 'https://api-secure.recaptcha.net'      
 jms_serializer:
     handlers:
         object_based: false
