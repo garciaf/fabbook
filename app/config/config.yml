@@ -107,6 +107,9 @@ avalanche_imagine:
         cover:
             type:    thumbnail
             options: { size: [650, 180], mode: outbound }            
+        background:
+            type:    thumbnail
+            options: { size: [1024, 768], mode: inset }            
 zenstruck_mobile:
     mobile: false
     use_listener: true

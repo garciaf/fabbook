@@ -13,7 +13,7 @@ use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
  * @ORM\Entity(repositoryClass="Fabfoto\GalleryBundle\Entity\PictureRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Picture
+class Picture extends AbstractImage
 {
 
     public function __toString()
@@ -152,37 +152,7 @@ class Picture
         return $this->album;
     }
 
-    public function getAbsolutePath()
-    {
-        return null === $this->location ? null : $this->getUploadRootDir() . '/' . $this->location;
-    }
 
-    public function getWebPath()
-    {
-        return null === $this->location ? null : $this->getUploadDir() . '/' . $this->location;
-    }
-
-    public function getThumbPath()
-    {
-        return null === $this->location ? null : $this->getUploadDir() . '/mini' . $this->location;
-    }
-
-    public function getAbsoluteThumbPath()
-    {
-        return null === $this->location ? null : $this->getUploadRootDir() . '/mini' . $this->location;
-    }
-
-    protected function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded documents should be saved
-        return __DIR__ . '/../../../../www/' . $this->getUploadDir();
-    }
-
-    protected function getUploadDir()
-    {
-        // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
-        return 'uploads';
-    }
 
 
     /**
