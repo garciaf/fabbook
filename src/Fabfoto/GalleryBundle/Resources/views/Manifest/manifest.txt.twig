@@ -4,7 +4,9 @@ CACHE MANIFEST
 
 # Style 
 {{asset('bundles/fabfotogallery/css/fabbook.css')}}
-{{ asset('bundles/fabfotogallery/jquery.mobile-1.0.1/jquery.mobile.structure-1.0.1.css')}}
+{{ asset('bundles/fabfotogallery/jquery.mobile-1.0.1/jquery.mobile-1.0.1.min.css')}}
+{{ asset('bundles/fabfotogallery/css/ios_inspired/styles.css')}}
+
 {{ asset('bundles/fabfotogallery/jquery.mobile-1.0.1/images/icons-18-white.png')}}
 
 #Javascript        
@@ -28,6 +30,6 @@ CACHE MANIFEST
 
 FALLBACK:
 {{ path('albums_mobile')}} {{ path('manifest_offline')}}
-{{ path('index')}} {{ path('manifest_offline')}}
+{{ path('show_articles')}} {{ path('manifest_offline')}}
 NETWORK:
 *

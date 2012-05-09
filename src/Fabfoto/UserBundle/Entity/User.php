@@ -105,6 +105,10 @@ class User extends BaseUser
      */
     private $phone;
     
+    public function __toString(){
+        return $this->getFirstname().' '.$this->getName();
+    }
+    
     /**
      * Get id
      *

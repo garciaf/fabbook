@@ -1,0 +1,37 @@
+generator: admingenerator.generator.doctrine
+params:
+  model: Fabfoto\GalleryBundle\Entity\Cover
+  namespace_prefix: Fabfoto
+  bundle_name: AdminBundle
+  fields: 
+    location:
+      formType: file
+      addFormOptions:
+        required: false     
+
+builders:
+  list:
+    params:
+      title: List for AdminBundle
+      display: [location, name]
+      actions:
+        new: ~
+      object_actions:
+        edit: ~
+        delete: ~
+  filters:
+    params:
+      display: ~
+  new:
+    params:
+      title: New object for AdminBundle
+      display: [location, name]
+      actions:
+        list: ~
+  edit:
+    params:
+      title: You're editing the object
+      display: [name]
+      actions:
+        list: ~
+  delete: ~

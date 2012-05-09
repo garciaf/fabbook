@@ -4,7 +4,7 @@ namespace Fabfoto\GalleryBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
-
+use \Fabfoto\UserBundle\Entity\User as User;
 /**
  * Fabfoto\GalleryBundle\Entity\Article
  *
@@ -57,6 +57,13 @@ class Article
      * @ORM\Column(name="author", type="string", length=255)
      */
     private $author;
+    
+    /**
+     * @var string $author
+     *
+     * @ORM\Column(name="authorSlug", type="string", length=255)
+     */
+    private $authorSlug;
 
     /**
      * Get id
@@ -146,6 +153,28 @@ class Article
     public function getContent()
     {
         return $this->content;
+    }
+
+
+
+    /**
+     * Set authorSlug
+     *
+     * @param string $authorSlug
+     */
+    public function setAuthorSlug($authorSlug)
+    {
+        $this->authorSlug = $authorSlug;
+    }
+
+    /**
+     * Get authorSlug
+     *
+     * @return string 
+     */
+    public function getAuthorSlug()
+    {
+        return $this->authorSlug;
     }
 
     /**

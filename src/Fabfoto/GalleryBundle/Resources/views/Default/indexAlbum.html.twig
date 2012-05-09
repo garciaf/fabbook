@@ -1,23 +1,31 @@
 {% extends 'FabfotoGalleryBundle::layout.html.twig'%}
 {% block content %}
 <div class="list_album">
+    <div class="page-header">
+        <h1>Album <small>quelques photos</small></h1>
+
+    </div>
     {% for album in albums%}
     <a href="{{path('show_album', {'slug':album.slug})}}" >
         <div class="album_sum_up" style="background: url(/{{album.picturecover.webpath}})" >
-      <h1 class="album_title">{{album.name}}</h1>
+            <h1 class="album_title">{{album.name}}</h1>
             <p class="album_comment">{{album.comment}}</p>
         </div>
     </a>
 
     {% endfor %}
+    <div class="center">
+        {{ pagerfanta(albums, 'twitter_bootstrap_translated') }}
+    </div>
 </div>
 {% endblock content %}
 {%block qrLink %}
-<a href="{{path('albums_mobile') }}">
-    <img alt="[QR Code]" src="/{{ mopa_barcode_url('qr', url('albums_mobile') ) }}"/>
-    Mobile
+<a id="qrlink" rel="popover" href="{{path('albums_mobile') }}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("albums_mobile") ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">
+    <div class="visible-desktop"><i class="icon-qrcode icon-white"></i></div>
+    <div class="hidden-desktop"><i class="icon-qrcode icon-white"></i> {% trans %}mobile{% endtrans %}</div>
 </a>
 {%endblock qrLink %}
 {% block carroussel %}
 {% render 'FabfotoGalleryBundle:Default:allBackground' with {'max': 10} %}
 {% endblock carroussel %}
+

@@ -4,11 +4,13 @@ namespace Fabfoto\GalleryBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
-use \Fabfoto\GalleryBundle\Entity\Tag as Tag;
+use Fabfoto\GalleryBundle\Entity\Tag as Tag;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping\JoinColumn as JoinColumn;
 use Doctrine\ORM\Mapping\JoinTable as JoinTable;
 use Doctrine\ORM\Mapping\ManyToMany as ManyToMany;
+use Doctrine\ORM\Mapping\ManyToOne as ManyToOne;
+use Fabfoto\GalleryBundle\Entity\Cover as Cover;
 
 /**
  * Fabfoto\GalleryBundle\Entity\ArticleBlog
@@ -66,11 +68,23 @@ class ArticleBlog
     private $content;
 
     /**
+     * @ManyToOne(targetEntity="Cover") 
+     */
+    private $cover;
+    
+    /**
      * @var string $author
      *
      * @ORM\Column(name="author", type="string", length=255)
      */
     private $author;
+    
+    /**
+     * @var string $author
+     *
+     * @ORM\Column(name="authorSlug", type="string", length=255)
+     */
+    private $authorSlug;
 
      /**
       *  
@@ -201,28 +215,6 @@ class ArticleBlog
         return $this->content;
     }
 
-    /**
-     * Set author
-     *
-     * @param string $author
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-    }
-
-    /**
-     * Get author
-     *
-     * @return string 
-     */
-    public function getAuthor()
-    {
-        return $this->author;
-    }
-    /**
-     * Construct the object 
-     */
     public function __construct()
     {
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
@@ -236,7 +228,7 @@ class ArticleBlog
      *
      * @param Fabfoto\GalleryBundle\Entity\Tag $tags
      */
-    public function addTag(\Tag $tags)
+    public function addTag(Tag $tags)
     {
         $tags->addArticleBlog($this);
         $this->tags[] = $tags;
@@ -270,5 +262,67 @@ class ArticleBlog
     public function getSlugblog()
     {
         return $this->slugblog;
+    }
+
+
+    /**
+     * Set authorSlug
+     *
+     * @param string $authorSlug
+     */
+    public function setAuthorSlug($authorSlug)
+    {
+        $this->authorSlug = $authorSlug;
+    }
+
+    /**
+     * Get authorSlug
+     *
+     * @return string 
+     */
+    public function getAuthorSlug()
+    {
+        return $this->authorSlug;
+    }
+
+    /**
+     * Set author
+     *
+     * @param string $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * Get author
+     *
+     * @return string 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+
+    /**
+     * Set cover
+     *
+     * @param Fabfoto\GalleryBundle\Entity\Cover $cover
+     */
+    public function setCover(Cover $cover)
+    {
+        $this->cover = $cover;
+    }
+
+    /**
+     * Get cover
+     *
+     * @return Fabfoto\GalleryBundle\Entity\Cover 
+     */
+    public function getCover()
+    {
+        return $this->cover;
     }
 }

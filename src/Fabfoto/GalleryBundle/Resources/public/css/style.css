@@ -31,7 +31,6 @@ html, body {
     font-size: 13px;
     color: black;
     margin: 0px 0px 0px 0px;
-    width:100%;
     padding:0px;
 }
 #header {
@@ -142,23 +141,23 @@ html, body {
     width: 40px;
 }
 #page {
-    margin-top: 130px;
-    margin-left: 30px;
-    display: block;
-    z-index: 300;
+    margin-top: 60px;
     background: url(../image/bg_fff_90.png);
-    width: 800px;
     padding: 18px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .list_album{
     display: block;
+}
+
+.list_album a:hover{
+    text-decoration: none;
 }
 album_sum_up{
     float: left;
@@ -220,6 +219,8 @@ album_sum_up{
     height: 20px;
 }
 .album_title{
+    margin-top: 20px;
+    margin-bottom: 10px;
     font-family: 'Terminal Dosis', Arial, sans-serif;
     text-align: center;
     color: whitesmoke;
@@ -350,6 +351,7 @@ textarea:focus {
 }
 .tag{
     margin-top: 10px;
+    margin-bottom: 20px;
     margin-left: 50px;
 }
 .tag a
@@ -434,13 +436,11 @@ blockquote{
     padding-left: 15px;
 
 }
-#social{
-    text-align: center;
-    width : 100%;
-}
+
 #social div{
-    margin-right: 1em;
+    margin: 1em;
     float: right;
+
 }
 #social img{
     width: 44px;
@@ -452,7 +452,7 @@ blockquote{
     display: block;
     z-index: 300;
     background: url(../image/bg_fff_90.png);
-    width: 500px;
+    width: 50%;
     padding: 18px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.3);
@@ -527,4 +527,21 @@ blockquote{
 }
 .pdf img{
     width: 44px;
+}
+
+.albumPreview{
+    clip:rect(-100px,0px,0px,-50px);
+
+}
+#myCarousel{
+height: 1000px;
+width: 100%;
+
+}
+#fos_comment_comment_body{
+width: 50%;
+border-radius: 10px;
+}
+.center{
+    text-align: center;
 }

@@ -1,10 +1,10 @@
 [symfony]
     git=http://github.com/symfony/symfony.git
-    version=v2.0.12
+    version=v2.0.13
 
 [twig]
     git=http://github.com/fabpot/Twig.git
-    version=v1.6.2
+    version=v1.7.0
 
 [monolog]
     git=http://github.com/Seldaek/monolog.git
@@ -24,7 +24,7 @@
 
 [swiftmailer]
     git=http://github.com/swiftmailer/swiftmailer.git
-    version=v4.1.5
+    version=v4.1.7
 
 [assetic]
     git=http://github.com/kriswallsmith/assetic.git
@@ -35,7 +35,7 @@
 
 [metadata]
     git=http://github.com/schmittjoh/metadata.git
-    version=1.0.0
+    version=1.1.0
 
 [SensioFrameworkExtraBundle]
     git=http://github.com/sensio/SensioFrameworkExtraBundle.git
@@ -115,7 +115,11 @@
 [zend-filter]
       git=git://github.com/KnpLabs/zend-filter.git
       target=Zend/Filter
-      
+
+[zend-feed]
+      git=git://github.com/KnpLabs/zend-feed.git
+      target=Zend/Feed
+        
 [WhiteOctoberTCPDFBundle]
     git=git://github.com/whiteoctober/WhiteOctoberTCPDFBundle.git
     target=/bundles/WhiteOctober/TCPDFBundle
@@ -210,6 +214,33 @@
 [FOSUserBundle]
     git=git://github.com/FriendsOfSymfony/FOSUserBundle.git
     target=bundles/FOS/UserBundle
+    version=1.2.0
+
 [AdmingeneratorUserBundle]
     git=https://github.com/cedriclombardot/AdmingeneratorUserBundle
     target=bundles/Admingenerator/UserBundle
+
+[FOSRest]
+    git=git://github.com/FriendsOfSymfony/FOSRest.git
+    target=fos/FOS/Rest
+
+[JMSSerializerBundle]
+    git=git://github.com/schmittjoh/JMSSerializerBundle.git
+    target=bundles/JMS/SerializerBundle
+
+[FOSRestBundle]
+    git=git://github.com/FriendsOfSymfony/FOSRestBundle.git
+    target=bundles/FOS/RestBundle
+    version=origin/0.6
+
+[FOSCommentBundle]
+    git=https://github.com/FriendsOfSymfony/FOSCommentBundle.git
+    target=bundles/FOS/CommentBundle
+
+[HTMLPurifierBundle]
+    git=git://github.com/Exercise/HTMLPurifierBundle.git 
+    target = bundles/Exercise/HTMLPurifierBundle
+
+[htmlpurifier]
+    git=git://github.com/ezyang/htmlpurifier.git 
+    target=htmlpurifier

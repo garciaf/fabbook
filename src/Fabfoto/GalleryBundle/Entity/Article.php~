@@ -2,6 +2,7 @@
 
 namespace Fabfoto\GalleryBundle\Entity;
 
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,6 +39,7 @@ class Article
     /**
      * @var date $createdAt
      *
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="createdAt", type="date")
      */
     private $createdAt;
@@ -55,11 +57,14 @@ class Article
      * @ORM\Column(name="author", type="string", length=255)
      */
     private $author;
+    
+    /**
+     * @var string $author
+     *
+     * @ORM\Column(name="authorSlug", type="string", length=255)
+     */
+    private $authorSlug;
 
-    public function __construct()
-    {
-        $this->createdAt = new \DateTime();
-    }
     /**
      * Get id
      *
@@ -150,23 +155,25 @@ class Article
         return $this->content;
     }
 
+
+
     /**
-     * Set author
+     * Set authorSlug
      *
-     * @param string $author
+     * @param string $authorSlug
      */
-    public function setAuthor($author)
+    public function setAuthorSlug($authorSlug)
     {
-        $this->author = $author;
+        $this->authorSlug = $authorSlug;
     }
 
     /**
-     * Get author
+     * Get authorSlug
      *
      * @return string 
      */
-    public function getAuthor()
+    public function getAuthorSlug()
     {
-        return $this->author;
+        return $this->authorSlug;
     }
 }

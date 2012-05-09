@@ -5,4 +5,5 @@
 <p>{{ article.content |raw }}</p>
 <blockquote><em>{{ article.author }}</em></blockquote>
 {% if article.createdAt %}<h6>{{ article.createdAt|date('Y-m-d') }}</h6>{% endif%}
+{% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': article.id} %}
 {% endblock content %}

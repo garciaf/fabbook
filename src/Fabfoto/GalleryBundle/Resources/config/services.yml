@@ -1,5 +1,7 @@
 parameters:
 #    knp_upload.example.class: Knp\UploadBundle\Example
+     nbArticle: %fabfoto_gallery.nbArticle% 
+     nbAlbum: %fabfoto_gallery.nbAlbum% 
 
 services:
 #    knp_upload.example:

@@ -1,20 +1,23 @@
-<div class="list_articles_blog">
+
+
+<div  class="row">
     {% for article in ArticlesBlogs %}
-    <div class="article_blog">
-        <a href="{{path('show_article_blog', {'slugblog':article.slugblog})}}" >
-        <h1>{{article.title}}</h1>
-        <h2>{{article.subtitle}}</h2>
-        <span class="extra_info_blog">Par {{article.author}} - {{article.createdAt|date('d/m/Y')}}</span>
-        </a>
-        <div class="tag">
-        Tags : 
+    <div class="span3  well">
+
+        <h3>{{article.title}}</h3>
+        <h4>{{article.subtitle}}</h4>
+            {% if article.author is not null %}
+    	<h6><a target="_blanck" href="{{ path('show_user', { 'slug': article.authorSlug }) }}">{{article.author}}</a></h6>
+            {% endif %}
+        <h6>Le {{article.createdAt|date('d/m/Y')}}</h6>
+        <p><i class="icon-tags icon-black"></i> :
         {% for tag in article.tags %}
-        <a href="{{path('show_articles_blog_by_tags', {'tag_slug':tag.slug})}} "> {{tag}}</a> 
+        <a href="{{path('show_articles_blog_by_tags', {'tag_slug':tag.slug})}} "> <span class="label label-info">{{tag}}</span></a> 
         {% endfor %}
-        </div>
-        <div class="more">
-            <a href="{{path('show_article_blog', {'slugblog':article.slugblog})}}" >Plus</a>
-        </div>
+        </p>
+        <a class="btn" href="{{path('show_article_blog', {'slugblog':article.slugblog})}}">Read More</a>
+
     </div>
     {% endfor %}
+
 </div>

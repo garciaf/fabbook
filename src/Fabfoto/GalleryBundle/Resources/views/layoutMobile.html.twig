@@ -5,7 +5,8 @@
         <title>{% block titlepage %}Fabfoto {% endblock titlepage %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">  
 	<link rel="stylesheet" href="{{asset('bundles/fabfotogallery/css/fabbook.css')}}" />
-        <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0.1/jquery.mobile.structure-1.0.1.css')}}" />
+        <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0.1/jquery.mobile-1.0.1.min.css')}}" />
+        <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/css/ios_inspired/styles.css')}}" />
         {% block importcss %}
         {% endblock importcss %}
         <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery/jquery-1.7.1.js')}}"></script>
@@ -29,10 +30,10 @@
             <div data-role="footer" data-position="fixed" >
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="{{path('index_mobile')}}" >Index</a></li>
-                        <li><a href="{{path('albums_mobile')}}" rel="external">Albums</a></li>
-                        <li><a href="{{path('index_blog_mobile')}}" rel="external">Blog</a></li>
-                        <li><a href="{{path('show_articles')}}" rel="external">Classique</a></li>
+                        <li><a data-iconpos="top"  data-icon="home" href="{{path('index_mobile')}}" >Index</a></li>
+                        <li><a id="tabB" data-icon="custom" href="{{path('albums_mobile')}}" rel="external">Albums</a></li>
+                        <li><a id="tabC" data-icon="custom" href="{{path('index_blog_mobile')}}" rel="external">Blog</a></li>
+                        <li><a id="tabD" data-icon="custom" href="{{path('show_articles')}}" rel="external">Classique</a></li>
                     </ul>
                 </div><!-- /navbar -->
             </div> 

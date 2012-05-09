@@ -2,9 +2,12 @@ imports:
     - { resource: parameters.ini }
     - { resource: security.yml }
 
+sensio_framework_extra:
+  view:
+    annotations: false
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:      { fallback: %locale% }
     secret:          %secret%
     charset:         UTF-8
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
@@ -15,6 +18,8 @@ framework:
     session:
         default_locale: %locale%
         auto_start:     true
+    translator: ~
+    
 
 # Twig Configuration
 twig:
@@ -88,6 +93,7 @@ knp_last_tweets:
         options:
             cache_name: knp_last_tweets
 avalanche_imagine:
+    source_root:  %kernel.root_dir%/../www
     web_root:     %kernel.root_dir%/../www
     cache_prefix: media/cache
     driver:       gd
@@ -111,9 +117,88 @@ stof_doctrine_extensions:
 knp_menu:
     twig: true
 admingenerator_generator:
-    base_admin_template: AdmingeneratorActiveAdminThemeBundle::base_admin_assetic_less.html.twig
+    base_admin_template: FabfotoAdminBundle::base_admin.html.twig
     knp_menu_class: Fabfoto\AdminBundle\Menu\AdminMenu
     use_propel: false
     use_doctrine_orm: true
     use_doctrine_odm: false
-genemu_form: ~    
+#admingenerator_user:
+#    login_template: AdmingeneratorGeneratorBundle::base_login_assetic_less.html.twig
+genemu_form:
+    tinymce:
+        script_url: '/bundles/fabfotogallery/tiny_mce/tiny_mce.js'      
+        enabled: true
+        theme:   advanced      
+jms_serializer:
+    handlers:
+        object_based: false
+        datetime:
+            format: "Y-m-dTH:i:s" # ISO8601
+            default_timezone: "UTC" # defaults to whatever timezone set in php.ini or via date_default_timezone_set
+        array_collection: true
+        form_error: true
+        constraint_violation: true
+
+    property_naming:
+        separator:  _
+        lower_case: true
+
+    metadata:
+        cache: file
+        debug: "%kernel.debug%"
+        file_cache:
+            dir: "%kernel.cache_dir%/serializer"
+
+        # Using auto-detection, the mapping files for each bundle will be
+        # expected in the Resources/config/serializer directory.
+        #
+        # Example:
+        # class: My\FooBundle\Entity\User
+        # expected path: @MyFooBundle/Resources/config/serializer/Entity.User.(yml|xml|php)
+        auto_detection: true
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Fabfoto\UserBundle\Entity\User     
+    registration:
+        confirmation:
+          enabled: true
+        form:
+            type: fabfoto_user_registration    
+exercise_html_purifier:
+    default:
+        Cache.SerializerPath: '%kernel.cache_dir%/htmlpurifier'
+services:
+    markup.exercise_html_purifier:
+        class: FOS\CommentBundle\Markup\HtmlPurifier
+        arguments: [ @exercise_html_purifier.default ]        
+fos_comment:
+    acl: true
+    service:
+        acl:
+            thread: fos_comment.acl.thread.roles
+            comment: fos_comment.acl.comment.roles
+            vote: fos_comment.acl.vote.roles
+        markup: markup.exercise_html_purifier         
+    db_driver: orm
+    class:
+        model:
+            comment: Fabfoto\GalleryBundle\Entity\Comment
+            thread: Fabfoto\GalleryBundle\Entity\Thread        
+    acl_roles:
+        comment:
+            create: IS_AUTHENTICATED_ANONYMOUSLY
+            view: IS_AUTHENTICATED_ANONYMOUSLY
+            edit: ROLE_ADMIN
+            delete: ROLE_ADMIN
+        thread:
+            create: IS_AUTHENTICATED_ANONYMOUSLY
+            view: IS_AUTHENTICATED_ANONYMOUSLY
+            edit: ROLE_ADMIN
+            delete: ROLE_ADMIN
+        vote:
+            create: IS_AUTHENTICATED_ANONYMOUSLY
+            view: IS_AUTHENTICATED_ANONYMOUSLY
+            edit: ROLE_ADMIN
+            delete: ROLE_ADMIN            

@@ -24,6 +24,8 @@ class FabfotoGalleryExtension extends Extension
         
         $container->setParameter('fabfoto_gallery.picture_directory', $config['picture_directory']);
         $container->setParameter('fabfoto_gallery.mailsender', $config['mailsender']);
+        $container->setParameter('fabfoto_gallery.nbArticle', $config['nbArticle']);
+        $container->setParameter('fabfoto_gallery.nbAlbum', $config['nbAlbum']);
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }

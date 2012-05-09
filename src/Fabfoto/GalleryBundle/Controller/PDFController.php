@@ -41,30 +41,6 @@ class PDFController extends Controller
         $pdfObj->lastPage();
         return $pdfObj->Output($article->getSlugblog().'.pdf');
     }
-     /**
-     * @Route("about/", name="show_about_pdf")
-     * 
-     */
-    public function showAboutAction()
-    {
-            $pdfObj = $this->get("white_october.tcpdf")->create();
-            $author = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Author')
-                ->findOneBy(array());
-         $html = $this->renderView('FabfotoGalleryBundle:PDF:ShowAbout.pdf.twig',
-                        array(
-                            'author' => $author,
-                ));
-        $pdfObj->SetFont('dejavusans', '', 6);
-        $pdfObj->setPrintHeader(false);
-	$pdfObj->setPrintFooter(false);
-        //$BackgroundUrl = $this->get('templating.helper.assets')->getUrl('bundles/fabfotogallery/image/about_me.jpg');
-        $pdfObj->AddPage('P','BUSINESS_CARD_FR');
-        $pdfObj->writeHTML($html, true, false, true, false, '');
-        $pdfObj->lastPage();
-        return $pdfObj->Output('carte.pdf');
-    }
       /**
      * @Route("/{slug}/pdfcard", name="show_about_pdf_from")
      * 

@@ -1,0 +1,10 @@
+{% extends 'FabfotoUserBundle::layoutForm.html.twig'%}
+<div class="row">
+<div class="span8">
+<div class="hero-unit">
+{% block fos_user_content %}
+{% include "FOSUserBundle:Registration:register_content.html.twig" %}
+{% endblock fos_user_content %}
+</div>
+</div>
+</div>

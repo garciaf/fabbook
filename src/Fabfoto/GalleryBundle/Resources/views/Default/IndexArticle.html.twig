@@ -2,25 +2,74 @@
 {% block titlepage %}Fabfoto-News{% endblock titlepage %}
 {% block content %}
 <div class="list_articles">
-    <div class="ribbonArticle">
-        <h1>un peu de tweet ...</h1>
+    <div class="page-header">
+        <h1>{% trans %}news{% endtrans %} <small>{% trans %}last.article{% endtrans %}</small></h1>
+    </div>
+    <div  class="row">
+
+        <div class="span12 columns">
+            <div id="NewsCarousel" class="carousel slide">
+
+                <div class="carousel-inner">
+                    {% for blog in blogs %}
+                    <div class="{% if loop.first %}active {% endif %}item center">
+                        {% if blog.cover is not null %}
+                        <img src="{{blog.cover.webpath| apply_filter('cover') }}" width="100%" alt="{{blog.cover}}" /> 
+                        {% endif %}
+                        {% if blog.cover is null %}
+                        <img src="{{asset('bundles/fabfotogallery/image/newIsmage.png')}}" />
+                        {% endif %}
+                        
+                        <div class="carousel-caption">
+                            <a href="{{path('show_article_blog', {'slugblog': blog.slugblog})}}">    
+                            <h4>{{blog.title}}</h4>
+                            <p>{{blog.subtitle}}</p>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% for album in albums %}
+                    <div class="item center">
+                    <img src="{{album.picturecover.webpath | apply_filter('cover') }}" width="100%" alt="{{album.name}}" /> 
+                    <div class="carousel-caption">
+                            <a href="{{path('show_album', {'slug':album.slug})}}">    
+                            <h4>{{album.name}}</h4>
+                            <p>{{album.comment}}</p>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <a class="left carousel-control" href="#NewsCarousel" data-slide="prev">‹</a>
+                <a class="right carousel-control" href="#NewsCarousel" data-slide="next">›</a>
+            </div>
+        </div>
+    </div>
+    <div class="page-header">
+        <h1>{% trans %}news{% endtrans %} <small>{% trans %}from.fabbook{% endtrans %}</small></h1>
+    </div>
+        <div  class="row">
+
+        {% for article in articles %}
+        <div class="span3 well-small">
+            <h3>{{article.title}}</h3>
+            <h4>{{article.subtitle}}</h4>
+            <h6>le {{article.createdAt|date('d/m/Y')}}</h6>
+
+            <p>{{article.content|raw}}</p>
+            {% if article.author is not null %}
+            <h3 class="author"><a target="_blanck" href="{{ path('show_user', { 'slug': article.authorSlug }) }}">{{article.author}}</a></h3>
+            {% endif %}
+        </div> 
+        {% endfor %}
+        <div class="span12 center">
+            {{ pagerfanta(articles, 'twitter_bootstrap_translated') }}
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h1>{% trans %}news{% endtrans %} <small>{% trans %}from.tweeter{% endtrans %}</small></h1>
     </div>
     {% render "KnpLastTweetsBundle:Twitter:lastTweets" with {'username': 'FabbookFr'} %}
-    <div class="ribbonArticle">
-        <h1>un peu de nouvelles ...</h1>
-    </div>
-    {% for article in articles %}
-
-    <div class="article">
-        <div class="title_news">
-            <span class="title_label">{{article.title}}</span>
-            <span class="createdAt">le {{article.createdAt|date('d/m/Y')}}</span>
-        </div>
-        <h2>{{article.subtitle}}</h2>
-        <p>{{article.content|raw}}</p>
-        <h3 class="author">{{article.author}}</h3>
-
-    </div>
-    {% endfor %}
 </div>
 {% endblock content %}
