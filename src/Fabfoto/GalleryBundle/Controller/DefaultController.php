@@ -118,10 +118,9 @@ class DefaultController extends Controller {
         $tag = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Tag')
-                ->filterBy(array('isPublished' => true))
                 ->findOneBySlug($tag_slug);
         $articlesBlogs = $tag->getArticles();
-
+	//Fix me : Filter by is published
         return $this->render('FabfotoGalleryBundle:Default:IndexTagArticleBlog.html.twig', array(
                     'ArticlesBlogs' => $articlesBlogs,
                     'tag' => $tag,

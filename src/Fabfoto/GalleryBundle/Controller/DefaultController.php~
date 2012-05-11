@@ -118,7 +118,6 @@ class DefaultController extends Controller {
         $tag = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Tag')
-                ->filterBy(array('isPublished' => true))
                 ->findOneBySlug($tag_slug);
         $articlesBlogs = $tag->getArticles();
 
@@ -232,7 +231,6 @@ class DefaultController extends Controller {
             $articlesBlogs = $this
                     ->getDoctrine()
                     ->getRepository('FabfotoGalleryBundle:ArticleBlog')
-		    ->where('b.isPublished = true')
                     ->search($request->query->get('q'));
         }
         return $this->render('FabfotoGalleryBundle:Default:SearchResult.html.twig', array(
