@@ -32,6 +32,7 @@ class DefaultController extends Controller {
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->createQueryBuilder('b')
+		->where('b.isPublished = true')
                 ->orderBy('b.createdAt', 'DESC')
                 ->setMaxResults($this->container->getParameter('nbArticle'))
                 ->getQuery()
@@ -73,6 +74,7 @@ class DefaultController extends Controller {
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->createQueryBuilder('b')
+		->where('b.isPublished = true')
                 ->orderBy('b.createdAt', 'DESC')
                 ->getQuery();
         return $this->render('FabfotoGalleryBundle:Default:IndexArticleBlog.html.twig', array(
@@ -116,6 +118,7 @@ class DefaultController extends Controller {
         $tag = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Tag')
+                ->filterBy(array('isPublished' => true))
                 ->findOneBySlug($tag_slug);
         $articlesBlogs = $tag->getArticles();
 
