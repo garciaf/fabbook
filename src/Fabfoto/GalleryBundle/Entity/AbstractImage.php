@@ -1,12 +1,18 @@
 <?php
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * Description of AbstractImage
+ *
+ * @author garciaf
+ */
 namespace Fabfoto\GalleryBundle\Entity;
 
 abstract class AbstractImage {
 
-
-    public function getAbsolutePath() {
-        return null === $this->getLocation() ? null : $this->getUploadRootDir() . '/' . $this->getLocation();
-    }
 
     public function getWebPath() {
         return null === $this->getLocation() ? null : $this->getUploadDir() . '/' . $this->getLocation();
@@ -20,7 +26,17 @@ abstract class AbstractImage {
         return null === $this->getLocation() ? null : $this->getUploadRootDir() . '/mini' . $this->getLocation();
     }
 
-    protected function getUploadRootDir() {
+    public function getAbsolutePath()
+    {
+        return null === $this->getLocation() ? null : $this->getUploadRootDir() . '/' . $this->getLocation();
+    }
+
+    public function getFilterPath(){
+        return "/".$this->getWebPath();
+    }        
+
+    protected function getUploadRootDir()
+    {
         // the absolute directory path where uploaded documents should be saved
         return __DIR__ . '/../../../../www/' . $this->getUploadDir();
     }

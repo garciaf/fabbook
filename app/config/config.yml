@@ -107,6 +107,9 @@ avalanche_imagine:
         cover:
             type:    thumbnail
             options: { size: [650, 180], mode: outbound }            
+        background:
+            type:    thumbnail
+            options: { size: [1024, 768], mode: inset }            
 zenstruck_mobile:
     mobile: false
     use_listener: true
@@ -114,6 +117,101 @@ zenstruck_mobile:
     use_twig_engine: false
     full_host: fabbook.fr
     mobile_host: fabbook.fr/mobile            
+
+sonata_doctrine_orm_admin:
+    # default value is null, so doctrine uses the value defined in the configuration
+    entity_manager: ~
+
+    templates:
+        form:
+            - SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig
+            - IoFormBundle:Form:fields.html.twig
+        filter:
+            - SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig
+        types:
+            list:
+                array:      SonataAdminBundle:CRUD:list_array.html.twig
+                boolean:    SonataAdminBundle:CRUD:list_boolean.html.twig
+                date:       SonataAdminBundle:CRUD:list_date.html.twig
+                time:       SonataAdminBundle:CRUD:list_time.html.twig
+                datetime:   SonataAdminBundle:CRUD:list_datetime.html.twig
+                text:       SonataAdminBundle:CRUD:base_list_field.html.twig
+                trans:      SonataAdminBundle:CRUD:list_trans.html.twig
+                string:     SonataAdminBundle:CRUD:base_list_field.html.twig
+                smallint:   SonataAdminBundle:CRUD:base_list_field.html.twig
+                bigint:     SonataAdminBundle:CRUD:base_list_field.html.twig
+                integer:    SonataAdminBundle:CRUD:base_list_field.html.twig
+                decimal:    SonataAdminBundle:CRUD:base_list_field.html.twig
+                identifier: SonataAdminBundle:CRUD:base_list_field.html.twig
+
+            show:
+                array:      SonataAdminBundle:CRUD:show_array.html.twig
+                boolean:    SonataAdminBundle:CRUD:show_boolean.html.twig
+                date:       SonataAdminBundle:CRUD:show_date.html.twig
+                time:       SonataAdminBundle:CRUD:show_time.html.twig
+                datetime:   SonataAdminBundle:CRUD:show_datetime.html.twig
+                text:       SonataAdminBundle:CRUD:base_show_field.html.twig
+                trans:      SonataAdminBundle:CRUD:show_trans.html.twig
+                string:     SonataAdminBundle:CRUD:base_show_field.html.twig
+                smallint:   SonataAdminBundle:CRUD:base_show_field.html.twig
+                bigint:     SonataAdminBundle:CRUD:base_show_field.html.twig
+                integer:    SonataAdminBundle:CRUD:base_show_field.html.twig
+                decimal:    SonataAdminBundle:CRUD:base_show_field.html.twig
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+
+        #sonata.admin_doctrine_orm.block.audit:
+        #    contexts:   [admin]
+
+        sonata.block.service.text:
+        sonata.block.service.action:
+        sonata.block.service.rss:
+
+        # Some specific block from the SonataMediaBundle
+        #sonata.media.block.media:
+        #sonata.media.block.gallery:
+        #sonata.media.block.feature_media:
+        
+services:
+   fabfoto.admin.article:
+      class: Fabfoto\AdminBundle\Admin\ArticleAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: blog, label: News }
+      arguments: [null, Fabfoto\GalleryBundle\Entity\Article, SonataAdminBundle:CRUD]       
+   fabfoto.admin.articleBlog:
+      class: Fabfoto\AdminBundle\Admin\ArticleBlogAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: blog, label: Blog }
+      arguments: [null, Fabfoto\GalleryBundle\Entity\ArticleBlog, SonataAdminBundle:CRUD]
+   fabfoto.admin.tag:
+      class: Fabfoto\AdminBundle\Admin\TagAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: blog, label: Tag }
+      arguments: [null, Fabfoto\GalleryBundle\Entity\Tag, SonataAdminBundle:CRUD]  
+   fabfoto.admin.author:
+      class: Fabfoto\AdminBundle\Admin\AuthorAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: blog, label: Author }
+      arguments: [null, Fabfoto\GalleryBundle\Entity\Author, SonataAdminBundle:CRUD]
+   fabfoto.admin.message:
+      class: Fabfoto\AdminBundle\Admin\MessageAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: Messages, label: Mail }
+      arguments: [null, Fabfoto\GalleryBundle\Entity\Message, SonataAdminBundle:CRUD]
+   fabfoto.admin.picture:
+      class: Fabfoto\AdminBundle\Admin\PictureAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: Media, label: Picture }
+      arguments: [null, Fabfoto\GalleryBundle\Entity\Picture, SonataAdminBundle:CRUD]  
+   fabfoto.admin.album:
+      class: Fabfoto\AdminBundle\Admin\AlbumAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: Media, label: Album }
+      arguments: [null, Fabfoto\GalleryBundle\Entity\Album, SonataAdminBundle:CRUD]        
+
 stof_doctrine_extensions:
     default_locale: fr_FR
     orm:
@@ -134,7 +232,12 @@ genemu_form:
     tinymce:
         script_url: '/bundles/fabfotogallery/tiny_mce/tiny_mce.js'      
         enabled: true
-        theme:   advanced      
+        theme:   advanced 
+    recaptcha:
+            enabled:    true
+            public_key:  6LcIEtESAAAAACk_Mc02xR3nwFw5RdnEkkkdwuXm
+            private_key: 6LcIEtESAAAAAD1sT0-8wNoxCWmBSecK97wRQA25            
+                  
 jms_serializer:
     handlers:
         object_based: false

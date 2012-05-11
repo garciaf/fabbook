@@ -8,7 +8,6 @@ use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
 use Fabfoto\GalleryBundle\Entity\AbstractImage as AbstractImage;
 use Fabfoto\UserBundle\Entity\User as User;
 use Symfony\Component\Validator\Constraints as Assert;
-
 /**
  * Fabfoto\GalleryBundle\Entity\Picture
  *
@@ -16,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class Portrait extends AbstractImage 
+class Portrait extends AbstractImage
 {
 
     public function __toString()
@@ -106,7 +105,6 @@ class Portrait extends AbstractImage
     {
         return $this->createdAt;
     }
-
 
     /**
      * @ORM\PostRemove()
