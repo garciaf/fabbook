@@ -103,7 +103,7 @@ class ArticleBlog
      */
     private $slugblog;
     
-     public function __toString()
+    public function __toString()
      {
          return $this->getTitle();
      }
@@ -221,6 +221,8 @@ class ArticleBlog
     public function __construct()
     {
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 
 
