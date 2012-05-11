@@ -8,8 +8,6 @@ use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
 use Fabfoto\GalleryBundle\Entity\AbstractImage as AbstractImage;
 use Fabfoto\UserBundle\Entity\User as User;
 use Symfony\Component\Validator\Constraints as Assert;
-use Fabfoto\GalleryBundle\Entity\AbstractImage as AbstractImage;
-use Fabfoto\UserBundle\Entity\User as User;
 /**
  * Fabfoto\GalleryBundle\Entity\Picture
  *
