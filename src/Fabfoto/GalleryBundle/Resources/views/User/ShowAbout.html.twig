@@ -8,25 +8,25 @@
     <p>{{author.description | purify  }} </p>
     <div id ="social" class="row-fluid">
         {% if author.googleLink is not empty %}
-        <div class="span1" ><a title="Google plus" target="_blanck" href="{{author.googleLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/googleplus.png')}}"/></a></div>
+        <div class="span1" ><a class='helper' title="Google plus" target="_blanck" href="{{author.googleLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/googleplus.png')}}"/></a></div>
         {% endif %}
         {% if author.facebookLink is not empty %}
-        <div class="span1"><a title="Facebook" target="_blanck" href="{{author.facebookLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/facebook.png')}}"/></a></div>
+        <div class="span1"><a class='helper' title="Facebook" target="_blanck" href="{{author.facebookLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/facebook.png')}}"/></a></div>
         {% endif %}
         {% if author.gitHubLink is not empty %}
-        <div class="span1" ><a title="Fork me on github" target="_blanck" href="{{author.gitHubLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/github.png')}}"/></a></div>
+        <div class="span1" ><a class='helper' title="Fork me on github" target="_blanck" href="{{author.gitHubLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/github.png')}}"/></a></div>
         {% endif %}
         {% if author.twitterLink is not empty %}
-        <div class="span1" ><a title="Follow me on twitter" target="_blanck" href="{{author.twitterLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/twitter.png')}}"/></a></div>
+        <div class="span1" ><a class='helper' title="Follow me on twitter" target="_blanck" href="{{author.twitterLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/twitter.png')}}"/></a></div>
         {% endif %}
         {% if author.linkedLink is not empty %}
-        <div class="span1" ><a title="Linked" target="_blanck" href="{{author.linkedLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/linkedin.png')}}"/></a></div>            
+        <div class="span1" ><a class='helper' title="Linked" target="_blanck" href="{{author.linkedLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/linkedin.png')}}"/></a></div>            
         {% endif %}
         {% if author.email is not empty %}
-        <div class="span1"><a title="Contact me" href="mailto:{{author.email}}"><img src="{{asset('bundles/fabfotogallery/image/icon/mail.png')}}"/></a></div>                        
+        <div class="span1"><a class='helper' title="Contact me" href="mailto:{{author.email}}"><img src="{{asset('bundles/fabfotogallery/image/icon/mail.png')}}"/></a></div>                        
         {% endif %}
-        <div class="span1"><a title="Get my card on pdf" href="{{path('show_about_pdf_from', {'slug': author.slug })}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')}}"/></a></div>                         
-        <div class="span1"><a title="Get my Vcard" href="{{path('show_vcard_from' , { 'slug': author.slug })}}">
+        <div class="span1"><a class='helper' title="Get my card on pdf" href="{{path('show_about_pdf_from', {'slug': author.slug })}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')}}"/></a></div>                         
+        <div class="span1"><a class='helper' title="Get my Vcard" href="{{path('show_vcard_from' , { 'slug': author.slug })}}">
         <img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/vcard.png')}}"/></a>
         </div>
         <div class="span1">
