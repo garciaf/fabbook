@@ -29,7 +29,7 @@ class ManifestController extends Controller
         $articles = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
-                ->findBy(array(), array('createdAt'=> 'DESC'));
+                ->findBy(array('isPublished' => true), array('createdAt'=> 'DESC'));
         return $this->render('FabfotoGalleryBundle:Manifest:manifest.txt.twig',
                         array(
                     'articles' => $articles,
