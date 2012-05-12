@@ -32,6 +32,7 @@ class DefaultController extends Controller {
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->createQueryBuilder('b')
+		->where('b.isPublished = true')
                 ->orderBy('b.createdAt', 'DESC')
                 ->setMaxResults($this->container->getParameter('nbArticle'))
                 ->getQuery()
@@ -73,6 +74,7 @@ class DefaultController extends Controller {
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->createQueryBuilder('b')
+		->where('b.isPublished = true')
                 ->orderBy('b.createdAt', 'DESC')
                 ->getQuery();
         return $this->render('FabfotoGalleryBundle:Default:IndexArticleBlog.html.twig', array(
@@ -102,7 +104,7 @@ class DefaultController extends Controller {
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->findOneBySlugblog($slugblog);
         if (!$article) {
-            throw $this->createNotFoundException("Pas d'article");
+            throw $this->createNotFoundException("No article");
         }
         return $this->render('FabfotoGalleryBundle:Default:ShowArticleBlog.html.twig', array(
                     'article' => $article
@@ -117,8 +119,20 @@ class DefaultController extends Controller {
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Tag')
                 ->findOneBySlug($tag_slug);
-        $articlesBlogs = $tag->getArticles();
-
+        if (!$tag) {
+            throw $this->createNotFoundException("no tag");
+        }
+        $articlesBlogs = $this
+		->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
+		->createQueryBuilder('a')
+		->leftJoin('a.tags', 't')
+		->where('a.isPublished = true AND t.slug = :tagSlug')
+		->setParameter('tagSlug', $tag->getSlug())
+                ->orderBy('a.createdAt', 'DESC')
+		->getQuery()
+		->execute();
+	//Fix me : Filter by is published
         return $this->render('FabfotoGalleryBundle:Default:IndexTagArticleBlog.html.twig', array(
                     'ArticlesBlogs' => $articlesBlogs,
                     'tag' => $tag,

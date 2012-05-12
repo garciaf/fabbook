@@ -25,7 +25,7 @@ class ArticleBlogRepository extends EntityRepository
     public function search($keywords){
         return $this
                 ->createQueryBuilder('s')
-                ->where('s.title LIKE :keywords')
+                ->where('s.title LIKE :keywords AND s.isPublished = TRUE')
                 ->setParameter('keywords', sprintf('%%%s%%', $keywords))
                 ->getQuery()
                 ->execute();

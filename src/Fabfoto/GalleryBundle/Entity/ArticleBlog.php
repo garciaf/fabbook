@@ -92,7 +92,10 @@ class ArticleBlog
       * @JoinTable(name="ArticleBlog_tags")
      */
      private $tags;
-
+    /**
+     * @ORM\Column(name="is_published", type="boolean")
+     */
+    private $isPublished;
 
     /**
      * @Gedmo\Slug(fields={"title"})
@@ -100,7 +103,7 @@ class ArticleBlog
      */
     private $slugblog;
     
-     public function __toString()
+    public function __toString()
      {
          return $this->getTitle();
      }
@@ -218,6 +221,8 @@ class ArticleBlog
     public function __construct()
     {
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 
 
@@ -322,5 +327,25 @@ class ArticleBlog
     public function getCover()
     {
         return $this->cover;
+    }
+
+    /**
+     * Set isPublished
+     *
+     * @param boolean $isPublished
+     */
+    public function setIsPublished($isPublished)
+    {
+        $this->isPublished = $isPublished;
+    }
+
+    /**
+     * Get isPublished
+     *
+     * @return boolean 
+     */
+    public function getIsPublished()
+    {
+        return $this->isPublished;
     }
 }

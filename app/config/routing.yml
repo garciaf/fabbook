@@ -94,7 +94,7 @@ _fabfoto:
 _imagine: 
   resource: . 
   type: imagine
-  
+
 my_barcode_playground:
     resource: "@MopaBarcodeBundle/Resources/config/routing/barcode_playground.yml"
     prefix:   /

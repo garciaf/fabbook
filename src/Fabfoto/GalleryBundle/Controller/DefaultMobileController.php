@@ -110,7 +110,7 @@ class DefaultMobileController extends Controller
         $articlesBlogs = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
-                ->findBy(array(), array('createdAt'=> 'DESC'));
+                ->findBy(array('isPublished' => true), array('createdAt'=> 'DESC'));
         return $this->render('FabfotoGalleryBundle:Mobile:IndexArticleBlog.html.twig',
                         array(
                     'articlesBlogs' => $articlesBlogs,
@@ -124,7 +124,7 @@ class DefaultMobileController extends Controller
         $article = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
-                ->findOneBySlugblog($slugblog);
+                ->findOneBy(array('slugblog' => $slugblog, 'isPublished' => true ));
         return $this->render('FabfotoGalleryBundle:Mobile:ShowArticleBlog.html.twig',
                         array(
                     'article' => $article

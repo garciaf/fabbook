@@ -24,7 +24,7 @@ builders:
   list:
     params:
       title: List of Blog articles
-      display: [id, createdAt, updatedAt, title, subtitle, author ]
+      display: [id,isPublished, createdAt, updatedAt, title, subtitle, author ]
       actions:
         new: ~
       object_actions:
@@ -32,17 +32,17 @@ builders:
         delete: ~
   filters:
     params:
-      display: [ createdAt, updatedAt, title, subtitle, author ]
+      display: [ createdAt, updatedAt, title, subtitle, author, isPublished ]
   new:
     params:
       title: New object for AdminBundle
-      display: [ title, subtitle, content, tags, cover ]
+      display: [ isPublished, title, subtitle, content, tags, cover ]
       actions:
         list: ~
   edit:
     params:
       title: You're editing the object "{{ ArticleBlog.title }}"
-      display: [ title, subtitle, content, tags, cover ]
+      display: [ isPublished, title, subtitle, content, tags, cover ]
       actions:
         list: ~
   delete: ~
