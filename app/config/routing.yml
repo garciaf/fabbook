@@ -86,10 +86,11 @@ FabfotoZendTweetBundle:
 _fabfoto:
     resource: "@FabfotoGalleryBundle/Controller/"
     type:     annotation
-    prefix:   /{_locale}/
-    defaults:  { _controller: FabfotoI18nBundle:Default:index, _locale: fr }
-    requirements:
-        _locale: en|fr
+    prefix:   /
+#    prefix:   /{_locale}/
+#    defaults:  { _controller: FabfotoI18nBundle:Default:index, _locale: fr }
+#    requirements:
+#        _locale: en|fr
    
 _imagine: 
   resource: . 
