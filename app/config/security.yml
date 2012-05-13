@@ -3,7 +3,7 @@ security:
         Symfony\Component\Security\Core\User\User: plaintext
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
+        ROLE_ADMIN:       [ROLE_USER, ROLE_WRITER]
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
@@ -29,6 +29,7 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user/, role: [ROLE_USER, ROLE_ADMIN]}
+        - { path: ^/writer/, role: [ROLE_WRITER, ROLE_ADMIN]}
         - { path: ^/admin/, role: ROLE_ADMIN }
 
     role_hierarchy:

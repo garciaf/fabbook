@@ -12,7 +12,7 @@ use Fabfoto\UserBundle\Form\Type\ArticleBlogType;
 /**
  * ArticleBlog controller.
  *
- * @Route("/writter/blog")
+ * @Route("/writer/blog")
  */
 class ArticleBlogController extends Controller
 {
@@ -25,8 +25,9 @@ class ArticleBlogController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getEntityManager();
-
-        $entities = $em->getRepository('FabfotoGalleryBundle:ArticleBlog')->findAll();
+	$curentUser = $this->get('security.context')->getToken()->getUser();
+        $entities = $em->getRepository('FabfotoGalleryBundle:ArticleBlog')
+		->findByAuthorSlug($curentUser->getSlug());
 
         return array('entities' => $entities);
     }
@@ -112,9 +113,11 @@ class ArticleBlogController extends Controller
      */
     public function editAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('FabfotoGalleryBundle:ArticleBlog')->find($id);
+        $em = $this->getDoctrine()->getEntityManager();
+	$curentUser = $this->get('security.context')->getToken()->getUser();
+        $entity = $em->getRepository('FabfotoGalleryBundle:ArticleBlog')
+		->findOneBy(array('id' =>$id, 'authorSlug' => $curentUser->getSlug()));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find ArticleBlog entity.');

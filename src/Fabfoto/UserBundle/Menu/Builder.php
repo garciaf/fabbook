@@ -24,7 +24,10 @@ class Builder extends ContainerAware
 	    $menu->addChild('Admin', array('route' => 'Fabfoto_AdminBundle_Blog_list'));
 	    $menu->addChild('Blog', array('route' => 'writter_blog'));
 	}
-        $menu->addChild('Logout', array(
+	if($currentUser->hasRole('ROLE_SUPER_ADMIN') or $currentUser->hasRole('ROLE_WRITER')){
+	    $menu->addChild('Blog', array('route' => 'writter_blog'));
+	}        
+	$menu->addChild('Logout', array(
             'route' => 'fabfoto_logout',
         ));
 

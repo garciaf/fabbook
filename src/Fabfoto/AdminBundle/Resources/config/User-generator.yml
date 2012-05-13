@@ -39,7 +39,7 @@ builders:
   list:
     params:
       title: List for AdminBundle
-      display: [username, emailcanonical, lastLogin, enabled, locked, roles, name, firstname, title, phone]
+      display: [username, lastLogin, enabled, locked, roles, name, firstname]
       actions:
         new: ~
       object_actions:
@@ -57,7 +57,7 @@ builders:
   edit:
     params:
       title: You're editing the object "{{ User.name }}"
-      display: [username, enabled, locked, roles, name, firstname, title, description, googleLink, facebookLink, gitHubLink, linkedLink, twitterLink, phone]
+      display: [username, enabled, locked, roles, name, firstname]
       actions:
         list: ~
   delete: ~
