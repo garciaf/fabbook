@@ -12,7 +12,6 @@
             <th>Updatedat</th>
             <th>Title</th>
             <th>Subtitle</th>
-            <th>Content</th>
             <th>Author</th>
             <th>Actions</th>
         </tr>
@@ -25,7 +24,6 @@
             <td>{% if entity.updatedAt %}{{ entity.updatedAt|date('Y-m-d H:i:s') }}{% endif%}</td>
             <td>{{ entity.title }}</td>
             <td>{{ entity.subtitle }}</td>
-            <td>{{ entity.content | raw }}</td>
             <td>{{ entity.author }}</td>
             <td class="actions">
                 <a class="show" href="{{ path('writter_blog_show', { 'id': entity.id }) }}"></a>

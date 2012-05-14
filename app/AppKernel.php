@@ -26,7 +26,6 @@ class AppKernel extends Kernel
             new Mopa\BarcodeBundle\MopaBarcodeBundle(),
 	    new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),            
             new Knp\Bundle\ZendCacheBundle\KnpZendCacheBundle(),
-            new Fabfoto\ZendTweetBundle\FabfotoZendTweetBundle(),
             new WhiteOctober\TCPDFBundle\WhiteOctoberTCPDFBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Fabfoto\AdminBundle\FabfotoAdminBundle(),
@@ -44,6 +43,7 @@ class AppKernel extends Kernel
             new FOS\CommentBundle\FOSCommentBundle(),
             new Exercise\HTMLPurifierBundle\ExerciseHTMLPurifierBundle(),
             new Fabfoto\I18nBundle\FabfotoI18nBundle(),
+            new Fabfoto\LastTweetBundle\FabfotoLastTweetBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

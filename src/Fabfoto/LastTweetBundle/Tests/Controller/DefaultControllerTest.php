@@ -1,6 +1,6 @@
 <?php
 
-namespace Fabfoto\ZendTweetBundle\Tests\Controller;
+namespace Fabfoto\LastTweetBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

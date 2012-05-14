@@ -78,11 +78,6 @@ FabfotoAdminBundle_Picture:
     type:     admingenerator
     prefix:   /admin/picture
 
-FabfotoZendTweetBundle:
-    resource: "@FabfotoZendTweetBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 _fabfoto:
     resource: "@FabfotoGalleryBundle/Controller/"
     type:     annotation

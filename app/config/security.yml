@@ -15,6 +15,11 @@ security:
 
     firewalls:
         main:
+            remember_me:
+                key:      "%secret%"
+                lifetime: 3600
+                path:     /
+                domain:   ~ # Defaults to the current domain from $_SERVER
             pattern: ^/
             form_login:
                 provider: fos_userbundle

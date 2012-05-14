@@ -6,11 +6,11 @@
 
     <!--
     <parameters>
-        <parameter key="fabfoto_zend_tweet.example.class">Fabfoto\ZendTweetBundle\Example</parameter>
+        <parameter key="fabfoto_last_tweet.example.class">Fabfoto\LastTweetBundle\Example</parameter>
     </parameters>
 
     <services>
-        <service id="fabfoto_zend_tweet.example" class="%fabfoto_zend_tweet.example.class%">
+        <service id="fabfoto_last_tweet.example" class="%fabfoto_last_tweet.example.class%">
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>
             <argument>%parameter_name%</argument>
