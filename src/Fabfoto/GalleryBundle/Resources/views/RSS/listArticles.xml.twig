@@ -1,0 +1,9 @@
+{%for article in articles%}
+<item>
+<title>{{article.title|raw}}</title> 
+<link>{{url('show_article_blog', {'slugblog':article.slugblog})}}</link> 
+<description>{{article.subtitle|raw}}</description>
+<content:encoded><![CDATA[ {{article.content|raw}} ]]></content:encoded>
+<pubDate>{{article.createdAt|date(constant('DATE_RFC822')) }}</pubDate>
+</item>
+{%endfor%}

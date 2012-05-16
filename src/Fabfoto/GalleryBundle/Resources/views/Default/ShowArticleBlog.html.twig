@@ -42,3 +42,6 @@
     <div class="hidden-desktop"><i class="icon-qrcode icon-white"></i> {% trans %}mobile{% endtrans %}</div>
 </a>
 {%endblock qrLink %}
+{% block rss %}  
+<a  href="{{path('rss_blog')}}"><img id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
+{%endblock rss%}

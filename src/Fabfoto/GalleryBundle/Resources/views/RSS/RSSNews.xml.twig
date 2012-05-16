@@ -1,0 +1,12 @@
+{% extends 'FabfotoGalleryBundle::layoutRSS.xml.twig'%}
+{% block content %}
+  {%for article in articles%}
+        <item>
+            <title>{{article.title|raw}}</title> 
+            <description>{{article.subtitle|raw}}</description>
+            <content:encoded><![CDATA[ {{article.content|raw}} ]]></content:encoded>
+            <pubDate>{{article.createdAt|date(constant('DATE_RFC822')) }}</pubDate>
+        </item>
+        {%endfor%}
+{% endblock content %}
+{% block title %}Fabbook News{% endblock title %}

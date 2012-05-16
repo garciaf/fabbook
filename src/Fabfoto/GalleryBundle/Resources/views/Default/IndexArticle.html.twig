@@ -73,3 +73,6 @@
     {% render "KnpLastTweetsBundle:Twitter:lastTweets" with {'username': 'FabbookFr'} %}
 </div>
 {% endblock content %}
+{% block rss %}  
+<a  href="{{path('rss_news')}}"><img id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
+{%endblock rss%}

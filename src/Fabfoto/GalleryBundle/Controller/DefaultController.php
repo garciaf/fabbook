@@ -132,7 +132,6 @@ class DefaultController extends Controller {
                 ->orderBy('a.createdAt', 'DESC')
 		->getQuery()
 		->execute();
-	//Fix me : Filter by is published
         return $this->render('FabfotoGalleryBundle:Default:IndexTagArticleBlog.html.twig', array(
                     'ArticlesBlogs' => $articlesBlogs,
                     'tag' => $tag,
@@ -171,27 +170,6 @@ class DefaultController extends Controller {
                         'backgrounds' => $backgrounds
                     ));
         }
-    }
-
-    /**
-     * @Route("rss", defaults={"_format"="xml"}, name="rss_news")
-     */
-    public function rssNewsAction() {
-        $articles = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Article')
-                ->findBy(array(), array('createdAt' => 'DESC'));
-        return $this->render('FabfotoGalleryBundle:Default:RSSNews.xml.twig', array('articles' => $articles));
-    }
-    /**
-     * @Route("rss/blog", defaults={"_format"="xml"}, name="rss_blog")
-     */
-    public function rssBlogAction() {
-        $articles = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
-                ->findBy(array('isPublished' => true), array('createdAt' => 'DESC'));
-        return $this->render('FabfotoGalleryBundle:Default:RSSBlog.xml.twig', array('articles' => $articles));
     }
 
     /**

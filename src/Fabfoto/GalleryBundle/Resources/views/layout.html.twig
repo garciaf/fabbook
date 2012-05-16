@@ -102,9 +102,10 @@
                        {% block content %}lipso lium{%endblock%}     
                        <div id="footer">
                            <p id="legal"><a href="{{path('fos_user_registration_register')}}">{% trans %}register{% endtrans %}</a></p>
-
-                           <a  href="{{path('rss_blog')}}"><img id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
-                       </div>
+                            {% block rss %}  
+                           <a  href="{{path('rss_news')}}"><img id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
+                           {%endblock rss%}
+                    </div>
         </div>
 
 
