@@ -183,6 +183,16 @@ class DefaultController extends Controller {
                 ->findBy(array(), array('createdAt' => 'DESC'));
         return $this->render('FabfotoGalleryBundle:Default:RSSNews.xml.twig', array('articles' => $articles));
     }
+    /**
+     * @Route("rss/blog", defaults={"_format"="xml"}, name="rss_blog")
+     */
+    public function rssBlogAction() {
+        $articles = $this
+                ->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
+                ->findBy(array('isPublished' => true), array('createdAt' => 'DESC'));
+        return $this->render('FabfotoGalleryBundle:Default:RSSBlog.xml.twig', array('articles' => $articles));
+    }
 
     /**
      * @Route("{slug}/album", name="show_album")
