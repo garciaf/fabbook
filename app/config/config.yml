@@ -71,10 +71,6 @@ fabfoto_gallery:
     nbArticle: 4
     nbAlbum: 2
 gregwar_captcha: ~
-io_form:
-    jquery_tinymce:
-      source: /bundles/fabfotogallery/tiny_mce/tiny_mce.js
-      theme:  advanced
 
 knp_zend_cache:
     templates:

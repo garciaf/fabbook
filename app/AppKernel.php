@@ -19,7 +19,6 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Fabfoto\GalleryBundle\FabfotoGalleryBundle(),
             new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
-	    new Io\FormBundle\IoFormBundle(),
             new Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
 	    new Mopa\BootstrapBundle\MopaBootstrapBundle(),
