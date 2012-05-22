@@ -24,6 +24,7 @@ builders:
   list:
     params:
       title: List of Blog articles
+      sort: [ createdAt, DESC ]
       display: [id,isPublished, createdAt, updatedAt, title, subtitle, author ]
       actions:
         new: ~

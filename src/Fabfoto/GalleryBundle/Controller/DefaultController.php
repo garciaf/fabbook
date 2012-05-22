@@ -52,19 +52,6 @@ class DefaultController extends Controller {
                 ));
     }
 
-    /**
-     * @Route("/{slug}/about", name="show_about")
-     */
-    public function showAboutAction($slug) {
-
-        $author = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoUserBundle:User')
-                ->findOneBySlug($slug);
-        return $this->render('FabfotoGalleryBundle:Default:ShowAbout.html.twig', array(
-                    'author' => $author
-                ));
-    }
 
     /**
      * @Route("blog", name="index_blog")
