@@ -32,6 +32,7 @@
         {% endfor %}
     </ul>
 </div>
+{% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': album.slug} %}
 {% endblock content %}
 
 {%block qrLink %}
@@ -44,3 +45,6 @@
 {% block carroussel %}
 {% include 'FabfotoGalleryBundle:Default:BackgroundVegas.html.twig' %}
 {% endblock carroussel %}
+{% block rss %}  
+<a  href="{{path('rss_album')}}"><img id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
+{%endblock rss%}

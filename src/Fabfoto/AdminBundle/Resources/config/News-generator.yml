@@ -13,6 +13,7 @@ builders:
   list:
     params:
       title: List of News
+      sort: [ createdAt, DESC ]      
       display: [id, title, subtitle, createdAt, author]
       actions:
         new: ~

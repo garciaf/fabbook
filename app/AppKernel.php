@@ -19,23 +19,15 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Fabfoto\GalleryBundle\FabfotoGalleryBundle(),
             new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
-	    new Io\FormBundle\IoFormBundle(),
             new Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
 	    new Mopa\BootstrapBundle\MopaBootstrapBundle(),
             new Mopa\BarcodeBundle\MopaBarcodeBundle(),
 	    new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),            
             new Knp\Bundle\ZendCacheBundle\KnpZendCacheBundle(),
-            new Fabfoto\ZendTweetBundle\FabfotoZendTweetBundle(),
             new WhiteOctober\TCPDFBundle\WhiteOctoberTCPDFBundle(),
-            new Zenstruck\Bundle\MobileBundle\ZenstruckMobileBundle(),
-            new Sonata\AdminBundle\SonataAdminBundle(),
-            new Sonata\BlockBundle\SonataBlockBundle(),
-            new Sonata\CacheBundle\SonataCacheBundle(),
-            new Sonata\jQueryBundle\SonatajQueryBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Fabfoto\AdminBundle\FabfotoAdminBundle(),
-            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Admingenerator\GeneratorBundle\AdmingeneratorGeneratorBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
@@ -49,8 +41,8 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle($this),
             new FOS\CommentBundle\FOSCommentBundle(),
             new Exercise\HTMLPurifierBundle\ExerciseHTMLPurifierBundle(),
-
-
+            new Fabfoto\I18nBundle\FabfotoI18nBundle(),
+            new Fabfoto\LastTweetBundle\FabfotoLastTweetBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

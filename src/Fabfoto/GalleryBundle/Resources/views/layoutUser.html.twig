@@ -30,8 +30,8 @@
                     <div class="nav-collapse pull-right">
                         <ul class="nav" >
                             <li>
-                                <a class="helper " href="{{path('user_show')}}" rel="tooltip" title="Home">
-                                    <i class="icon-user icon-white"></i> Login 
+                                <a class="helper " href="{{path('user_show')}}" rel="tooltip" title="login">
+                                    <i class="icon-user icon-white"></i>
                                 </a>
                             </li>
                         </ul>
@@ -60,9 +60,11 @@
             </div>
         </div>
         <script>
-            $('#qrlink').popover({
-                placement: 'bottom'
-                
+            $('#qrlinkUser').popover({
+                placement: 'top'  
+            });
+	    $('.helper').tooltip({
+                placement: 'top'
             });
         </script>
         {% block carroussel %}

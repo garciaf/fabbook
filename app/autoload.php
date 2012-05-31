@@ -29,8 +29,6 @@ $loader->registerNamespaces(array(
     'Zend'                   => __DIR__.'/../vendor',
     'Knp'                    => __DIR__.'/../vendor/bundles',   
     'Knp\Menu'   => __DIR__.'/../vendor/knp/menu/src',
-    'Sonata'     => __DIR__.'/../vendor/bundles',
-    'Exporter'   => __DIR__.'/../vendor/exporter/lib',
     'WhiteOctober' => __DIR__.'/../vendor/bundles',
     'Zenstruck' => __DIR__.'/../vendor/bundles',
     'Stof'  => __DIR__.'/../vendor/bundles',
@@ -45,6 +43,7 @@ $loader->registerNamespaces(array(
     'FOS\\Rest' => __DIR__.'/../vendor/fos',
     'JMS'              => __DIR__.'/../vendor/bundles',
     'Exercise' => __DIR__ . '/../vendor/bundles',
+    'Buzz'          => __DIR__.'/../vendor/buzz/lib',
         ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',

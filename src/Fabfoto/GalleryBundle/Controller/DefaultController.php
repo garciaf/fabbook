@@ -52,19 +52,6 @@ class DefaultController extends Controller {
                 ));
     }
 
-    /**
-     * @Route("/{slug}/about", name="show_about")
-     */
-    public function showAboutAction($slug) {
-
-        $author = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoUserBundle:User')
-                ->findOneBySlug($slug);
-        return $this->render('FabfotoGalleryBundle:Default:ShowAbout.html.twig', array(
-                    'author' => $author
-                ));
-    }
 
     /**
      * @Route("blog", name="index_blog")
@@ -104,7 +91,7 @@ class DefaultController extends Controller {
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->findOneBySlugblog($slugblog);
         if (!$article) {
-            throw $this->createNotFoundException("Pas d'article");
+            throw $this->createNotFoundException("No article");
         }
         return $this->render('FabfotoGalleryBundle:Default:ShowArticleBlog.html.twig', array(
                     'article' => $article
@@ -118,10 +105,20 @@ class DefaultController extends Controller {
         $tag = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Tag')
-                ->filterBy(array('isPublished' => true))
                 ->findOneBySlug($tag_slug);
-        $articlesBlogs = $tag->getArticles();
-
+        if (!$tag) {
+            throw $this->createNotFoundException("no tag");
+        }
+        $articlesBlogs = $this
+		->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
+		->createQueryBuilder('a')
+		->leftJoin('a.tags', 't')
+		->where('a.isPublished = true AND t.slug = :tagSlug')
+		->setParameter('tagSlug', $tag->getSlug())
+                ->orderBy('a.createdAt', 'DESC')
+		->getQuery()
+		->execute();
         return $this->render('FabfotoGalleryBundle:Default:IndexTagArticleBlog.html.twig', array(
                     'ArticlesBlogs' => $articlesBlogs,
                     'tag' => $tag,
@@ -160,17 +157,6 @@ class DefaultController extends Controller {
                         'backgrounds' => $backgrounds
                     ));
         }
-    }
-
-    /**
-     * @Route("rss", defaults={"_format"="xml"}, name="rss_news")
-     */
-    public function rssNewsAction() {
-        $articles = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Article')
-                ->findBy(array(), array('createdAt' => 'DESC'));
-        return $this->render('FabfotoGalleryBundle:Default:RSSNews.xml.twig', array('articles' => $articles));
     }
 
     /**

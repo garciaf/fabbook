@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="page-header">
-    <h1>Blog <small>about IT and more ...</small></h1>
+    <h1>Blog <small>{% trans %}about.it{% endtrans %}</small></h1>
 </div>
 
 {% include "FabfotoGalleryBundle:Default:ListArticleBlog.html.twig" %}
@@ -17,3 +17,6 @@
     <div class="hidden-desktop"><i class="icon-qrcode icon-white"></i> {% trans %}mobile{% endtrans %}</div>
 </a>
 {%endblock qrLink %}
+{% block rss %}  
+<a  href="{{path('rss_blog')}}"><img id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
+{%endblock rss%}

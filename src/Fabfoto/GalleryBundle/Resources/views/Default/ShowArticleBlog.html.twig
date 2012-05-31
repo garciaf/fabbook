@@ -25,7 +25,7 @@
     <div class="blog_content">
         {{article.content|raw}}
     </div>
-    <div class="signature_blog">{% if article.author is not null %}Par <a target="_blanck" href="{{ path('show_user', { 'slug': article.authorSlug }) }}">{{article.author}}</a> - {% endif %}{{article.createdAt|date('d/m/Y')}} - Mise à jour : {{article.updatedAt|date('d/m/Y') }}</div>
+    <div class="signature_blog">{% if article.author is not null %}Par <a target="_blanck" href="{{ path('show_about', { 'slug': article.authorSlug }) }}">{{article.author}}</a> - {% endif %}{{article.createdAt|date('d/m/Y')}} - Mise à jour : {{article.updatedAt|date('d/m/Y') }}</div>
     <div class="pdf"><a href="{{path('show_article_blog_pdf', {'slugblog':article.slugblog})}}"><img src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')}}"/></a> </div>
     {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': article.id} %}
 </div>
@@ -42,3 +42,6 @@
     <div class="hidden-desktop"><i class="icon-qrcode icon-white"></i> {% trans %}mobile{% endtrans %}</div>
 </a>
 {%endblock qrLink %}
+{% block rss %}  
+<a  href="{{path('rss_blog')}}"><img id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
+{%endblock rss%}

@@ -1,0 +1,25 @@
+{% extends 'FabfotoUserBundle::layoutUser.html.twig'%}
+{% block content %}
+<h1>ArticleBlog edit</h1>
+
+<form action="{{ path('writter_blog_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {{ form_widget(edit_form) }}
+
+
+<ul class="actions">
+    <li>
+        <input class="submit_button" type="submit" value="Save">
+    </li>
+    <li>
+        <a href="{{ path('writter_blog') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a  href="{{ path('writter_blog_delete', { 'id': entity.id }) }}">
+  
+        </a>
+    </li>
+</ul>
+</form>
+{% endblock content %}

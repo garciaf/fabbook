@@ -9,15 +9,26 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller {
 
-    /**
-     * @Route("/{slug}", name="show_user")
+        /**
+     * @Route("/{slug}/about", name="show_about")
      */
     public function showAboutAction($slug) {
 
-        $author = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoUserBundle:User')
-                ->findOneBySlug($slug);
+        $author = $this->getUserBySlug($slug);
+        if (!$author) {
+            throw $this->createNotFoundException('Unable to find user');
+        }
+        return $this->render('FabfotoGalleryBundle:Default:ShowAbout.html.twig', array(
+                    'author' => $author
+                ));
+    }
+
+    /**
+     * @Route("/{slug}", name="show_user")
+     */
+    public function showUserAction($slug) {
+
+        $author = $this->getUserBySlug($slug);
         if (!$author) {
             throw $this->createNotFoundException('Unable to find user');
         }
@@ -25,7 +36,15 @@ class UserController extends Controller {
                     'author' => $author
                 ));
     }
-
+    /**
+     * Function to retrieve user by slug name
+     */
+    protected function getUserBySlug($slug){
+        return $this
+                ->getDoctrine()
+                ->getRepository('FabfotoUserBundle:User')
+                ->findOneBySlug($slug);
+    }
 }
 
 ?>

@@ -1,0 +1,13 @@
+{% extends 'FabfotoGalleryBundle::layoutRSS.xml.twig'%}
+{% block content %}
+{%for album in albums%}
+<item>
+<title>{{album.name|raw}}</title> 
+<link>{{url('show_album', {'slug':album.slug})}}</link> 
+<description>{{album.comment|raw}}</description>
+<content:encoded><![CDATA[ {{album.comment|raw}} ]]></content:encoded>
+<pubDate>{{album.createdAt|date(constant('DATE_RFC822')) }}</pubDate>
+</item>
+{%endfor%}
+{%endblock%}  
+{% block title %}Fabbook Albums{% endblock title %}

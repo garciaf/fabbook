@@ -36,7 +36,7 @@ class VcardController extends Controller
          
     }
     /**
-     * @Route("{slug}/vcard",defaults={"_format"="vcf"}, name="show_vcard_from")
+     * @Route("/{slug}/vcard",defaults={"_format"="vcf"}, name="show_vcard_from")
      * 
      */
     public function showVcardAction($slug)

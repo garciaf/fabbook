@@ -1,3 +1,8 @@
+FabfotoI18nBundle:
+    resource: "@FabfotoI18nBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 fos_comment_api:
     type: rest
     resource: "@FOSCommentBundle/Resources/config/routing.yml"
@@ -73,35 +78,22 @@ FabfotoAdminBundle_Picture:
     type:     admingenerator
     prefix:   /admin/picture
 
-FabfotoZendTweetBundle:
-    resource: "@FabfotoZendTweetBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 _fabfoto:
     resource: "@FabfotoGalleryBundle/Controller/"
     type:     annotation
     prefix:   /
+#    prefix:   /{_locale}/
+#    defaults:  { _controller: FabfotoI18nBundle:Default:index, _locale: fr }
+#    requirements:
+#        _locale: en|fr
    
 _imagine: 
   resource: . 
   type: imagine
 
-admin:
-    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
-    prefix: /sonata
-
-_sonata_admin:
-    resource: .
-    type: sonata_admin
-    prefix: /admnin
-    
 my_barcode_playground:
     resource: "@MopaBarcodeBundle/Resources/config/routing/barcode_playground.yml"
     prefix:   /
-console:
-    resource: "@CoreSphereConsoleBundle/Resources/config/routing.yml"
-    prefix:   /admin
 
 #_imagine_thumb_square:
 #    pattern: /media/cache/thumb_square/{path}

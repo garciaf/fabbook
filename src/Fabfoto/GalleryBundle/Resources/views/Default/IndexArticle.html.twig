@@ -54,11 +54,11 @@
         <div class="span3 well-small">
             <h3>{{article.title}}</h3>
             <h4>{{article.subtitle}}</h4>
-            <h6>le {{article.createdAt|date('d/m/Y')}}</h6>
+            <h6>{% trans %}the{% endtrans %} {{article.createdAt|date('d/m/Y')}}</h6>
 
             <p>{{article.content|raw}}</p>
             {% if article.author is not null %}
-            <h3 class="author"><a target="_blanck" href="{{ path('show_user', { 'slug': article.authorSlug }) }}">{{article.author}}</a></h3>
+            <h3 class="author"><a href="{{ path('show_about', { 'slug': article.authorSlug }) }}">{{article.author}}</a></h3>
             {% endif %}
         </div> 
         {% endfor %}
@@ -73,3 +73,6 @@
     {% render "KnpLastTweetsBundle:Twitter:lastTweets" with {'username': 'FabbookFr'} %}
 </div>
 {% endblock content %}
+{% block rss %}  
+<a  href="{{path('rss_news')}}"><img id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
+{%endblock rss%}
