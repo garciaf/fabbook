@@ -11,14 +11,17 @@ class MessageType extends AbstractType
     {
         $builder
             ->add('sender','email', array(
-                'label' => 'message.email'
+                'label' => 'message.email',
+		'required' => true
             ))
             ->add('subject', 'text', array(
                 'label' => 'message.subject',
-                'max_length' => 120
+                'max_length' => 120,
+		'required' => true
             ))
             ->add('content', 'textarea', array(
-                'label' => 'message.content'
+                'label' => 'message.content',
+		'required' => true
             ))
         ;
     }
