@@ -4,9 +4,9 @@
 
 <form action="{{ path('contact_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
-    <p>
-        <button type="submit">Envoyer</button>
-    </p>
+    <div>
+        <button class="btn btn-primary btn-large center" type="submit">Envoyer</button>
+    </div>
 </form>
 {% endblock content %}
 

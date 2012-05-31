@@ -168,7 +168,7 @@ class MessageController extends Controller
         {
             $em->persist($entity);
             $em->flush();
-
+            
             return $this->redirect($this->generateUrl('contact_edit',
                                     array('id' => $id)));
         }
