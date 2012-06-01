@@ -17,4 +17,6 @@ message:
   email: Your email
   subject: Title
   content: Your message
-  
+  send:
+    success: message sended
+    fail: something went wron with your message    

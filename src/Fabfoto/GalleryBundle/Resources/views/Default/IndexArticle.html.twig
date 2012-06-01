@@ -11,7 +11,7 @@
             <div id="NewsCarousel" class="carousel slide">
 
                 <div class="carousel-inner">
-                    {% for blog in blogs %}
+                    {% for blog in lastBlogs %}
                     <div class="{% if loop.first %}active {% endif %}item center">
                         {% if blog.cover is not null %}
                         <img src="{{blog.cover.webpath| apply_filter('cover') }}" width="100%" alt="{{blog.cover}}" /> 
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     {% endfor %}
-                    {% for album in albums %}
+                    {% for album in lastAlbums %}
                     <div class="item center">
                     <img src="{{album.picturecover.webpath | apply_filter('cover') }}" width="100%" alt="{{album.name}}" /> 
                     <div class="carousel-caption">

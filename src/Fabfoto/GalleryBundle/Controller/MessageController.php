@@ -89,22 +89,19 @@ class MessageController extends Controller
         $request = $this->getRequest();
         $form = $this->createForm(new MessageType(), $entity);
         $form->bindRequest($request);
-        //if ($this['session']->get['word'] === $this['request']->request->get('riddle'))
-        //{
-            //$this->get('session')->setFlash(
-             //       'error', 'The capcha was wrong sorry'
-            //);
-         //   return $this->redirect($this->generateUrl('contact_new'));
-       // }
+
         if ($form->isValid())
         {
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);
             $em->flush();
             $this->sendMail($entity);
+	    $this->get('session')->setFlash('success', $this->get('translator')->trans("message.send.success") );
             
             return $this->redirect($this->generateUrl('show_articles'));
-        }
+        }else{
+	    $this->get('session')->setFlash('error', $this->get('translator')->trans("message.send.fail") );
+	}
 
         return array(
             'entity' => $entity,

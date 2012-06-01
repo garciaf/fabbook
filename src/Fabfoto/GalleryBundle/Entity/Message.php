@@ -4,6 +4,7 @@ namespace Fabfoto\GalleryBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Fabfoto\GalleryBundle\Entity\Message
@@ -26,6 +27,10 @@ class Message
      * @var string $sender
      *
      * @ORM\Column(name="sender", type="string", length=255)
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      */
     private $sender;
 
@@ -33,6 +38,7 @@ class Message
      * @var string $subject
      *
      * @ORM\Column(name="subject", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $subject;
 
@@ -40,6 +46,7 @@ class Message
      * @var string $content
      *
      * @ORM\Column(name="content", type="string", length=500)
+     * @Assert\NotBlank()
      */
     private $content;
 
