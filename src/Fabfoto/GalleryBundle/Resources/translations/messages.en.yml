@@ -13,3 +13,8 @@ the: the
 from:
   fabbook: from fabbook
   tweeter: from tweeter
+message:
+  email: Your email
+  subject: Title
+  content: Your message
+  
