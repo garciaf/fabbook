@@ -10,6 +10,7 @@ builders:
     params:
       title: List for AdminBundle
       display: ~
+      sort: [ name, ASC ]
       actions:
         new: ~
       object_actions:

@@ -9,6 +9,7 @@ builders:
   list:
     params:
       title: List for Comment
+      sort: [ createdAt, DESC ]
       display: [body, depth, createdAt, id, thread]
       actions:
         new: ~
