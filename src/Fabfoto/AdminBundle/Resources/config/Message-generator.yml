@@ -9,6 +9,7 @@ builders:
   list:
     params:
       title: Liste des messages
+      sort: [ createdAt, DESC ]
       display: ~
       actions:
         new: ~
