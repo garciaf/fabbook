@@ -47,8 +47,8 @@ class DefaultController extends Controller {
                 ->execute();
         return $this->render('FabfotoGalleryBundle:Default:IndexArticle.html.twig', array(
                     'articles' => $this->getPager($articlesQuery),
-                    'blogs' => $articlesBlog,
-                    'albums' => $albums
+                    'lastBlogs' => $articlesBlog,
+                    'lastAlbums' => $albums
                 ));
     }
 
@@ -64,8 +64,20 @@ class DefaultController extends Controller {
 		->where('b.isPublished = true')
                 ->orderBy('b.createdAt', 'DESC')
                 ->getQuery();
+        
+        $articlesBlog = $this
+                ->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
+                ->createQueryBuilder('b')
+		->where('b.isPublished = true')
+                ->orderBy('b.createdAt', 'DESC')
+                ->setMaxResults($this->container->getParameter('nbArticle'))
+                ->getQuery()
+                ->execute();
+        
         return $this->render('FabfotoGalleryBundle:Default:IndexArticleBlog.html.twig', array(
                     'ArticlesBlogs' => $this->getPager($articlesBlogsQuery),
+                    'lastBlogs' => $articlesBlog
                 ));
     }
 

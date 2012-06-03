@@ -5,9 +5,9 @@ namespace Fabfoto\UserBundle\Entity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
-use Symfony\Component\Validator\Constraints as Assert;
 use Fabfoto\GalleryBundle\Entity\AbstractImage as AbstractImage;
 use Fabfoto\UserBundle\Entity\User as User;
+use Symfony\Component\Validator\Constraints as Assert;kl
 /**
  * Fabfoto\GalleryBundle\Entity\Picture
  *

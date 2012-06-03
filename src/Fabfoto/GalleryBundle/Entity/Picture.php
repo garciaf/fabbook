@@ -13,13 +13,12 @@ use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
  * @ORM\Entity(repositoryClass="Fabfoto\GalleryBundle\Entity\PictureRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Picture extends AbstractImage
-{
+class Picture extends AbstractImage {
 
-    public function __toString()
-    {
+    public function __toString() {
         return (string) $this->name;
     }
+
     /**
      * @var integer $id
      *
@@ -66,8 +65,7 @@ class Picture extends AbstractImage
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -76,8 +74,7 @@ class Picture extends AbstractImage
      *
      * @param string $name
      */
-    public function setName($PictureRepositoryname)
-    {
+    public function setName($PictureRepositoryname) {
         $this->name = $PictureRepositoryname;
     }
 
@@ -86,11 +83,46 @@ class Picture extends AbstractImage
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
+    /**
+     * Set createdAt
+     *
+     * @param date $createdAt
+     */
+    public function setCreatedAt($createdAt) {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return date 
+     */
+    public function getCreatedAt() {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set album
+     *
+     * @param Fabfoto\GalleryBundle\Entity\Picture $album
+     */
+    public function setAlbum(Album $album) {
+        $this->album = $album;
+    }
+
+    /**
+     * Get album
+     *
+     * @return Fabfoto\GalleryBundle\Entity\Album 
+     */
+    public function getAlbum() {
+
+        return $this->album;
+    }
     /**
      * Set location
      *
@@ -110,64 +142,16 @@ class Picture extends AbstractImage
     {
         return $this->location;
     }
-
-    /**
-     * Set createdAt
-     *
-     * @param date $createdAt
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return date 
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set album
-     *
-     * @param Fabfoto\GalleryBundle\Entity\Picture $album
-     */
-    public function setAlbum(Album $album)
-    {
-        $this->album = $album;
-    }
-
-    /**
-     * Get album
-     *
-     * @return Fabfoto\GalleryBundle\Entity\Album 
-     */
-    public function getAlbum()
-    {
-
-        return $this->album;
-    }
-
-
-
-
     /**
      * @ORM\PostRemove()
      */
-    public function removeUpload()
-    {
-        if (file_exists($this->getAbsolutePath()))
-        {
+    public function removeUpload() {
+        if (file_exists($this->getAbsolutePath())) {
             if ($file = $this->getAbsolutePath()) {
 
                 unlink($file);
             }
-            if ($fileThumb = $this->getAbsoluteThumbPath())
-            {
+            if ($fileThumb = $this->getAbsoluteThumbPath()) {
                 unlink($fileThumb);
             }
         }
@@ -178,8 +162,7 @@ class Picture extends AbstractImage
      *
      * @param boolean $isBackground
      */
-    public function setIsBackground($isBackground)
-    {
+    public function setIsBackground($isBackground) {
         $this->isBackground = $isBackground;
     }
 
@@ -188,8 +171,7 @@ class Picture extends AbstractImage
      *
      * @return boolean 
      */
-    public function getIsBackground()
-    {
+    public function getIsBackground() {
         return $this->isBackground;
     }
 

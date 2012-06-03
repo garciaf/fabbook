@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks
  */
-class Cover extends AbstractImage
+class Cover extends AbstractImage 
 {
 
     public function __toString()
@@ -107,9 +107,6 @@ class Cover extends AbstractImage
     {
         return $this->createdAt;
     }
-
-
-
 
 
     /**

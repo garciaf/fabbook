@@ -3,10 +3,13 @@ namespace Fabfoto\AdminBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Router;
+use Symfony\Component\DependencyInjection\ContainerAware;
 
-class AdminMenu
+
+class AdminMenu extends ContainerAware
 {
-    private $factory;
+    protected $factory;
 
     /**
      * @param \Knp\Menu\FactoryInterface $factory
