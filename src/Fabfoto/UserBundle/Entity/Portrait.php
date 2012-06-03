@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
 use Fabfoto\GalleryBundle\Entity\AbstractImage as AbstractImage;
 use Fabfoto\UserBundle\Entity\User as User;
-use Symfony\Component\Validator\Constraints as Assert;kl
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Fabfoto\GalleryBundle\Entity\Picture
  *
