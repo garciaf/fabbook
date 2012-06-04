@@ -102,6 +102,7 @@
 [Buzz]
       git=git://github.com/kriswallsmith/Buzz.git
       target=buzz
+      version=origin/v0.5
       
 [string-tools]
       git=git://github.com/garciaf/string-tools.git
