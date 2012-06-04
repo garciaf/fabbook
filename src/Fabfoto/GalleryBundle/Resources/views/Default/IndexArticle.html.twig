@@ -66,11 +66,6 @@
             {{ pagerfanta(articles, 'twitter_bootstrap_translated') }}
         </div>
     </div>
-
-    <div class="page-header">
-        <h1>{% trans %}news{% endtrans %} <small>{% trans %}from.tweeter{% endtrans %}</small></h1>
-    </div>
-    {% render "KnpLastTweetsBundle:Twitter:lastTweets" with {'username': 'FabbookFr'} %}
 </div>
 {% endblock content %}
 {% block rss %}  
