@@ -8,11 +8,9 @@
         <link rel="stylesheet" media="all" href="{{ asset('bundles/fabfotogallery/css/style.css')}}" />
         <!-- Le styles -->
         <link href="{{ asset('bundles/fabfotogallery/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
-        <link href="{{ asset('bundles/fabfotogallery/bootstrap/css/bootstrap-responsive.css') }}" rel="stylesheet">
         {%block importcss %}{%endblock importcss %}
         <script src="{{ asset('bundles/fabfotogallery/jquery/jquery-1.7.2.js')}}"></script>
-        <script src="{{ asset('bundles/fabfotogallery/bootstrap/js/bootstrap-tooltip.js')}}"></script>
-        <script src="{{ asset('bundles/fabfotogallery/bootstrap/js/bootstrap-popover.js')}}"></script>
+        <script src="{{ asset('bundles/fabfotogallery/bootstrap/js/bootstrap.min.js')}}"></script>
         <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/vegas/jquery.vegas.css')}}"/>
         <link rel="icon" type="image/png" href="{{ asset('bundles/fabfotogallery/image/icon/iconemain.png')}}">
         <script src="{{ asset('bundles/fabfotogallery/vegas/jquery.vegas.js')}}"></script>
@@ -24,22 +22,7 @@
         <![endif]-->
     </head>
     <body>
-        <div class="navbar navbar-fixed-bottom">
-            <div class="navbar-inner">
-                <div class="container">
-                    <div class="nav-collapse pull-right">
-                        <ul class="nav" >
-                            <li>
-                                <a class="helper " href="{{path('user_show')}}" rel="tooltip" title="login">
-                                    <i class="icon-user icon-white"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-        </div>
+       
         <div id="pageAbout">
             {% if app.session.flashes %}
             <div id="flashes">
@@ -56,7 +39,10 @@
             {% block content %}lipso lium{%endblock%}     
 
             <div id="footer">
-
+		<p id="legal"><a href="{{path('fos_user_registration_register')}}">{% trans %}register{% endtrans %}</a>
+		<a class="helper " href="{{path('user_show')}}" rel="tooltip" title="{% trans %}connect{% endtrans %}"><i class="icon-user"></i>
+                </a>
+		</p>
             </div>
         </div>
         <script>
