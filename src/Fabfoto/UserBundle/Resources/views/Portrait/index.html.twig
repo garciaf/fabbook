@@ -14,7 +14,7 @@
         <tbody>
             {% for entity in entities %}
             <tr>
-                <td><img width="100px" src="{{ entity.webPath | apply_filter('thumb_square')}}"/></td>
+                <td><img width="100px" src="{{ entity.webPath | imagine_filter('thumb_square')}}"/></td>
                 <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif%}</td>
                 <td class="actions">
                     <a class="show" href="{{ path('user_portrait_show', { 'id': entity.id }) }}"></a>

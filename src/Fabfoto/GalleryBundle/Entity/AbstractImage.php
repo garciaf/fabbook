@@ -15,7 +15,7 @@ abstract class AbstractImage {
 
 
     public function getWebPath() {
-        return null === $this->getLocation() ? null : $this->getUploadDir() . '/' . $this->getLocation();
+        return null === $this->getLocation() ? null : '/'.$this->getUploadDir() . '/' . $this->getLocation();
     }
 
     public function getThumbPath() {

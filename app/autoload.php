@@ -24,6 +24,7 @@ $loader->registerNamespaces(array(
     'Io'              => __DIR__.'/../vendor/bundles',
     'Imagine'          => __DIR__.'/../vendor/imagine/lib',
     'Avalanche'        => __DIR__.'/../vendor/bundles',
+    'Liip'      => __DIR__.'/../vendor/bundles',
     'Mopa'        => __DIR__.'/../vendor/bundles', 
     'Ps' => __DIR__.'/../vendor/bundles',
     'Zend'                   => __DIR__.'/../vendor',

@@ -59,7 +59,7 @@
 <ul data-role="listview">
     {% for album in albums %}
     <li><a href="{{ path('show_album_mobile_ajax', {'id':album.id} )}}">
-    	<img src="{{album.picturecover.webpath | apply_filter('thumb_square') }}" />
+    	<img src="{{album.picturecover.webpath | imagine_filter('thumb_square') }}" />
 	<h3>{{album}}</h3>
 	<p>{{album.comment}}</p>
 	</a>

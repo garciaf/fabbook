@@ -3,7 +3,7 @@
 <h1>
     <div class="imagesUser">
     {% for image in entity.portrait %}
-        <img width="100px" src="{{ image.filterPath | apply_filter('thumb_square')}}"/>
+        <img width="100px" src="{{ image.filterPath | imagine_filter('thumb_square')}}"/>
     {% endfor %}
     </div>
     <div class="userTitle">{{ entity.firstname }} {{ entity.name }}</div>

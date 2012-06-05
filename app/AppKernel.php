@@ -43,6 +43,7 @@ class AppKernel extends Kernel
             new Exercise\HTMLPurifierBundle\ExerciseHTMLPurifierBundle(),
             new Fabfoto\I18nBundle\FabfotoI18nBundle(),
             new Fabfoto\LastTweetBundle\FabfotoLastTweetBundle(),
+	    new Liip\ImagineBundle\LiipImagineBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

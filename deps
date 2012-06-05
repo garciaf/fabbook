@@ -83,6 +83,11 @@
 [Imagine]
     git=http://github.com/avalanche123/Imagine.git
     target=imagine
+    version=v0.2.0
+
+[LiipImagineBundle]
+    git=http://github.com/liip/LiipImagineBundle.git
+    target=bundles/Liip/ImagineBundle
 
 [AvalancheImagineBundle]
     git=git://github.com/avalanche123/AvalancheImagineBundle.git
