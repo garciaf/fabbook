@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------------------
 // Vegas - jQuery plugin 
 // Add awesome fullscreen backgrounds to your webpages.
-// v 1.2
+// v 1.3
 // Dual licensed under the MIT and GPL licenses.
 // http://vegas.jaysalvat.com/
 // ----------------------------------------------------------------------------
@@ -34,13 +34,13 @@
         paused = null,
         backgrounds = [],
         step = 0,
-		delay = 5000,
+        delay = 5000,
+        walk = function() {},
         timer,
         methods = {
 
         // Init plugin
         init : function( settings ) {
-
             var options = {
                 src: getBackground(),
                 align: 'center',
@@ -67,7 +67,7 @@
                     return;
                 }
                 
-                $( window ).bind( 'resize.vegas', function( e ) {
+                $( window ).bind( 'load resize.vegas', function( e ) {
                     resize( $new, options );
                 });
 
@@ -119,7 +119,7 @@
             if ( !what || what == 'background') {
                 $( '.vegas-background, .vegas-loading' ).remove();
                 $( window ).unbind( 'resize.vegas' );
-                $current = null;
+                $current = $();
             }
 
             if ( what == 'overlay') {
@@ -170,7 +170,7 @@
                 delay: delay,
                 preload: false,
                 backgrounds: backgrounds,
-                walk: function() {}
+                walk: walk
             };
             
             $.extend( options, $.vegas.defaults.slideshow, settings );
@@ -180,14 +180,19 @@
                     options.step = 0;
                 }
 
+                if ( !settings.walk ) {
+                    options.walk = function() {};
+                }
+
                 if ( options.preload ) {
                     $.vegas( 'preload', options.backgrounds );
                 }
             }
 
             backgrounds = options.backgrounds;
-			delay = options.delay;
+            delay = options.delay;
             step = options.step;
+            walk = options.walk;
 
             clearInterval( timer );
 
@@ -206,6 +211,10 @@
 
                 var settings = backgrounds[ step++ ];
                 settings.walk = options.walk;
+
+                if ( typeof( settings.fade ) == 'undefined' ) {
+                    settings.fade = options.fade;
+                }
 
                 if ( settings.fade > options.delay ) {
                     settings.fade = options.delay;
@@ -310,9 +319,12 @@
         
         // Preload an array of backgrounds
         preload: function( backgrounds ) {
+            var cache = [];
             for( var i in backgrounds ) {
                 if ( backgrounds[ i ].src ) {
-                    $('<img src="' + backgrounds[ i ].src + '">');
+                    var cacheImage = document.createElement('img');
+                    cacheImage.src = backgrounds[ i ].src;
+                    cache.push(cacheImage);
                 }
             }
 
@@ -349,10 +361,10 @@
         properties = {
             'width': newWidth + 'px',
             'height': newHeight + 'px',
-			'top': 'auto',
-			'bottom': 'auto',
-			'left': 'auto',
-			'right': 'auto'			
+            'top': 'auto',
+            'bottom': 'auto',
+            'left': 'auto',
+            'right': 'auto'
         }
 
         if ( !isNaN( parseInt( options.valign ) ) ) {
@@ -420,6 +432,7 @@
             // complete:    function
         },
         slideshow: {
+            // fade:        null
             // step:        int
             // delay:       int
             // backgrounds: array
@@ -445,29 +458,30 @@
             blank = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
 
         function triggerCallback() {
-          callback.call( $this, $images );
+            callback.call( $this, $images );
         }
 
         function imgLoaded() {
-          if ( --len <= 0 && this.src !== blank ){
-            setTimeout( triggerCallback );
-            $images.unbind( 'load error', imgLoaded );
-          }
+            if ( --len <= 0 && this.src !== blank ){
+                setTimeout( triggerCallback );
+                $images.unbind( 'load error', imgLoaded );
+            }
         }
 
         if ( !len ) {
-          triggerCallback();
+            setTimeout( triggerCallback, 200 );
+            // triggerCallback();
         }
 
         $images.bind( 'load error',  imgLoaded ).each( function() {
-          // cached images don't fire load sometimes, so we reset src.
-          if (this.complete || this.complete === undefined){
-            var src = this.src;
-            // webkit hack from http://groups.google.com/group/jquery-dev/browse_thread/thread/eee6ab7b2da50e1f
-            // data uri bypasses webkit log warning (thx doug jones)
-            this.src = blank;
-            this.src = src;
-          }
+            // cached images don't fire load sometimes, so we reset src.
+            if (this.complete || this.complete === undefined){
+                var src = this.src;
+                // webkit hack from http://groups.google.com/group/jquery-dev/browse_thread/thread/eee6ab7b2da50e1f
+                // data uri bypasses webkit log warning (thx doug jones)
+                this.src = blank;
+                this.src = src;
+            }
         });
 
         return $this;
