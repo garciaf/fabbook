@@ -1,11 +1,5 @@
 {% extends 'FabfotoGalleryBundle::layoutMobile.html.twig'%}
-
-{% block importcss %}
-<link href="{{ asset('bundles/fabfotogallery/photoswipe/3.0.4/photoswipe.css')}}" type="text/css" rel="stylesheet" />
-<link href="{{ asset('bundles/fabfotogallery/photoswipe/3.0.4/jquery-mobile.css')}}" type="text/css" rel="stylesheet" />
-{% endblock importcss %}
-{% block importjs %}
-
+{% block content %}
 <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/photoswipe/3.0.4/lib/klass.min.js')}}"></script>
 <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/photoswipe/3.0.4/code.photoswipe.jquery-3.0.4.min.js')}}"></script>
 
@@ -53,9 +47,8 @@
 		}(window, window.jQuery, window.Code.PhotoSwipe));
 		
 	</script>
-{% endblock importjs %}
 
-{% block content %}
+
 <ul data-role="listview">
     {% for album in albums %}
     <li><a href="{{ path('show_album_mobile_ajax', {'id':album.id} )}}">
