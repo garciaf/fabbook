@@ -46,8 +46,8 @@
                             </li>
                             <li>
                                 <a class="helper" href="{{path('index_album')}}" rel="tooltip" title="{% trans %}album{% endtrans %}">
-                                    <div class="visible-desktop"><i class="icon-picture icon-white"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-picture icon-white"></i> {% trans %}album{% endtrans %}</div>
+                                    <div class="visible-desktop"><i class="icon-camera icon-white"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-camera icon-white"></i> {% trans %}album{% endtrans %}</div>
                                     
                                 </a>
                             </li>
@@ -101,7 +101,10 @@
                        {% endif%}
                        {% block content %}lipso lium{%endblock%}     
                        <div id="footer">
-                           <p id="legal"><a href="{{path('fos_user_registration_register')}}">{% trans %}register{% endtrans %}</a></p>
+                           <p id="legal">
+                                <a class="userInfo" href="{{path('fos_user_registration_register')}}" rel="tooltip" title="{% trans %}register{% endtrans %}"><i class="icon-book"></i></a>
+                                <a class="userInfo" href="{{path('user_show')}}" rel="tooltip" title="{% trans %}connect{% endtrans %}"><i class="icon-user"></i></a>
+                           </p>
                             {% block rss %}  
                            <a  href="{{path('rss_news')}}"><img id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
                            {%endblock rss%}
@@ -118,6 +121,9 @@
             $('#qrCode').popover({
                 placement: 'top'
                 
+            });
+             $('.userInfo').tooltip({
+                placement: 'top'
             });
             $('.helper').tooltip({
                 placement: 'bottom'
