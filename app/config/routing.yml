@@ -1,7 +1,15 @@
+FabfotoTrainTimingBundle:
+    resource: "@FabfotoTrainTimingBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 FabfotoI18nBundle:
     resource: "@FabfotoI18nBundle/Controller/"
     type:     annotation
     prefix:   /
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
 fos_comment_api:
     type: rest
