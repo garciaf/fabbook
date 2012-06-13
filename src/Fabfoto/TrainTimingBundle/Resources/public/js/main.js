@@ -5,18 +5,47 @@ Ext.require([
     'Ext.grid.*',
     'Ext.data.*',
     'Ext.layout.Layout',
-    'Ext.panel.*'
-]);
-    var contentPanel = {
-         id: 'content-panel',
-         region: 'center', // this is what makes this panel into a region within the containing layout
-         layout: 'card',
-         margins: '2 5 5 0',
-         activeItem: 0,
-         border: false
-    };
-Ext.onReady(function(){
+    'Ext.panel.*',
+    'Ext.form.field.ComboBox',
+    'Ext.form.FieldSet',
+    'Ext.tip.QuickTipManager'
     
+]);
+
+Ext.onReady(function(){
+    // Define the model for a State
+    Ext.define('GareModel', {
+        extend: 'Ext.data.Model',
+        fields: [
+            {type: 'string', name: 'UID'},
+            {type: 'string', name: 'name'},
+            {type: 'string', name: 'codeDDG'}
+        ]
+    });
+    
+    var storeGares = Ext.create('Ext.data.JsonStore', {
+        model: 'GareModel',
+        proxy: {
+            type: 'ajax',
+            url: Routing.generate('liste_gare'),
+            reader: {
+                type: 'json',
+                root: 'stations'
+            }
+        }
+    });
+    storeGares.load();
+    
+    var simpleCombo = Ext.create('Ext.form.field.ComboBox', {
+        fieldLabel: 'Select a single state',
+        displayField: 'name',
+        valueField: 'codeDDG',
+        width: 320,
+        labelWidth: 130,
+        store: storeGares,
+        queryMode: 'local',
+        typeAhead: true
+    });
     Ext.define('TrainModel', {
         extend: 'Ext.data.Model',
         fields: [
@@ -55,22 +84,21 @@ Ext.onReady(function(){
             }
             ]
     });
-    var storeGares = Ext.create('Ext.data.JsonStore', {
-        model: 'TrainModel',
-        proxy: {
+    function newProxy(){
+        return Ext.create('Ext.data.proxy.Proxy', {
             type: 'ajax',
-            url: Routing.generate('liste_gare'),
+            url: Routing.generate('liste_timing_station', {"codeGare" : "AAA"}),
             reader: {
                 type: 'json',
-                root: 'stations'
-            }
+                root: 'A'
         }
     });
+}
     var storeArrive = Ext.create('Ext.data.JsonStore', {
         model: 'TrainModel',
         proxy: {
             type: 'ajax',
-            url: Routing.generate('liste_timing_station', { "codeGare" : "NTS"}),
+            url: Routing.generate('liste_timing_station', {"codeGare" : "NTS"}),
             reader: {
                 type: 'json',
                 root: 'A'
@@ -81,7 +109,7 @@ Ext.onReady(function(){
         model: 'TrainModel',
         proxy: {
             type: 'ajax',
-            url: Routing.generate('liste_timing_station', { "codeGare" : "NTS"}),
+            url: Routing.generate('liste_timing_station', {"codeGare" : "NTS"}),
             reader: {
                 type: 'json',
                 root: 'D'
@@ -129,7 +157,18 @@ Ext.onReady(function(){
             text: 'Etat',
             dataIndex: 'etat'
             
-        }]
+        }],
+     dockedItems: [{
+            xtype: 'toolbar',
+            items: [{
+                text: 'Resfresh',
+                handler: function(){
+                    // empty record
+                    storeArrive.setProxy(newProxy());
+                    storeArrive.load();
+                }
+            },simpleCombo
+        ]}]
     });
     var listViewDepart = Ext.create('Ext.grid.Panel', {
         resizable: true,
@@ -170,7 +209,16 @@ Ext.onReady(function(){
             text: 'Etat',
             dataIndex: 'etat'
             
-        }]
+        }],
+     dockedItems: [{
+            xtype: 'toolbar',
+            items: [{
+                text: 'Resfresh',
+                handler: function(){
+                    // empty record
+                    storeDepart.load();
+                }
+            }]}]
     });
 
     // little bit of feedback
@@ -179,7 +227,14 @@ Ext.onReady(function(){
         var s = l != 1 ? 's' : '';
         listViewDepart.setTitle('Liste Depart Nantes <i>('+l+' item'+s+' selected)</i>');
     });
-    
+    var refreshButton = new Ext.Button({
+    text:"Refresh",
+    handler: function() {
+       storeArrive.load();
+       storeDepart.load();
+    }
+});
+
     Ext.create('Ext.Viewport', {
         layout: 'border',
         title: 'Ext Layout Browser',
@@ -188,7 +243,8 @@ Ext.onReady(function(){
             id: 'header',
             region: 'north',
             html: '<h1> When is my Train ?</h1>',
-            height: 30
+            height: 30,
+            items: [refreshButton] 
         },{
             layout: 'border',
             id: 'layout-arrive',
@@ -210,8 +266,7 @@ Ext.onReady(function(){
             minSize: 100,
             maxSize: 500,    
             items: [listViewDepart]    
-        }  
-            
+        }
         ],
         renderTo: Ext.getBody()
     });
