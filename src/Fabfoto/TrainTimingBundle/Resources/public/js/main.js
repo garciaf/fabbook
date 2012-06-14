@@ -12,7 +12,7 @@ Ext.require([
     
 ]);
 
-Ext.onReady(function(){
+
     // Define the model for a State
     Ext.define('GareModel', {
         extend: 'Ext.data.Model',
@@ -22,7 +22,11 @@ Ext.onReady(function(){
             {type: 'string', name: 'codeDDG'}
         ]
     });
-    
+    var stationFilter = new Ext.util.Filter({
+                        property: 'stationType',
+                        value   : /\.X/,
+                        root: 'stations'
+                        });
     var storeGares = Ext.create('Ext.data.JsonStore', {
         model: 'GareModel',
         proxy: {
@@ -123,7 +127,7 @@ Ext.onReady(function(){
         width:600,
         height:350,
         collapsible:true,
-        title:'Liste Arrivé Nantes <i>(0 items selected)</i>',
+        title:'Liste Arrivé Nantes',
 
         store: storeArrive,
         multiSelect: true,
@@ -161,11 +165,20 @@ Ext.onReady(function(){
      dockedItems: [{
             xtype: 'toolbar',
             items: [{
-                text: 'Resfresh',
+                text: 'Change Station',
                 handler: function(){
                     // empty record
-                    storeArrive.setProxy(newProxy());
-                    storeArrive.load();
+                    var old_proxy_arrive = storeArrive.getProxy();
+                    var old_proxy_depart = storeDepart.getProxy();
+
+                    old_proxy_arrive.url = Routing.generate('liste_timing_station', {"codeGare" : simpleCombo.getValue()});
+                    old_proxy_depart.url = Routing.generate('liste_timing_station', {"codeGare" : simpleCombo.getValue()});
+                    storeArrive.load({
+                        scope: this
+                    });
+                    storeDepart.load({
+                        scope: this
+                    });
                 }
             },simpleCombo
         ]}]
@@ -175,7 +188,7 @@ Ext.onReady(function(){
         width:600,
         height:350,
         collapsible:true,
-        title:'Liste Depart Nantes <i>(0 items selected)</i>',
+        title:'Liste Depart Nantes',
 
         store: storeDepart,
         multiSelect: true,
@@ -217,16 +230,12 @@ Ext.onReady(function(){
                 handler: function(){
                     // empty record
                     storeDepart.load();
+                    storeArrive.load();
                 }
             }]}]
     });
 
     // little bit of feedback
-    listViewDepart.on('selectionchange', function(view, nodes){
-        var l = nodes.length;
-        var s = l != 1 ? 's' : '';
-        listViewDepart.setTitle('Liste Depart Nantes <i>('+l+' item'+s+' selected)</i>');
-    });
     var refreshButton = new Ext.Button({
     text:"Refresh",
     handler: function() {
@@ -235,7 +244,8 @@ Ext.onReady(function(){
     }
 });
 
-    Ext.create('Ext.Viewport', {
+Ext.onReady(function(){
+ var Panel = Ext.create('Ext.Viewport', {
         layout: 'border',
         title: 'Ext Layout Browser',
         items: [{
@@ -243,8 +253,7 @@ Ext.onReady(function(){
             id: 'header',
             region: 'north',
             html: '<h1> When is my Train ?</h1>',
-            height: 30,
-            items: [refreshButton] 
+            height: 30
         },{
             layout: 'border',
             id: 'layout-arrive',
