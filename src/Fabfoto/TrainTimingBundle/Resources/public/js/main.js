@@ -74,6 +74,11 @@ Ext.require([
     text:"Load",
     handler: function() {
         mapGoogle.addMarkers(markersGare);
+        }
+    });
+    var myPositionButton = new Ext.Button({
+    text:"Geolocalization",
+    handler: function() {
         mapGoogle.getLocation();
         }
     });
@@ -91,7 +96,7 @@ var mapwin = Ext.create('Ext.window.Window', {
                 dockedItems: [{
                     xtype: 'toolbar',
                     dock: 'top',
-                    items: [loadDataButton]
+                    items: [loadDataButton,myPositionButton]
                 }]
                 
             });      
@@ -179,7 +184,7 @@ var mapwin = Ext.create('Ext.window.Window', {
     storeArrive.load();
     var listViewArrive = Ext.create('Ext.grid.Panel', {
         resizable: true,
-        width:600,
+        width:500,
         height:350,
         collapsible:true,
         title:'Liste Arrivé Nantes',
@@ -240,7 +245,7 @@ var mapwin = Ext.create('Ext.window.Window', {
     });
     var listViewDepart = Ext.create('Ext.grid.Panel', {
         resizable: true,
-        width:600,
+        width:500,
         height:350,
         collapsible:true,
         title:'Liste Depart Nantes',
@@ -307,8 +312,12 @@ Ext.onReady(function(){
             xtype: 'box',
             id: 'header',
             region: 'north',
-            html: '<h1> When is my Train ?</h1>',
-            height: 30
+            height: 30,
+            dockedItems: [{
+                xtype: 'toolbar',
+                dock: 'top',
+                items: [displayMapButton]
+                }]
         },{
             layout: 'border',
             id: 'layout-arrive',
@@ -332,14 +341,10 @@ Ext.onReady(function(){
             items: [listViewDepart]    
         },{
             xtype: 'box',
-            id: 'footer',
+            id: 'layout-footer',
             region: 'south',
-            height: 130,
-            dockedItems: [{
-                    xtype: 'toolbar',
-                    dock: 'top',
-                    items: [displayMapButton]
-                }]
+            height: 130
+
         }
         ],
         renderTo: Ext.getBody()
