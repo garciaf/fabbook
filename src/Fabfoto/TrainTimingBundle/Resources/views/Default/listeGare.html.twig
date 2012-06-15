@@ -1,6 +1,15 @@
 {% extends 'FabfotoTrainTimingBundle::layout.html.twig'%}
 {% block content %}
-
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script>
+<script src="{{ asset('bundles/fabfototraintiming/js/override/GMapPanel.js')}}"></script>
 <script src="{{ asset('bundles/fabfototraintiming/js/gares.js')}}"></script>
 
+
+<body class="x-body x-webkit x-chrome x-linux x-reset" id="ext-gen1018">
+    <h1>GMap Window</h1>
+    <p>This example shows how to create an extension and utilize an external library.</p>
+    <input type="button" id="show-btn" value="Gimme a Map"><br><br>
+    <p>Note that the js is not minified so it is readable. See <a href="../ux/GMapPanel.js">GMapPanel.js</a> and <a href="gmap.js">gmap.js</a> for the full source code.</p>
+
 {%endblock%}   
+{% block title %}Where is my train ?{% endblock %}

@@ -8,7 +8,9 @@ Ext.require([
     'Ext.panel.*',
     'Ext.form.field.ComboBox',
     'Ext.form.FieldSet',
-    'Ext.tip.QuickTipManager'
+    'Ext.tip.QuickTipManager',
+    'Ext.window.*',
+    'Ext.ux.GMapPanel'
     
 ]);
 
@@ -17,16 +19,13 @@ Ext.require([
     Ext.define('GareModel', {
         extend: 'Ext.data.Model',
         fields: [
+            {type: 'float', name: 'x' },
+            {type: 'float', name: 'y' },
             {type: 'string', name: 'UID'},
             {type: 'string', name: 'name'},
             {type: 'string', name: 'codeDDG'}
         ]
     });
-    var stationFilter = new Ext.util.Filter({
-                        property: 'stationType',
-                        value   : /\.X/,
-                        root: 'stations'
-                        });
     var storeGares = Ext.create('Ext.data.JsonStore', {
         model: 'GareModel',
         proxy: {
@@ -38,8 +37,64 @@ Ext.require([
             }
         }
     });
-    storeGares.load();
     
+    var markersGare = [];
+    storeGares.load({
+            scope: this,
+            callback: function(records, operation, success) {
+            // the operation object
+            // contains all of the details of the load operation
+            records.forEach(function(gare){
+                markersGare.push({
+                    lat: gare.data.x,
+                    lng: gare.data.y,
+                    title: gare.data.name
+                });
+            });
+        }
+    });
+
+    var displayMapButton = new Ext.Button({
+    text:"Refresh",
+    handler: function() {
+        mapwin.show();
+        }
+    });
+
+    var mapGoogle = Ext.create('Ext.ux.GMapPanel', {
+    center: {
+        geoCodeAddr: 'Paris',
+        marker: {
+            title: 'Paris'
+        }
+    },
+    markers: []
+});
+    var loadDataButton = new Ext.Button({
+    text:"Load",
+    handler: function() {
+        mapGoogle.addMarkers(markersGare);
+        mapGoogle.getLocation();
+        }
+    });
+var mapwin = Ext.create('Ext.window.Window', {
+                autoShow: true,
+                layout: 'fit',
+                title: 'GMap Window',
+                closeAction: 'hide',
+                width:1000,
+                height:350,
+                border: false,
+                x: 40,
+                y: 460,
+                items: [mapGoogle],
+                dockedItems: [{
+                    xtype: 'toolbar',
+                    dock: 'top',
+                    items: [loadDataButton]
+                }]
+                
+            });      
     var simpleCombo = Ext.create('Ext.form.field.ComboBox', {
         fieldLabel: 'Select a single state',
         displayField: 'name',
@@ -145,7 +200,7 @@ Ext.require([
         },{
             text: 'Heure',
             xtype: 'datecolumn',
-            format: 'm-d h:i a',
+            format: 'H:i',
             flex: 35,
             dataIndex: 'heure'
         },{
@@ -164,7 +219,7 @@ Ext.require([
         }],
      dockedItems: [{
             xtype: 'toolbar',
-            items: [{
+            items: [simpleCombo,{
                 text: 'Change Station',
                 handler: function(){
                     // empty record
@@ -180,7 +235,7 @@ Ext.require([
                         scope: this
                     });
                 }
-            },simpleCombo
+            }
         ]}]
     });
     var listViewDepart = Ext.create('Ext.grid.Panel', {
@@ -206,7 +261,7 @@ Ext.require([
         },{
             text: 'Heure',
             xtype: 'datecolumn',
-            format: 'm-d h:i a',
+            format: 'H:i',
             flex: 35,
             dataIndex: 'heure'
         },{
@@ -275,6 +330,16 @@ Ext.onReady(function(){
             minSize: 100,
             maxSize: 500,    
             items: [listViewDepart]    
+        },{
+            xtype: 'box',
+            id: 'footer',
+            region: 'south',
+            height: 130,
+            dockedItems: [{
+                    xtype: 'toolbar',
+                    dock: 'top',
+                    items: [displayMapButton]
+                }]
         }
         ],
         renderTo: Ext.getBody()

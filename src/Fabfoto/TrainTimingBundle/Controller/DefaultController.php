@@ -16,7 +16,7 @@ class DefaultController extends Controller
         return $this->render('FabfotoTrainTimingBundle:Default:index.html.twig');
     }
     /**
-     * @Route("/train/gare")
+     * @Route("/train/where")
      */
     public function gareListAction()
     {
