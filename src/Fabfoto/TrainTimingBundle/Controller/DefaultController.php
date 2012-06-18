@@ -22,4 +22,11 @@ class DefaultController extends Controller
     {
         return $this->render('FabfotoTrainTimingBundle:Default:listeGare.html.twig');
     }
+    /**
+     * @Route("/parking/available")
+     */
+    public function parkingListAction()
+    {
+        return $this->render('FabfotoTrainTimingBundle:Default:listeParking.html.twig');
+    }
 }
