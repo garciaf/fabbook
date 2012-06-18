@@ -5,9 +5,10 @@ params:
   bundle_name: AdminBundle
   fields:
     album:
-      formType: entity
+      formType: genemu_jquerychosen
       addFormOptions:
         class: "FabfotoGalleryBundle:Album"
+        widget: entity
     location:
       formType: file
       addFormOptions:

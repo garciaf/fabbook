@@ -149,7 +149,6 @@ genemu_form:
         enabled: true
         theme:   advanced 
     recaptcha:
-            enabled:    true
             public_key:  6LcIEtESAAAAACk_Mc02xR3nwFw5RdnEkkkdwuXm
             private_key: 6LcIEtESAAAAAD1sT0-8wNoxCWmBSecK97wRQA25            
                   
