@@ -75,8 +75,14 @@ Ext.define('Ext.ux.GMapPanel', {
                 position: myLatlng, 
                 map: me.gmap,
                 title: gare.title
-            });  
+            });
+            google.maps.event.addListener(marker, gare.event, gare.listener);    
+
         });
+    },
+    setCenter: function(position){
+        var me = this;
+        me.gmap.setCenter(position)
     }
     ,
     lookupCode : function(addr, marker) {

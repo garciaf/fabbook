@@ -19,8 +19,8 @@ Ext.require([
     Ext.define('GareModel', {
         extend: 'Ext.data.Model',
         fields: [
-            {type: 'float', name: 'x' },
-            {type: 'float', name: 'y' },
+            {type: 'float', name: 'x'},
+            {type: 'float', name: 'y'},
             {type: 'string', name: 'UID'},
             {type: 'string', name: 'name'},
             {type: 'string', name: 'codeDDG'}
@@ -39,20 +39,7 @@ Ext.require([
     });
     
     var markersGare = [];
-    storeGares.load({
-            scope: this,
-            callback: function(records, operation, success) {
-            // the operation object
-            // contains all of the details of the load operation
-            records.forEach(function(gare){
-                markersGare.push({
-                    lat: gare.data.x,
-                    lng: gare.data.y,
-                    title: gare.data.name
-                });
-            });
-        }
-    });
+
 
     var displayMapButton = new Ext.Button({
     text:"Refresh",
@@ -62,6 +49,7 @@ Ext.require([
     });
 
     var mapGoogle = Ext.create('Ext.ux.GMapPanel', {
+    height: 400,
     center: {
         geoCodeAddr: 'Paris',
         marker: {
@@ -82,24 +70,7 @@ Ext.require([
         mapGoogle.getLocation();
         }
     });
-var mapwin = Ext.create('Ext.window.Window', {
-                autoShow: true,
-                layout: 'fit',
-                title: 'GMap Window',
-                closeAction: 'hide',
-                width:1000,
-                height:350,
-                border: false,
-                x: 40,
-                y: 460,
-                items: [mapGoogle],
-                dockedItems: [{
-                    xtype: 'toolbar',
-                    dock: 'top',
-                    items: [loadDataButton,myPositionButton]
-                }]
-                
-            });      
+   
     var simpleCombo = Ext.create('Ext.form.field.ComboBox', {
         fieldLabel: 'Select a single state',
         displayField: 'name',
@@ -148,6 +119,48 @@ var mapwin = Ext.create('Ext.window.Window', {
             }
             ]
     });
+    
+    function changeStation(codeGare, nameGare){
+                            // empty record
+        var old_proxy_arrive = storeArrive.getProxy();
+        var old_proxy_depart = storeDepart.getProxy();
+
+        old_proxy_arrive.url = Routing.generate('liste_timing_station', {"codeGare" : codeGare});
+        old_proxy_depart.url = Routing.generate('liste_timing_station', {"codeGare" : codeGare});
+        storeArrive.load({
+            scope: this
+        });
+        storeDepart.load({
+            scope: this
+        });
+        listViewDepart.setTitle('Liste Depart '+nameGare);
+        listViewArrive.setTitle('Liste Arrivé '+nameGare);
+    }
+    storeGares.load({
+            scope: this,
+            callback: function(records, operation, success) {
+            // the operation object
+            // contains all of the details of the load operation
+            records.forEach(function(gare){
+                markerGare = {
+                    lat: gare.data.x,
+                    lng: gare.data.y,
+                    title: gare.data.name,
+                 listeners: {
+                    click: function(e){
+                        changeStation(gare.data.codeDDG, gare.data.name);
+                        center = new google.maps.LatLng(gare.data.x, gare.data.y);
+                        mapGoogle.setCenter(center);
+                        }
+                    }
+                };
+                markerGoogle = mapGoogle.addMarker(markerGare);
+                ;
+                
+
+            });
+        }
+    });
     function newProxy(){
         return Ext.create('Ext.data.proxy.Proxy', {
             type: 'ajax',
@@ -184,15 +197,13 @@ var mapwin = Ext.create('Ext.window.Window', {
     storeArrive.load();
     var listViewArrive = Ext.create('Ext.grid.Panel', {
         resizable: true,
-        width:500,
-        height:350,
         collapsible:true,
-        title:'Liste Arrivé Nantes',
+        title:'Liste Arrivé',
 
         store: storeArrive,
         multiSelect: true,
         viewConfig: {
-            emptyText: 'No images to display'
+            emptyText: 'No information available'
         },
 
         columns: [{
@@ -206,7 +217,6 @@ var mapwin = Ext.create('Ext.window.Window', {
             text: 'Heure',
             xtype: 'datecolumn',
             format: 'H:i',
-            flex: 35,
             dataIndex: 'heure'
         },{
             text: 'Voie',
@@ -227,33 +237,21 @@ var mapwin = Ext.create('Ext.window.Window', {
             items: [simpleCombo,{
                 text: 'Change Station',
                 handler: function(){
-                    // empty record
-                    var old_proxy_arrive = storeArrive.getProxy();
-                    var old_proxy_depart = storeDepart.getProxy();
+                    changeStation(simpleCombo.getValue(), simpleCombo.getDisplayValue());
 
-                    old_proxy_arrive.url = Routing.generate('liste_timing_station', {"codeGare" : simpleCombo.getValue()});
-                    old_proxy_depart.url = Routing.generate('liste_timing_station', {"codeGare" : simpleCombo.getValue()});
-                    storeArrive.load({
-                        scope: this
-                    });
-                    storeDepart.load({
-                        scope: this
-                    });
                 }
             }
         ]}]
     });
     var listViewDepart = Ext.create('Ext.grid.Panel', {
         resizable: true,
-        width:500,
-        height:350,
         collapsible:true,
-        title:'Liste Depart Nantes',
+        title:'Liste Depart',
 
         store: storeDepart,
         multiSelect: true,
         viewConfig: {
-            emptyText: 'No images to display'
+            emptyText: 'No information available'
         },
 
         columns: [{
@@ -267,7 +265,6 @@ var mapwin = Ext.create('Ext.window.Window', {
             text: 'Heure',
             xtype: 'datecolumn',
             format: 'H:i',
-            flex: 35,
             dataIndex: 'heure'
         },{
             text: 'Voie',
@@ -305,6 +302,7 @@ var mapwin = Ext.create('Ext.window.Window', {
 });
 
 Ext.onReady(function(){
+
  var Panel = Ext.create('Ext.Viewport', {
         layout: 'border',
         title: 'Ext Layout Browser',
@@ -313,6 +311,7 @@ Ext.onReady(function(){
             id: 'header',
             region: 'north',
             height: 30,
+            margins: '0 0 5 0',
             dockedItems: [{
                 xtype: 'toolbar',
                 dock: 'top',
@@ -324,9 +323,8 @@ Ext.onReady(function(){
             region:'west',
             split:true,
             border: false,
-            width: 500,
+            width: "50%",
             minSize: 100,
-            maxSize: 500,
             items: [listViewArrive ]
         },
         {
@@ -335,18 +333,26 @@ Ext.onReady(function(){
             region:'center',
             split:true,
             border: false,
-            width: 500,
+            width: "50%",
             minSize: 100,
-            maxSize: 500,    
             items: [listViewDepart]    
         },{
-            xtype: 'box',
+            xtype: 'panel',
             id: 'layout-footer',
             region: 'south',
-            height: 130
+            height: 380,
+            width: 800,
+            items: [mapGoogle],
+            dockedItems: [{
+                xtype: 'toolbar',
+                dock: 'top',
+                items: [loadDataButton,myPositionButton]
+            }]
 
         }
         ],
         renderTo: Ext.getBody()
     });
+
 });
+

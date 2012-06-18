@@ -59,7 +59,11 @@ storeGares.load(
             markersGare.push({
                 lat: gare.data.x,
                 lng: gare.data.y,
-                title: gare.data.name
+                title: gare.data.name,
+                event: 'click',
+                listener: function(e){
+                    console.log(gare.data.codeDDG);
+                }
             });
         });
     }

@@ -45,8 +45,6 @@ Ext.require([
 });
     var listViewParking = Ext.create('Ext.grid.Panel', {
         resizable: true,
-        width:900,
-        height:400,
         collapsible:true,
         title:'Liste des parkings',
 
@@ -91,6 +89,7 @@ Ext.onReady(function(){
         items: [{
             xtype: 'box',
             id: 'header',
+            html: '<h1>Where can I park My car ?</h1>',
             region: 'north',
             height: 30
         },{
