@@ -23,6 +23,9 @@ class MessageType extends AbstractType
                 'label' => 'message.content',
 		'required' => true
             ))
+           ->add('captcha', 'genemu_recaptcha',array(
+               "property_path" => false,
+               ))
         ;
     }
 
