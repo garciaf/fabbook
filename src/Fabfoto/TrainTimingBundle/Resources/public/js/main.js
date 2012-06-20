@@ -227,6 +227,10 @@ Ext.require([
             dataIndex: 'ligne',
             width: 30
         },{
+            text: 'Num',
+            dataIndex: 'num',
+            width: 60
+        },{
             text: 'Destination',
             dataIndex: 'origdest'
             
@@ -281,6 +285,10 @@ Ext.require([
             text: 'ligne',
             dataIndex: 'ligne',
             width: 30
+        },{
+            text: 'Num',
+            dataIndex: 'num',
+            width: 60
         },{
             text: 'Destination',
             dataIndex: 'origdest'
@@ -342,6 +350,7 @@ Ext.onReady(function(){
             region: 'north',
             height: 30,
             margins: '0 0 5 0',
+            html: '<h1>When is my train ?</h1>',
             dockedItems: [{
                 xtype: 'toolbar',
                 dock: 'top',

@@ -1,0 +1,14 @@
+/* 
+    Document   : main
+    Created on : 20 juin 2012, 14:30:10
+    Author     : garcia fabien
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#header{
+    font-size: 1.5em;
+    text-align: center;
+    padding: 5px;
+    background-color: white;
+}
