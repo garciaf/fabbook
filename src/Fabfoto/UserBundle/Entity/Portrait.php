@@ -24,7 +24,10 @@ class Portrait extends AbstractImage
     }
     /**
      * @var string $location
-     * @Assert\File(maxSize="1M")
+     * @Assert\File(
+	maxSize="1M",
+	mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
+	)
      */
     
     private $path;
