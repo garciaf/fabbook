@@ -1,5 +1,5 @@
 Ext.Loader.setConfig({enabled: true});
-Ext.Loader.setPath('Ext.ux', 'js/ux');
+Ext.Loader.setPath('Ext.ux', '/bundles/fabfototraintiming/js/ux');
 Ext.require([
     'Ext.loader.*',
     'Ext.grid.*',
@@ -11,6 +11,7 @@ Ext.require([
     'Ext.tip.QuickTipManager',
     'Ext.window.*',
     'Ext.ux.GMapPanel',
+    'Ext.ux.grid.FiltersFeature',
     'Ext.Date.*'
     
 ]);
@@ -52,7 +53,7 @@ Ext.require([
     
 }
 
-    var markersGare = [];
+
 
 
     var displayMapButton = new Ext.Button({
@@ -72,21 +73,27 @@ Ext.require([
     },
     markers: []
 });
-    var loadDataButton = new Ext.Button({
-    text:"Load",
-    handler: function() {
-        mapGoogle.addMarkers(markersGare);
-        }
-    });
+    var markersGare = [];
+//    var loadDataButton = new Ext.Button({
+//    text:"Load",
+//    handler: function() {
+//        mapGoogle.addMarkers(markersGare);
+//        }
+//    });
     var myPositionButton = new Ext.Button({
     text:"Geolocalization",
     handler: function() {
         mapGoogle.getLocation();
         }
     });
-   
+    var filters = Ext.create('Ext.ux.grid.FiltersFeature',{
+        // encode and local configuration options defined previously for easier reuse
+        encode: false, // json encode the filter query
+        local: true   // defaults to false (remote filtering)
+
+    });
     var simpleCombo = Ext.create('Ext.form.field.ComboBox', {
-        fieldLabel: 'Select a single state',
+        fieldLabel: 'Select station',
         displayField: 'name',
         valueField: 'codeDDG',
         width: 320,
@@ -133,7 +140,9 @@ Ext.require([
             },
             
             {name: 'calculated', convert: estimatedTime}
-            ]
+            ],
+            remoteSort: false,
+            pageSize: 15
     });
     
     function changeStation(codeGare, nameGare){
@@ -221,7 +230,7 @@ Ext.require([
         viewConfig: {
             emptyText: 'No information available'
         },
-
+        feature: [filters],
         columns: [{
             text: 'ligne',
             dataIndex: 'ligne',
@@ -232,7 +241,10 @@ Ext.require([
             width: 60
         },{
             text: 'Destination',
-            dataIndex: 'origdest'
+            dataIndex: 'origdest',
+            filter: {
+                type: 'string'
+            }
             
         },{
             text: 'Heure',
@@ -280,7 +292,7 @@ Ext.require([
         viewConfig: {
             emptyText: 'No information available'
         },
-
+        feature: [filters],
         columns: [{
             text: 'ligne',
             dataIndex: 'ligne',
@@ -291,7 +303,10 @@ Ext.require([
             width: 60
         },{
             text: 'Destination',
-            dataIndex: 'origdest'
+            dataIndex: 'origdest',
+            filter: {
+                type: 'string'
+            }
             
         },{
             text: 'Heure',
@@ -321,6 +336,7 @@ Ext.require([
      dockedItems: [{
             xtype: 'toolbar',
             items: [{
+                iconCls: 'resfresh',
                 text: 'Resfresh',
                 handler: function(){
                     // empty record
@@ -385,7 +401,7 @@ Ext.onReady(function(){
             dockedItems: [{
                 xtype: 'toolbar',
                 dock: 'top',
-                items: [loadDataButton,myPositionButton]
+                items: [myPositionButton]
             }]
 
         }
@@ -393,5 +409,6 @@ Ext.onReady(function(){
         renderTo: Ext.getBody()
     });
     var myMask = new Ext.LoadMask(Panel, {msg:"Please wait...", store: storeArrive});
+    var myMask = new Ext.LoadMask(Panel, {msg:"Please wait...", store: storeGares});
 
 });
