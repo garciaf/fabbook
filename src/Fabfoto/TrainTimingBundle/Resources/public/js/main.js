@@ -74,12 +74,6 @@ Ext.require([
     markers: []
 });
     var markersGare = [];
-//    var loadDataButton = new Ext.Button({
-//    text:"Load",
-//    handler: function() {
-//        mapGoogle.addMarkers(markersGare);
-//        }
-//    });
     var myPositionButton = new Ext.Button({
     text:"Geolocalization",
     handler: function() {
