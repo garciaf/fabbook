@@ -9,8 +9,8 @@
 {% endblock content %}
 {%block qrLink %}
 <a id="qrlink" rel="popover" href="{{path('index_blog_mobile') }}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("index_blog_mobile") ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">
-    <div class="visible-desktop"><i class="icon-qrcode icon-white"></i></div>
-    <div class="hidden-desktop"><i class="icon-qrcode icon-white"></i> {% trans %}mobile{% endtrans %}</div>
+    <div class="visible-desktop"><i class="icon-qrcode icon-black"></i></div>
+    <div class="hidden-desktop"><i class="icon-qrcode icon-black"></i> {% trans %}mobile{% endtrans %}</div>
 </a>
 {%endblock qrLink %}
 {% block rss %}  
