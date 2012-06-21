@@ -155,6 +155,7 @@ Ext.require([
         listViewDepart.setTitle('Liste depart '+nameGare.toLowerCase());
         listViewArrive.setTitle('Liste arrivé '+nameGare.toLowerCase());
     }
+    var markerGare = [];
     storeGares.load({
             scope: this,
             callback: function(records, operation, success) {
