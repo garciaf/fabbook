@@ -12,6 +12,7 @@
         {% endstylesheets %}
         <!-- Le styles -->
         <link href="{{ asset('bundles/fabfotogallery/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
+        <link href="{{ asset('bundles/fabfotogallery/bootstrap/css/bootstrap-responsive.css')}}" rel="stylesheet">
 
 
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -41,42 +42,42 @@
                         <ul class="nav" >
                             <li>
                                 <a class="helper" href="{{path('show_articles')}}" rel="tooltip" title="{% trans %}home{% endtrans %}">
-                                    <div class="visible-desktop"><i class="icon-home icon-white"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-home icon-white"></i> {% trans %}home{% endtrans %}</div>
+                                    <div class="visible-desktop"><i class="icon-home icon-black"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-home icon-black"></i> {% trans %}home{% endtrans %}</div>
                                 </a>
                             </li>
                             <li>
                                 <a class="helper" href="{{path('index_album')}}" rel="tooltip" title="{% trans %}album{% endtrans %}">
-                                    <div class="visible-desktop"><i class="icon-picture icon-white"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-picture icon-white"></i> {% trans %}album{% endtrans %}</div>
+                                    <div class="visible-desktop"><i class="icon-picture icon-black"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-picture icon-black"></i> {% trans %}album{% endtrans %}</div>
                                     
                                 </a>
                             </li>
                             <li>
                                 <a class="helper" href="{{path('index_blog')}}" rel="tooltip" title="{% trans %}blog{% endtrans %}">
-                                    <div class="visible-desktop"><i class="icon-pencil icon-white"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-pencil icon-white"></i> {% trans %}blog{% endtrans %}</div>
+                                    <div class="visible-desktop"><i class="icon-pencil icon-black"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-pencil icon-black"></i> {% trans %}blog{% endtrans %}</div>
                                     
                                 </a>
                             </li>                
                             <li>
                                 <a class="helper" href="{{path('contact_new')}}" rel="tooltip" title="{% trans %}contact{% endtrans %}">
-                                    <div class="visible-desktop"><i class="icon-envelope icon-white"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-envelope icon-white"></i> {% trans %}contact{% endtrans %}</div>
+                                    <div class="visible-desktop"><i class="icon-envelope icon-black"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-envelope icon-black"></i> {% trans %}contact{% endtrans %}</div>
                                 </a>
                             </li>
                             <li>                                            
                                 {%block qrLink %}
                                 <a id="qrlink" rel="popover" href="{{path('index_mobile')}}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("index_mobile") ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">
-                                    <div class="visible-desktop"><i class="icon-qrcode icon-white"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-qrcode icon-white"></i> {% trans %}mobile{% endtrans %}</div>
+                                    <div class="visible-desktop"><i class="icon-qrcode icon-black"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-qrcode icon-black"></i> {% trans %}mobile{% endtrans %}</div>
                                 </a>
                                 {%endblock qrLink %}
                             </li>
                             <li>
                                 <a class="helper" href="{{path('show_about', {'slug':'fabien-garcia'})}}" rel="tooltip" title="{% trans %}about{% endtrans %}">
-                                    <div class="visible-desktop"><i class="icon-user icon-white"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-user icon-white"></i> {% trans %}about{% endtrans %}</div>
+                                    <div class="visible-desktop"><i class="icon-user icon-black"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-user icon-black"></i> {% trans %}about{% endtrans %}</div>
                                 </a>
                             </li>
                         </ul>
