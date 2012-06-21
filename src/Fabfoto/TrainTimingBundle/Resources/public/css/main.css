@@ -12,3 +12,10 @@
     padding: 5px;
     background-color: white;
 }
+#footer{
+    font-size: 0.5m;
+    text-align: center;
+    font-style: italic;
+    padding: 10px;
+    background-color: white;
+}

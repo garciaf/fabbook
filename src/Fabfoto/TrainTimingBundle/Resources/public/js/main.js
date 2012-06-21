@@ -11,7 +11,6 @@ Ext.require([
     'Ext.tip.QuickTipManager',
     'Ext.window.*',
     'Ext.ux.GMapPanel',
-    'Ext.ux.grid.FiltersFeature',
     'Ext.Date.*'
     
 ]);
@@ -39,6 +38,7 @@ Ext.require([
             }
         }
     });
+    
     function estimatedTime(v, record){
     datePlanned = new Date(record.data.heure);
     retard = record.data.retard;
@@ -52,17 +52,7 @@ Ext.require([
     return datePlanned;
     
 }
-
-
-
-
-    var displayMapButton = new Ext.Button({
-    text:"Refresh",
-    handler: function() {
-        mapwin.show();
-        }
-    });
-
+    
     var mapGoogle = Ext.create('Ext.ux.GMapPanel', {
     height: 400,
     center: {
@@ -73,19 +63,38 @@ Ext.require([
     },
     markers: []
 });
-    var markersGare = [];
+    var markerGare = [];
+    storeGares.load({
+            scope: this,
+            callback: function(records, operation, success) {
+            // the operation object
+            // contains all of the details of the load operation
+            records.forEach(function(gare){
+                markerGare = {
+                    lat: gare.data.x,
+                    lng: gare.data.y,
+                    title: gare.data.name,
+                 listeners: {
+                    click: function(e){
+                        changeStation(gare.data.codeDDG, gare.data.name);
+                        center = new google.maps.LatLng(gare.data.x, gare.data.y);
+                        //mapGoogle.setCenter(center);
+                        }
+                    }
+                };
+                markerGoogle = mapGoogle.addMarker(markerGare);
+                
+            });
+        }
+    });
+    
     var myPositionButton = new Ext.Button({
     text:"Geolocalization",
     handler: function() {
         mapGoogle.getLocation();
         }
     });
-    var filters = Ext.create('Ext.ux.grid.FiltersFeature',{
-        // encode and local configuration options defined previously for easier reuse
-        encode: false, // json encode the filter query
-        local: true   // defaults to false (remote filtering)
-
-    });
+    
     var simpleCombo = Ext.create('Ext.form.field.ComboBox', {
         fieldLabel: 'Select station',
         displayField: 'name',
@@ -135,8 +144,7 @@ Ext.require([
             
             {name: 'calculated', convert: estimatedTime}
             ],
-            remoteSort: false,
-            pageSize: 15
+            remoteSort: false
     });
     
     function changeStation(codeGare, nameGare){
@@ -152,35 +160,10 @@ Ext.require([
         storeDepart.load({
             scope: this
         });
-        listViewDepart.setTitle('Liste depart '+nameGare.toLowerCase());
-        listViewArrive.setTitle('Liste arrivé '+nameGare.toLowerCase());
+        listViewDepart.setTitle('<b>'+nameGare.charAt(0).toUpperCase()+nameGare.slice(1).toLowerCase()+'</b>');
+        listViewArrive.setTitle('<b>'+nameGare.charAt(0).toUpperCase()+nameGare.slice(1).toLowerCase()+'</b>');
     }
-    var markerGare = [];
-    storeGares.load({
-            scope: this,
-            callback: function(records, operation, success) {
-            // the operation object
-            // contains all of the details of the load operation
-            records.forEach(function(gare){
-                markerGare = {
-                    lat: gare.data.x,
-                    lng: gare.data.y,
-                    title: gare.data.name,
-                 listeners: {
-                    click: function(e){
-                        changeStation(gare.data.codeDDG, gare.data.name);
-                        center = new google.maps.LatLng(gare.data.x, gare.data.y);
-                        mapGoogle.setCenter(center);
-                        }
-                    }
-                };
-                markerGoogle = mapGoogle.addMarker(markerGare);
-                ;
-                
 
-            });
-        }
-    });
     function newProxy(){
         return Ext.create('Ext.data.proxy.Proxy', {
             type: 'ajax',
@@ -213,19 +196,17 @@ Ext.require([
             }
         }
     });
-//    storeDepart.load();
-//    storeArrive.load();
     var listViewArrive = Ext.create('Ext.grid.Panel', {
-        resizable: true,
-        collapsible:true,
+        resizable: false,
+        collapsible:false,
+        height: 200,
+        autoScroll: true,
         title:'Liste arrivé',
-        autoScroll : true,
         store: storeArrive,
         multiSelect: true,
         viewConfig: {
             emptyText: 'No information available'
         },
-        feature: [filters],
         columns: [{
             text: 'ligne',
             dataIndex: 'ligne',
@@ -278,16 +259,16 @@ Ext.require([
         ]}]
     });
     var listViewDepart = Ext.create('Ext.grid.Panel', {
-        resizable: true,
-        collapsible:true,
+        resizable: false,
+        collapsible:false,
         title:'Liste depart',
-        autoScroll : true,
+        height: 200,
+        autoScroll: true,
         store: storeDepart,
         multiSelect: true,
         viewConfig: {
             emptyText: 'No information available'
         },
-        feature: [filters],
         columns: [{
             text: 'ligne',
             dataIndex: 'ligne',
@@ -331,7 +312,7 @@ Ext.require([
      dockedItems: [{
             xtype: 'toolbar',
             items: [{
-                iconCls: 'resfresh',
+                iconCls: 'x-tbar-loading',
                 text: 'Resfresh',
                 handler: function(){
                     // empty record
@@ -341,15 +322,7 @@ Ext.require([
             }]}]
     });
 
-    // little bit of feedback
-    var refreshButton = new Ext.Button({
-    text:"Refresh",
-    handler: function() {
-       storeArrive.load();
-       storeDepart.load();
-    }
-});
-    changeStation('NTS', 'NANTES');
+changeStation('NTS', 'NANTES');
 
 Ext.onReady(function(){
  var Panel = Ext.create('Ext.Viewport', {
@@ -359,39 +332,37 @@ Ext.onReady(function(){
             xtype: 'box',
             id: 'header',
             region: 'north',
-            height: 30,
-            margins: '0 0 5 0',
-            html: '<h1>When is my train ?</h1>',
-            dockedItems: [{
-                xtype: 'toolbar',
-                dock: 'top',
-                items: [displayMapButton]
-                }]
+            height: '5%',
+            html: '<h1>When is my train ?</h1>'
         },{
             layout: 'border',
-            id: 'layout-arrive',
+            id: 'layout-depart',
+            title: 'Departure',
             region:'west',
-            split:true,
+            split: false,
             border: false,
             width: "50%",
             minSize: 100,
-            items: [listViewArrive ]
+            items: [listViewDepart]
         },
         {
             layout: 'border',
-            id: 'layout-depart',
+            id: 'layout-arrive',
+            title: 'Arrival',
             region:'center',
-            split:true,
+            split: false,
             border: false,
             width: "50%",
             minSize: 100,
-            items: [listViewDepart]    
+            items: [listViewArrive]    
         },{
             xtype: 'panel',
             id: 'layout-footer',
+            collapsible: true,
+            title: 'Where is the station ?',
             region: 'south',
-            height: 380,
-            width: 800,
+            height: '50%',
+            width: '100%',
             items: [mapGoogle],
             dockedItems: [{
                 xtype: 'toolbar',
