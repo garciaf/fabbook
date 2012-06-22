@@ -73,6 +73,12 @@
                                 {%endblock qrLink %}
                             </li>
                             <li>
+                                <a class="helper" href="{{path('gadget_index')}}" rel="tooltip" title="{% trans %}gadget{% endtrans %}">
+                                    <div class="visible-desktop"><i class="icon-gift icon-black"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-gift icon-black"></i> {% trans %}gadget{% endtrans %}</div>
+                                </a>
+                            </li>
+                            <li>
                                 <a class="helper" href="{{path('show_about', {'slug':'fabien-garcia'})}}" rel="tooltip" title="{% trans %}about{% endtrans %}">
                                     <div class="visible-desktop"><i class="icon-user icon-black"></i></div>
                                     <div class="hidden-desktop"><i class="icon-user icon-black"></i> {% trans %}about{% endtrans %}</div>
@@ -87,11 +93,13 @@
                             <li class="dropdown-open"><a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ app.user ? app.user : 'connect'}}<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{{path('user_show')}}">{% trans %}connect{% endtrans %}</a></li>
-                                    <li><a href="{{path('fos_user_registration_register')}}">{% trans %}register{% endtrans %}</a></li>
-                                    {% if app.user %}
                                     <li class="divider"></li>
+                                    {% if app.user %}
                                     <li><a href="{{path('fabfoto_logout')}}">{% trans %}logout{% endtrans %}</a></li>
+                                    {% else %}
+                                    <li><a href="{{path('fos_user_registration_register')}}">{% trans %}register{% endtrans %}</a></li>
                                     {% endif %}
+                                    
                                 </ul>
                             </li>
                         </ul>
