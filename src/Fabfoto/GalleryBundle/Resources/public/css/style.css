@@ -18,11 +18,11 @@ img{
     border: none;
 }
 a{
-    text-decoration: none;
+    text-decoration: none!important;
     color: black;
 }
 a:hover{
-    text-decoration: none;
+    text-decoration: none!important;
     color: darkgray;
 }
 
@@ -147,9 +147,9 @@ html, body {
     box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-    -moz-border-radius: 20px;
-    -webkit-border-radius: 20px;
-    border-radius: 10px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5x;
 }
 
 .list_album{
@@ -544,4 +544,7 @@ border-radius: 10px;
 }
 .center{
     text-align: center;
+}
+
+.lobster{
 }
