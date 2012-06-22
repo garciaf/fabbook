@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/train/when")
+     * @Route("/train/when", name="when_train_app")
      */
     public function indexAction()
     {
@@ -23,7 +23,7 @@ class DefaultController extends Controller
         return $this->render('FabfotoTrainTimingBundle:Default:listeGare.html.twig');
     }
     /**
-     * @Route("/parking/available")
+     * @Route("/parking/available", name="where_park_app")
      */
     public function parkingListAction()
     {

@@ -12,7 +12,7 @@ class Builder extends ContainerAware
         $currentUser = $this->container->get('security.context')->getToken()->getUser();
 
         $menu = $factory->createItem('root');
-        $menu->setCurrentUri($this->container->get('request')->getRequestUri());
+        //$menu->setCurrentUri($this->container->get('request')->getRequestUri());
         
         $menu->setchildrenAttributes(array('id' => 'main_navigation', 'class'=>'menu'));
         $menu->addChild('About Me', array(

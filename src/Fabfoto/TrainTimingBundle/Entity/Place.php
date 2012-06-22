@@ -12,7 +12,7 @@ use JMS\SerializerBundle\Annotation\Accessor;
  * @ORM\Table()
  * @ORM\Entity
  */
-class Lieux
+class Place
 {
     /**
      * @var integer $id

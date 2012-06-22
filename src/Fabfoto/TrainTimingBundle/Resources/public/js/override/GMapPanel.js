@@ -45,9 +45,7 @@ Ext.define('Ext.ux.GMapPanel', {
         });
         this.gmap = new google.maps.Map(this.body.dom, options);
         if (marker) {
-            this.addMarker(Ext.applyIf(marker, {
-                position: center
-            }));
+            this.addMarker(Ext.applyIf(marker));
         }
         
         Ext.each(this.markers, this.addMarker, this);

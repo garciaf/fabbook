@@ -27,7 +27,7 @@ class AdminMenu extends ContainerAware
     {
         $menu = $this->factory->createItem('root');
 
-        $menu->setCurrentUri($request->getRequestUri());
+        //$menu->setCurrentUri($request->getRequestUri());
         
         $menu->setchildrenAttributes(array('id' => 'main_navigation', 'class'=>'menu'));
 
@@ -52,6 +52,11 @@ class AdminMenu extends ContainerAware
         //User Part
         $user = $menu->addChild('User', array('route' => 'Fabfoto_AdminBundle_User_list'));
         $user->addChild('Portrait', array('route' => 'Fabfoto_AdminBundle_Portrait_list'));
+        
+        $gadget = $menu->addChild('Experiment', array('uri' => '#'));
+        $gadget->setLinkAttributes(array('class'=>'sub main'));
+        $gadget->addChild('Station', array('route' => 'Fabfoto_AdminBundle_Station_list'));
+        $gadget->addChild('Place', array('route' => 'Fabfoto_AdminBundle_Place_list'));
         return $menu;
     }
 }

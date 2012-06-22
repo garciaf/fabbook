@@ -15,7 +15,7 @@ class PlaceApiController extends Controller
      */
     public function getPlaceAction($id)
     {
-        $place = $this->getDoctrine()->getRepository('FabfotoTrainTimingBundle:Lieux')->find($id);
+        $place = $this->getDoctrine()->getRepository('FabfotoTrainTimingBundle:Place')->find($id);
         if(!$place){
              throw $this->createNotFoundException("No place"); 
         }
@@ -31,7 +31,7 @@ class PlaceApiController extends Controller
     {
         $category = $this->getDoctrine()->getRepository('FabfotoTrainTimingBundle:Category')->findOneByName('Parking Ouvrage');
         $category2 = $this->getDoctrine()->getRepository('FabfotoTrainTimingBundle:Category')->findOneByName('Parc en Enclos');
-        $place = $this->getDoctrine()->getRepository('FabfotoTrainTimingBundle:Lieux')->findBy(array('category' => $category->getId()));
+        $place = $this->getDoctrine()->getRepository('FabfotoTrainTimingBundle:Place')->findBy(array('category' => $category->getId()));
         if(!$category2){
              throw $this->createNotFoundException("No place"); 
         }

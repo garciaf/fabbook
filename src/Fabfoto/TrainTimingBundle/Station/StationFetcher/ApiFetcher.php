@@ -29,9 +29,7 @@ class ApiFetcher implements FetcherInterface
         foreach ($data["stations"] as $stationData) {
             $station = $this->createStation($stationData);
             //Test to get only the real train stations
-            if($station->getStationType()==0){
                 $stations[] = $station;
-            }
         }
 
         return $stations;

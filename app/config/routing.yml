@@ -39,6 +39,16 @@ FabfotoUserBundle:
     type:     annotation
     prefix:   /
 
+FabfotoAdminBundle_Place:
+    resource: "@FabfotoAdminBundle/Controller/Place/"
+    type:     admingenerator
+    prefix:   /admin/place
+
+FabfotoAdminBundle_Station:
+    resource: "@FabfotoAdminBundle/Controller/Station/"
+    type:     admingenerator
+    prefix:   /admin/station
+    
 FabfotoAdminBundle_Cover:
     resource: "@FabfotoAdminBundle/Controller/Cover/"
     type:     admingenerator

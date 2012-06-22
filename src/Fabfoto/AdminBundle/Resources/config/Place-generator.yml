@@ -1,0 +1,38 @@
+generator: admingenerator.generator.doctrine
+params:
+  model: Fabfoto\TrainTimingBundle\Entity\Place
+  namespace_prefix: Fabfoto
+  bundle_name: AdminBundle
+  fields: 
+    category:
+      formType: genemu_jquerychosen
+      addFormOptions:
+        class: "FabfotoTrainTimingBundle:Category"
+        widget: entity
+
+builders:
+  list:
+    params:
+      title: List for AdminBundle
+      display: [id, name, longitude, latitude, category]
+      actions:
+        new: ~
+      object_actions:
+        edit: ~
+        delete: ~
+  filters:
+    params:
+      display: [name, longitude, latitude, category]
+  new:
+    params:
+      title: New object for AdminBundle
+      display: [name, longitude, latitude, category]
+      actions:
+        list: ~
+  edit:
+    params:
+      title: You're editing the object "{{ Place.name }}"
+      display: [name, longitude, latitude, category]
+      actions:
+        list: ~
+  delete: ~

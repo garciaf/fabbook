@@ -1,0 +1,33 @@
+generator: admingenerator.generator.doctrine
+params:
+  model: Fabfoto\TrainTimingBundle\Entity\Station
+  namespace_prefix: Fabfoto
+  bundle_name: AdminBundle
+  fields: ~
+
+builders:
+  list:
+    params:
+      title: List station in france
+      display: ~
+      actions:
+        new: ~
+      object_actions:
+        edit: ~
+        delete: ~
+  filters:
+    params:
+      display: [name, uid, stationType, x, y]
+  new:
+    params:
+      title: New object for AdminBundle
+      display: [name, uid, stationType, x, y]
+      actions:
+        list: ~
+  edit:
+    params:
+      title: You're editing the object "{{ Station.name }}"
+      display: [name, uid, stationType, x, y]
+      actions:
+        list: ~
+  delete: ~
