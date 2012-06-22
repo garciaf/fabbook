@@ -1,5 +1,6 @@
 {% extends 'FabfotoGalleryBundle::layout.html.twig'%}
 {% block content %}
+
 <h1>Contact</h1>
 
 <form action="{{ path('contact_create') }}" method="post" {{ form_enctype(form) }}>
@@ -8,5 +9,7 @@
         <button class="btn btn-primary btn-large center" type="submit">Envoyer</button>
     </div>
 </form>
+{{ form_javascript(form) }}
+{{ form_stylesheet(form) }}
 {% endblock content %}
 
