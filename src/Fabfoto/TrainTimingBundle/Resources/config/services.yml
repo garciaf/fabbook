@@ -1,0 +1,3 @@
+services:
+    train_timing.gare_fetcher:
+        class: Fabfoto\TrainTimingBundle\Station\StationFetcher\ApiFetcher

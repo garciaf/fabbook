@@ -22,9 +22,9 @@ Ext.require([
         fields: [
             {type: 'float', name: 'x'},
             {type: 'float', name: 'y'},
-            {type: 'string', name: 'UID'},
+            {type: 'string', name: 'uid'},
             {type: 'string', name: 'name'},
-            {type: 'string', name: 'codeDDG'}
+            {type: 'string', name: 'code_ddg'}
         ]
     });
     var storeGares = Ext.create('Ext.data.JsonStore', {
@@ -33,8 +33,7 @@ Ext.require([
             type: 'ajax',
             url: Routing.generate('liste_gare'),
             reader: {
-                type: 'json',
-                root: 'stations'
+                type: 'json'
             }
         }
     });
@@ -76,7 +75,7 @@ Ext.require([
                     title: gare.data.name,
                  listeners: {
                     click: function(e){
-                        changeStation(gare.data.codeDDG, gare.data.name);
+                        changeStation(gare.data.code_ddg, gare.data.name);
                         center = new google.maps.LatLng(gare.data.x, gare.data.y);
                         //mapGoogle.setCenter(center);
                         }
@@ -98,7 +97,7 @@ Ext.require([
     var simpleCombo = Ext.create('Ext.form.field.ComboBox', {
         fieldLabel: 'Select station',
         displayField: 'name',
-        valueField: 'codeDDG',
+        valueField: 'code_ddg',
         width: 320,
         labelWidth: 130,
         store: storeGares,

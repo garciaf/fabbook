@@ -16,8 +16,13 @@ class TrainApiController extends Controller
     public function listeGareAction()
     {
         $url = "http://sncf.mobi/infotrafic/iphoneapp/gares/index/lastUpdate/20090116182247";
+        $fetcher = $this->get('train_timing.gare_fetcher');
+        $gares = $fetcher->fetch();
         
-        return new Response(@file_get_contents($url));
+        $serializer = $this->get('serializer');
+        $objectJson = $serializer->serialize($gares, 'json');
+        return new Response($objectJson);        
+        //return new Response(@file_get_contents($url));
         
     }
     
