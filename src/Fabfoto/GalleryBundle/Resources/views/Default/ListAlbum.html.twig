@@ -1,0 +1,9 @@
+{% for album in albums%}
+<a href="{{path('show_album', {'slug':album.slug})}}" >
+    <div class="album_sum_up" style="background: url({{album.picturecover.webpath}})" >
+        <h1 class="album_title">{{album.name}}</h1>
+        <p class="album_comment">{{album.comment}}</p>
+    </div>
+</a>
+
+{% endfor %}

@@ -17,39 +17,26 @@
 </script>
 {% endblock importjs %}
 {% block content %}
+{% if ArticlesBlogs is not empty %}
 <div class="page-header">
     <h1>Result <small>for blog </small></h1>
 </div>
 {% include 'FabfotoGalleryBundle:Default:ListArticleBlog.html.twig' with ArticlesBlogs %}
+{% endif %}
+{% if albums is not empty %}
 <div class="page-header">
     <h1>Result <small>in albums </small></h1>
 </div>
 <div class="list_album">
-    {% for album in albums%}
-    <a href="{{path('show_album', {'slug':album.slug})}}" >
-        <div class="album_sum_up" style="background: url(/{{album.picturecover.webpath}})" >
-            <h1 class="album_title">{{album.name}}</h1>
-
-            <p class="album_comment">{{album.comment}}</p>
-        </div>
-    </a>
-
-    {% endfor %}
+{% include "FabfotoGalleryBundle:Default:ListAlbum.html.twig" with albums %}
 </div>
+{% endif %}
+{% if pictures is not empty %}
 <div class="page-header">
     <h1>Result <small>for pictures </small></h1>
 </div>
-<div id="gallery">
-    <ul class="thumbnails">
-    {% for picture in pictures%}
-    <li>
-    <a rel = "search_result" href="/{{picture.webpath}}" title="{{picture}}" class="fancypicture thumbnail">
-        <img src="{{picture.webpath| apply_filter('thumb_square')}}" width="128" height="128" alt="{{picture}}" />
-    </a>
-    </li>
-    {% endfor %}
-    </ul>
-</div>
+{% include 'FabfotoGalleryBundle:Default:ListPicture.html.twig' with pictures %}
+{% endif %}
 
 
 {% endblock content %}

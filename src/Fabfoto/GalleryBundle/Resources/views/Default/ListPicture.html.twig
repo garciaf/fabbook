@@ -1,0 +1,11 @@
+<div id="gallery">
+    <ul class="thumbnails">
+        {% for picture in pictures%}
+        <li>
+            <a rel = "picturelist" href="{{picture.webpath }}" title="{{picture}}" class="fancypicture thumbnail">
+                <img src="{{picture.webpath| imagine_filter('thumb_square') }}" width="128" height="128" alt="{{picture}}" />
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
