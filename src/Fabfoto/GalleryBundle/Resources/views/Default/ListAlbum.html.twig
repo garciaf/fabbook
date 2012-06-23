@@ -1,23 +1,9 @@
-
-
-<div  class="row">
-    {% for article in ArticlesBlogs %}
-    <div class="span3  well">
-
-        <h3>{{article.title}}</h3>
-        <h4>{{article.subtitle}}</h4>
-            {% if article.author is not null %}
-    	<h6><a href="{{ path('show_about', { 'slug': article.authorSlug }) }}">{{article.author}}</a></h6>
-            {% endif %}
-        <h6>Le {{article.createdAt|date('d/m/Y')}}</h6>
-        <p><i class="icon-tags icon-black"></i> :
-        {% for tag in article.tags %}
-        <a href="{{path('show_articles_blog_by_tags', {'tag_slug':tag.slug})}} "> <span class="label label-info">{{tag}}</span></a> 
-        {% endfor %}
-        </p>
-        <a class="btn" href="{{path('show_article_blog', {'slugblog':article.slugblog})}}">Read More</a>
-
+{% for album in albums%}
+<a href="{{path('show_album', {'slug':album.slug})}}" >
+    <div class="album_sum_up" style="background: url({{album.picturecover.webpath}})" >
+        <h1 class="album_title">{{album.name}}</h1>
+        <p class="album_comment">{{album.comment}}</p>
     </div>
-    {% endfor %}
+</a>
 
-</div>
+{% endfor %}

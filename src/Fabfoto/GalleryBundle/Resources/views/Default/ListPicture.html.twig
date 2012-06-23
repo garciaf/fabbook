@@ -1,23 +1,11 @@
-
-
-<div  class="row">
-    {% for article in ArticlesBlogs %}
-    <div class="span3  well">
-
-        <h3>{{article.title}}</h3>
-        <h4>{{article.subtitle}}</h4>
-            {% if article.author is not null %}
-    	<h6><a href="{{ path('show_about', { 'slug': article.authorSlug }) }}">{{article.author}}</a></h6>
-            {% endif %}
-        <h6>Le {{article.createdAt|date('d/m/Y')}}</h6>
-        <p><i class="icon-tags icon-black"></i> :
-        {% for tag in article.tags %}
-        <a href="{{path('show_articles_blog_by_tags', {'tag_slug':tag.slug})}} "> <span class="label label-info">{{tag}}</span></a> 
+<div id="gallery">
+    <ul class="thumbnails">
+        {% for picture in pictures%}
+        <li>
+            <a rel = "picturelist" href="{{picture.webpath }}" title="{{picture}}" class="fancypicture thumbnail">
+                <img src="{{picture.webpath| imagine_filter('thumb_square') }}" width="128" height="128" alt="{{picture}}" />
+            </a>
+        </li>
         {% endfor %}
-        </p>
-        <a class="btn" href="{{path('show_article_blog', {'slugblog':article.slugblog})}}">Read More</a>
-
-    </div>
-    {% endfor %}
-
+    </ul>
 </div>
