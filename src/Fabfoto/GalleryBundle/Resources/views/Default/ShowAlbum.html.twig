@@ -21,18 +21,7 @@
 <div class="page-header">
     <h1>{{album}} <small>{{album.comment}}</small></h1>
 </div>
-<div id="gallery">
-    <ul class="thumbnails">
-        {% for picture in pictures%}
-        <li>
-            <a rel = "{{album.id}}" href="{{picture.webpath }}" title="{{picture}}" class="fancypicture thumbnail">
-                <img src="{{picture.webpath| imagine_filter('thumb_square') }}" width="128" height="128" alt="{{picture}}" />
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
-</div>
-{% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': album.slug} %}
+{% include 'FabfotoGalleryBundle:Default:ListPicture.html.twig' with pictures %}{% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': album.slug} %}
 {% endblock content %}
 
 {%block qrLink %}
