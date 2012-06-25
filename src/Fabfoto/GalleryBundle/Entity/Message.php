@@ -52,17 +52,16 @@ class Message
 
     /**
      * @var date $createdAt
-     * 
+     *
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="createdAt", type="date")
      */
     private $createdAt;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -82,7 +81,7 @@ class Message
     /**
      * Get sender
      *
-     * @return string 
+     * @return string
      */
     public function getSender()
     {
@@ -102,7 +101,7 @@ class Message
     /**
      * Get subject
      *
-     * @return string 
+     * @return string
      */
     public function getSubject()
     {
@@ -122,7 +121,7 @@ class Message
     /**
      * Get content
      *
-     * @return string 
+     * @return string
      */
     public function getContent()
     {
@@ -142,7 +141,7 @@ class Message
     /**
      * Get createdAt
      *
-     * @return date 
+     * @return date
      */
     public function getCreatedAt()
     {

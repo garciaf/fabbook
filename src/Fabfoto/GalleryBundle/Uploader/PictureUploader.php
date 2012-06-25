@@ -5,7 +5,6 @@ namespace Fabfoto\GalleryBundle\Uploader;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\File;
 use Fabfoto\GalleryBundle\Entity\Picture;
-use Fabfoto\GalleryBundle\Entity\AbstractImage;
 
 class PictureUploader
 {
@@ -21,14 +20,12 @@ class PictureUploader
     {
         $file = $picture->getLocation();
 
-        if (!$file instanceof File)
-        {
+        if (!$file instanceof File) {
             throw new \InvalidArgumentException(
                     'There is no file to upload!'
             );
         }
         $fileName = $this->generateFilename($file, $randomize);
-
 
         $newFile = $file->move($this->directory, $fileName);
         $picture->setLocation($fileName);
@@ -37,14 +34,12 @@ class PictureUploader
     public function upload(Picture $picture, $randomize=false)
     {
         $file = $picture->getLocation();
-        if (!$file instanceof UploadedFile)
-        {
+        if (!$file instanceof UploadedFile) {
             throw new \InvalidArgumentException(
                     'There is no file to upload!'
             );
         }
         $fileName = $this->generateFilename($file, $randomize);
-
 
         $newFile = $file->move($this->directory, $fileName);
         $picture->setLocation($fileName);
@@ -54,22 +49,18 @@ class PictureUploader
     private function generateFilename(File $file, $randomize=false)
     {
 
-        if ($randomize)
-        {
+        if ($randomize) {
             $filename = sprintf(
                     '%s.%s'
                     , md5(uniqid($file, true)), $file->guessExtension());
-        }
-        else
-        {
+        } else {
             $filename = sprintf('%s.%s', $file->getFilename(),
                     $file->guessExtension());
         }
-        if ($file instanceof UploadedFile || $randomize)
-        {
+        if ($file instanceof UploadedFile || $randomize) {
             $filename=sprintf('%s.%s', $filename,$file->guessExtension());
         }
-        
+
         return $filename;
     }
 

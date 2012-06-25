@@ -91,7 +91,7 @@ class ArticleBlogController extends Controller
             $em->flush();
 
             return $this->redirect($this->generateUrl('admin_blog_show', array('id' => $entity->getId())));
-            
+
         }
 
         return array(

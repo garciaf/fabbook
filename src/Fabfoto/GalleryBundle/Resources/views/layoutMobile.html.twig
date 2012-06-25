@@ -1,9 +1,9 @@
 {%block header %}
-<!DOCTYPE html> 
-<html manifest="{{path('manifest_mobile')}}">  
-    <head> 
+<!DOCTYPE html>
+<html manifest="{{path('manifest_mobile')}}">
+    <head>
         <title>{% block titlepage %}Fabfoto {% endblock titlepage %}</title>
-            <meta name="viewport" content="width=device-width, initial-scale=1">  
+            <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="{{asset('bundles/fabfotogallery/css/fabbook.css')}}" />
             <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0.1/jquery.mobile-1.0.1.min.css')}}" />
             <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/css/ios_inspired/styles.css')}}" />
@@ -17,19 +17,19 @@
 
             {%block importjs %}
             {%endblock importjs%}
-        </head> 
+        </head>
 
     {% endblock header %}
         <body>
-            <div data-role="page" {% block optionpage %}{% endblock optionpage %} data-theme="c" > 
+            <div data-role="page" {% block optionpage %}{% endblock optionpage %} data-theme="c" >
                 <div data-role="header" >
                     <h1>{% block title %}Fabbook Mobile{%endblock title%}</h1>
-                </div> 
+                </div>
                 <div data-role="content" >
                     {% block content %}
                     Welcome on Fabfoto Mobile
                     {% endblock %}
-                </div> 
+                </div>
                 <div data-role="footer" data-position="fixed" >
                     <div data-role="navbar">
                     <ul>
@@ -39,7 +39,7 @@
                         <li><a id="tabD" data-icon="custom" href="{{path('show_articles')}}"rel="external" >Classique</a></li>
                     </ul>
                 </div><!-- /navbar -->
-            </div> 
-        </div> 
+            </div>
+        </div>
     </body>
 </html>

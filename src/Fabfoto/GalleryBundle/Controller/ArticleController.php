@@ -92,7 +92,7 @@ class ArticleController extends Controller
             $em->flush();
 
             return $this->redirect($this->generateUrl('article_show', array('id' => $entity->getId())));
-            
+
         }
 
         return array(

@@ -12,16 +12,16 @@ class MessageType extends AbstractType
         $builder
             ->add('sender','email', array(
                 'label' => 'message.email',
-		'required' => true
+        'required' => true
             ))
             ->add('subject', 'text', array(
                 'label' => 'message.subject',
                 'max_length' => 120,
-		'required' => true
+        'required' => true
             ))
             ->add('content', 'textarea', array(
                 'label' => 'message.content',
-		'required' => true
+        'required' => true
             ))
            ->add('captcha', 'genemu_recaptcha',array(
                "property_path" => false,

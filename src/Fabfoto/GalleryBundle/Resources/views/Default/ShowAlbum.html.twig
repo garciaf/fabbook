@@ -16,7 +16,7 @@
     });
 </script>
 {% endblock importjs %}
-{% block title %}{{album}}{%endblock title%} 
+{% block title %}{{album}}{%endblock title%}
 {% block content %}
 <div class="page-header">
     <h1>{{album}} <small>{{album.comment}}</small></h1>
@@ -45,6 +45,6 @@
 {% block carroussel %}
 {% include 'FabfotoGalleryBundle:Default:BackgroundVegas.html.twig' %}
 {% endblock carroussel %}
-{% block rss %}  
+{% block rss %}
 <a  href="{{path('rss_album')}}"><img id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
 {%endblock rss%}

@@ -21,7 +21,7 @@ class FabfotoGalleryExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-        
+
         $container->setParameter('fabfoto_gallery.picture_directory', $config['picture_directory']);
         $container->setParameter('fabfoto_gallery.mailsender', $config['mailsender']);
         $container->setParameter('fabfoto_gallery.nbArticle', $config['nbArticle']);

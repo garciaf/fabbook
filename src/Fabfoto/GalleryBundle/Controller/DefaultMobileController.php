@@ -23,6 +23,7 @@ class DefaultMobileController extends Controller
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Article')
                 ->findBy(array(), array('createdAt'=> 'DESC'));
+
         return $this->render('FabfotoGalleryBundle:Mobile:IndexArticle.html.twig',
                         array(
                     'articles' => $articles
@@ -37,6 +38,7 @@ class DefaultMobileController extends Controller
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Article')
                 ->find($id);
+
         return $this->render('FabfotoGalleryBundle:Mobile:showArticle.html.twig',
                         array(
                     'article' => $article
@@ -52,6 +54,7 @@ class DefaultMobileController extends Controller
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Album')
                 ->findBy(array(), array('createdAt'=> 'DESC'));
+
         return $this->render('FabfotoGalleryBundle:Mobile:indexAlbum.html.twig',
                         array('albums' => $albums));
     }
@@ -73,6 +76,7 @@ class DefaultMobileController extends Controller
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Album')
                 ->find($id);
+
         return $this->render('FabfotoGalleryBundle:Mobile:ShowAlbum.html.twig',
                         array(
                     'pictures' => $pictures,
@@ -96,6 +100,7 @@ class DefaultMobileController extends Controller
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Album')
                 ->find($id);
+
         return $this->render('FabfotoGalleryBundle:Mobile:ShowAlbumAjax.html.twig',
                         array(
                     'pictures' => $pictures,
@@ -111,6 +116,7 @@ class DefaultMobileController extends Controller
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->findBy(array('isPublished' => true), array('createdAt'=> 'DESC'));
+
         return $this->render('FabfotoGalleryBundle:Mobile:IndexArticleBlog.html.twig',
                         array(
                     'articlesBlogs' => $articlesBlogs,
@@ -125,6 +131,7 @@ class DefaultMobileController extends Controller
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->findOneBy(array('slugblog' => $slugblog, 'isPublished' => true ));
+
         return $this->render('FabfotoGalleryBundle:Mobile:ShowArticleBlog.html.twig',
                         array(
                     'article' => $article

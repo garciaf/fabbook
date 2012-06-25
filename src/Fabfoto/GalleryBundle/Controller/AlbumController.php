@@ -91,7 +91,7 @@ class AlbumController extends Controller
             $em->flush();
 
             return $this->redirect($this->generateUrl('adminAlbums_show', array('id' => $entity->getId())));
-            
+
         }
 
         return array(
@@ -184,7 +184,7 @@ class AlbumController extends Controller
             if (!$album) {
                 throw $this->createNotFoundException('Unable to find Album entity.');
             }
-            foreach($pictures as $picture){
+            foreach ($pictures as $picture) {
                 $em->remove($picture);
             }
 

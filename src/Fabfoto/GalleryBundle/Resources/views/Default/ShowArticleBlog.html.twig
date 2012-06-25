@@ -10,16 +10,16 @@
 
     <div class="span12 columns">
         <a href="#" class="thumbnail">
-            <img src="{{article.cover.webpath| apply_filter('cover') }}" width="100%" alt="{{article.cover}}" /> 
+            <img src="{{article.cover.webpath| apply_filter('cover') }}" width="100%" alt="{{article.cover}}" />
         </a>
     </div>
 </div>
 {% endif %}
 <div class="article_blog_full">
     <div class="tag">
-        <i class="icon-tags icon-black"></i>  : 
+        <i class="icon-tags icon-black"></i>  :
         {% for tag in article.tags %}
-        <a href="{{path('show_articles_blog_by_tags', {'tag_slug':tag.slug})}} "> <span class="label label-info">{{tag}}</span></a> 
+        <a href="{{path('show_articles_blog_by_tags', {'tag_slug':tag.slug})}} "> <span class="label label-info">{{tag}}</span></a>
         {% endfor %}
     </div>
     <div class="blog_content">
@@ -42,6 +42,6 @@
     <div class="hidden-desktop"><i class="icon-qrcode icon-black"></i> {% trans %}mobile{% endtrans %}</div>
 </a>
 {%endblock qrLink %}
-{% block rss %}  
+{% block rss %}
 <a  href="{{path('rss_blog')}}"><img id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
 {%endblock rss%}

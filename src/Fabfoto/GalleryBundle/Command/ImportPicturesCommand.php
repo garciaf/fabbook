@@ -6,7 +6,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use Fabfoto\GalleryBundle\Entity\Album;
 use Fabfoto\GalleryBundle\Entity\Picture;
@@ -50,8 +49,7 @@ class ImportPicturesCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $albumName = $input->getArgument('albumName');
-        if (!$albumName)
-        {
+        if (!$albumName) {
             $albumName = 'incoming';
         }
         $doctrine = $this->getContainer()->get('doctrine');
@@ -63,8 +61,7 @@ class ImportPicturesCommand extends ContainerAwareCommand
         $album->setComment('imported pictures');
         $em->persist($album);
         $index = 0;
-        foreach ($finder as $sfile)
-        {
+        foreach ($finder as $sfile) {
 
             $picture = new Picture();
             $picture->setName($sfile->getFilename());

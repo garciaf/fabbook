@@ -1,6 +1,6 @@
 <script>
   $.vegas('slideshow', {
-  delay:8000,    
+  delay:8000,
   backgrounds:[
 {% for background in backgrounds %}
     { src:'{{background.webpath | imagine_filter("background") }}' , fade:4000 },

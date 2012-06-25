@@ -1,9 +1,9 @@
 {%block header %}
-<!DOCTYPE html> 
-<html> 
-    <head> 
+<!DOCTYPE html>
+<html>
+    <head>
         <title>{% block titlepage %}Fabbook Admin {% endblock titlepage %}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">  
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         {% block importcss %}
         {% endblock importcss %}
         <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/css/styleAdmin.css')}}"/>
@@ -15,19 +15,19 @@
 
         {%block importjs%}
         {%endblock importjs%}
-    </head> 
+    </head>
 
 {% endblock header %}
     <body>
-        <div data-role="page" {% block optionpage %}{% endblock optionpage %} data-theme="c" > 
+        <div data-role="page" {% block optionpage %}{% endblock optionpage %} data-theme="c" >
             <div data-role="header" >
                 <h1>{% block title %}Fabfoto{%endblock title%}</h1>
-            </div> 
+            </div>
             <div data-role="content" >
                 {% block content %}
                 Welcome on Fabfoto Mobile
                 {% endblock %}
-            </div> 
+            </div>
             <div data-role="footer" >
                 <div data-role="navbar" data-position="fixed" data-fullscreen="true">
                     <ul>
@@ -39,7 +39,7 @@
                     <li><a href="{{path('contact')}}">contact</a></li>
                     <li><a href="{{path('fabfoto_logout')}}">Logout</a> </li>                     </ul>
                 </div><!-- /navbar -->
-            </div> 
-        </div> 
+            </div>
+        </div>
     </body>
 </html>

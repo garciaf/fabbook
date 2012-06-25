@@ -6,12 +6,10 @@
  {% block optionpage %}data-add-back-btn="true" id="Gallery" class="gallery-page" {% endblock optionpage %}
 
 
-{% block content %}      
+{% block content %}
 <ul class="gallery">
 {% for picture in pictures%}
 <li><a href="{{picture.webpath}}" rel="external"><img src="{{picture.webpath| imagine_filter('thumb_square') }}" alt="{{picture}}" /></a></li>
 {% endfor %}
 </ul>
 {% endblock %}
-
-	

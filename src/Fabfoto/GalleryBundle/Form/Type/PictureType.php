@@ -18,7 +18,7 @@ class PictureType extends AbstractType
                 'label'     => 'Mettre cette image en fond ?',
                 'required'=> false,
 
-                ))    
+                ))
             ->add('album', 'entity', array('class'=>'FabfotoGalleryBundle:Album'))
         ;
     }

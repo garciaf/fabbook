@@ -30,6 +30,7 @@ class ManifestController extends Controller
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->findBy(array('isPublished' => true), array('createdAt'=> 'DESC'));
+
         return $this->render('FabfotoGalleryBundle:Manifest:manifest.txt.twig',
                         array(
                     'articles' => $articles,
@@ -40,7 +41,8 @@ class ManifestController extends Controller
      * @Route("offlinepage/", name="manifest_offline")
      * @Template()
      */
-    public function buikdOffLinePageAction(){
+    public function buikdOffLinePageAction()
+    {
         return $this->render('FabfotoGalleryBundle:Manifest:offline.html.twig');
     }
 }

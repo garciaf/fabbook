@@ -33,7 +33,6 @@ class Configuration implements ConfigurationInterface
                 ->end()
         ;
 
-
         return $treeBuilder;
     }
 

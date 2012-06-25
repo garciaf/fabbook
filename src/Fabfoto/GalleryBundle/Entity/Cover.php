@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks
  */
-class Cover extends AbstractImage 
+class Cover extends AbstractImage
 {
 
     public function __toString()
@@ -24,7 +24,7 @@ class Cover extends AbstractImage
      * @var string $location
      * @Assert\File(maxSize="1M")
      */
-    
+
     private $path;
     /**
      * @var integer $id
@@ -34,8 +34,7 @@ class Cover extends AbstractImage
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
-    
+
     /**
      * @var string $location
      *
@@ -45,7 +44,7 @@ class Cover extends AbstractImage
 
     /**
      * @var date $createdAt
-     * 
+     *
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="createdAt", type="date", nullable=true)
      */
@@ -56,17 +55,16 @@ class Cover extends AbstractImage
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
-    
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
-
 
     /**
      * Set location
@@ -81,7 +79,7 @@ class Cover extends AbstractImage
     /**
      * Get location
      *
-     * @return string 
+     * @return string
      */
     public function getLocation()
     {
@@ -101,28 +99,25 @@ class Cover extends AbstractImage
     /**
      * Get createdAt
      *
-     * @return date 
+     * @return date
      */
     public function getCreatedAt()
     {
         return $this->createdAt;
     }
 
-
     /**
      * @ORM\PostRemove()
      */
     public function removeUpload()
     {
-        if (file_exists($this->getAbsolutePath()))
-        {
+        if (file_exists($this->getAbsolutePath())) {
             if ($file = $this->getAbsolutePath()) {
 
                 unlink($file);
             }
         }
     }
-
 
     /**
      * @ORM\PrePersist()
@@ -152,7 +147,7 @@ class Cover extends AbstractImage
         $this->path->move($this->getUploadRootDir(), $this->location);
         unset($this->path);
     }
-    
+
         /**
      * Set location
      *
@@ -166,7 +161,7 @@ class Cover extends AbstractImage
     /**
      * Get location
      *
-     * @return string 
+     * @return string
      */
     public function getPath()
     {
@@ -186,7 +181,7 @@ class Cover extends AbstractImage
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
