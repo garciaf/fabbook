@@ -2,9 +2,6 @@ FabfotoI18nBundle:
     resource: "@FabfotoI18nBundle/Controller/"
     type:     annotation
     prefix:   /
-train_rest:
-    type:     rest
-    resource: Fabfoto\TrainTimingBundle\Controller\Rest\TrainRestController
 
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"    

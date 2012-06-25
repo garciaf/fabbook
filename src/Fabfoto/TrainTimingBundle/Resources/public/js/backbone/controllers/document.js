@@ -7,13 +7,15 @@ var DocumentsController = Backbone.Router.extend({
   },
 
   map: function() {
-    new GMaps({
+    map = new GMaps({
     div: '#map',
-    lat: -12.043333,
-    lng: -77.028333
+    lat: 48.857035,
+    lng: 2.352362
     });
+    Stations.updateMap(map);
+    Stations.locate(map);
   },
-
+  
   search: function(query, page) {
       alert(query);
   }
