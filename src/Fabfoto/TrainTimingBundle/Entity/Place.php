@@ -4,7 +4,6 @@ namespace Fabfoto\TrainTimingBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\SerializerBundle\Annotation\Type;
-use JMS\SerializerBundle\Annotation\Accessor;
 
 /**
  * Fabfoto\TrainTimingBundle\Entity\Gare
@@ -54,7 +53,7 @@ class Place
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -74,7 +73,7 @@ class Place
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -94,7 +93,7 @@ class Place
     /**
      * Get longitude
      *
-     * @return float 
+     * @return float
      */
     public function getLongitude()
     {
@@ -114,7 +113,7 @@ class Place
     /**
      * Get latitude
      *
-     * @return float 
+     * @return float
      */
     public function getLatitude()
     {
@@ -134,7 +133,7 @@ class Place
     /**
      * Get category
      *
-     * @return Fabfoto\TrainTimingBundle\Entity\Category 
+     * @return Fabfoto\TrainTimingBundle\Entity\Category
      */
     public function getCategory()
     {

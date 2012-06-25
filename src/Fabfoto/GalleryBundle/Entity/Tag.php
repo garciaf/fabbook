@@ -31,12 +31,12 @@ class Tag
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
-    
+
      /**
      * @ManyToMany(targetEntity="ArticleBlog", mappedBy="tags")
      */
     private $articles;
-    
+
     /**
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(name="slug", type="string", length=255 )
@@ -45,7 +45,7 @@ class Tag
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -60,13 +60,13 @@ class Tag
     public function setName($name)
     {
         $this->name = $name;
-        
+
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -82,7 +82,7 @@ class Tag
     {
         $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Add articles
      *
@@ -96,7 +96,7 @@ class Tag
     /**
      * Get articles
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection
      */
     public function getArticles()
     {
@@ -116,11 +116,11 @@ class Tag
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
         return $this->slug;
     }
-    
+
 }

@@ -4,7 +4,6 @@ namespace Fabfoto\TrainTimingBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\SerializerBundle\Annotation\Type;
-use JMS\SerializerBundle\Annotation\Accessor;
 /**
  * Fabfoto\TrainTimingBundle\Entity\Category
  *
@@ -29,11 +28,10 @@ class Category
      */
     private $name;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -53,13 +51,13 @@ class Category
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
         return $this->name;
     }
-    
+
     public function __toString()
     {
         return $this->getName();

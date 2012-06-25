@@ -31,6 +31,7 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
+    read_from:      "%kernel.root_dir%/../www"    
     filters:
         cssrewrite: ~
         # closure:
@@ -225,3 +226,6 @@ fos_comment:
             view: IS_AUTHENTICATED_ANONYMOUSLY
             edit: ROLE_ADMIN
             delete: ROLE_ADMIN            
+fos_rest:
+    routing_loader:
+        default_format: json

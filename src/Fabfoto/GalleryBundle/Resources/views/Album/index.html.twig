@@ -6,7 +6,7 @@
     {% for entity in entities %}
     <li>
         <a href="{{ path('adminAlbums_show', { 'id': entity.id }) }}">
-            
+
             <h3>{{ entity.name }}</h3>
             <p>{{ entity.comment }}</p>
             <p>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif%}</p>

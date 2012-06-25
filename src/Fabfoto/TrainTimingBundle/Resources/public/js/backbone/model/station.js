@@ -40,13 +40,14 @@
     // Reference to this collection's model.
     model: Station,
     // 
-    url : Routing.generate('liste_gare'),
+    urlRoot : "/gares",
     initialize: function(options) {
             options || (options = {});
             this.date = options.date;
-          },
+          }
+          //,
     // Save all of the todo items under the `"todos"` namespace.
-    localStorage: new Store("stations-backbone")
+    //localStorage: new Store("stations-backbone")
 
   });
 

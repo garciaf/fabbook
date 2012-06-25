@@ -8,7 +8,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Fabfoto\GalleryBundle\Entity\Picture;
 use Fabfoto\GalleryBundle\Form\Type\PictureType;
-use Symfony\Component\Finder\Finder;
 
 /**
  * Picture controller.
@@ -46,8 +45,7 @@ class PictureController extends Controller
 
         $picture = $em->getRepository('FabfotoGalleryBundle:Picture')->find($id);
 
-        if (!$picture)
-        {
+        if (!$picture) {
             throw $this->createNotFoundException('Unable to find Picture entity.');
         }
 
@@ -89,8 +87,7 @@ class PictureController extends Controller
         $form = $this->createForm(new PictureType(), $picture);
         $form->bindRequest($request);
 
-        if ($form->isValid())
-        {
+        if ($form->isValid()) {
             $this->get('fabfoto_gallery.picture_uploader')->upload($picture);
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($picture);
@@ -118,8 +115,7 @@ class PictureController extends Controller
 
         $picture = $em->getRepository('FabfotoGalleryBundle:Picture')->find($id);
 
-        if (!$picture)
-        {
+        if (!$picture) {
             throw $this->createNotFoundException('Unable to find Picture entity.');
         }
 
@@ -145,8 +141,7 @@ class PictureController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
 
         $picture = $em->getRepository('FabfotoGalleryBundle:Picture')->find($id);
-        if (!$picture)
-        {
+        if (!$picture) {
             throw $this->createNotFoundException('Unable to find Picture entity.');
         }
         $location = $picture->getLocation();
@@ -156,9 +151,8 @@ class PictureController extends Controller
         $request = $this->getRequest();
 
         $editForm->bindRequest($request);
-        
-        if ($editForm->isValid())
-        {   
+
+        if ($editForm->isValid()) {
             $picture->setLocation($location);
             $em->persist($picture);
             $em->flush();
@@ -187,12 +181,10 @@ class PictureController extends Controller
 
         $form->bindRequest($request);
 
-        if ($form->isValid())
-        {
+        if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
             $picture = $em->getRepository('FabfotoGalleryBundle:Picture')->find($id);
-            if (!$picture)
-            {
+            if (!$picture) {
                 throw $this->createNotFoundException('Unable to find Picture entity.');
             }
 

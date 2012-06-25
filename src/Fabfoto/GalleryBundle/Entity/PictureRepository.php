@@ -22,20 +22,22 @@ class PictureRepository extends EntityRepository
     {
         return $this->queryOrderBydate()->setMaxResults($limit)->execute();
     }
-    
-    public function findLatestBackground($limit){
+
+    public function findLatestBackground($limit)
+    {
     return $this
             ->queryPicturesBackgroung()
             ->setMaxResults($limit)
             ->execute();
     }
 
-    private function queryPicturesBackgroung(){
+    private function queryPicturesBackgroung()
+    {
     return $this->_em
             ->createQuery('SELECT s FROM FabfotoGalleryBundle:Picture WHERE s.isBackground == TRUE');
     }
     private function queryOrderBydate()
-    {   
+    {
         return $this->_em
                         ->createQuery('SELECT s FROM FabfotoGalleryBundle:Picture s ORDER BY s.createdAt DESC');
     }

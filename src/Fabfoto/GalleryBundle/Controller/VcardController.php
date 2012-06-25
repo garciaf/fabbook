@@ -4,10 +4,7 @@ namespace Fabfoto\GalleryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Finder\Finder;
 /**
  * Vcard controller.
  *
@@ -17,7 +14,7 @@ class VcardController extends Controller
 {
      /**
      * @Route("/about",defaults={"_format"="vcf"}, name="show_vcard")
-     * 
+     *
      */
     public function showAboutAction()
     {
@@ -29,15 +26,16 @@ class VcardController extends Controller
             $response->setStatusCode(200);
             $response->headers->set('Content-Type','text/x-vcard');
             $response->headers->set('Content-Disposition', 'attachment;filename="FGcard.vcf"');
-            
+
             $vcard=$author->getVcard();
             $response->setContent($vcard);
+
             return $response;
-         
+
     }
     /**
      * @Route("/{slug}/vcard",defaults={"_format"="vcf"}, name="show_vcard_from")
-     * 
+     *
      */
     public function showVcardAction($slug)
     {
@@ -51,10 +49,11 @@ class VcardController extends Controller
             $response->setStatusCode(200);
             $response->headers->set('Content-Type','text/x-vcard');
             $response->headers->set('Content-Disposition', 'attachment;filename="'.$author->getSlug().'Vcard.vcf"');
-            
+
             $vcard=$author->getVcard();
             $response->setContent($vcard);
+
             return $response;
-         
+
     }
 }

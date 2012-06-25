@@ -1,4 +1,4 @@
-register: Register 
+register: Register
 about: about us
 album: Album
 home: home
@@ -21,4 +21,4 @@ message:
   content: Your message
   send:
     success: message sended
-    fail: something went wron with your message    
+    fail: something went wron with your message

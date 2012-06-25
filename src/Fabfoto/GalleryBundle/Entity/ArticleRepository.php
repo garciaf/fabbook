@@ -3,7 +3,6 @@ namespace Fabfoto\GalleryBundle\Entity;
 
 use Doctrine\ORM\EntityRepository as EntityRepository;
 
-
 class ArticleRepository extends EntityRepository
 {
 

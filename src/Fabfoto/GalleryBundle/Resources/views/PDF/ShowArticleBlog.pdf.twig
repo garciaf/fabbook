@@ -6,7 +6,7 @@
         <a href="{{ url('show_article_blog', { 'slugblog': article.slugblog }) }}" >{{ url('show_article_blog', { 'slugblog': article.slugblog }) }}</a>
         </div>
         <div class="tag">
-        Tags : 
+        Tags :
         {% for tag in article.tags %}
         {{tag}}
         {% endfor %}

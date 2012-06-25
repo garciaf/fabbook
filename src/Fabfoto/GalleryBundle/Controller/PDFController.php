@@ -4,23 +4,22 @@ namespace Fabfoto\GalleryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Finder\Finder;
 
 /**
  * Article controller.
  *
  * @Route("/pdf")
  */
-class PDFController extends Controller {
-
+class PDFController extends Controller
+{
     /**
-     * 
+     *
      * @Route("/{slugblog}/blogarticle", defaults={"_format"="pdf"}, name="show_article_blog_pdf")
-     * 
+     *
      */
-    public function showBlogArticleAction($slugblog) {
+    public function showBlogArticleAction($slugblog)
+    {
         $format = $this->get('request')->get('_format');
         $pdfObj = $this->get("white_october.tcpdf")->create();
         $article = $this
@@ -37,14 +36,16 @@ class PDFController extends Controller {
         $pdfObj->AddPage();
         $pdfObj->writeHTML($html, true, false, true, false, '');
         $pdfObj->lastPage();
+
         return $pdfObj->Output($article->getSlugblog() . '.pdf');
     }
 
     /**
      * @Route("/{slug}/pdfcard", name="show_about_pdf_from")
-     * 
+     *
      */
-    public function showPDFCardAction($slug) {
+    public function showPDFCardAction($slug)
+    {
         $pdfObj = $this->get("white_october.tcpdf")->create();
         $author = $this
                 ->getDoctrine()
@@ -65,6 +66,7 @@ class PDFController extends Controller {
         $pdfObj->AddPage('P', 'BUSINESS_CARD_FR');
         $pdfObj->writeHTML($html, true, false, true, false, '');
         $pdfObj->lastPage();
+
         return $pdfObj->Output($slug.'carte.pdf');
     }
 

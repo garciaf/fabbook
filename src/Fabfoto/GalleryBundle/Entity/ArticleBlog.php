@@ -6,7 +6,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Fabfoto\GalleryBundle\Entity\Tag as Tag;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping\JoinColumn as JoinColumn;
 use Doctrine\ORM\Mapping\JoinTable as JoinTable;
 use Doctrine\ORM\Mapping\ManyToMany as ManyToMany;
 use Doctrine\ORM\Mapping\ManyToOne as ManyToOne;
@@ -33,7 +32,7 @@ class ArticleBlog
      * @var datetime $createdAt
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="createdAt", type="datetime")
-     
+
      */
     private $createdAt;
 
@@ -52,7 +51,6 @@ class ArticleBlog
      */
     private $title;
 
-    
     /**
      * @var string $subtitle
      *
@@ -68,17 +66,17 @@ class ArticleBlog
     private $content;
 
     /**
-     * @ManyToOne(targetEntity="Cover") 
+     * @ManyToOne(targetEntity="Cover")
      */
     private $cover;
-    
+
     /**
      * @var string $author
      *
      * @ORM\Column(name="author", type="string", length=255)
      */
     private $author;
-    
+
     /**
      * @var string $author
      *
@@ -87,7 +85,7 @@ class ArticleBlog
     private $authorSlug;
 
      /**
-      *  
+      *
       * @ORM\ManyToMany(targetEntity="Tag", inversedBy="articles")
       * @JoinTable(name="ArticleBlog_tags")
      */
@@ -102,7 +100,7 @@ class ArticleBlog
      * @ORM\Column(name="slugblog", type="string", length=255)
      */
     private $slugblog;
-    
+
     public function __toString()
      {
          return $this->getTitle();
@@ -110,7 +108,7 @@ class ArticleBlog
      /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -130,7 +128,7 @@ class ArticleBlog
     /**
      * Get createdAt
      *
-     * @return datetime 
+     * @return datetime
      */
     public function getCreatedAt()
     {
@@ -150,7 +148,7 @@ class ArticleBlog
     /**
      * Get updatedAt
      *
-     * @return datetime 
+     * @return datetime
      */
     public function getUpdatedAt()
     {
@@ -171,7 +169,7 @@ class ArticleBlog
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -191,7 +189,7 @@ class ArticleBlog
     /**
      * Get subtitle
      *
-     * @return string 
+     * @return string
      */
     public function getSubtitle()
     {
@@ -211,7 +209,7 @@ class ArticleBlog
     /**
      * Get content
      *
-     * @return text 
+     * @return text
      */
     public function getContent()
     {
@@ -224,7 +222,6 @@ class ArticleBlog
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
     }
-
 
     /**
      * Add tags
@@ -240,13 +237,13 @@ class ArticleBlog
     /**
      * Get tags
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection
      */
     public function getTags()
     {
         return $this->tags;
     }
-    
+
     /**
      * Set slugblog
      *
@@ -260,13 +257,12 @@ class ArticleBlog
     /**
      * Get slugblog
      *
-     * @return string 
+     * @return string
      */
     public function getSlugblog()
     {
         return $this->slugblog;
     }
-
 
     /**
      * Set authorSlug
@@ -281,7 +277,7 @@ class ArticleBlog
     /**
      * Get authorSlug
      *
-     * @return string 
+     * @return string
      */
     public function getAuthorSlug()
     {
@@ -301,13 +297,12 @@ class ArticleBlog
     /**
      * Get author
      *
-     * @return string 
+     * @return string
      */
     public function getAuthor()
     {
         return $this->author;
     }
-
 
     /**
      * Set cover
@@ -322,7 +317,7 @@ class ArticleBlog
     /**
      * Get cover
      *
-     * @return Fabfoto\GalleryBundle\Entity\Cover 
+     * @return Fabfoto\GalleryBundle\Entity\Cover
      */
     public function getCover()
     {
@@ -342,7 +337,7 @@ class ArticleBlog
     /**
      * Get isPublished
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsPublished()
     {

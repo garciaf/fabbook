@@ -1,7 +1,7 @@
 parameters:
 #    knp_upload.example.class: Knp\UploadBundle\Example
-     nbArticle: %fabfoto_gallery.nbArticle% 
-     nbAlbum: %fabfoto_gallery.nbAlbum% 
+     nbArticle: %fabfoto_gallery.nbArticle%
+     nbAlbum: %fabfoto_gallery.nbAlbum%
 
 services:
 #    knp_upload.example:
@@ -12,8 +12,6 @@ services:
     fabfoto_gallery.picture_uploader:
         class:      Fabfoto\GalleryBundle\Uploader\PictureUploader
         arguments:  [%fabfoto_gallery.picture_directory%]
-        
+
 #    fabfoto_gallery.string_tools:
 #        class:      Fabfoto\GalleryBundle\StringTools\StringTools
-      
-        

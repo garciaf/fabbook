@@ -3,7 +3,6 @@
 namespace Fabfoto\GalleryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Security\Core\SecurityContext;
@@ -24,18 +23,15 @@ class SecurityController extends Controller
         $session = $request->getSession();
 
         // get the login error if there is one
-        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR))
-        {
+        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
             $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
-        }
-        else
-        {
+        } else {
             $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
         }
-        if (!empty($error))
-        {
+        if (!empty($error)) {
             $this->get('session')->setFlash('error', $error->getMessage());
         }
+
         return $this->render('FabfotoGalleryBundle:Security:login.html.twig',
                         array(
                     // last username entered by the user

@@ -52,19 +52,19 @@ class Album
      * @ORM\OneToMany(targetEntity = "Picture",mappedBy="album")
      */
     private $pictures;
-    
+
     /**
      * @var string $name
-     * 
+     *
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
-    
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -79,13 +79,13 @@ class Album
     public function setName($name)
     {
         $this->name = $name;
-        
+
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -110,7 +110,7 @@ class Album
     /**
      * Get comment
      *
-     * @return string 
+     * @return string
      */
     public function getComment()
     {
@@ -130,7 +130,7 @@ class Album
     /**
      * Get createdAt
      *
-     * @return date 
+     * @return date
      */
     public function getCreatedAt()
     {
@@ -150,7 +150,7 @@ class Album
     /**
      * Get pictures
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection
      */
     public function getPictures()
     {
@@ -164,16 +164,12 @@ class Album
 
     public function getPictureCover()
     {
-        if ($this->pictures[0])
-        {
+        if ($this->pictures[0]) {
             return $this->pictures[0];
-        }
-                else
-        {
+        } else {
             return 'defaultsPicture.jpg';
         }
     }
-
 
     /**
      * Set slug
@@ -188,7 +184,7 @@ class Album
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {

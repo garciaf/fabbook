@@ -45,8 +45,7 @@ class MessageController extends Controller
 
         $entity = $em->getRepository('FabfotoGalleryBundle:Message')->find($id);
 
-        if (!$entity)
-        {
+        if (!$entity) {
             throw $this->createNotFoundException('Unable to find Message entity.');
         }
 
@@ -90,18 +89,17 @@ class MessageController extends Controller
         $form = $this->createForm(new MessageType(), $entity);
         $form->bindRequest($request);
 
-        if ($form->isValid())
-        {
+        if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);
             $em->flush();
             $this->sendMail($entity);
-	    $this->get('session')->setFlash('success', $this->get('translator')->trans("message.send.success") );
-            
+        $this->get('session')->setFlash('success', $this->get('translator')->trans("message.send.success") );
+
             return $this->redirect($this->generateUrl('show_articles'));
-        }else{
-	    $this->get('session')->setFlash('error', $this->get('translator')->trans("message.send.fail") );
-	}
+        } else {
+        $this->get('session')->setFlash('error', $this->get('translator')->trans("message.send.fail") );
+    }
 
         return array(
             'entity' => $entity,
@@ -121,8 +119,7 @@ class MessageController extends Controller
 
         $entity = $em->getRepository('FabfotoGalleryBundle:Message')->find($id);
 
-        if (!$entity)
-        {
+        if (!$entity) {
             throw $this->createNotFoundException('Unable to find Message entity.');
         }
 
@@ -149,8 +146,7 @@ class MessageController extends Controller
 
         $entity = $em->getRepository('FabfotoGalleryBundle:Message')->find($id);
 
-        if (!$entity)
-        {
+        if (!$entity) {
             throw $this->createNotFoundException('Unable to find Message entity.');
         }
 
@@ -161,11 +157,10 @@ class MessageController extends Controller
 
         $editForm->bindRequest($request);
 
-        if ($editForm->isValid())
-        {
+        if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
-            
+
             return $this->redirect($this->generateUrl('contact_edit',
                                     array('id' => $id)));
         }
@@ -190,13 +185,11 @@ class MessageController extends Controller
 
         $form->bindRequest($request);
 
-        if ($form->isValid())
-        {
+        if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
             $entity = $em->getRepository('FabfotoGalleryBundle:Message')->find($id);
 
-            if (!$entity)
-            {
+            if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Message entity.');
             }
 
@@ -216,12 +209,12 @@ class MessageController extends Controller
     }
     protected function sendMail(Message $message)
     {
-    	$messageToSend = \Swift_Message::newInstance()
+        $messageToSend = \Swift_Message::newInstance()
         ->setSubject('[fabbook] from: '.$message->getSender().' : '.$message->getSubject())
         ->setFrom('fab0670312047@gmail.com')
         ->setTo('fab0670312047@gmail.com')
         ->setBody($message->getContent())
     ;
     $this->get('mailer')->send($messageToSend);
-    }	
+    }
 }

@@ -4,7 +4,6 @@ namespace Fabfoto\TrainTimingBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\SerializerBundle\Annotation\Type;
-use JMS\SerializerBundle\Annotation\Accessor;
 
 /**
  * Fabfoto\TrainTimingBundle\Entity\Station
@@ -65,7 +64,6 @@ class Station
      */
     private $codeDdg;
 
-    
     public function __construct(array $object)
     {
         $this->x = $object['x'];
@@ -78,7 +76,7 @@ class Station
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -98,7 +96,7 @@ class Station
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -118,7 +116,7 @@ class Station
     /**
      * Get uid
      *
-     * @return string 
+     * @return string
      */
     public function getUid()
     {
@@ -138,7 +136,7 @@ class Station
     /**
      * Get stationType
      *
-     * @return integer 
+     * @return integer
      */
     public function getStationType()
     {
@@ -158,7 +156,7 @@ class Station
     /**
      * Get x
      *
-     * @return float 
+     * @return float
      */
     public function getX()
     {
@@ -178,7 +176,7 @@ class Station
     /**
      * Get y
      *
-     * @return float 
+     * @return float
      */
     public function getY()
     {
@@ -198,7 +196,7 @@ class Station
     /**
      * Get codeDdg
      *
-     * @return string 
+     * @return string
      */
     public function getCodeDdg()
     {

@@ -55,16 +55,16 @@
                                 <a class="helper" href="{{path('index_blog')}}" rel="tooltip" title="{% trans %}blog{% endtrans %}">
                                     <div class="visible-desktop"><i class="icon-pencil icon-black"></i></div>
                                     <div class="hidden-desktop"><i class="icon-pencil icon-black"></i> {% trans %}blog{% endtrans %}</div>
-                                    
+
                                 </a>
-                            </li>                
+                            </li>
                             <li>
                                 <a class="helper" href="{{path('contact_new')}}" rel="tooltip" title="{% trans %}contact{% endtrans %}">
                                     <div class="visible-desktop"><i class="icon-envelope icon-black"></i></div>
                                     <div class="hidden-desktop"><i class="icon-envelope icon-black"></i> {% trans %}contact{% endtrans %}</div>
                                 </a>
                             </li>
-                            <li>                                            
+                            <li>
                                 {%block qrLink %}
                                 <a id="qrlink" rel="popover" href="{{path('index_mobile')}}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("index_mobile") ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">
                                     <div class="visible-desktop"><i class="icon-qrcode icon-black"></i></div>
@@ -99,7 +99,7 @@
                                     {% else %}
                                     <li><a href="{{path('fos_user_registration_register')}}">{% trans %}register{% endtrans %}</a></li>
                                     {% endif %}
-                                    
+
                                 </ul>
                             </li>
                         </ul>
@@ -120,13 +120,13 @@
                            {% endfor%}
                        </div>
                        {% endif%}
-                       {% block content %}lipso lium{%endblock%}     
+                       {% block content %}lipso lium{%endblock%}
                        <div id="footer">
                            <p id="legal">
                                 <a class="userInfo" href="{{path('fos_user_registration_register')}}" rel="tooltip" title="{% trans %}register{% endtrans %}"><i class="icon-book"></i></a>
                                 <a class="userInfo" href="{{path('user_show')}}" rel="tooltip" title="{% trans %}connect{% endtrans %}"><i class="icon-user"></i></a>
                            </p>
-                            {% block rss %}  
+                            {% block rss %}
                            <a  href="{{path('rss_news')}}"><img id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
                            {%endblock rss%}
                     </div>
@@ -137,11 +137,11 @@
                 placement: 'bottom'
             });
             $('#qrlinkUser').popover({
-                placement: 'top'  
+                placement: 'top'
             });
             $('#qrCode').popover({
                 placement: 'top'
-                
+
             });
              $('.userInfo').tooltip({
                 placement: 'top'

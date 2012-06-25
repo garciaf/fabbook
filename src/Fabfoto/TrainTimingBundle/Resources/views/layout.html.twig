@@ -3,18 +3,28 @@
     <head Access-Control-Allow-Origin="*" >
         <title>{% block title %}When is my train ? {% endblock %}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
         <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
-        <script type="text/javascript" charset="utf-8" src="{{ asset('bundles/fabfototraintiming/js/extjs-4.1.0/ext-all.js')}}"></script>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script>
-        <script src="{{ asset('bundles/fabfototraintiming/js/override/GMapPanel.js')}}"></script>
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/fabfototraintiming/js/extjs-4.1.0/resources/css/ext-neptune.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/fabfototraintiming/css/main.css')}}" />
+        {% javascripts 
+        '@FabfotoTrainTimingBundle/Resources/public/js/extjs-4.1.0/ext-all.js'
+        '@FabfotoTrainTimingBundle/Resources/public/js/override/*.js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        
+        {% stylesheets
+            '@FabfotoTrainTimingBundle/Resources/public/js/extjs-4.1.0/resources/css/ext-neptune.css'
+            '@FabfotoTrainTimingBundle/Resources/public/css/main.css'
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
 
     </head>
 
- 
+
     <body>
-            {% block content %}lipso lium{%endblock%}    
+            {% block content %}lipso lium{%endblock%}
     </body>
 </html>

@@ -1,4 +1,4 @@
-register: Enregistrez vous 
+register: Enregistrez vous
 about: A propos
 album: Album
 home: Accueil
@@ -21,4 +21,4 @@ message:
   content: Votre message
   send:
     success: Votre message a bien été envoyé
-    fail: erreur dans le formulaire d'envoie  
+    fail: erreur dans le formulaire d'envoie

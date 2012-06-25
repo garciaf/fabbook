@@ -91,7 +91,7 @@ class TagController extends Controller
             $em->flush();
 
             return $this->redirect($this->generateUrl('admin_tags_show', array('id' => $entity->getId())));
-            
+
         }
 
         return array(

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Fabfoto\GalleryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -31,7 +30,7 @@ class Comment extends BaseComment implements SignedCommentInterface
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
