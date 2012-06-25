@@ -19,3 +19,17 @@
     padding: 10px;
     background-color: white;
 }
+
+/*#map{
+    position: relative;
+    background-color: #E5E3DF;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}*/
+html, body, #map {
+margin: 0;
+padding: 0;
+height: 100%;
+}
