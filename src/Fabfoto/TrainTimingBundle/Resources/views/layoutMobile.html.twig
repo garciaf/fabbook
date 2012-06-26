@@ -13,8 +13,16 @@
         <script src="{{ asset('bundles/fabfototraintiming/js/backbone/backbone.js')}}"></script>
         <script src="{{ asset('bundles/fabfototraintiming/js/backbone/vendor/backbone-localstorage.js')}}"></script>
         <script src="{{ asset('bundles/fabfototraintiming/js/backbone/model/station.js')}}"></script>
+        <script src="{{ asset('bundles/fabfototraintiming/js/backbone/model/infoStation.js')}}"></script>
         <script src="{{ asset('bundles/fabfototraintiming/js/backbone/controllers/document.js')}}"></script>
         <script src="{{ asset('bundles/fabfototraintiming/js/backbone/application.js')}}"></script>
+         {% stylesheets
+            '@FabfotoGalleryBundle/Resources/public/bootstrap/css/bootstrap-responsive.css'
+            '@FabfotoGalleryBundle/Resources/public/bootstrap/css/bootstrap.css'
+            
+        %}
+                <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/fabfototraintiming/css/main.css')}}" />
 
     </head>
