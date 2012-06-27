@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use \Symfony\Component\HttpFoundation\Response as Response;
 
-class TrainApiController extends Controller
+class TrainApiController extends BaseApiController
 {
     /**
      * @Route("ajax/gares/liste", name="liste_gare", options={"expose"=true})
@@ -14,12 +14,9 @@ class TrainApiController extends Controller
      */
     public function listeGareAction()
     {
-        $station = $this->getDoctrine()->getRepository('FabfotoTrainTimingBundle:Station')->findBy(array('stationType' => 0));
+        $stations = $this->getDoctrine()->getRepository('FabfotoTrainTimingBundle:Station')->findBy(array('stationType' => 0));
 
-        $serializer = $this->get('serializer');
-        $objectJson = $serializer->serialize($station, 'json');
-
-        return new Response($objectJson);
+        return serializeAnswerToJSON($stations);
 
     }
 
@@ -31,7 +28,7 @@ class TrainApiController extends Controller
     {
         $url = sprintf("http://sncf.mobi/infotrafic/iphoneapp/ddge/?gare=%s",$codeGare);
 
-        return new Response(@file_get_contents($url));
+        return new Response($this->file_get_contents_curl($url));
 
     }
 

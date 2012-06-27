@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use \Symfony\Component\HttpFoundation\Response as Response;
 
-class PlaceApiController extends Controller
+class PlaceApiController extends BaseApiController
 {
     /**
      * @Route("place/{id}/json", name="place_detail", options={"expose"=true})
