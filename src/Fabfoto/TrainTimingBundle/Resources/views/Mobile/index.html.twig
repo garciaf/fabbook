@@ -3,8 +3,26 @@
 <script type="text/javascript">
     $(function() {
         App.init();
+        $('#myTab a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+        })
     });
 </script>
-<div id="map">
+<ul class="nav nav-tabs" id="myTab">
+  <li class="active"><a href="#map">Map</a></li>
+  <li><a href="#departure">Departure</a></li>
+  <li><a href="#arrival">Arrival</a></li>
+  
+</ul>
+
+ <div class="tab-content" id="myPanel">
+  <div class="tab-pane active" id="map">
+      <div id="map">
+        </div>
+  </div>
+  <div class="tab-pane" id="departure">...</div>
+  <div class="tab-pane" id="arrival">...</div>
 </div>
+
 {%endblock%}

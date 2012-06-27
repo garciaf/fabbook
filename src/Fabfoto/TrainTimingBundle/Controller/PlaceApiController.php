@@ -18,10 +18,8 @@ class PlaceApiController extends BaseApiController
         if (!$place) {
              throw $this->createNotFoundException("No place");
         }
-        $serializer = $this->get('serializer');
-        $objectJson = $serializer->serialize($place, 'json');
 
-        return new Response($objectJson);
+        return $this->serializeAnswerToJSON($place);
     }
     /**
      * @Route("places/json", name="place_list", options={"expose"=true})
@@ -32,13 +30,11 @@ class PlaceApiController extends BaseApiController
         $category = $this->getDoctrine()->getRepository('FabfotoTrainTimingBundle:Category')->findOneByName('Parking Ouvrage');
         $category2 = $this->getDoctrine()->getRepository('FabfotoTrainTimingBundle:Category')->findOneByName('Parc en Enclos');
         $place = $this->getDoctrine()->getRepository('FabfotoTrainTimingBundle:Place')->findBy(array('category' => $category->getId()));
-        if (!$category2) {
+        if (!$place) {
              throw $this->createNotFoundException("No place");
         }
-        $serializer = $this->get('serializer');
-        $objectJson = $serializer->serialize($place, 'json');
 
-        return new Response($objectJson);
+        return $this->serializeAnswerToJSON($place);
 
     }
 

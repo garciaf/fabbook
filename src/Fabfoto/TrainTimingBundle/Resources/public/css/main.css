@@ -33,3 +33,12 @@ margin: 0;
 padding: 0;
 height: 100%;
 }
+
+#myPanel{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+#myTab{
+    margin-bottom: 0;
+}

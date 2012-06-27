@@ -16,7 +16,7 @@ class TrainApiController extends BaseApiController
     {
         $stations = $this->getDoctrine()->getRepository('FabfotoTrainTimingBundle:Station')->findBy(array('stationType' => 0));
 
-        return serializeAnswerToJSON($stations);
+        return $this->serializeAnswerToJSON($stations);
 
     }
 

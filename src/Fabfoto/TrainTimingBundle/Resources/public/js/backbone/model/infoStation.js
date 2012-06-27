@@ -51,7 +51,14 @@ var PropertiesInfoStation = Backbone.Model.extend({
     }
 });
 
+    _.extend(PropertiesInfoStation, Backbone.Events);
+    
+    PropertiesInfoStation.on("all", function(eventName){
+        console.log("code station changed !"+ eventName);
+    }, this)
+
 var properties = new PropertiesInfoStation();
+
 
 // Station Collection
   // ---------------
@@ -59,7 +66,7 @@ var properties = new PropertiesInfoStation();
   // The collection of todos is backed by *localStorage* instead of a remote
   // server.
   var InfoStationList = Backbone.Collection.extend({
-      
+    
     // Reference to this collection's model.
     model: InfoStation,
     codeStation: function(code){
@@ -72,29 +79,40 @@ var properties = new PropertiesInfoStation();
         this.remove(this.models);
     },
     initialize: function(options) {
-        var me = this; 
-        $.getJSON(me.url(), function(data) {
-        console.log(data);
-        $.each(data, function(idx, stationJSON) {
-        station = new InfoStation();
-        station.set('name', stationJSON.name);
-        station.set('code', stationJSON.code_ddg);
-        station.set('x', stationJSON.x);
-        station.set('y', stationJSON.y);
-        me.add(station);
-        
-//        console.log(x);
-        
-        
-        });
-    });
+        this.url("NTS")
+        this.refresh();
     }
     ,
-    fetch: function(callBack){$.getJSON(this.url, callBack);
+    fetch: function(callBack){$.getJSON(this.url(), callBack);
     },
     refresh: function(){
+        var me = this; 
+
+        this.clearList();
+
         this.fetch(function(data){
-            
+        $.each(data.D, function(idx, stationJSON) {
+        stationDeparture = new InfoStation();
+        stationDeparture.set('voie', stationJSON.attribut_voie);
+        stationDeparture.set('etat', stationJSON.etat);
+        stationDeparture.set('heure', stationJSON.heure);
+        stationDeparture.set('ligne', stationJSON.ligne);
+        stationDeparture.set('num', stationJSON.num);
+        stationDeparture.set('origdest', stationJSON.origdest);
+        stationDeparture.set('retard', stationJSON.retard);
+        me.add(stationDeparture);
+        });
+        $.each(data.A, function(idx, stationJSON) {
+        stationArrival = new InfoStation();
+        stationArrival.set('voie', stationJSON.attribut_voie);
+        stationArrival.set('etat', stationJSON.etat);
+        stationArrival.set('heure', stationJSON.heure);
+        stationArrival.set('ligne', stationJSON.ligne);
+        stationArrival.set('num', stationJSON.num);
+        stationArrival.set('origdest', stationJSON.origdest);
+        stationArrival.set('retard', stationJSON.retard);
+        me.add(stationArrival);
+        });
         });
     },
     // Save all of the todo items under the `"todos"` namespace.
@@ -117,8 +135,7 @@ var properties = new PropertiesInfoStation();
     }
 
   });
-  
+
   // Create our global collection of **Todos**.
   var InfoStations = new InfoStationList();
 
-  

@@ -12,8 +12,9 @@ var DocumentsController = Backbone.Router.extend({
     lat: 48.857035,
     lng: 2.352362
     });
-    Stations.updateMap(map);
-    Stations.locate(map);
+    Stations.map(map);
+    Stations.updateMap();
+    Stations.locate();
   },
   
   search: function(query, page) {
