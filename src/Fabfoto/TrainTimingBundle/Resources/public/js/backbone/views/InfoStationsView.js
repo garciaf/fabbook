@@ -13,9 +13,16 @@
 
         render : function() {
             var me = this;
-            var renderedContent = this.template({ infos : this.collection.toJSON() });
+            collectionDepart = new InfoStationList();
+            collectionDepart.add(this.collection.where({typeDeparture: 'DEP'}));
+            collectionArrival = new InfoStationList();
+            collectionArrival.add(this.collection.where({typeDeparture: 'ARR'}));
+            
+            var renderedContentDeparture = this.template({ infos : collectionDepart.toJSON() });
+            var renderedContentArrival = this.template({ infos : collectionArrival.toJSON() });
             console.log(me.el);
-            $('#departure').html(renderedContent);
+            $('#departure').html(renderedContentDeparture);
+            $('#arrival').html(renderedContentArrival);
             return this;
         }
 
@@ -34,10 +41,11 @@
         },
 
         render : function() {
-            var me = this;
-            var renderedContent = this.template({ infos : this.collection.toJSON() });
-            console.log(me.el);
+            console.log();
+            var renderedContent = this.template({ infos : this.collection.where({typeDeparture: true}).toJSON() });
             $('#departure').html(renderedContent);
+            $('#arrival').html(renderedContent);
+            
             return this;
         }
 

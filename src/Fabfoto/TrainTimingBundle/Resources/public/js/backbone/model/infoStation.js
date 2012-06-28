@@ -13,7 +13,7 @@
         ligne: "station",
         origdest: "AAA",
         num: 0,
-	type: 0,
+	typeDeparture: true,
         picto: 0,
         attribut_voie: "",
         voie: 1,
@@ -101,10 +101,12 @@ var properties = new PropertiesInfoStation();
         stationDeparture.set('etat', stationJSON.etat);
         stationDeparture.set('heure', stationJSON.heure);
         stationDeparture.set('ligne', stationJSON.ligne);
+        stationDeparture.set('typeDeparture', 'DEP');
         stationDeparture.set('num', stationJSON.num);
         stationDeparture.set('origdest', stationJSON.origdest);
         stationDeparture.set('retard', stationJSON.retard);
         me.add(stationDeparture);
+
         });
         $.each(data.A, function(idx, stationJSON) {
         stationArrival = new InfoStation();
@@ -112,6 +114,7 @@ var properties = new PropertiesInfoStation();
         stationArrival.set('etat', stationJSON.etat);
         stationArrival.set('heure', stationJSON.heure);
         stationArrival.set('ligne', stationJSON.ligne);
+        stationArrival.set('typeDeparture', 'ARR');
         stationArrival.set('num', stationJSON.num);
         stationArrival.set('origdest', stationJSON.origdest);
         stationArrival.set('retard', stationJSON.retard);
