@@ -15,6 +15,9 @@ var DocumentsController = Backbone.Router.extend({
     Stations.map(map);
     Stations.updateMap();
     Stations.locate();
+    
+    var viewDeparture = new InfoStationsView({ collection: InfoStations});
+    viewDeparture.render();
   },
   
   search: function(query, page) {

@@ -70,6 +70,10 @@ var properties = new PropertiesInfoStation();
     // Reference to this collection's model.
     model: InfoStation,
     codeStation: function(code){
+        properties.codeStation(code)
+        if(code){
+            this.refresh();    
+        }
         return properties.codeStation(code);
     }, 
     url : function(){
@@ -138,4 +142,6 @@ var properties = new PropertiesInfoStation();
 
   // Create our global collection of **Todos**.
   var InfoStations = new InfoStationList();
-
+    InfoStations.on("all", function(eventName) {
+    console.log(eventName);
+    });
