@@ -22,6 +22,10 @@
         estimatedTime: "12"
       };
     },
+    setTime: function(time){
+        var date = new Date(time);
+        this.set('heure', date.format('H:MM'));
+    },
     // Ensure that each todo created has `title`.
     initialize: function() {
      
@@ -44,7 +48,14 @@ var PropertiesInfoStation = Backbone.Model.extend({
         }else{
             return this.get('codeStation');
         }
-    }, 
+    },
+    name: function(name){
+        if(name){
+            return this.set('name', name);
+        }else{
+            return this.get('name');
+        }
+    },
     url : function(){
         var me = this; 
         return Routing.generate('liste_timing_station', {"codeGare" : me.codeStation()});
@@ -53,10 +64,6 @@ var PropertiesInfoStation = Backbone.Model.extend({
 
     _.extend(PropertiesInfoStation, Backbone.Events);
     
-    PropertiesInfoStation.on("all", function(eventName){
-        console.log("code station changed !"+ eventName);
-    }, this)
-
 var properties = new PropertiesInfoStation();
 
 
@@ -76,6 +83,9 @@ var properties = new PropertiesInfoStation();
         }
         return properties.codeStation(code);
     }, 
+    name: function(name){
+        return properties.name(name)
+    }, 
     url : function(){
         return properties.url();
     },
@@ -83,11 +93,11 @@ var properties = new PropertiesInfoStation();
         this.remove(this.models);
     },
     initialize: function(options) {
-        this.url("NTS")
-        this.refresh();
+        this.url("NTS");
     }
     ,
     fetch: function(callBack){$.getJSON(this.url(), callBack);
+        console.log('data-called');
     },
     refresh: function(){
         var me = this; 
@@ -97,9 +107,9 @@ var properties = new PropertiesInfoStation();
         this.fetch(function(data){
         $.each(data.D, function(idx, stationJSON) {
         stationDeparture = new InfoStation();
-        stationDeparture.set('voie', stationJSON.attribut_voie);
+        stationDeparture.set('voie', stationJSON.voie);
         stationDeparture.set('etat', stationJSON.etat);
-        stationDeparture.set('heure', stationJSON.heure);
+        stationDeparture.setTime(stationJSON.heure);
         stationDeparture.set('ligne', stationJSON.ligne);
         stationDeparture.set('typeDeparture', 'DEP');
         stationDeparture.set('num', stationJSON.num);
@@ -110,9 +120,9 @@ var properties = new PropertiesInfoStation();
         });
         $.each(data.A, function(idx, stationJSON) {
         stationArrival = new InfoStation();
-        stationArrival.set('voie', stationJSON.attribut_voie);
+        stationArrival.set('voie', stationJSON.voie);
         stationArrival.set('etat', stationJSON.etat);
-        stationArrival.set('heure', stationJSON.heure);
+        stationArrival.setTime(stationJSON.heure);
         stationArrival.set('ligne', stationJSON.ligne);
         stationArrival.set('typeDeparture', 'ARR');
         stationArrival.set('num', stationJSON.num);
@@ -146,3 +156,6 @@ var properties = new PropertiesInfoStation();
 
   // Create our global collection of **Todos**.
   var InfoStations = new InfoStationList();
+InfoStations.on("all", function(eventName) {
+  console.log(eventName);
+});

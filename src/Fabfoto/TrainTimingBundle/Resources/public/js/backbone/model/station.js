@@ -87,6 +87,7 @@ var propertiesStation = new PropertiesStation();
             title: stationJSON.name,
             click: function(e) {
                 InfoStations.codeStation(stationJSON.code_ddg);
+                InfoStations.name(stationJSON.name)
                 console.log('stationList changed to '+InfoStations.codeStation());
             }
             });

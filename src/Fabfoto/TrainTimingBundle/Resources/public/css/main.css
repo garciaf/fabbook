@@ -33,7 +33,9 @@ margin: 0;
 padding: 0;
 height: 100%;
 }
-
+.table-content{
+    padding-top: 70px;
+}
 #myPanel{
     margin: 0;
     padding: 0;

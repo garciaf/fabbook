@@ -5,8 +5,7 @@ var DocumentsController = Backbone.Router.extend({
     "search/:query":        "search",  // #search/kiwis
     "search/:query/p:page": "search"   // #search/kiwis/p7
   },
-
-  map: function() {
+    initialize: function(options) {
     map = new GMaps({
     div: '#map',
     lat: 48.857035,
@@ -17,7 +16,12 @@ var DocumentsController = Backbone.Router.extend({
     Stations.locate();
     
     var viewDeparture = new InfoStationsView({ collection: InfoStations});
-    viewDeparture.render();
+    var viewMenu = new MenuView({collection: InfoStations})
+    //viewDeparture.render();
+
+
+    },
+map: function() {
   },
   
   search: function(query, page) {
