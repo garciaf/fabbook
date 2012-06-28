@@ -9,11 +9,29 @@
         })
     });
 </script>
-<script type="text/template" id="doc-template">
-    <span><%= id %></span>
-    <span><%= title %></span>
-    <span><%= text %></span>
-    <span><%= keywords %></span>
+<script type="text/template" id="info-station-collection-template">
+    	<table class="table table-striped">
+	<tr>
+            <th>Ligne</th>
+            <th>Destination</th>
+            <th>Num</th>
+            <th>Time</th>
+            <th>Real Time</th>
+	    <th>Gate</th>
+          </tr>
+          <tbody>
+        <% _.each(infos, function(info) { %>
+        <tr>
+            <td><%= info.ligne %></td>
+            <td><%= info.origdest %></td>
+            <td><%= info.num %></td>
+            <td><%= info.heure %></td>
+            <td><%= info.retard %></td>
+            <td><%= info.voie %></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
 </script>
 <ul class="nav nav-tabs" id="myTab">
   <li class="active"><a href="#map"><i class="icon-globe"></i>Map</a></li>
