@@ -7,21 +7,21 @@
         <script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
         <script type="text/javascript" charset="utf-8" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script src="{{ asset('bundles/fabfototraintiming/js/gmap/GMaps.js')}}"></script>
-        <script src="{{ asset('bundles/fabfototraintiming/js/backbone/vendor/json2.js')}}"></script>
-        <script src="{{ asset('bundles/fabfototraintiming/js/backbone/vendor/date.format.js')}}"></script>
-        <script src="{{ asset('bundles/fabfototraintiming/js/backbone/vendor/underscore.js')}}"></script>
-        <script src="{{ asset('bundles/fabfototraintiming/js/backbone/backbone.js')}}"></script>
-        <script src="{{ asset('bundles/fabfototraintiming/js/vendor/backbone-relational.js')}}"></script>
-        <script src="{{ asset('bundles/fabfototraintiming/js/backbone/vendor/backbone-localstorage.js')}}"></script>
-        <script src="{{ asset('bundles/fabfototraintiming/js/backbone/model/station.js')}}"></script>
-        <script src="{{ asset('bundles/fabfototraintiming/js/backbone/model/infoStation.js')}}"></script>
-        <script src="{{ asset('bundles/fabfototraintiming/js/backbone/views/InfoStationsView.js')}}"></script>
-        <script src="{{ asset('bundles/fabfototraintiming/js/backbone/views/MenuView.js')}}"></script>
-        <script src="{{ asset('bundles/fabfototraintiming/js/backbone/controllers/document.js')}}"></script>
-        <script src="{{ asset('bundles/fabfototraintiming/js/backbone/application.js')}}"></script>
-        <script src="{{ asset('bundles/fabfotogallery/bootstrap/js/bootstrap.min.js')}}"></script>
-         {% stylesheets
+        {% javascripts 
+        '@FabfotoTrainTimingBundle/Resources/public/js/gmap/GMaps.js'
+        '@FabfotoTrainTimingBundle/Resources/public/js/backbone/vendor/*.js'
+        '@FabfotoTrainTimingBundle/Resources/public/js/backbone/backbone.js'
+        '@FabfotoTrainTimingBundle/Resources/public/js/backbone/pluggins/*.js'
+        '@FabfotoTrainTimingBundle/Resources/public/js/backbone/model/*.js'
+        '@FabfotoTrainTimingBundle/Resources/public/js/backbone/views/*.js'
+        '@FabfotoTrainTimingBundle/Resources/public/js/backbone/controllers/*.js'
+        '@FabfotoTrainTimingBundle/Resources/public/js/backbone/application.js'
+        '@FabfotoGalleryBundle/Resources/public/bootstrap/js/bootstrap.min.js'
+
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        {% stylesheets
             '@FabfotoGalleryBundle/Resources/public/bootstrap/css/bootstrap-responsive.css'
             '@FabfotoGalleryBundle/Resources/public/bootstrap/css/bootstrap.css'
             
