@@ -116,6 +116,7 @@ var properties = new PropertiesInfoStation();
         stationArrival.set('origdest', stationJSON.origdest);
         stationArrival.set('retard', stationJSON.retard);
         me.add(stationArrival);
+        me.trigger('infostation:refresh');
         });
         });
     },
@@ -142,6 +143,3 @@ var properties = new PropertiesInfoStation();
 
   // Create our global collection of **Todos**.
   var InfoStations = new InfoStationList();
-    InfoStations.on("all", function(eventName) {
-    console.log(eventName);
-    });
