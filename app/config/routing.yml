@@ -3,6 +3,13 @@ FabfotoI18nBundle:
     type:     annotation
     prefix:   /
 
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"    
+
+FabfotoTrainTiming:
+    resource: "@FabfotoTrainTimingBundle/Controller/"
+    type:     annotation
+    prefix:   /    
 fos_comment_api:
     type: rest
     resource: "@FOSCommentBundle/Resources/config/routing.yml"
@@ -31,11 +38,21 @@ FabfotoUserBundle:
     type:     annotation
     prefix:   /
 
+FabfotoAdminBundle_Place:
+    resource: "@FabfotoAdminBundle/Controller/Place/"
+    type:     admingenerator
+    prefix:   /admin/place
+
+FabfotoAdminBundle_Station:
+    resource: "@FabfotoAdminBundle/Controller/Station/"
+    type:     admingenerator
+    prefix:   /admin/station
+    
 FabfotoAdminBundle_Cover:
     resource: "@FabfotoAdminBundle/Controller/Cover/"
     type:     admingenerator
     prefix:   /admin/cover
-    
+
 FabfotoAdminBundle_Comment:
     resource: "@FabfotoAdminBundle/Controller/Comment/"
     type:     admingenerator
@@ -72,7 +89,7 @@ FabfotoAdminBundle_Album:
     resource: "@FabfotoAdminBundle/Controller/Album/"
     type:     admingenerator
     prefix:   /admin/album
-    
+
 FabfotoAdminBundle_Picture:
     resource: "@FabfotoAdminBundle/Controller/Picture/"
     type:     admingenerator
@@ -86,9 +103,9 @@ _fabfoto:
 #    defaults:  { _controller: FabfotoI18nBundle:Default:index, _locale: fr }
 #    requirements:
 #        _locale: en|fr
-   
-_imagine: 
-  resource: . 
+
+_imagine:
+  resource: .
   type: imagine
 
 my_barcode_playground:

@@ -44,6 +44,8 @@ class AppKernel extends Kernel
             new Fabfoto\I18nBundle\FabfotoI18nBundle(),
             new Fabfoto\LastTweetBundle\FabfotoLastTweetBundle(),
 	    new Liip\ImagineBundle\LiipImagineBundle(),
+            new Fabfoto\TrainTimingBundle\FabfotoTrainTimingBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

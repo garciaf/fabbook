@@ -229,3 +229,7 @@
 [htmlpurifier]
     git=git://github.com/ezyang/htmlpurifier.git 
     target=htmlpurifier
+
+[FOSJsRoutingBundle]
+    git=git://github.com/FriendsOfSymfony/FOSJsRoutingBundle.git
+    target=/bundles/FOS/JsRoutingBundle

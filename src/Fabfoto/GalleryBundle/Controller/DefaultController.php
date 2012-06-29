@@ -47,7 +47,7 @@ class DefaultController extends Controller
                 ->getQuery()
                 ->execute();
 
-        return $this->render('FabfotoGalleryBundle:Default:IndexArticle.html.twig', array(
+        return $this->render('FabfotoGalleryBundle:Default:Home.html.twig', array(
                     'articles' => $this->getPager($articlesQuery),
                     'lastBlogs' => $articlesBlog,
                     'lastAlbums' => $albums

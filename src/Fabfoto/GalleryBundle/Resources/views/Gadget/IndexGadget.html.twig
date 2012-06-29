@@ -1,0 +1,35 @@
+{% extends 'FabfotoGalleryBundle::layout.html.twig'%}
+{% block titlepage %}Fabfoto-gadget{% endblock titlepage %}
+{% block content %}
+<div class="list_articles">
+    <div class="page-header">
+        <h1>{% trans %}Gadget{% endtrans %} <small>{% trans %}from.fabbook{% endtrans %}</small></h1>
+    </div>
+        <div  class="row">
+        <div class="span12 columns">
+
+        <div class="hero-unit well-small">
+            <h1>When is my train ?</h1>
+            <h2>Application to get the timing of French train</h2>
+            <p>When is your train ? Where is it ? Will it be late ? The application should answer for you ...</p>
+            <h6>data from sncf.fr</h6>
+            <a target="blanck" href="{{path('when_train_app')}}" class="btn btn-primary btn-large">Desktop version »</a>
+            <a id="mobApp" class="btn btn-success btn-large" rel="popover" href="{{path('mobile_when_train_app')}}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("mobile_when_train_app") ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">Mobile version »</a>
+        </div>
+        <div class="hero-unit well-small">
+            <h1>Where I park in Nantes ?</h1>
+            <h2>Application to get the free place in parking from Nantes</h2>
+            <p>Where can I park ? How many free place there is ? </p>
+            <h6>data from data.nantes.fr </h6>
+            <a href="{{path('where_park_app')}}" class="btn btn-primary btn-large">Desktop version »</a>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    $('#mobApp').popover({
+                placement: 'top'
+
+            });
+</script>
+{% endblock content %}

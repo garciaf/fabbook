@@ -1,0 +1,46 @@
+/* 
+    Document   : main
+    Created on : 20 juin 2012, 14:30:10
+    Author     : garcia fabien
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#header{
+    font-size: 1.5em;
+    text-align: center;
+    padding: 5px;
+    background-color: white;
+}
+#footer{
+    font-size: 0.5m;
+    text-align: center;
+    font-style: italic;
+    padding: 10px;
+    background-color: white;
+}
+
+/*#map{
+    position: relative;
+    background-color: #E5E3DF;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}*/
+html, body, #map {
+margin: 0;
+padding: 0;
+height: 100%;
+}
+.table-content{
+    padding-top: 70px;
+}
+#myPanel{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+#myTab{
+    margin-bottom: 0;
+}

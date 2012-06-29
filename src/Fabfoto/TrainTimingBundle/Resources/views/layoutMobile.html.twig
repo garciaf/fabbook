@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head Access-Control-Allow-Origin="*" >
+        <title>{% block title %}When is my train ? {% endblock %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        <script type="text/javascript" charset="utf-8" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        {% javascripts 
+        '@FabfotoTrainTimingBundle/Resources/public/js/gmap/GMaps.js'
+        '@FabfotoTrainTimingBundle/Resources/public/js/backbone/vendor/*.js'
+        '@FabfotoTrainTimingBundle/Resources/public/js/backbone/backbone.js'
+        '@FabfotoTrainTimingBundle/Resources/public/js/backbone/pluggins/*.js'
+        '@FabfotoTrainTimingBundle/Resources/public/js/backbone/model/*.js'
+        '@FabfotoTrainTimingBundle/Resources/public/js/backbone/views/*.js'
+        '@FabfotoTrainTimingBundle/Resources/public/js/backbone/controllers/*.js'
+        '@FabfotoTrainTimingBundle/Resources/public/js/backbone/application.js'
+        '@FabfotoGalleryBundle/Resources/public/bootstrap/js/bootstrap.min.js'
+
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        {% stylesheets
+            '@FabfotoGalleryBundle/Resources/public/bootstrap/css/bootstrap-responsive.css'
+            '@FabfotoGalleryBundle/Resources/public/bootstrap/css/bootstrap.css'
+            
+        %}
+                <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/fabfototraintiming/css/main.css')}}" />
+
+    </head>
+
+
+    <body>
+            {% block content %}lipso lium{%endblock%}
+    </body>
+</html>

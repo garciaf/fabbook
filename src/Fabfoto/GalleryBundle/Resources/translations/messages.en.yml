@@ -2,6 +2,7 @@ register: Register
 about: about us
 album: Album
 home: home
+logout: Logout
 blog: Blog
 mobile: Mobile version
 contact: contact me

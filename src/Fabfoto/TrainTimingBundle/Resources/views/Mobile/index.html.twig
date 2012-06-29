@@ -1,0 +1,70 @@
+{% extends 'FabfotoTrainTimingBundle::layoutMobile.html.twig'%}
+{% block content %}
+<script type="text/javascript">
+    $(function() {
+        App.init();
+        $('#myTab a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+        })
+    });
+</script>
+<script type="text/template" id="info-station-collection-template">
+    <div class="table-content">
+    	<table class="table table-striped">
+	<tr>
+            <th>Ligne</th>
+            <th>Destination</th>
+            <th>Num</th>
+            <th>Time</th>
+            <th>Real Time</th>
+	    <th>Gate</th>
+          </tr>
+          <tbody>
+        <% _.each(infos, function(info) { %>
+        <tr>
+            <td><%= info.ligne %></td>
+            <td><%= info.origdest %></td>
+            <td><%= info.num %></td>
+            <td><%= info.heure %></td>
+            <td><%= info.retard %></td>
+            <td><%= info.voie %></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+</div>
+</script>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+          <a class="brand" id="title-station" href="#">Train App</a>
+        <div class="nav-collapse">
+            <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a href="#map"><i class="icon-globe"></i>Map</a></li>
+            <li><a href="#departure">Departure</a></li>
+            <li><a href="#arrival">Arrival</a></li>
+            </ul>
+
+            <form class="navbar-search pull-left" action="">
+            <input type="text" class="search-query span2" placeholder="Search">
+          </form>
+            <button id="refresh-button" class="btn refresh" onclick="InfoStations.refresh();">Refresh</button>
+            <button id="locate-button" class="btn locate" onclick="Stations.locate();">Localization</button>
+        </div>
+      </div>
+    </div><!-- /navbar-inner -->
+  </div>
+
+
+ <div class="tab-content" id="myPanel">
+  <div class="tab-pane active" id="map">
+  </div>
+  <div class="tab-pane" id="departure">
+</div>
+  <div class="tab-pane" id="arrival">
+
+</div>
+</div>
+{%endblock%}
