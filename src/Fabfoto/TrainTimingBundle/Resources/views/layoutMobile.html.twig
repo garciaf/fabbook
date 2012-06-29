@@ -21,13 +21,8 @@
         %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
-        {% stylesheets
-            '@FabfotoGalleryBundle/Resources/public/bootstrap/css/bootstrap-responsive.css'
-            '@FabfotoGalleryBundle/Resources/public/bootstrap/css/bootstrap.css'
-            
-        %}
-                <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}
+        <link href="{{ asset('bundles/fabfotogallery/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
+
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/fabfototraintiming/css/main.css')}}" />
 
     </head>
