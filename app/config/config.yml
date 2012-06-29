@@ -226,6 +226,3 @@ fos_comment:
             view: IS_AUTHENTICATED_ANONYMOUSLY
             edit: ROLE_ADMIN
             delete: ROLE_ADMIN            
-fos_rest:
-    routing_loader:
-        default_format: json
