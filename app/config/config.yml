@@ -71,24 +71,11 @@ fabfoto_gallery:
     #Element of each last blog and album display in last home page
     nbArticle: 4
     nbAlbum: 2
-gregwar_captcha: ~
 
-knp_zend_cache:
-    templates:
-        knp_last_tweets:
-            frontend:
-                name: Core
-                options:
-                    lifetime: 300
-                    automatic_serialization: true
-            backend:
-                name: File
-                options:
-                    cache_dir: %kernel.root_dir%/cache/%kernel.environment%
 
 knp_last_tweets:
     fetcher:
-        driver: zend_cache
+        driver: api
         options:
             cache_name: knp_last_tweets
 avalanche_imagine:
