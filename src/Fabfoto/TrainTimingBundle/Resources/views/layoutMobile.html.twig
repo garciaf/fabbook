@@ -2,6 +2,7 @@
 <html>
     <head Access-Control-Allow-Origin="*" >
         <title>{% block title %}When is my train ? {% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
