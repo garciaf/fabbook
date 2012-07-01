@@ -3,7 +3,11 @@
 <h1>ArticleBlog creation</h1>
 
 <form action="{{ path('writter_blog_create') }}" method="post" {{ form_enctype(form) }}>
+    <fieldset class="form_block form_fieldset_NONE">
+      <div id="form_field_user">
     {{ form_widget(form) }}
+      </div>
+      </fieldset>
     <p>
         <button type="submit">Create</button>
     </p>
