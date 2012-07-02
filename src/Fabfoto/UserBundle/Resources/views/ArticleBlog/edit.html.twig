@@ -6,6 +6,10 @@
             <fieldset class="form_block form_fieldset_NONE">
       <div id="form_field_user">
     {{ form_widget(form) }}
+    
+<ul class="tags" data-prototype="{{ form_widget(form.tags.get('prototype')) | e }}">
+    ...
+</ul>
       </div>
       </fieldset>
 
@@ -25,4 +29,37 @@
     </li>
 </ul>
 </form>
+<script>
+    function addTagForm(collectionHolder, $newLinkLi) {
+    // Get the data-prototype we explained earlier
+    var prototype = collectionHolder.attr('data-prototype');
+
+    // Replace '$$name$$' in the prototype's HTML to
+    // instead be a number based on the current collection's length.
+    var newForm = prototype.replace(/\$\$name\$\$/g, collectionHolder.children().length);
+
+    // Display the form in the page in an li, before the "Add a tag" link li
+    var $newFormLi = $('<li></li>').append(newForm);
+    $newLinkLi.before($newFormLi);
+}
+        // Get the div that holds the collection of tags
+var collectionHolder = $('ul.tags');
+
+// setup an "add a tag" link
+var $addTagLink = $('<a href="#" class="add_tag_link">Add a tag</a>');
+var $newLinkLi = $('<li></li>').append($addTagLink);
+
+jQuery(document).ready(function() {
+    // add the "add a tag" anchor and li to the tags ul
+    collectionHolder.append($newLinkLi);
+
+    $addTagLink.on('click', function(e) {
+        // prevent the link from creating a "#" on the URL
+        e.preventDefault();
+
+        // add a new tag form (see next code block)
+        addTagForm(collectionHolder, $newLinkLi);
+    });
+});
+</script>
 {% endblock content %}

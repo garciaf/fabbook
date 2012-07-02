@@ -20,10 +20,12 @@ class ArticleBlogType extends AbstractType
         
            $builder->add('content', 'genemu_tinymce', array(  'required' => false,));
 
-        
-           $builder->add('tags', 'genemu_jquerychosen', array(  'required' => false,  'class' => 'FabfotoGalleryBundle:Tag',  'multiple' => true,  'widget' => 'entity',));
-
-        
+          $builder->add('tags', 'collection', array(
+        'type' => new TagType(),
+        'allow_add' => true,
+        'by_reference' => false,
+    ));
+          
            $builder->add('cover', 'genemu_jquerychosen', array(  'required' => false,  'class' => 'FabfotoGalleryBundle:Cover',  'widget' => 'entity',));
 
         	

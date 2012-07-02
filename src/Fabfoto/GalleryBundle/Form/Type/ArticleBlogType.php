@@ -14,12 +14,10 @@ class ArticleBlogType extends AbstractType
             ->add('subtitle')
             ->add('content','jquery_tinymce')
             ->add('author')
-            ->add('tags','entity', array(
-                'class'=>'FabfotoGalleryBundle:Tag',
-                'multiple' => true,
-                'required' => false,
-                )
-                )
+            ->add(('tags', 'collection', array(
+                'type' => new TagType()
+                'allow_add' => true,
+                'by_reference' => false,))
         ;
     }
 
