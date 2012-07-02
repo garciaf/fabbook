@@ -25,9 +25,9 @@ class ArticleBlogController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getEntityManager();
-	$curentUser = $this->get('security.context')->getToken()->getUser();
+    $curentUser = $this->get('security.context')->getToken()->getUser();
         $entities = $em->getRepository('FabfotoGalleryBundle:ArticleBlog')
-		->findByAuthorSlug($curentUser->getSlug());
+        ->findByAuthorSlug($curentUser->getSlug());
 
         return array('entities' => $entities);
     }
@@ -48,11 +48,9 @@ class ArticleBlogController extends Controller
             throw $this->createNotFoundException('Unable to find ArticleBlog entity.');
         }
 
-
-
         return array(
             'entity'      => $entity,
-	);
+    );
     }
 
     /**
@@ -82,21 +80,20 @@ class ArticleBlogController extends Controller
     {
         $entity  = new ArticleBlog();
 
-
         $request = $this->getRequest();
         $form    = $this->createForm(new ArticleBlogType(), $entity);
         $form->bindRequest($request);
 
         if ($form->isValid()) {
             $curentUser = $this->get('security.context')->getToken()->getUser();
-	    $entity->setAuthor((string)$curentUser);
-	    $entity->setAuthorSlug($curentUser->getSlug());
+        $entity->setAuthor((string) $curentUser);
+        $entity->setAuthorSlug($curentUser->getSlug());
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);
             $em->flush();
 
             return $this->redirect($this->generateUrl('writter_blog_show', array('id' => $entity->getId())));
-            
+
         }
 
         return array(
@@ -115,16 +112,15 @@ class ArticleBlogController extends Controller
     {
 
         $em = $this->getDoctrine()->getEntityManager();
-	$curentUser = $this->get('security.context')->getToken()->getUser();
+    $curentUser = $this->get('security.context')->getToken()->getUser();
         $entity = $em->getRepository('FabfotoGalleryBundle:ArticleBlog')
-		->findOneBy(array('id' =>$id, 'authorSlug' => $curentUser->getSlug()));
+        ->findOneBy(array('id' =>$id, 'authorSlug' => $curentUser->getSlug()));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find ArticleBlog entity.');
         }
 
         $editForm = $this->createForm(new ArticleBlogType(), $entity);
-
 
         return array(
             'entity'      => $entity,
@@ -150,15 +146,14 @@ class ArticleBlogController extends Controller
 
         $editForm   = $this->createForm(new ArticleBlogType(), $entity);
 
-
         $request = $this->getRequest();
 
         $editForm->bindRequest($request);
 
-        if ($editForm->isValid()){ 
-	    $curentUser = $this->get('security.context')->getToken()->getUser();
-	    $entity->setAuthor((string)$curentUser);
-	    $entity->setAuthorSlug($curentUser->getSlug());
+        if ($editForm->isValid()) {
+        $curentUser = $this->get('security.context')->getToken()->getUser();
+        $entity->setAuthor((string) $curentUser);
+        $entity->setAuthorSlug($curentUser->getSlug());
             $em->persist($entity);
             $em->flush();
 

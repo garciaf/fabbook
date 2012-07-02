@@ -22,7 +22,7 @@ class PictureAdmin extends Admin
                 'label'     => 'Mettre cette image en fond ?',
                 'required'=> false,
 
-                ))    
+                ))
             ->add('album', 'entity', array('class'=>'FabfotoGalleryBundle:Album'))
         ;
     }
@@ -55,4 +55,3 @@ class PictureAdmin extends Admin
         ;
     }
 }
-?>

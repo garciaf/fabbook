@@ -4,7 +4,6 @@ namespace Fabfoto\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
-use Fabfoto\UserBundle\Form\Type\PortraitType as PortraitType;
 class UserType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)

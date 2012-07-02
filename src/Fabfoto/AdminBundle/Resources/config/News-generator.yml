@@ -3,17 +3,17 @@ params:
   model: Fabfoto\GalleryBundle\Entity\Article
   namespace_prefix: Fabfoto
   bundle_name: AdminBundle
-  fields: 
+  fields:
     content:
       formType: genemu_tinymce
       addFormOptions:
-        required: false        
+        required: false
 
 builders:
   list:
     params:
       title: List of News
-      sort: [ createdAt, DESC ]      
+      sort: [ createdAt, DESC ]
       display: [id, title, subtitle, createdAt, author]
       actions:
         new: ~

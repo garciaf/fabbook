@@ -26,7 +26,7 @@ class PortraitController extends Controller
     public function indexAction()
     {
         $currentUser = $this->get('security.context')->getToken()->getUser();
-        
+
         $em = $this->getDoctrine()->getEntityManager();
 
         $entities = $em->getRepository('FabfotoUserBundle:Portrait')
@@ -47,11 +47,10 @@ class PortraitController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
-        
+
         $entity = $em->getRepository('FabfotoUserBundle:Portrait')->find($id);
-        
-        if (!$entity)
-        {
+
+        if (!$entity) {
             throw $this->createNotFoundException('Unable to find Portrait entity.');
         }
 
@@ -93,8 +92,7 @@ class PortraitController extends Controller
         $form = $this->createForm(new PortraitType(), $entity);
         $form->bindRequest($request);
 
-        if ($form->isValid())
-        {
+        if ($form->isValid()) {
             $currentUser = $this->get('security.context')->getToken()->getUser();
             $entity->setUser($currentUser);
             $em = $this->getDoctrine()->getEntityManager();
@@ -115,7 +113,7 @@ class PortraitController extends Controller
      * Deletes a Portrait entity.
      *
      * @Route("/{id}/delete", name="user_portrait_delete")
-     * 
+     *
      */
     public function deleteAction($id)
     {
@@ -123,13 +121,13 @@ class PortraitController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $entity = $em->getRepository('FabfotoUserBundle:Portrait')->find($id);
 
-        if (!$entity)
-        {
+        if (!$entity) {
             throw $this->createNotFoundException('Unable to find Portrait entity.');
         }
 
         $em->remove($entity);
         $em->flush();
+
         return $this->redirect($this->generateUrl('user_portrait'));
     }
 

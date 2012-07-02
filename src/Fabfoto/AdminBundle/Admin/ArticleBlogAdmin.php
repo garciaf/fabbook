@@ -16,13 +16,13 @@ class ArticleBlogAdmin extends Admin
             ->add('title')
             ->add('subtitle')
             ->add('content','jquery_tinymce')
-            ->add('author') 
+            ->add('author')
             ->add('tags','entity', array(
             'class'=>'FabfotoGalleryBundle:Tag',
             'multiple' => true,
             'required' => false,
             ))
-            
+
         ;
     }
 
@@ -31,7 +31,7 @@ class ArticleBlogAdmin extends Admin
         $datagridMapper
             ->add('title')
             ->add('subtitle')
-            ->add('author')                 
+            ->add('author')
         ;
     }
 
@@ -40,7 +40,7 @@ class ArticleBlogAdmin extends Admin
         $listMapper
             ->addIdentifier('id')
             ->add('subtitle')
-            ->add('createdAt')     
+            ->add('createdAt')
             ->add('author')
         ;
     }
@@ -54,4 +54,3 @@ class ArticleBlogAdmin extends Admin
         ;
     }
 }
-?>

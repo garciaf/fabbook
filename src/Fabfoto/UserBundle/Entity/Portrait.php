@@ -25,11 +25,11 @@ class Portrait extends AbstractImage
     /**
      * @var string $location
      * @Assert\File(
-	maxSize="1M",
-	mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
-	)
+    maxSize="1M",
+    mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
+    )
      */
-    
+
     private $path;
     /**
      * @var integer $id
@@ -49,7 +49,7 @@ class Portrait extends AbstractImage
 
     /**
      * @var date $createdAt
-     * 
+     *
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="createdAt", type="date", nullable=true)
      */
@@ -61,13 +61,12 @@ class Portrait extends AbstractImage
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
-
 
     /**
      * Set location
@@ -82,7 +81,7 @@ class Portrait extends AbstractImage
     /**
      * Get location
      *
-     * @return string 
+     * @return string
      */
     public function getLocation()
     {
@@ -102,7 +101,7 @@ class Portrait extends AbstractImage
     /**
      * Get createdAt
      *
-     * @return date 
+     * @return date
      */
     public function getCreatedAt()
     {
@@ -114,15 +113,13 @@ class Portrait extends AbstractImage
      */
     public function removeUpload()
     {
-        if (file_exists($this->getAbsolutePath()))
-        {
+        if (file_exists($this->getAbsolutePath())) {
             if ($file = $this->getAbsolutePath()) {
 
                 unlink($file);
             }
         }
     }
-
 
     /**
      * Set user
@@ -137,13 +134,13 @@ class Portrait extends AbstractImage
     /**
      * Get user
      *
-     * @return Fabfoto\UserBundle\Entity\User 
+     * @return Fabfoto\UserBundle\Entity\User
      */
     public function getUser()
     {
         return $this->user;
     }
-    
+
         /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
@@ -172,7 +169,7 @@ class Portrait extends AbstractImage
         $this->path->move($this->getUploadRootDir(), $this->location);
         unset($this->path);
     }
-    
+
         /**
      * Set location
      *
@@ -186,7 +183,7 @@ class Portrait extends AbstractImage
     /**
      * Get location
      *
-     * @return string 
+     * @return string
      */
     public function getPath()
     {

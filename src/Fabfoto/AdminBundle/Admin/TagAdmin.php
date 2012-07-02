@@ -13,15 +13,15 @@ class TagAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name') 
-            
+            ->add('name')
+
         ;
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name')                
+            ->add('name')
         ;
     }
 
@@ -29,7 +29,7 @@ class TagAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('name') 
+            ->add('name')
         ;
     }
 
@@ -42,4 +42,3 @@ class TagAdmin extends Admin
         ;
     }
 }
-?>

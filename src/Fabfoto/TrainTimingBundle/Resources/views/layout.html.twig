@@ -7,13 +7,13 @@
         <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script>
-        {% javascripts 
+        {% javascripts
         '@FabfotoTrainTimingBundle/Resources/public/js/extjs-4.1.0/ext-all.js'
         '@FabfotoTrainTimingBundle/Resources/public/js/override/*.js'
         %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
-        
+
         {% stylesheets
             '@FabfotoTrainTimingBundle/Resources/public/js/extjs-4.1.0/resources/css/ext-neptune.css'
             '@FabfotoTrainTimingBundle/Resources/public/css/main.css'

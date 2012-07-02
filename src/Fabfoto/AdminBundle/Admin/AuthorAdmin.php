@@ -42,7 +42,7 @@ class AuthorAdmin extends Admin
                         array(
                     'required' => false
                 ))
-            
+
         ;
     }
 
@@ -59,7 +59,7 @@ class AuthorAdmin extends Admin
         $listMapper
             ->addIdentifier('id')
             ->add('name')
-            ->add('firstname')     
+            ->add('firstname')
             ->add('title')
             ->add('mail')
         ;
@@ -74,4 +74,3 @@ class AuthorAdmin extends Admin
         ;
     }
 }
-?>
