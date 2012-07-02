@@ -1,161 +1,103 @@
 // Station Model
-  // ----------
-
-  // Our basic **Station** model has `name`, `x`, 'y', `done` attributes.
-  var InfoStation = Backbone.Model.extend({
-    name: function(){},
-    code: function(){},
-    x: function(){},
-    y: function(){},
-    // Default attributes for the todo item.
+// ----------
+// Our basic **Station** model has `name`, `x`, 'y', `done` attributes.
+var InfoStation = Backbone.Model.extend({
+    name: function() {},
+    code: function() {},
+    x: function() {},
+    y: function() {},
     defaults: function() {
-      return {
-        ligne: "station",
-        origdest: "AAA",
-        num: 0,
-	typeDeparture: true,
-        picto: 0,
-        attribut_voie: "",
-        voie: 1,
-        etat: 'OK',
-        retard: 0,
-        estimatedTime: "12"
-      };
+        return {
+            ligne: "station",
+            origdest: "AAA",
+            num: 0,
+            typeDeparture: !0,
+            picto: 0,
+            attribut_voie: "",
+            voie: 1,
+            etat: "OK",
+            retard: 0,
+            estimatedTime: "12"
+        };
     },
-    setTime: function(time){
-        var date = new Date(time);
-        this.set('heure', date.format('H:MM'));
+    setTime: function(a) {
+        var b = new Date(a);
+        this.set("heure", b.format("H:MM"));
     },
-    // Ensure that each todo created has `title`.
-    initialize: function() {
-     
-    },
-    
-    // Remove this Todo from *localStorage* and delete its view.
+    initialize: function() {},
     clear: function() {
-      this.destroy();
+        this.destroy();
     }
-
-  });
-var PropertiesInfoStation = Backbone.Model.extend({
+}), PropertiesInfoStation = Backbone.Model.extend({
     initialize: function() {
-        var me = this; 
-        me.codeStation('NTS');
+        var a = this;
+        a.codeStation("NTS");
     },
-    codeStation: function(code){
-        if(code){
-            return this.set('codeStation', code);
-        }else{
-            return this.get('codeStation');
-        }
+    codeStation: function(a) {
+        return a ? this.set("codeStation", a) : this.get("codeStation");
     },
-    name: function(name){
-        if(name){
-            return this.set('name', name);
-        }else{
-            return this.get('name');
-        }
+    name: function(a) {
+        return a ? this.set("name", a) : this.get("name");
     },
-    url : function(){
-        var me = this; 
-        return Routing.generate('liste_timing_station', {"codeGare" : me.codeStation()});
+    url: function() {
+        var a = this;
+        return Routing.generate("liste_timing_station", {
+            codeGare: a.codeStation()
+        });
     }
 });
 
-    _.extend(PropertiesInfoStation, Backbone.Events);
-    
-var properties = new PropertiesInfoStation();
+_.extend(PropertiesInfoStation, Backbone.Events);
 
-
-// Station Collection
-  // ---------------
-
-  // The collection of todos is backed by *localStorage* instead of a remote
-  // server.
-  var InfoStationList = Backbone.Collection.extend({
-    
-    // Reference to this collection's model.
+var properties = new PropertiesInfoStation, InfoStationList = Backbone.Collection.extend({
     model: InfoStation,
-    codeStation: function(code){
-        properties.codeStation(code)
-        if(code){
-            this.refresh();    
-        }
-        return properties.codeStation(code);
-    }, 
-    name: function(name){
-        return properties.name(name)
-    }, 
-    url : function(){
+    codeStation: function(a) {
+        properties.codeStation(a), a && this.refresh();
+        return properties.codeStation(a);
+    },
+    name: function(a) {
+        return properties.name(a);
+    },
+    url: function() {
         return properties.url();
     },
-    clearList: function(){
+    clearList: function() {
         this.remove(this.models);
     },
-    initialize: function(options) {
+    initialize: function(a) {
         this.url("NTS");
-    }
-    ,
-    fetch: function(callBack){$.getJSON(this.url(), callBack);
-        console.log('data-called');
     },
-    refresh: function(){
-        var me = this; 
-
-        this.clearList();
-
-        this.fetch(function(data){
-        $.each(data.D, function(idx, stationJSON) {
-        stationDeparture = new InfoStation();
-        stationDeparture.set('voie', stationJSON.voie);
-        stationDeparture.set('etat', stationJSON.etat);
-        stationDeparture.setTime(stationJSON.heure);
-        stationDeparture.set('ligne', stationJSON.ligne);
-        stationDeparture.set('typeDeparture', 'DEP');
-        stationDeparture.set('num', stationJSON.num);
-        stationDeparture.set('origdest', stationJSON.origdest);
-        stationDeparture.set('retard', stationJSON.retard);
-        me.add(stationDeparture);
-
-        });
-        $.each(data.A, function(idx, stationJSON) {
-        stationArrival = new InfoStation();
-        stationArrival.set('voie', stationJSON.voie);
-        stationArrival.set('etat', stationJSON.etat);
-        stationArrival.setTime(stationJSON.heure);
-        stationArrival.set('ligne', stationJSON.ligne);
-        stationArrival.set('typeDeparture', 'ARR');
-        stationArrival.set('num', stationJSON.num);
-        stationArrival.set('origdest', stationJSON.origdest);
-        stationArrival.set('retard', stationJSON.retard);
-        me.add(stationArrival);
-        me.trigger('infostation:refresh');
-        });
+    fetch: function(a) {
+        $.getJSON(this.url(), a), console.log("data-called");
+    },
+    refresh: function() {
+        var a = this;
+        this.clearList(), this.fetch(function(b) {
+            $.each(b.D, function(b, c) {
+                stationDeparture = new InfoStation, stationDeparture.set("voie", c.voie), stationDeparture.set("etat", c.etat), stationDeparture.setTime(c.heure), stationDeparture.set("ligne", c.ligne), stationDeparture.set("typeDeparture", "DEP"), stationDeparture.set("num", c.num), stationDeparture.set("origdest", c.origdest), stationDeparture.set("retard", c.retard), a.add(stationDeparture);
+            }), $.each(b.A, function(b, c) {
+                stationArrival = new InfoStation, stationArrival.set("voie", c.voie), stationArrival.set("etat", c.etat), stationArrival.setTime(c.heure), stationArrival.set("ligne", c.ligne), stationArrival.set("typeDeparture", "ARR"), stationArrival.set("num", c.num), stationArrival.set("origdest", c.origdest), stationArrival.set("retard", c.retard), a.add(stationArrival), a.trigger("infostation:refresh");
+            });
         });
     },
-    // Save all of the todo items under the `"todos"` namespace.
-    //localStorage: new Store("stations-backbone"),
-    locate: function(map){
-            GMaps.geolocate({
-            success: function(position) {
-            map.setCenter(position.coords.latitude, position.coords.longitude);
-        },
-        error: function(error) {
-            console.log('Geolocation failed: '+error.message);
-        },
-        not_supported: function() {
-            console.log("Your browser does not support geolocation");
-        },
-        always: function() {
-            console.log("Localization Done!");
-        }
+    locate: function(a) {
+        GMaps.geolocate({
+            success: function(b) {
+                a.setCenter(b.coords.latitude, b.coords.longitude);
+            },
+            error: function(a) {
+                console.log("Geolocation failed: " + a.message);
+            },
+            not_supported: function() {
+                console.log("Your browser does not support geolocation");
+            },
+            always: function() {
+                console.log("Localization Done!");
+            }
         });
     }
+}), InfoStations = new InfoStationList;
 
-  });
-
-  // Create our global collection of **Todos**.
-  var InfoStations = new InfoStationList();
-InfoStations.on("all", function(eventName) {
-  console.log(eventName);
+InfoStations.on("all", function(a) {
+    console.log(a);
 });

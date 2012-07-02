@@ -1,126 +1,91 @@
 Ext.Loader.setConfig({
-    enabled: true
+    enabled: !0
+}), Ext.require([ "Ext.window.*", "Ext.ux.GMapPanel" ]), Ext.define("GareModel", {
+    extend: "Ext.data.Model",
+    fields: [ {
+        type: "string",
+        name: "UID"
+    }, {
+        type: "string",
+        name: "name"
+    }, {
+        type: "string",
+        name: "codeDDG"
+    }, {
+        type: "float",
+        name: "x"
+    }, {
+        type: "float",
+        name: "y"
+    } ]
 });
-Ext.require([
-    'Ext.window.*',
-    'Ext.ux.GMapPanel'
-    ]);
 
-// Define the model for a State
-Ext.define('GareModel', {
-    extend: 'Ext.data.Model',
-    fields: [
-    {
-        type: 'string', 
-        name: 'UID'
-    },
-
-    {
-        type: 'string', 
-        name: 'name'
-    },
-
-    {
-        type: 'string', 
-        name: 'codeDDG'
-    },
-
-    {
-        type: 'float' , 
-        name: 'x'
-    }, 
-
-    {
-        type: 'float' , 
-        name: 'y'
-    }
-    ]
-});
-var storeGares = Ext.create('Ext.data.JsonStore', {
-    model: 'GareModel',
+var storeGares = Ext.create("Ext.data.JsonStore", {
+    model: "GareModel",
     proxy: {
-        type: 'ajax',
-        url: Routing.generate('liste_gare'),
+        type: "ajax",
+        url: Routing.generate("liste_gare"),
         reader: {
-            type: 'json',
-            root: 'stations'
+            type: "json",
+            root: "stations"
         }
     }
-});
+}), markersGare = [];
 
-var markersGare = [];
-storeGares.load(
-{
+storeGares.load({
     scope: this,
-    callback: function(records, operation, success) {
-        // the operation object
-        // contains all of the details of the load operation
-        records.forEach(function(gare){
+    callback: function(a, b, c) {
+        a.forEach(function(a) {
             markersGare.push({
-                lat: gare.data.x,
-                lng: gare.data.y,
-                title: gare.data.name,
-                event: 'click',
-                listener: function(e){
-                    console.log(gare.data.codeDDG);
+                lat: a.data.x,
+                lng: a.data.y,
+                title: a.data.name,
+                event: "click",
+                listener: function(b) {
+                    console.log(a.data.codeDDG);
                 }
             });
         });
     }
 });
-var mapGoogle = Ext.create('Ext.ux.GMapPanel', {
+
+var mapGoogle = Ext.create("Ext.ux.GMapPanel", {
     center: {
-        geoCodeAddr: 'Paris',
+        geoCodeAddr: "Paris",
         marker: {
-            title: 'Paris'
+            title: "Paris"
         }
     },
-    markers: [markersGare,{
-                        lat: 42.339419,
-                        lng: -71.09077,
-                        title: 'Northeastern University'
-                    }]
-});
-
-var loadDataButton = new Ext.Button({
-    text:"Refresh",
+    markers: [ markersGare, {
+        lat: 42.339419,
+        lng: -71.09077,
+        title: "Northeastern University"
+    } ]
+}), loadDataButton = new Ext.Button({
+    text: "Refresh",
     handler: function() {
-        mapGoogle.addMarkers(markersGare);
-        mapGoogle.getLocation();
+        mapGoogle.addMarkers(markersGare), mapGoogle.getLocation();
     }
 });
 
-Ext.onReady(function(){
-
-
-
-
-    Ext.get('show-btn').on('click', function() {
-        // create the window on the first click and reuse on subsequent clicks
-        if(mapwin) {
-            mapwin.show();
-        } else {
-            var mapwin = Ext.create('Ext.window.Window', {
-                autoShow: true,
-                layout: 'fit',
-                title: 'GMap Window',
-                closeAction: 'hide',
-                width:750,
-                height:750,
-                border: false,
-                x: 40,
-                y: 60,
-                items: [mapGoogle],
-                dockedItems: [{
-                    xtype: 'toolbar',
-                    dock: 'top',
-                    items: [loadDataButton]
-                }]
-                
-            });       
-
-        }
+Ext.onReady(function() {
+    Ext.get("show-btn").on("click", function() {
+        if (a) a.show(); else var a = Ext.create("Ext.window.Window", {
+            autoShow: !0,
+            layout: "fit",
+            title: "GMap Window",
+            closeAction: "hide",
+            width: 750,
+            height: 750,
+            border: !1,
+            x: 40,
+            y: 60,
+            items: [ mapGoogle ],
+            dockedItems: [ {
+                xtype: "toolbar",
+                dock: "top",
+                items: [ loadDataButton ]
+            } ]
+        });
     });
-
-            
 });
