@@ -16,7 +16,7 @@ class AlbumAdmin extends Admin
                 ->add('name')
                 ->add('comment','textarea')
                 ->add('createdAt','datetime')
-            
+
         ;
     }
 
@@ -24,7 +24,7 @@ class AlbumAdmin extends Admin
     {
         $datagridMapper
                 ->add('name')
-                ->add('comment')              
+                ->add('comment')
         ;
     }
 
@@ -33,7 +33,7 @@ class AlbumAdmin extends Admin
         $listMapper
             ->addIdentifier('id')
             ->add('name')
-            ->add('comment') 
+            ->add('comment')
         ;
     }
 
@@ -46,4 +46,3 @@ class AlbumAdmin extends Admin
         ;
     }
 }
-?>

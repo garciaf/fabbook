@@ -3,7 +3,7 @@ params:
   model: Fabfoto\TrainTimingBundle\Entity\Place
   namespace_prefix: Fabfoto
   bundle_name: AdminBundle
-  fields: 
+  fields:
     category:
       formType: genemu_jquerychosen
       addFormOptions:

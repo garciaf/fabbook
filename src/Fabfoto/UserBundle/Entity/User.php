@@ -5,7 +5,6 @@ namespace Fabfoto\UserBundle\Entity;
 use FOS\UserBundle\Entity\User as BaseUser;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\Collection;
 use Fabfoto\UserBundle\Entity\Portrait as Portrait;
 /**
  * Fabfoto\UserBundle\Entity\User
@@ -37,7 +36,7 @@ class User extends BaseUser
      * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
      */
     private $firstname;
-    
+
     /**
      * @Gedmo\Slug(fields={"firstname", "name"})
      * @ORM\Column(name="slug", type="string", length=255)
@@ -50,12 +49,12 @@ class User extends BaseUser
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     private $title;
-    
+
     /**
      * @ORM\OneToMany(targetEntity = "Portrait",mappedBy="user")
      */
     private $portrait;
-    
+
     /**
      * @var text $description
      *
@@ -104,15 +103,16 @@ class User extends BaseUser
      * @ORM\Column(name="phone", type="string", length=255, nullable=true)
      */
     private $phone;
-    
-    public function __toString(){
+
+    public function __toString()
+    {
         return $this->getFirstname().' '.$this->getName();
     }
-    
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -132,7 +132,7 @@ class User extends BaseUser
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -152,13 +152,12 @@ class User extends BaseUser
     /**
      * Get firstname
      *
-     * @return string 
+     * @return string
      */
     public function getFirstname()
     {
         return $this->firstname;
     }
-
 
     /**
      * Set title
@@ -173,7 +172,7 @@ class User extends BaseUser
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -193,7 +192,7 @@ class User extends BaseUser
     /**
      * Get description
      *
-     * @return text 
+     * @return text
      */
     public function getDescription()
     {
@@ -213,7 +212,7 @@ class User extends BaseUser
     /**
      * Get googleLink
      *
-     * @return string 
+     * @return string
      */
     public function getGoogleLink()
     {
@@ -233,7 +232,7 @@ class User extends BaseUser
     /**
      * Get facebookLink
      *
-     * @return string 
+     * @return string
      */
     public function getFacebookLink()
     {
@@ -253,7 +252,7 @@ class User extends BaseUser
     /**
      * Get gitHubLink
      *
-     * @return string 
+     * @return string
      */
     public function getGitHubLink()
     {
@@ -273,7 +272,7 @@ class User extends BaseUser
     /**
      * Get linkedLink
      *
-     * @return string 
+     * @return string
      */
     public function getLinkedLink()
     {
@@ -293,7 +292,7 @@ class User extends BaseUser
     /**
      * Get twitterLink
      *
-     * @return string 
+     * @return string
      */
     public function getTwitterLink()
     {
@@ -313,13 +312,12 @@ class User extends BaseUser
     /**
      * Get phone
      *
-     * @return string 
+     * @return string
      */
     public function getPhone()
     {
         return $this->phone;
     }
-
 
     /**
      * Set slug
@@ -334,18 +332,20 @@ class User extends BaseUser
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
         return $this->slug;
     }
-    
-    public function getExpiresAt(){
+
+    public function getExpiresAt()
+    {
         return $this->expiresAt;
     }
-    
-    public function getCredentialsExpireAt(){
+
+    public function getCredentialsExpireAt()
+    {
         return $this->credentialsExpireAt;
     }
 
@@ -362,7 +362,7 @@ class User extends BaseUser
     /**
      * Get portrait
      *
-     * @return Fabfoto\UserBundle\Entity\Portrait 
+     * @return Fabfoto\UserBundle\Entity\Portrait
      */
     public function getPortrait()
     {
@@ -374,7 +374,7 @@ class User extends BaseUser
         $this->portrait = new \Doctrine\Common\Collections\ArrayCollection();
         $this->addRole('ROLE_USER');
     }
-    
+
     /**
      * Add portrait
      *
@@ -384,12 +384,13 @@ class User extends BaseUser
     {
         $this->portrait[] = $portrait;
     }
-    
+
     /**
      * Get the vcard of the contact
      */
-    public function getVcard(){
-        return sprintf(          
+    public function getVcard()
+    {
+        return sprintf(
 "BEGIN:VCARD
 VERSION:3.0
 N:%s;%s;;;
@@ -399,12 +400,12 @@ TEL;TYPE=CELL,VOICE: %s
 TEL;TYPE=HOME,VOICE:%s
 EMAIL;TYPE=PREF,INTERNET:%s
 REV:20080424T195243Z
-END:VCARD", $this->getName(), $this->getFirstName(), 
-         $this->getFirstName(), $this->getName(), 
+END:VCARD", $this->getName(), $this->getFirstName(),
+         $this->getFirstName(), $this->getName(),
          $this->getTitle(),
          $this->getPhone(),
          $this->getPhone(),
          $this->getEmail());
-         
+
     }
 }

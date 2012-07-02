@@ -12,8 +12,8 @@ params:
     location:
       formType: file
       addFormOptions:
-        required: false      
-        
+        required: false
+
 
 builders:
   list:

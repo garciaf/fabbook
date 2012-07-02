@@ -1,7 +1,7 @@
 {%block header %}
-<!DOCTYPE html> 
-<html> 
-    <head> 
+<!DOCTYPE html>
+<html>
+    <head>
         <title>{% block titlepage %}Fabbook User Admin {% endblock titlepage %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block importcss %}
@@ -23,27 +23,27 @@
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
-    </head> 
+    </head>
 
     {% endblock header %}
     <body>
-        <div data-role="page" {% block optionpage %}{% endblock optionpage %} data-theme="c" > 
+        <div data-role="page" {% block optionpage %}{% endblock optionpage %} data-theme="c" >
              <div id="header" >
                  <a href="{{path('show_articles')}}"><h1>{% block title %}Fabbook{%endblock title%}</h1></a>
                 {{ knp_menu_render('FabfotoUserBundle:Builder:userMenu') }}
-            </div> 
+            </div>
             <div class="main_content" >
                 <div id="body_content">
                     {% block content %}
                     Welcome on Fabfoto Mobile
                     {% endblock %}
                 </div>
-            </div> 
+            </div>
             <div data-role="footer" >
                 <div data-role="navbar" data-position="fixed" data-fullscreen="true">
 
                 </div><!-- /navbar -->
-            </div> 
-        </div> 
+            </div>
+        </div>
     </body>
 </html>

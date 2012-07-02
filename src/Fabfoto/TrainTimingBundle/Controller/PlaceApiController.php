@@ -4,7 +4,6 @@ namespace Fabfoto\TrainTimingBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use \Symfony\Component\HttpFoundation\Response as Response;
 
 class PlaceApiController extends BaseApiController
 {

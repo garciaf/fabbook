@@ -25,7 +25,7 @@ class UserController extends Controller
     public function showAction()
     {
         $currentUser = $this->get('security.context')->getToken()->getUser();
-        
+
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('FabfotoUserBundle:User')->find($currentUser->getId());
@@ -33,11 +33,11 @@ class UserController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
+
         return array(
             'entity'      => $entity,
             );
     }
-
 
     /**
      * Displays a form to edit an existing User entity.
@@ -102,5 +102,4 @@ class UserController extends Controller
         );
     }
 
- 
 }

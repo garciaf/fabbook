@@ -2,127 +2,72 @@
  * @class Ext.ux.GMapPanel
  * @extends Ext.Panel
  * @author Shea Frederick
- */
-Ext.define('Ext.ux.GMapPanel', {
-    extend: 'Ext.panel.Panel',
-    
-    alias: 'widget.gmappanel',
-    
-    requires: ['Ext.window.MessageBox'],
-    
-    initComponent : function(){
-        Ext.applyIf(this,{
-            plain: true,
-            gmapType: 'map',
-            border: false
-        });
-        
-        this.callParent();        
+ */Ext.define("Ext.ux.GMapPanel", {
+    extend: "Ext.panel.Panel",
+    alias: "widget.gmappanel",
+    requires: [ "Ext.window.MessageBox" ],
+    initComponent: function() {
+        Ext.applyIf(this, {
+            plain: !0,
+            gmapType: "map",
+            border: !1
+        }), this.callParent();
     },
-    
-    afterFirstLayout : function(){
-        var center = this.center;
-        this.callParent();       
-        
-        if (center) {
-            if (center.geoCodeAddr) {
-                this.lookupCode(center.geoCodeAddr, center.marker);
-            } else {
-                this.createMap(center);
-            }
-        } else {
-            Ext.Error.raise('center is required');
-        }
-              
+    afterFirstLayout: function() {
+        var a = this.center;
+        this.callParent(), a ? a.geoCodeAddr ? this.lookupCode(a.geoCodeAddr, a.marker) : this.createMap(a) : Ext.Error.raise("center is required");
     },
-    
-    createMap: function(center, marker) {
-        options = Ext.apply({}, this.mapOptions);
-        options = Ext.applyIf(options, {
+    createMap: function(a, b) {
+        options = Ext.apply({}, this.mapOptions), options = Ext.applyIf(options, {
             zoom: 12,
-            center: center,
+            center: a,
             mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-        this.gmap = new google.maps.Map(this.body.dom, options);
-        if (marker) {
-            this.addMarker(Ext.applyIf(marker));
-        }
-        
-        Ext.each(this.markers, this.addMarker, this);
+        }), this.gmap = new google.maps.Map(this.body.dom, options), b && this.addMarker(Ext.applyIf(b)), Ext.each(this.markers, this.addMarker, this);
     },
-    
-    addMarker: function(marker) {
-        marker = Ext.apply({
+    addMarker: function(a) {
+        a = Ext.apply({
             map: this.gmap
-        }, marker);
-        
-        if (!marker.position) {
-            marker.position = new google.maps.LatLng(marker.lat, marker.lng);
-        }
-        var o =  new google.maps.Marker(marker);
-        Ext.Object.each(marker.listeners, function(name, fn){
-            google.maps.event.addListener(o, name, fn);    
+        }, a), a.position || (a.position = new google.maps.LatLng(a.lat, a.lng));
+        var b = new google.maps.Marker(a);
+        Ext.Object.each(a.listeners, function(a, c) {
+            google.maps.event.addListener(b, a, c);
         });
-        return o;
+        return b;
     },
-    addMarkers: function(markers){
-        var me = this;
-        markers.forEach(function(gare){
-            var myLatlng = new google.maps.LatLng(gare.lat,gare.lng);
-            var marker = new google.maps.Marker({
-                position: myLatlng, 
-                map: me.gmap,
-                title: gare.title
+    addMarkers: function(a) {
+        var b = this;
+        a.forEach(function(a) {
+            var c = new google.maps.LatLng(a.lat, a.lng), d = new google.maps.Marker({
+                position: c,
+                map: b.gmap,
+                title: a.title
             });
-            google.maps.event.addListener(marker, gare.event, gare.listener);    
-
+            google.maps.event.addListener(d, a.event, a.listener);
         });
     },
-    setCenter: function(position){
-        var me = this;
-        me.gmap.setCenter(position)
+    setCenter: function(a) {
+        var b = this;
+        b.gmap.setCenter(a);
+    },
+    lookupCode: function(a, b) {
+        this.geocoder = new google.maps.Geocoder, this.geocoder.geocode({
+            address: a
+        }, Ext.Function.bind(this.onLookupComplete, this, [ b ], !0));
+    },
+    onLookupComplete: function(a, b, c) {
+        b != "OK" ? Ext.MessageBox.alert("Error", 'An error occured: "' + b + '"') : this.createMap(a[0].geometry.location, c);
+    },
+    afterComponentLayout: function(a, b) {
+        this.callParent(arguments), this.redraw();
+    },
+    redraw: function() {
+        var a = this.gmap;
+        a && google.maps.event.trigger(a, "resize");
+    },
+    getLocation: function() {
+        var a = this.gmap;
+        navigator.geolocation && navigator.geolocation.getCurrentPosition(function(b) {
+            pos = new google.maps.LatLng(b.coords.latitude, b.coords.longitude), a.panTo(pos);
+        });
     }
-    ,
-    lookupCode : function(addr, marker) {
-        this.geocoder = new google.maps.Geocoder();
-        this.geocoder.geocode({
-            address: addr
-        }, Ext.Function.bind(this.onLookupComplete, this, [marker], true));
-    },
-    
-    onLookupComplete: function(data, response, marker){
-        if (response != 'OK') {
-            Ext.MessageBox.alert('Error', 'An error occured: "' + response + '"');
-            return;
-        }
-        this.createMap(data[0].geometry.location, marker);
-    },
-    
-    afterComponentLayout : function(w, h){
-        this.callParent(arguments);
-        this.redraw();
-    },
-    
-    redraw: function(){
-        var map = this.gmap;
-        if (map) {
-            google.maps.event.trigger(map, 'resize');
-        }
-    }, 
-    getLocation: function(){
-        var map = this.gmap; 
-        // Try HTML5 geolocation
-        if(navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            pos = new google.maps.LatLng(position.coords.latitude,
-                                             position.coords.longitude);
-             
-             map.panTo(pos);
-            });
-        }
-    }
- 
 });
-
-
- 

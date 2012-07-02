@@ -16,8 +16,8 @@ class ArticleAdmin extends Admin
             ->add('title')
             ->add('subtitle')
             ->add('content')
-            ->add('author') 
-            
+            ->add('author')
+
         ;
     }
 
@@ -26,8 +26,8 @@ class ArticleAdmin extends Admin
         $datagridMapper
             ->add('title')
             ->add('subtitle')
-            ->add('createdAt') 
-            ->add('author')                 
+            ->add('createdAt')
+            ->add('author')
         ;
     }
 
@@ -36,7 +36,7 @@ class ArticleAdmin extends Admin
         $listMapper
             ->addIdentifier('id')
             ->add('subtitle')
-            ->add('createdAt')     
+            ->add('createdAt')
             ->add('content')
             ->add('author')
         ;
@@ -51,4 +51,3 @@ class ArticleAdmin extends Admin
         ;
     }
 }
-?>

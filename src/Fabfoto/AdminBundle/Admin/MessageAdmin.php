@@ -20,9 +20,9 @@ class MessageAdmin extends Admin
                 'max_length' => 120
             ))
             ->add('content', 'textarea', array(
-                
+
             ))
-            
+
         ;
     }
 
@@ -38,7 +38,7 @@ class MessageAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('sender') 
+            ->add('sender')
             ->add('subject')
         ;
     }
@@ -52,4 +52,3 @@ class MessageAdmin extends Admin
         ;
     }
 }
-?>

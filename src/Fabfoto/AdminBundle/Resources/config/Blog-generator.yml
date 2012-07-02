@@ -7,7 +7,7 @@ params:
     content:
       formType: genemu_tinymce
       addFormOptions:
-        required: false 
+        required: false
     cover:
       formType: genemu_jquerychosen
       addFormOptions:

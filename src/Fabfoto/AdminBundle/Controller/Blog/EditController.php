@@ -15,8 +15,8 @@ class EditController extends BaseEditController
     public function preSave(\Symfony\Component\Form\Form $form, \Fabfoto\GalleryBundle\Entity\ArticleBlog $ArticleBlog)
     {
         $curentUser = $this->get('security.context')->getToken()->getUser();
-        $ArticleBlog->setAuthor((string)$curentUser);
+        $ArticleBlog->setAuthor((string) $curentUser);
         $ArticleBlog->setAuthorSlug($curentUser->getSlug());
-        
+
     }
 }

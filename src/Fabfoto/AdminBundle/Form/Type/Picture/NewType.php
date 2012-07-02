@@ -7,5 +7,4 @@ use Admingenerated\FabfotoAdminBundle\Form\BasePictureType\NewType as BaseNewTyp
 class NewType extends BaseNewType
 {
 
-
 }

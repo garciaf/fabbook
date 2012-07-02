@@ -9,7 +9,7 @@ builders:
   list:
     params:
       title: List for AdminBundle
-      sort: [ createdAt, DESC ]      
+      sort: [ createdAt, DESC ]
       display: ~
       actions:
         new: ~
