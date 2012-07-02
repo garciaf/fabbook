@@ -2,9 +2,12 @@
 {% block content %}
 <h1>ArticleBlog edit</h1>
 
-<form action="{{ path('writter_blog_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    {{ form_widget(edit_form) }}
-
+<form action="{{ path('writter_blog_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(form) }}>
+            <fieldset class="form_block form_fieldset_NONE">
+      <div id="form_field_user">
+    {{ form_widget(form) }}
+      </div>
+      </fieldset>
 
 <ul class="actions">
     <li>

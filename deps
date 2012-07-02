@@ -62,23 +62,21 @@
     target=/bundles/Symfony/Bundle/AsseticBundle
     version=v1.0.1
 
-[GregwarCaptchaBundle] 
-    git=git://github.com/Gregwar/CaptchaBundle.git 
-    target=/bundles/Gregwar/CaptchaBundle
-
 [doctrine-migrations]
     git=http://github.com/doctrine/migrations.git
 
 [DoctrineMigrationsBundle]
-    git=http://github.com/symfony/DoctrineMigrationsBundle.git
+    git=http://github.com/doctrine/DoctrineMigrationsBundle.git
     target=/bundles/Symfony/Bundle/DoctrineMigrationsBundle
+    version=origin/2.0
 
 [doctrine-fixtures]
     git=http://github.com/doctrine/data-fixtures.git
 
 [DoctrineFixturesBundle]
-    git=http://github.com/symfony/DoctrineFixturesBundle.git
+    git=http://github.com/doctrine/DoctrineFixturesBundle.git
     target=/bundles/Symfony/Bundle/DoctrineFixturesBundle
+    version=origin/2.0
     
 [Imagine]
     git=http://github.com/avalanche123/Imagine.git
@@ -94,9 +92,10 @@
     target=bundles/Avalanche/Bundle/ImagineBundle
 
 [MopaBootstrapBundle]
-    git=http://github.com/phiamo/MopaBootstrapBundle.git
-    target=/bundles/Mopa/BootstrapBundle
-    version=origin/v2.x_sf2.0
+    git = "http://github.com/phiamo/MopaBootstrapBundle.git"
+    target = "/bundles/Mopa/Bundle/BootstrapBundle"
+    version=origin/v2.0.x
+
 [MopaBarcodeBundle]
     git=git://github.com/garciaf/MopaBarcodeBundle.git
     target=/bundles/Mopa/BarcodeBundle
@@ -104,23 +103,12 @@
 [KnpLastTweetsBundles]
       git=git://github.com/KnpLabs/KnpLastTweetsBundle.git
       target=/bundles/Knp/Bundle/LastTweetsBundle
+
 [Buzz]
       git=git://github.com/kriswallsmith/Buzz.git
       target=buzz
       version=origin/v0.5
-      
-[string-tools]
-      git=git://github.com/garciaf/string-tools.git
-      target=string-tools	
-      
-[KnpZendCacheBundle]
-      git=git://github.com/KnpLabs/KnpZendCacheBundle.git
-      target=/bundles/Knp/Bundle/ZendCacheBundle
-      
-[zend-cache]
-      git=git://github.com/KnpLabs/zend-cache.git
-      target=Zend/Cache
-      
+            
 [zend-filter]
       git=git://github.com/KnpLabs/zend-filter.git
       target=Zend/Filter
