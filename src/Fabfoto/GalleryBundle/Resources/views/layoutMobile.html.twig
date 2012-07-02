@@ -7,8 +7,8 @@
             <link rel="stylesheet" href="{{asset('bundles/fabfotogallery/css/fabbook.css')}}" />
             <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0.1/jquery.mobile-1.0.1.min.css')}}" />
             <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/css/ios_inspired/styles.css')}}" />
-            <link href="{{ asset('bundles/fabfotogallery/photoswipe/3.0.4/photoswipe.css')}}" type="text/css" rel="stylesheet" />
-            <link href="{{ asset('bundles/fabfotogallery/photoswipe/3.0.4/jquery-mobile.css')}}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('bundles/fabfotogallery/photoswipe/3.0.5/photoswipe.css')}}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('bundles/fabfotogallery/photoswipe/3.0.5/jquery-mobile.css')}}" type="text/css" rel="stylesheet" />
 
             {% block importcss %}
             {% endblock importcss %}
@@ -33,7 +33,7 @@
                 <div data-role="footer" data-position="fixed" >
                     <div data-role="navbar">
                     <ul>
-                        <li><a data-iconpos="top"  data-icon="home" href="{{path('index_mobile')}}" >Index</a></li>
+                        <li><a data-iconpos="top"  data-icon="home" href="{{path('index_mobile')}}" >Home</a></li>
                         <li><a id="tabB" data-icon="custom" href="{{path('albums_mobile')}}"rel="external">Albums</a></li>
                         <li><a id="tabC" data-icon="custom" href="{{path('index_blog_mobile')}}">Blog</a></li>
                         <li><a id="tabD" data-icon="custom" href="{{path('show_articles')}}"rel="external" >Classique</a></li>

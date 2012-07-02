@@ -1,49 +1,48 @@
 {% extends 'FabfotoGalleryBundle::layoutMobile.html.twig'%}
 {% block content %}
-<script type="text/javascript" src="{{ asset('bundles/fabfotogallery/photoswipe/3.0.4/lib/klass.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('bundles/fabfotogallery/photoswipe/3.0.4/code.photoswipe.jquery-3.0.4.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('bundles/fabfotogallery/photoswipe/3.0.5/lib/klass.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('bundles/fabfotogallery/photoswipe/3.0.5/code.photoswipe.jquery-3.0.5.min.js')}}"></script>
 
 
 	<script type="text/javascript">
-
 		/*
 		 * IMPORTANT!!!
-		 * REMEMBER TO ADD  rel="external"  to your anchor tags.
+		 * REMEMBER TO ADD  rel="external"  to your anchor tags. 
 		 * If you don't this will mess with how jQuery Mobile works
 		 */
-
+		
 		(function(window, $, PhotoSwipe){
-
+			
 			$(document).ready(function(){
-
+				
 				$('div.gallery-page')
 					.live('pageshow', function(e){
-
-						var
+						
+						var 
 							currentPage = $(e.target),
 							options = {},
 							photoSwipeInstance = $("ul.gallery a", e.target).photoSwipe(options,  currentPage.attr('id'));
-
+							
 						return true;
-
+						
 					})
-
+					
 					.live('pagehide', function(e){
-
-						var
+						
+						var 
 							currentPage = $(e.target),
 							photoSwipeInstance = PhotoSwipe.getInstance(currentPage.attr('id'));
 
 						if (typeof photoSwipeInstance != "undefined" && photoSwipeInstance != null) {
 							PhotoSwipe.detatch(photoSwipeInstance);
 						}
-
+						
 						return true;
-
+						
 					});
-
+				
 			});
-
+		
 		}(window, window.jQuery, window.Code.PhotoSwipe));
 
 	</script>
