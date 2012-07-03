@@ -8,7 +8,7 @@
     {{ form_widget(form) }}
     
 <ul class="tags" data-prototype="{{ form_widget(form.tags.get('prototype')) | e }}">
-    ...
+    <li></li>
 </ul>
       </div>
       </fieldset>
@@ -56,9 +56,10 @@ jQuery(document).ready(function() {
     $addTagLink.on('click', function(e) {
         // prevent the link from creating a "#" on the URL
         e.preventDefault();
-
+        console.log('tag clicked');
         // add a new tag form (see next code block)
         addTagForm(collectionHolder, $newLinkLi);
+        
     });
 });
 </script>
