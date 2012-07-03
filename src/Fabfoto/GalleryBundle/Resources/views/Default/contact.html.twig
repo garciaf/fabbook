@@ -2,13 +2,98 @@
 {% block content %}
 
 <h1>Contact</h1>
+<div class="span8">
+    <form action="{{ path('contact_create') }}" method="post" class="form-horizontal" {{ form_enctype(form) }} >
+          <fieldset>
 
-<form action="{{ path('contact_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <div>
-        <button class="btn btn-primary btn-large center" type="submit">Envoyer</button>
-    </div>
-</form>
+            {% if form_errors(form.sender) is not empty %}
+            <div>
+                <div class="alert alert-block alert-error fade in">
+                    <a class="close" data-dismiss="alert">×</a>
+
+                    <div class="wrap">
+                        {{ form_errors(form.sender) }}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <div class="control-group">
+                {{ form_label(form.sender) }}
+                <div class="controls">
+                    {{ form_widget(form.sender, {"attr": {"class": "input-xlarge"}}) }}
+                </div>
+            </div>
+            {% if form_errors(form.subject) is not empty %}
+            <div>
+                <div class="alert alert-block alert-error fade in">
+                    <a class="close" data-dismiss="alert">×</a>
+
+                    <div class="wrap">
+                        {{ form_errors(form.subject) }}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="control-group">
+                {{ form_label(form.subject) }}
+                <div class="controls">
+                    {{ form_widget(form.subject, {"attr": {"class": "input-xlarge"}}) }}
+                </div>
+            </div>
+            {% if form_errors(form.content) is not empty %}
+            <div>
+                <div class="alert alert-block alert-error fade in">
+                    <a class="close" data-dismiss="alert">×</a>
+
+                    <div class="wrap">
+                        {{ form_errors(form.content) }}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <div class="control-group">
+                {{ form_label(form.content) }}
+                <div class="controls">
+                    {{ form_widget(form.content, {"attr": {"class": "input-xlarge", "rows":"5"}}) }}
+                </div>
+            </div>
+            {% if form_errors(form.captcha) is not empty %}
+            <div>
+                <div class="alert alert-block alert-error fade in">
+                    <a class="close" data-dismiss="alert">×</a>
+                    <div class="wrap">
+                        {{ form_errors(form.captcha) }}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <div class="control-group">
+                {{ form_label(form.captcha) }}
+                <div class="controls">
+                    {{ form_widget(form.captcha) }}
+                </div>
+            </div>
+            {% if form_errors(form) is not empty %}
+            <div>
+                <div class="alert alert-block alert-error fade in">
+                    <a class="close" data-dismiss="alert">×</a>
+                    <div class="wrap">
+                    {{ form_errors(form) }}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {{ form_rest(form) }}
+            <div class="control-group">
+                <div class="controls">
+                    <button class="btn btn-primary btn-large center" type="submit">Envoyer</button>
+                </div>
+            </div>
+        </fieldset>
+
+    </form>
+</div>
 {{ form_javascript(form) }}
 {{ form_stylesheet(form) }}
 {% endblock content %}

@@ -20,7 +20,7 @@
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
-	<script src="{{ asset('bundles/fabfotogallery/jquery/jquery-1.7.2.js')}}"></script>
+        <script src="{{ asset('bundles/fabfotogallery/jquery/jquery-1.7.2.js')}}"></script>
         <script src="{{ asset('bundles/fabfotogallery/vegas/jquery.vegas.js')}}"></script>
         <script src="{{ asset('bundles/fabfotogallery/bootstrap/js/bootstrap.min.js')}}"></script>
         <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/vegas/jquery.vegas.css')}}"/>
@@ -111,8 +111,8 @@
              {% if app.session.flashes %}
              <div id="alert">
                                {% for type, message in app.session.flashes%}
+                               <div class="alert alert-block alert-{{type}} fade in">
                                <a class="close" data-dismiss="alert">×</a>
-                               <div class="alert alert-{{type}}">
                                <div class="wrap">
                                    {{message}}
                                </div>
@@ -123,13 +123,13 @@
                        {% block content %}lipso lium{%endblock%}
                        <div id="footer">
                            <p id="legal">
-                                <a class="userInfo" href="{{path('fos_user_registration_register')}}" rel="tooltip" title="{% trans %}register{% endtrans %}"><i class="icon-book"></i></a>
-                                <a class="userInfo" href="{{path('user_show')}}" rel="tooltip" title="{% trans %}connect{% endtrans %}"><i class="icon-user"></i></a>
+                               <a class="userInfo" href="{{path('fos_user_registration_register')}}" rel="tooltip" title="{% trans %}register{% endtrans %}"><i class="icon-book"></i></a>
+                               <a class="userInfo" href="{{path('user_show')}}" rel="tooltip" title="{% trans %}connect{% endtrans %}"><i class="icon-user"></i></a>
                            </p>
-                            {% block rss %}
+                           {% block rss %}
                            <a  href="{{path('rss_news')}}"><img id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
                            {%endblock rss%}
-                    </div>
+                       </div>
         </div>
 
         <script>
@@ -143,7 +143,7 @@
                 placement: 'top'
 
             });
-             $('.userInfo').tooltip({
+            $('.userInfo').tooltip({
                 placement: 'top'
             });
             $('.helper').tooltip({

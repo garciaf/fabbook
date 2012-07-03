@@ -281,7 +281,7 @@ album_sum_up{
     text-align: right;
     padding-right: 8em;
 }
-fieldset {
+/*fieldset {
     padding:20px;
     margin-bottom:10px;
 }
@@ -302,7 +302,7 @@ input {
 }
 input:focus {
     background-color: lightgray;
-}
+}*/
 select, option {
     background-color: whitesmoke;
 }
