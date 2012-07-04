@@ -156,11 +156,7 @@ class Picture extends AbstractImage
     {
         if (file_exists($this->getAbsolutePath())) {
             if ($file = $this->getAbsolutePath()) {
-
                 unlink($file);
-            }
-            if ($fileThumb = $this->getAbsoluteThumbPath()) {
-                unlink($fileThumb);
             }
         }
     }

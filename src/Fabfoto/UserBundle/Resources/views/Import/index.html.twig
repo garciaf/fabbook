@@ -1,0 +1,46 @@
+{% extends 'FabfotoUserBundle::layoutUser.html.twig'%}
+{% block content %}
+<h1>
+    <div class="userTitle">File to import</div>
+</h1>
+<form action="{{ path('import_action') }}" method="post" {{ form_enctype(form) }}>
+{{ form_widget(form) }}
+ <ul class="actions">
+        <li>
+            <input type="submit"  class="submit_button" value="Import" >
+        </li>
+    </ul>
+</form>
+<table class="records_list">
+    <thead>
+
+        <tr>
+            <th>name</th>
+            <th>Created</th>
+            <th>Preview</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for file in files %}
+        <tr>
+            <td>{{ file.fileName }}</td>
+            <td>{% if file.aTime %}{{ file.aTime|date('Y-m-d H:i:s') }}{% endif%}</td>
+            <td><img src="{{ file.webPath | imagine_filter('thumb_square') }}"/></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul class="actions">
+    <li>
+        <a href="{{ path('user_edit') }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <a href="{{path('user_portrait')}}">
+           Manage my Picture
+        </a>
+    </li>
+</ul>
+{% endblock content %}

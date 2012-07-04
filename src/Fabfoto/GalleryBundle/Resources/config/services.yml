@@ -7,11 +7,10 @@ services:
     fabfoto_gallery.picture_uploader:
         class:      Fabfoto\GalleryBundle\Uploader\PictureUploader
         arguments:  [%fabfoto_gallery.picture_directory%]
-        
+
     fabfoto_gallery.picture_importer:
         class:      Fabfoto\GalleryBundle\Import\PictureImporter
-        arguments:  
+        arguments:
             - @doctrine.orm.entity_manager
             - @fabfoto_gallery.picture_uploader
             - %fabfoto_gallery.import_directory%
-            

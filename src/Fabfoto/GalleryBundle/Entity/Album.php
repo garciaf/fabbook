@@ -49,7 +49,7 @@ class Album
 
     /**
      *
-     * @ORM\OneToMany(targetEntity = "Picture",mappedBy="album")
+     * @ORM\OneToMany(targetEntity = "Picture",mappedBy="album", cascade={"remove"})
      */
     private $pictures;
 
