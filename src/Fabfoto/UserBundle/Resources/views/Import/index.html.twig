@@ -4,8 +4,12 @@
     <div class="userTitle">File to import</div>
 </h1>
 <form action="{{ path('import_action') }}" method="post" {{ form_enctype(form) }}>
-{{ form_widget(form) }}
- <ul class="actions">
+      <fieldset class="form_block form_fieldset_NONE">
+        <div id="form_field_user">
+            {{ form_widget(form) }}
+        </div>
+    </fieldset>
+    <ul class="actions">
         <li>
             <input type="submit"  class="submit_button" value="Import" >
         </li>
@@ -21,26 +25,13 @@
         </tr>
     </thead>
     <tbody>
-    {% for file in files %}
+        {% for file in files %}
         <tr>
             <td>{{ file.fileName }}</td>
             <td>{% if file.aTime %}{{ file.aTime|date('Y-m-d H:i:s') }}{% endif%}</td>
             <td><img src="{{ file.webPath | imagine_filter('thumb_square') }}"/></td>
         </tr>
-    {% endfor %}
+        {% endfor %}
     </tbody>
 </table>
-
-<ul class="actions">
-    <li>
-        <a href="{{ path('user_edit') }}">
-            Edit
-        </a>
-    </li>
-    <li>
-        <a href="{{path('user_portrait')}}">
-           Manage my Picture
-        </a>
-    </li>
-</ul>
 {% endblock content %}

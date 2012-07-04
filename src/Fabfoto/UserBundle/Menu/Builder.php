@@ -22,6 +22,7 @@ class Builder extends ContainerAware
 
     if ($currentUser->hasRole('ROLE_SUPER_ADMIN')) {
         $menu->addChild('Admin', array('route' => 'Fabfoto_AdminBundle_Blog_list'));
+        $menu->addChild('Import', array('route' => 'import_index'));
         $menu->addChild('Blog', array('route' => 'writter_blog'));
     }
     if ($currentUser->hasRole('ROLE_SUPER_ADMIN') or $currentUser->hasRole('ROLE_WRITER')) {
