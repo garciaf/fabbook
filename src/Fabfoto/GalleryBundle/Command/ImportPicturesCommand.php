@@ -49,43 +49,43 @@ class ImportPicturesCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $albumName = $input->getArgument('albumName');
-        if (!$albumName) {
-            $albumName = 'incoming';
-        }
-        $doctrine = $this->getContainer()->get('doctrine');
-        $em = $doctrine->getEntityManager();
-        $finder = new Finder();
-        $finder->files()->in($this->getContainer()->getParameter('incoming_directory'));
-        $album = new Album();
-        $album->setName($albumName);
-        $album->setComment('imported pictures');
-        $em->persist($album);
-        $index = 0;
-        foreach ($finder as $sfile) {
-
-            $picture = new Picture();
-            $picture->setName($sfile->getFilename());
-            $picture->setCreatedAt(new \DateTime());
-            $picture->setIsBackground(false);
-            $picture->setLocation(new File($sfile->getRealPath()));
-            $picture->setAlbum($album);
-            $em->persist($picture);
-
-            //Debug
-            $output->writeLn(sprintf('path of the picture%s ',
-                            $picture->getLocation()));
-
-            //
-
-            $this->getContainer()->get('fabfoto_gallery.picture_uploader')->update($picture);
-
-            $index++;
-        }
-        $em->flush();
-        $repository = $doctrine->getRepository('FabfotoGalleryBundle:Picture');
-
+        $nbImported = $this->getContainer()->get('fabfoto_gallery.picture_importer')->import($albumName);
+//        if (!$albumName) {
+//            $albumName = 'incoming';
+//        }
+//        $doctrine = $this->getContainer()->get('doctrine');
+//        $em = $doctrine->getEntityManager();
+//        $finder = new Finder();
+//        $finder->files()->in($this->getContainer()->getParameter('incoming_directory'));
+//        $album = new Album();
+//        $album->setName($albumName);
+//        $album->setComment('imported pictures');
+//        $em->persist($album);
+//        $index = 0;
+//        foreach ($finder as $sfile) {
+//
+//            $picture = new Picture();
+//            $picture->setName($sfile->getFilename());
+//            $picture->setCreatedAt(new \DateTime());
+//            $picture->setIsBackground(false);
+//            $picture->setLocation(new File($sfile->getRealPath()));
+//            $picture->setAlbum($album);
+//            $em->persist($picture);
+//
+//            //Debug
+//            $output->writeLn(sprintf('path of the picture%s ',
+//                            $picture->getLocation()));
+//
+//            //
+//
+//            $this->getContainer()->get('fabfoto_gallery.picture_uploader')->update($picture);
+//
+//            $index++;
+//        }
+//        $em->flush();
+//
         $output->writeLn(sprintf(' - Import finished %d elements imported',
-                        $index));
+                        $nbImported));
     }
 
 }

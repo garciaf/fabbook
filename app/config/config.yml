@@ -31,7 +31,7 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    read_from:      "%kernel.root_dir%/../www"    
+    read_from:      %kernel.root_dir%/../www
     filters:
         cssrewrite: ~
         # closure:
@@ -68,6 +68,7 @@ jms_security_extra:
 fabfoto_gallery:
     picture_directory: %upload_directory%
     mailsender: %mail_sender_adress%
+    import_directory: %incoming_directory%
     #Element of each last blog and album display in last home page
     nbArticle: 4
     nbAlbum: 2
