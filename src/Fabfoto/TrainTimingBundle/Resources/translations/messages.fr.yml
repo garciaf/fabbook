@@ -1,0 +1,10 @@
+train_app:
+  title: Quand vient mon train ?
+  subtitle: Le meilleur moyen de savoir quand son train arrive ...
+  content: Vous souhaitez savoir si votre train a du retard, quand est-ce qu'il part ? Cette petite application devrait vous donner un coup de main
+  origine: données de sncf.fr
+parking_nantes:  
+  title: Où se garer à Nantes ?
+  subtitle: le meilleur moyen de savoir où se garer à Nantes
+  content: Où on se gare ? et combien de place il reste ?
+  origine: données de data.nantes.fr

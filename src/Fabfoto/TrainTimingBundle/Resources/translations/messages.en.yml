@@ -1,0 +1,10 @@
+train_app:
+  title: When is my train ?
+  subtitle: Application to get the timing of French train
+  content: When is your train ? Where is it ? Will it be late ? The application should answer for you ...
+  origine: data from sncf.fr
+parking_nantes:  
+  title: Where I park in Nantes ?
+  subtitle: Application to get the free place in parking from Nantes
+  content: Where can I park ? How many free place there is ?
+  origine: data from data.nantes.fr  

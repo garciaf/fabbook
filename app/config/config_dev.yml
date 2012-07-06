@@ -32,3 +32,4 @@ swiftmailer:
     password:  %mailer_password_dev%
 admingenerator_generator:
     overwrite_if_exists: true    
+             
