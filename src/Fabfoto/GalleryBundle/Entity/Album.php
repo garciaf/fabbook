@@ -56,7 +56,7 @@ class Album
     /**
      * @var string $name
      *
-     * @Gedmo\Slug(fields={"name"})
+     * @gedmo:Sluggable(slugField="name")
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;

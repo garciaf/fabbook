@@ -140,10 +140,12 @@
 
 [gedmo-doctrine-extensions]
     git=http://github.com/l3pp4rd/DoctrineExtensions.git
+    version=origin/doctrine2.1.x
 
 [StofDoctrineExtensionsBundle]
     git=http://github.com/stof/StofDoctrineExtensionsBundle.git
     target=bundles/Stof/DoctrineExtensionsBundle
+    version=origin/1.0.x
 
 [AdmingeneratorGeneratorBundle]
     git=git://github.com/cedriclombardot/AdmingeneratorGeneratorBundle.git
