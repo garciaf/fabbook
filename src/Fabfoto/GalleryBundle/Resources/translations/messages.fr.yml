@@ -22,4 +22,3 @@ message:
   send:
     success: Votre message a bien été envoyé
     fail: erreur dans le formulaire d'envoie
-a5sys: traduction dans le bundle

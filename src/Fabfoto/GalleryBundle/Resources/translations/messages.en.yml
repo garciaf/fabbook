@@ -22,4 +22,3 @@ message:
   send:
     success: message sended
     fail: something went wron with your message
-a5sys: traduction dans le bundle
