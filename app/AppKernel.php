@@ -43,6 +43,7 @@ class AppKernel extends Kernel
 	    new Liip\ImagineBundle\LiipImagineBundle(),
             new Fabfoto\TrainTimingBundle\FabfotoTrainTimingBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new App\MobileDetectorBundle\AppMobileDetectorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

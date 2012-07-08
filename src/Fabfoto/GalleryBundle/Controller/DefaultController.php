@@ -15,7 +15,13 @@ class DefaultController extends Controller
      */
     public function redirectMobileFullAction()
     {
-        return $this->redirect($this->generateUrl('show_articles'));
+        $mobileDetector = $this->get('app.mobiledetectorbundle.mobile_detector');
+        if($mobileDetector->isMobile()){
+            return $this->redirect($this->generateUrl('index_mobile'));
+        }else{
+            return $this->redirect($this->generateUrl('show_articles'));
+        }
+        
     }
 
     /**
