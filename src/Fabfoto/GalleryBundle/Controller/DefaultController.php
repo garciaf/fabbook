@@ -10,19 +10,7 @@ use Pagerfanta\Adapter\DoctrineORMAdapter as PagerAdapter;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/", name="index")
-     */
-    public function redirectMobileFullAction()
-    {
-        $mobileDetector = $this->get('app.mobiledetectorbundle.mobile_detector');
-        if($mobileDetector->isMobile()){
-            return $this->redirect($this->generateUrl('index_mobile'));
-        }else{
-            return $this->redirect($this->generateUrl('show_articles'));
-        }
-        
-    }
+  
 
     /**
      * @Route("/news", name="show_articles")

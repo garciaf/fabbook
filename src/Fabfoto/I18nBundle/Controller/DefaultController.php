@@ -8,12 +8,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/")
-     * @Template()
+     /**
+     * @Route("/", name="index")
      */
     public function indexAction()
     {
-    return $this->redirect($this->generateUrl('show_articles'));
+        $mobileDetector = $this->get('app.mobiledetectorbundle.mobile_detector');
+        if($mobileDetector->isMobile()){
+            return $this->redirect($this->generateUrl('index_mobile'));
+        }else{
+            return $this->redirect($this->generateUrl('show_articles'));
+        }
+        
     }
 }
