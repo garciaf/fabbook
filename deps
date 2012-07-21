@@ -210,7 +210,7 @@
 [FOSCommentBundle]
     git=https://github.com/FriendsOfSymfony/FOSCommentBundle.git
     target=bundles/FOS/CommentBundle
-    version=origin/1.x
+    version=v1.0.1
 
 [HTMLPurifierBundle]
     git=git://github.com/Exercise/HTMLPurifierBundle.git 

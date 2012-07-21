@@ -1,10 +1,10 @@
 <?php
-
 namespace Fabfoto\GalleryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\CommentBundle\Entity\Comment as BaseComment;
 use FOS\CommentBundle\Model\SignedCommentInterface;
+
 use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity
@@ -60,6 +60,6 @@ class Comment extends BaseComment implements SignedCommentInterface
             return 'Anonymous';
         }
 
-        return $this->getAuthor()->getUsername();
+        return (string) $this->getAuthor();
     }
 }
