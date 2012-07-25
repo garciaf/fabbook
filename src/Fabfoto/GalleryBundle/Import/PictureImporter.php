@@ -70,17 +70,19 @@ class PictureImporter
 
         return $index;
     }
-    
-    public function getFileToImport(){
+
+    public function getFileToImport()
+    {
         $files = array();
         $finder = new Finder();
         $finder->files()->in($this->incomingFolder);
-        foreach ($finder as $index => $sfile){
+        foreach ($finder as $index => $sfile) {
             $files[$index]["fileName"] = $sfile->getFilename();
             $files[$index]["aTime"] = $sfile->getATime();
             $url = parse_url($sfile->getRealPath());
             $files[$index]["webPath"] = '/'.$this->incomingFolderName.'/'.$sfile->getFilename();
         }
+
         return $files;
     }
 

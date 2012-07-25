@@ -10,7 +10,6 @@ use Pagerfanta\Adapter\DoctrineORMAdapter as PagerAdapter;
 
 class DefaultController extends Controller
 {
-  
 
     /**
      * @Route("/news", name="show_articles")
