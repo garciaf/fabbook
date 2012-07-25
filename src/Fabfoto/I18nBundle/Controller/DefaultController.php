@@ -13,7 +13,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $mobileDetector = $this->get('app.mobiledetectorbundle.mobile_detector');
+        $mobileDetector = $this->get('mobile_detector');
         if($mobileDetector->isMobile()){
             return $this->redirect($this->generateUrl('index_mobile'));
         }else{
