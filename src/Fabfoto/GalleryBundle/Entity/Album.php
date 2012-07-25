@@ -27,7 +27,6 @@ class Album
 
     /**
      * @var string $name
-     *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -56,8 +55,8 @@ class Album
     /**
      * @var string $name
      *
-     * @gedmo:Sluggable(slugField="name")
-     * @ORM\Column(name="slug", type="string", length=255)
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
     private $slug;
 

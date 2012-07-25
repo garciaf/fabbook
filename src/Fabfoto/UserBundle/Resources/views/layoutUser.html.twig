@@ -4,6 +4,7 @@
     <head>
         <title>{% block titlepage %}Fabbook User Admin {% endblock titlepage %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="{{ asset('bundles/fabfotogallery/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
         {% block importcss %}
         {% endblock importcss %}
         <link rel="stylesheet" href="{{ asset('bundles/fabfotouser/css/AdminUser.css')}}"/>
@@ -12,6 +13,12 @@
         <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery/jquery-1.7.1.js')}}"></script>
         <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/js/jquery-ui-1.8.16.custom.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/tiny_mce/jquery.tinymce.js') }}"></script>
+
+        <script src="{{ asset('bundles/fabfotogallery/bootstrap/js/bootstrap.min.js')}}"></script>
+        <script>
+            $(".alert").alert();
+        </script>
+
         {% if form is defined %}
         {{ form_javascript(form) }}
         {% endif %}
@@ -33,6 +40,18 @@
                 {{ knp_menu_render('FabfotoUserBundle:Builder:userMenu') }}
             </div>
             <div class="main_content" >
+                {% if app.session.flashes %}
+                 <div id="alert">
+                                   {% for type, message in app.session.flashes%}
+                                   <a class="close" data-dismiss="alert">×</a>
+                                   <div class="alert alert-{{type}}">
+                                   <div class="wrap">
+                                       {{message}}
+                                   </div>
+                               </div>
+                               {% endfor%}
+                           </div>
+                {% endif%}
                 <div id="body_content">
                     {% block content %}
                     Welcome on Fabfoto Mobile

@@ -96,7 +96,7 @@ class ArticleBlog
     private $isPublished;
 
     /**
-     * @gedmo:Sluggable(slugField="title")
+     * @Gedmo\Slug(fields={"title"})
      * @ORM\Column(name="slugblog", type="string", length=255)
      */
     private $slugblog;

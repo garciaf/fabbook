@@ -140,7 +140,7 @@
 
 [gedmo-doctrine-extensions]
     git=http://github.com/l3pp4rd/DoctrineExtensions.git
-    version=origin/doctrine2.1.x
+    version=v2.2.3
 
 [StofDoctrineExtensionsBundle]
     git=http://github.com/stof/StofDoctrineExtensionsBundle.git

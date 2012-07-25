@@ -14,20 +14,19 @@ use Fabfoto\UserBundle\Form\Type\ArticleBlogType;
  *
  * @Route("/writer/blog")
  */
-class ArticleBlogController extends Controller
-{
+class ArticleBlogController extends Controller {
+
     /**
      * Lists all ArticleBlog entities.
      *
      * @Route("/", name="writter_blog")
      * @Template()
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getEntityManager();
-    $curentUser = $this->get('security.context')->getToken()->getUser();
+        $curentUser = $this->get('security.context')->getToken()->getUser();
         $entities = $em->getRepository('FabfotoGalleryBundle:ArticleBlog')
-        ->findByAuthorSlug($curentUser->getSlug());
+                ->findByAuthorSlug($curentUser->getSlug());
 
         return array('entities' => $entities);
     }
@@ -38,8 +37,7 @@ class ArticleBlogController extends Controller
      * @Route("/{id}/show", name="writter_blog_show")
      * @Template()
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('FabfotoGalleryBundle:ArticleBlog')->find($id);
@@ -49,8 +47,8 @@ class ArticleBlogController extends Controller
         }
 
         return array(
-            'entity'      => $entity,
-    );
+            'entity' => $entity,
+        );
     }
 
     /**
@@ -59,14 +57,13 @@ class ArticleBlogController extends Controller
      * @Route("/new", name="writter_blog_new")
      * @Template()
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new ArticleBlog();
-        $form   = $this->createForm(new ArticleBlogType(), $entity);
+        $form = $this->createForm(new ArticleBlogType(), $entity);
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView()
+            'form' => $form->createView()
         );
     }
 
@@ -76,29 +73,31 @@ class ArticleBlogController extends Controller
      * @Route("/create", name="writter_blog_create")
      * @Method("post")
      */
-    public function createAction()
-    {
-        $entity  = new ArticleBlog();
+    public function createAction() {
+        $entity = new ArticleBlog();
 
         $request = $this->getRequest();
-        $form    = $this->createForm(new ArticleBlogType(), $entity);
+        $form = $this->createForm(new ArticleBlogType(), $entity);
         $form->bindRequest($request);
 
         if ($form->isValid()) {
-            $curentUser = $this->get('security.context')->getToken()->getUser();
-        $entity->setAuthor((string) $curentUser);
-        $entity->setAuthorSlug($curentUser->getSlug());
-            $em = $this->getDoctrine()->getEntityManager();
-            $em->persist($entity);
-            $em->flush();
+            try {
+                $curentUser = $this->get('security.context')->getToken()->getUser();
+                $entity->setAuthor((string) $curentUser);
+                $entity->setAuthorSlug($curentUser->getSlug());
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($entity);
+                $em->flush();
 
-            return $this->redirect($this->generateUrl('writter_blog_show', array('id' => $entity->getId())));
-
+                return $this->redirect($this->generateUrl('writter_blog_show', array('id' => $entity->getId())));
+            } catch (\Exception $e) {
+                $this->get('session')->setFlash('error', $this->get('translator')->trans("object.saved.error", array(), 'Admingenerator'));
+            }
         }
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView()
+            'form' => $form->createView()
         );
     }
 
@@ -108,13 +107,12 @@ class ArticleBlogController extends Controller
      * @Route("/{id}/edit", name="writter_blog_edit")
      * @Template()
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
 
         $em = $this->getDoctrine()->getEntityManager();
-    $curentUser = $this->get('security.context')->getToken()->getUser();
+        $curentUser = $this->get('security.context')->getToken()->getUser();
         $entity = $em->getRepository('FabfotoGalleryBundle:ArticleBlog')
-        ->findOneBy(array('id' =>$id, 'authorSlug' => $curentUser->getSlug()));
+                ->findOneBy(array('id' => $id, 'authorSlug' => $curentUser->getSlug()));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find ArticleBlog entity.');
@@ -123,8 +121,8 @@ class ArticleBlogController extends Controller
         $editForm = $this->createForm(new ArticleBlogType(), $entity);
 
         return array(
-            'entity'      => $entity,
-            'form'   => $editForm->createView(),
+            'entity' => $entity,
+            'form' => $editForm->createView(),
         );
     }
 
@@ -134,8 +132,7 @@ class ArticleBlogController extends Controller
      * @Route("/{id}/update", name="writter_blog_update")
      * @Method("post")
      */
-    public function updateAction($id)
-    {
+    public function updateAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('FabfotoGalleryBundle:ArticleBlog')->find($id);
@@ -144,26 +141,28 @@ class ArticleBlogController extends Controller
             throw $this->createNotFoundException('Unable to find ArticleBlog entity.');
         }
 
-        $editForm   = $this->createForm(new ArticleBlogType(), $entity);
+        $editForm = $this->createForm(new ArticleBlogType(), $entity);
 
         $request = $this->getRequest();
 
         $editForm->bindRequest($request);
 
         if ($editForm->isValid()) {
-        $curentUser = $this->get('security.context')->getToken()->getUser();
-        $entity->setAuthor((string) $curentUser);
-        $entity->setAuthorSlug($curentUser->getSlug());
-            $em->persist($entity);
-            $em->flush();
+            try {
+                $curentUser = $this->get('security.context')->getToken()->getUser();
+                $entity->setAuthor((string) $curentUser);
+                $entity->setAuthorSlug($curentUser->getSlug());
+                $em->persist($entity);
+                $em->flush();
 
-            return $this->redirect($this->generateUrl('writter_blog_edit', array('id' => $id)));
+                return $this->redirect($this->generateUrl('writter_blog_edit', array('id' => $id)));
+            } catch (\Exception $e) {
+                $this->get('session')->setFlash('error', $this->get('translator')->trans("object.saved.error", array(), 'Admingenerator'));
+            }
         }
-
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
         );
     }
 
@@ -172,17 +171,16 @@ class ArticleBlogController extends Controller
      *
      * @Route("/{id}/delete", name="writter_blog_delete")
      */
-    public function deleteAction($id)
-    {
-            $em = $this->getDoctrine()->getEntityManager();
-            $entity = $em->getRepository('FabfotoGalleryBundle:ArticleBlog')->find($id);
+    public function deleteAction($id) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $entity = $em->getRepository('FabfotoGalleryBundle:ArticleBlog')->find($id);
 
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find ArticleBlog entity.');
-            }
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find ArticleBlog entity.');
+        }
 
-            $em->remove($entity);
-            $em->flush();
+        $em->remove($entity);
+        $em->flush();
 
         return $this->redirect($this->generateUrl('writter_blog'));
     }

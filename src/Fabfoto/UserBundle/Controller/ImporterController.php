@@ -48,10 +48,13 @@ class ImporterController extends Controller {
         $form->bindRequest($request);
 
         if ($form->isValid()) {
+            try {
             $data = $form->getData();
             $this->get('fabfoto_gallery.picture_importer')->import($data["name"]);
             return $this->redirect($this->generateUrl('import_index'));
-
+            } catch (\Exception $e) {
+                $this->get('session')->setFlash('error',  $e->getMessage() );
+            }
         }
         $files = $this->get('fabfoto_gallery.picture_importer')->getFileToImport();
 
