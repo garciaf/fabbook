@@ -93,14 +93,20 @@ class PortraitController extends Controller
         $form->bindRequest($request);
 
         if ($form->isValid()) {
+            try{
             $currentUser = $this->get('security.context')->getToken()->getUser();
             $entity->setUser($currentUser);
             $em = $this->getDoctrine()->getEntityManager();
+            $this->get('fabfoto_gallery.picture_uploader')->upload($entity);
             $em->persist($entity);
             $em->flush();
 
             return $this->redirect($this->generateUrl('user_portrait_show',
                                     array('id' => $entity->getId())));
+            }
+            catch (Exception $e){
+                $this->get('session')->setFlash('error',  $this->get('translator')->trans("object.saved.error", array(), 'Admingenerator') );
+            }
         }
 
         return array(

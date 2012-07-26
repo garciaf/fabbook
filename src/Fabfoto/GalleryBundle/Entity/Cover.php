@@ -2,6 +2,7 @@
 
 namespace Fabfoto\GalleryBundle\Entity;
 
+use Fabfoto\GalleryBundle\Uploader\AbstractImage;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -106,67 +107,6 @@ class Cover extends AbstractImage
         return $this->createdAt;
     }
 
-    /**
-     * @ORM\PostRemove()
-     */
-    public function removeUpload()
-    {
-        if (file_exists($this->getAbsolutePath())) {
-            if ($file = $this->getAbsolutePath()) {
-
-                unlink($file);
-            }
-        }
-    }
-
-    /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
-     */
-    public function preUpload()
-    {
-        if (null !== $this->path) {
-            // do whatever you want to generate a unique name
-            $this->location = uniqid().'.'.$this->path->guessExtension();
-        }
-    }
-
-    /**
-     * @ORM\PostPersist()
-     * @ORM\PostUpdate()
-     */
-    public function upload()
-    {
-        if (null === $this->path) {
-            return;
-        }
-
-        // if there is an error when moving the file, an exception will
-        // be automatically thrown by move(). This will properly prevent
-        // the entity from being persisted to the database on error
-        $this->path->move($this->getUploadRootDir(), $this->location);
-        unset($this->path);
-    }
-
-        /**
-     * Set location
-     *
-     * @param string $location
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-    }
-
-    /**
-     * Get location
-     *
-     * @return string
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
 
     /**
      * Set name
@@ -186,5 +126,16 @@ class Cover extends AbstractImage
     public function getName()
     {
         return $this->name;
+    }
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if (file_exists($this->getAbsolutePath())) {
+            if ($file = $this->getAbsolutePath()) {
+                unlink($file);
+            }
+        }
     }
 }

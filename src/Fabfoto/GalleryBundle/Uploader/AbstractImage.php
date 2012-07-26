@@ -9,9 +9,9 @@
  *
  * @author garciaf
  */
-namespace Fabfoto\GalleryBundle\Entity;
+namespace Fabfoto\GalleryBundle\Uploader;
 
-abstract class AbstractImage
+abstract class AbstractImage implements ImageInterface
 {
     public function getWebPath()
     {
@@ -49,6 +49,8 @@ abstract class AbstractImage
         // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
         return 'uploads';
     }
+    
+    
     abstract public function getLocation();
     abstract public function setLocation($location);
 }

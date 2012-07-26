@@ -5,7 +5,7 @@ namespace Fabfoto\UserBundle\Entity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
-use Fabfoto\GalleryBundle\Entity\AbstractImage as AbstractImage;
+use Fabfoto\GalleryBundle\Uploader\AbstractImage as AbstractImage;
 use Fabfoto\UserBundle\Entity\User as User;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
@@ -141,36 +141,8 @@ class Portrait extends AbstractImage
         return $this->user;
     }
 
-        /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
-     */
-    public function preUpload()
-    {
-        if (null !== $this->path) {
-            // do whatever you want to generate a unique name
-            $this->location = uniqid().'.'.$this->path->guessExtension();
-        }
-    }
 
     /**
-     * @ORM\PostPersist()
-     * @ORM\PostUpdate()
-     */
-    public function upload()
-    {
-        if (null === $this->path) {
-            return;
-        }
-
-        // if there is an error when moving the file, an exception will
-        // be automatically thrown by move(). This will properly prevent
-        // the entity from being persisted to the database on error
-        $this->path->move($this->getUploadRootDir(), $this->location);
-        unset($this->path);
-    }
-
-        /**
      * Set location
      *
      * @param string $location

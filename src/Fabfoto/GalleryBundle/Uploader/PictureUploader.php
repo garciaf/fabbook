@@ -27,11 +27,12 @@ class PictureUploader
         }
         $fileName = $this->generateFilename($file, $randomize);
 
-        $newFile = $file->move($this->directory, $fileName);
+        $file->move($this->directory, $fileName);
+        
         $picture->setLocation($fileName);
     }
 
-    public function upload(Picture $picture, $randomize=false)
+    public function upload(ImageInterface $picture, $randomize=true)
     {
         $file = $picture->getLocation();
         if (!$file instanceof UploadedFile) {

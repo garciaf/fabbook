@@ -10,8 +10,8 @@ class PortraitType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('path', 'file',array(
-                'required'=> false,
+            ->add('location', 'file',array(
+                'required'=> true,
                 ))
         ;
     }
