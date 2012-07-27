@@ -31,13 +31,13 @@ builders:
       display: [name, createdAt, album, isBackground]
   new:
     params:
-      title: New object for AdminBundle
+      title: New Picture
       display: [name, location, album, isBackground]
       actions:
         list: ~
   edit:
     params:
-      title: You're editing the object "{{ Picture.name }}"
+      title: Picture "{{ Picture.name }}"
       display: [name, album, isBackground]
       actions:
         list: ~
