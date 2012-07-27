@@ -9,11 +9,13 @@
         {% endblock importcss %}
         <link rel="stylesheet" href="{{ asset('bundles/fabfotouser/css/AdminUser.css')}}"/>
         <link rel="stylesheet" href="{{asset('bundles/fabfotogallery/css/smoothness/jquery-ui-1.8.16.custom.css')}}" />
+        <link rel="stylesheet" href="{{asset('bundles/fabfotogallery/chosen/chosen.css')}}" />
 
         <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery/jquery-1.7.1.js')}}"></script>
         <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/js/jquery-ui-1.8.16.custom.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/tiny_mce/jquery.tinymce.js') }}"></script>
-
+        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/chosen/chosen.jquery.js') }}"></script>
+        <script src="{{ asset('bundles/genemuform/js/genemuFormBundle.js') }}"></script>
         <script src="{{ asset('bundles/fabfotogallery/bootstrap/js/bootstrap.min.js')}}"></script>
         <script>
             $(".alert").alert();
