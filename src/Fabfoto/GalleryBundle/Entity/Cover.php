@@ -16,10 +16,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Cover extends AbstractImage
 {
-
+    const nameDefaultLocation = "defaultCover.jpg";
+    
     public function __toString()
     {
-        return $this->getName();
+        return (string) $this->getName();
     }
     /**
      * @var string $location

@@ -160,13 +160,18 @@ class Album
     {
         return (string) $this->name;
     }
-
+    /**
+     * @return Picture
+     */
     public function getPictureCover()
     {
         if ($this->pictures[0]) {
             return $this->pictures[0];
         } else {
-            return 'defaultsPicture.jpg';
+            $defaultPicture = new Picture();
+            $defaultPicture->setLocation(Picture::defaultLocation);
+            return $defaultPicture;
+            
         }
     }
 

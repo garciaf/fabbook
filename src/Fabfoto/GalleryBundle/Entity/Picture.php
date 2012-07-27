@@ -16,6 +16,7 @@ use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
  */
 class Picture extends AbstractImage
 {
+    const defaultLocation = "defaultPicture.jpg";
     public function __toString()
     {
         return (string) $this->name;
