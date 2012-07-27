@@ -52,11 +52,6 @@ class AppKernel extends Kernel
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
         }
-        if (in_array($this->getEnvironment(), array('test'))) {
-            $bundles[] = new Knp\Bundle\TranslatorBundle\KnpTranslatorBundle;
-            $bundles[] = new A5sys\ProjectBundle\A5sysProjectBundle();
-        }
-
         return $bundles;
     }
 

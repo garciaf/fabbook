@@ -73,7 +73,7 @@ fabfoto_gallery:
     import_directory: %incoming_directory%
     #Element of each last blog and album display in last home page
     nbArticle: 4
-    nbAlbum: 2
+    nbAlbum: 3
 
 
 knp_last_tweets:

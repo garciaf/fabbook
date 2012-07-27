@@ -170,8 +170,9 @@ class Album
         } else {
             $defaultPicture = new Picture();
             $defaultPicture->setLocation(Picture::defaultLocation);
+
             return $defaultPicture;
-            
+
         }
     }
 

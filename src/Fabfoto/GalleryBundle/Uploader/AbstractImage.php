@@ -49,8 +49,7 @@ abstract class AbstractImage implements ImageInterface
         // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
         return 'uploads';
     }
-    
-    
+
     abstract public function getLocation();
     abstract public function setLocation($location);
 }

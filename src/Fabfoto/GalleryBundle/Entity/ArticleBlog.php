@@ -321,11 +321,12 @@ class ArticleBlog
      */
     public function getCover()
     {
-        if($this->cover) {
+        if ($this->cover) {
             return $this->cover;
-        }else {
+        } else {
             $defaultCover = new Cover();
             $defaultCover->setLocation(Cover::nameDefaultLocation);
+
             return $defaultCover;
         }
     }

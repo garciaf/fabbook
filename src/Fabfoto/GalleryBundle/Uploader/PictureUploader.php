@@ -28,7 +28,7 @@ class PictureUploader
         $fileName = $this->generateFilename($file, $randomize);
 
         $file->move($this->directory, $fileName);
-        
+
         $picture->setLocation($fileName);
     }
 
@@ -42,7 +42,7 @@ class PictureUploader
         }
         $fileName = $this->generateFilename($file, $randomize);
 
-        $newFile = $file->move($this->directory, $fileName);
+        $file->move($this->directory, $fileName);
         $picture->setLocation($fileName);
 
     }
