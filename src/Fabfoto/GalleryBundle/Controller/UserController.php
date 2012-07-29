@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class UserController extends Controller
 {
-        /**
+    /**
      * @Route("/{slug}/about", name="show_about")
      */
     public function showAboutAction($slug)
@@ -23,7 +23,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/{slug}", name="show_user")
+     * @Route("/cv/{slug}", name="show_user")
      */
     public function showUserAction($slug)
     {
