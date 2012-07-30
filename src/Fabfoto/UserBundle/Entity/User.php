@@ -38,7 +38,7 @@ class User extends BaseUser
     private $firstname;
 
     /**
-     * @gedmo:Sluggable(slugField={"firstname", "name"})
+     * @Gedmo\Slug(fields={"firstname", "name"})
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
