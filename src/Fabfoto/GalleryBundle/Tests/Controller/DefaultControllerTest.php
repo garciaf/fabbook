@@ -23,7 +23,7 @@ class DefaultControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/albums');
 
         $this->assertTrue($crawler->filter('html:contains("Album")')->count() > 0);
-        $this->assertTrue($crawler->filter('html:contains("photos")')->count() > 0);
+        $this->assertTrue($crawler->filter('html:contains("Comment")')->count() > 0);
     }
     public function testBlogPage()
     {
