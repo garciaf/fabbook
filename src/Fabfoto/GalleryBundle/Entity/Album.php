@@ -5,6 +5,7 @@ namespace Fabfoto\GalleryBundle\Entity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
+use \Fabfoto\GalleryBundle\Entity\Category as Category;
 use Doctrine\Common\Collections\Collection;
 
 /**
@@ -13,9 +14,9 @@ use Doctrine\Common\Collections\Collection;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Fabfoto\GalleryBundle\Entity\AlbumRepository")
  */
-class Album
+class Album 
 {
-
+    protected $container;
     /**
      * @var integer $id
      *
@@ -60,6 +61,10 @@ class Album
      */
     private $slug;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Category")
+     */
+    private $category;
     /**
      * Get id
      *
@@ -194,5 +199,36 @@ class Album
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set category
+     *
+     * @param Fabfoto\GalleryBundle\Entity\Category $category
+     */
+    public function setCategory(Category $category)
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * Get category
+     *
+     * @return Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+    
+    public function isCategorySlug($slugName){
+        $category = $this->getCategory();
+        if($category){
+            if($category->getSlug() == $slugName) {
+                return true;
+            }
+        }
+        return false;
+        
     }
 }

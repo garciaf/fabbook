@@ -25,7 +25,8 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
-
+    globals:
+      slugNoteCategory: note
 
 # Assetic Configuration
 assetic:
@@ -93,6 +94,9 @@ avalanche_imagine:
         cover:
             type:    thumbnail
             options: { size: [650, 180], mode: outbound }            
+        page:
+            type:    thumbnail
+            options: { size: [940, 1329], mode: outbound }            
         background:
             type:    thumbnail
             options: { size: [1024, 768], mode: inset }            
@@ -115,6 +119,9 @@ liip_imagine:
         cover:
             filters:
                 thumbnail: { size: [650, 180], mode: outbound } 
+        page:
+            filters:
+                thumbnail: { size: [940, 1329], mode: outbound } 
         background:
             filters:
                 thumbnail: { size: [1024, 768], mode: outbound } 

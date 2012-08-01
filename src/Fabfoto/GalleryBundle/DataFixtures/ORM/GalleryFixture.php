@@ -1,6 +1,6 @@
 <?php
 
-namespace TestFixtures;
+namespace Fabfoto\GalleryBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -11,15 +11,27 @@ use Fabfoto\UserBundle\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class GalleryFixture implements FixtureInterface, ContainerAwareInterface {
-
+class GalleryFixture implements FixtureInterface, ContainerAwareInterface
+{
     private $container;
 
-    public function setContainer(ContainerInterface $container = null) {
+    public function setContainer(ContainerInterface $container = null)
+    {
         $this->container = $container;
     }
 
-    public function load(ObjectManager $manager) {
+    public function load(ObjectManager $manager)
+    {
+        $userManager = $this->container->get('fos_user.user_manager');
+        $user = $userManager->createUser();
+        $user->setUsername("toto");
+        $user->setName("toto");
+        $user->setEmail("toto@mail.com");
+        $user->setFirstname("toto");
+        $user->setPlainPassword("test");
+        $user->setEnabled(true);
+
+        $userManager->updateUser($user, true);
         $album = new Album();
         $album->setName("Album");
         $album->setComment("Comment");
@@ -30,8 +42,8 @@ class GalleryFixture implements FixtureInterface, ContainerAwareInterface {
         $new->setTitle("Une news");
         $new->setSubtitle("sous - titre ");
         $new->setContent("Le contenu de la nouvelle");
-        $new->setAuthor("Fabien");
-        $new->setAuthorSlug("fabien");
+        $new->setAuthor((string) $user);
+        $new->setAuthorSlug($user->getSlug());
         $manager->persist($new);
 
         $blog = new ArticleBlog();
@@ -43,20 +55,7 @@ class GalleryFixture implements FixtureInterface, ContainerAwareInterface {
         $blog->setAuthorSlug("fabien");
         $manager->persist($blog);
 
-        $userManager = $this->container->get('fos_user.user_manager');
-        $user = $userManager->createUser();
-        $user->setUsername("totologin");
-        $user->setName("toto");
-        $user->setEmail("toto@mail.com");
-        $user->setFirstname("toto");
-        $user->setPlainPassword("test");
-        $user->setEnabled(true);
-
-        $userManager->updateUser($user, true);
-
-
         $manager->flush();
     }
 
 }
-

@@ -16,7 +16,7 @@ class PictureUploader
         $this->directory = $directory;
     }
 
-    public function update(Picture $picture, $randomize= false)
+    public function update(Picture $picture, $randomize= true)
     {
         $file = $picture->getLocation();
 

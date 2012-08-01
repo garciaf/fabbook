@@ -151,7 +151,21 @@ html, body {
     -webkit-border-radius: 5px;
     border-radius: 5x;
 }
-
+/*For the note book view*/
+#bookPage{
+   margin-top: 80px; 
+}
+#magazine{
+        margin-left: auto;
+        margin-right: auto;
+	width:940px;
+	height:1329px;
+}
+#magazine .turn-page{
+	background-color:#ccc;
+	background-size:100% 100%;
+}
+/*end note book*/
 .list_album{
     display: block;
 }
@@ -547,4 +561,7 @@ border-radius: 10px;
 }
 
 .lobster{
+}
+.noteBook{
+    -moz-box-shadow: #23441e 10px;
 }

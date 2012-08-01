@@ -48,6 +48,11 @@ FabfotoAdminBundle_Station:
     type:     admingenerator
     prefix:   /admin/station
     
+FabfotoAdminBundle_Category:
+    resource: "@FabfotoAdminBundle/Controller/CategoryBlog/"
+    type:     admingenerator
+    prefix:   /admin/category
+
 FabfotoAdminBundle_Cover:
     resource: "@FabfotoAdminBundle/Controller/Cover/"
     type:     admingenerator

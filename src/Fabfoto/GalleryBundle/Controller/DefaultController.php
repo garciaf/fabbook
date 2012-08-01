@@ -5,40 +5,19 @@ namespace Fabfoto\GalleryBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Pagerfanta\Pagerfanta;
-use Pagerfanta\Adapter\DoctrineORMAdapter as PagerAdapter;
-
-class DefaultController extends Controller
+use Fabfoto\GalleryBundle\Entity\Album  as Album;
+use Fabfoto\GalleryBundle\Entity\Category as Category;
+class DefaultController extends BaseController
 {
 
     /**
      * @Route("/news", name="show_articles")
      */
-    public function showArticlesAction()
+    public function showHomePageAction()
     {
-        $articlesQuery = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Article')
-                ->createQueryBuilder('b')
-                ->orderBy('b.createdAt', 'DESC')
-                ->getQuery();
-        $articlesBlog = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
-                ->createQueryBuilder('b')
-        ->where('b.isPublished = true')
-                ->orderBy('b.createdAt', 'DESC')
-                ->setMaxResults($this->container->getParameter('nbArticle'))
-                ->getQuery()
-                ->execute();
-        $albums = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Album')
-                ->createQueryBuilder('a')
-                ->orderBy('a.createdAt', 'DESC')
-                ->setMaxResults($this->container->getParameter('nbAlbum'))
-                ->getQuery()
-                ->execute();
+        $articlesQuery = $this->getNewsQuery();
+        $articlesBlog = $this->getBlogs($this->container->getParameter('nbArticle'));
+        $albums = $this->getAlbums($this->container->getParameter('nbAlbum'));
 
         return $this->render('FabfotoGalleryBundle:Default:Home.html.twig', array(
                     'articles' => $this->getPager($articlesQuery),
@@ -52,23 +31,10 @@ class DefaultController extends Controller
      */
     public function indexBlogsAction()
     {
-        $articlesBlogsQuery = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
-                ->createQueryBuilder('b')
-        ->where('b.isPublished = true')
-                ->orderBy('b.createdAt', 'DESC')
-                ->getQuery();
+        $articlesBlogsQuery = $this->getBlogsQuery();
 
-        $articlesBlog = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
-                ->createQueryBuilder('b')
-        ->where('b.isPublished = true')
-                ->orderBy('b.createdAt', 'DESC')
-                ->setMaxResults($this->container->getParameter('nbArticle'))
-                ->getQuery()
-                ->execute();
+        $articlesBlog = $this->getBlogs($this->container->getParameter('nbArticle'));
+                
 
         return $this->render('FabfotoGalleryBundle:Default:IndexArticleBlog.html.twig', array(
                     'ArticlesBlogs' => $this->getPager($articlesBlogsQuery),
@@ -76,29 +42,13 @@ class DefaultController extends Controller
                 ));
     }
 
-    protected function getPager($query)
-    {
-        $Currentpage = 1;
-        if ($this->get("request")->query->get('page')) {
-            $Currentpage = $this->get("request")->query->get('page');
-        }
-
-        $paginator = new Pagerfanta(new PagerAdapter($query));
-        $paginator->setMaxPerPage(9);
-        $paginator->setCurrentPage($Currentpage, false, true);
-
-        return $paginator;
-    }
-
     /**
      * @Route("/{slugblog}/blogarticle", name="show_article_blog")
      */
     public function showBlogArticleAction($slugblog)
     {
-        $article = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
-                ->findOneBySlugblog($slugblog);
+        $article = $this->getBlog($slugblog);
+
         if (!$article) {
             throw $this->createNotFoundException("No article");
         }
@@ -113,23 +63,11 @@ class DefaultController extends Controller
      */
     public function showBlogArticleByTagAction($tag_slug)
     {
-        $tag = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Tag')
-                ->findOneBySlug($tag_slug);
+        $tag = $this->getTag($tag_slug);
         if (!$tag) {
             throw $this->createNotFoundException("no tag");
         }
-        $articlesBlogs = $this
-        ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
-        ->createQueryBuilder('a')
-        ->leftJoin('a.tags', 't')
-        ->where('a.isPublished = true AND t.slug = :tagSlug')
-        ->setParameter('tagSlug', $tag->getSlug())
-                ->orderBy('a.createdAt', 'DESC')
-        ->getQuery()
-        ->execute();
+        $articlesBlogs = $this->getBlogs(null, $tag);
 
         return $this->render('FabfotoGalleryBundle:Default:IndexTagArticleBlog.html.twig', array(
                     'ArticlesBlogs' => $articlesBlogs,
@@ -143,28 +81,14 @@ class DefaultController extends Controller
     public function indexAlbumsAction()
     {
         if (!$this->testIsOnlyOneAlbum()) {
-            $albumsQuery = $this
-                    ->getDoctrine()
-                    ->getRepository('FabfotoGalleryBundle:Album')
-                    ->createQueryBuilder('b')
-                    ->orderBy('b.createdAt', 'DESC')
-                    ->getQuery();
+            $albumsQuery = $this->getAlbumsQuery();
 
             return $this->render('FabfotoGalleryBundle:Default:indexAlbum.html.twig', array('albums' => $this->getPager($albumsQuery)));
         } else {
-            $album = $this
-                    ->getDoctrine()
-                    ->getRepository('FabfotoGalleryBundle:Album')
-                    ->findOneBy(array());
-            $pictures = $this
-                    ->getDoctrine()
-                    ->getRepository('FabfotoGalleryBundle:Picture')
-                    ->findByIsBackground(false);
-            $backgrounds = $this
-                    ->getDoctrine()
-                    ->getRepository('FabfotoGalleryBundle:Picture')
-                    ->findByIsBackground(true);
-
+            $album = $this->getAlbums(1);
+            $pictures = $this->getAlbumPicture($album);
+            $backgrounds = $this->getAlbumPicture($album, true);
+ 
             return $this->render('FabfotoGalleryBundle:Default:ShowAlbum.html.twig', array(
                         'pictures' => $pictures,
                         'album' => $album,
@@ -174,35 +98,40 @@ class DefaultController extends Controller
     }
 
     /**
+     * @var $album Album 
+     * @var $category Category 
      * @Route("{slug}/album", name="show_album")
      */
     public function showAlbumAction($slug)
     {
-        $album = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Album')
-                ->findOneBySlug($slug);
-        $pictures = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Picture')
-                ->findBy(array(
-            'album' => $album->getId(),
-            'isBackground' => false
-                ));
-        $backgrounds = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Picture')
-                ->findBy(array(
-            'album' => $album->getId(),
-            'isBackground' => true
-                ));
+        $album = $this->getAlbum($slug);
+        if (!$album) {
+            throw $this->createNotFoundException("no tag");
+        }
+        $pictures = $this->getAlbumPicture($album, false, true);
 
-        return $this->render('FabfotoGalleryBundle:Default:ShowAlbum.html.twig', array(
+        $backgrounds = $this->getAlbumPicture($album, true);
+        
+        $template = "FabfotoGalleryBundle:Default:ShowAlbum.html.twig";
+        
+        $category = $album->getCategory();
+        if($category ){
+            if($category->getSlug() == $this->container->getParameter('slugNoteCategory') ) {
+                $template = "FabfotoGalleryBundle:Default:ShowNoteBook.html.twig";
+            } else if($category->getSlug() == $this->container->getParameter('slugAlbumCategory') ){
+                $template = "FabfotoGalleryBundle:Default:ShowAlbum.html.twig";
+            }
+            
+        }
+
+        return $this->render($template, 
+                array(
                     'pictures' => $pictures,
                     'album' => $album,
                     'backgrounds' => $backgrounds
                 ));
     }
+
 
     public function allBackgroundAction($max)
     {
@@ -246,31 +175,6 @@ class DefaultController extends Controller
                     'ArticlesBlogs' => $articlesBlogs,
                         )
         );
-    }
-
-    private function getAlbumBackground($id)
-    {
-        return $this
-                        ->getDoctrine()
-                        ->getRepository('FabfotoGalleryBundle:Picture')
-                        ->findBy(array(
-                            'album' => $id,
-                            'isBackground' => true
-                        ));
-    }
-
-    private function testIsOnlyOneAlbum()
-    {
-        $albums = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Album')
-                ->findBy(array());
-        $nbAlbums = count($albums);
-        if ($nbAlbums <= 1) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
 }

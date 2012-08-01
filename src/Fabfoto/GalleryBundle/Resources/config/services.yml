@@ -1,6 +1,8 @@
 parameters:
      nbArticle: %fabfoto_gallery.nbArticle%
      nbAlbum: %fabfoto_gallery.nbAlbum%
+     slugNoteCategory : note
+     slugAlbumCategory : album
 
 services:
 

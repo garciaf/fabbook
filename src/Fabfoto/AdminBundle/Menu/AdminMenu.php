@@ -35,6 +35,7 @@ class AdminMenu extends ContainerAware
         $media->setLinkAttributes(array('class'=>'sub main'));
         $media->addChild('Album', array('route' => 'Fabfoto_AdminBundle_Album_list'));
         $media->addChild('Picture', array('route' => 'Fabfoto_AdminBundle_Picture_list'));
+        $media->addChild('Category', array('route' => 'Fabfoto_AdminBundle_CategoryBlog_list'));
 
         //Blog Part
         $blog = $menu->addChild('Blog', array('uri' => '#'));

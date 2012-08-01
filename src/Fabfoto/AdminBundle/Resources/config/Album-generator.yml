@@ -3,7 +3,12 @@ params:
   model: Fabfoto\GalleryBundle\Entity\Album
   namespace_prefix: Fabfoto
   bundle_name: AdminBundle
-  fields: ~
+  fields: 
+    category:
+      formType: genemu_jquerychosen
+      addFormOptions:
+        class: "FabfotoGalleryBundle:Category"
+        widget: entity    
 
 builders:
   list:
@@ -18,17 +23,17 @@ builders:
         delete: ~
   filters:
     params:
-      display: [name, createdAt]
+      display: [name, createdAt, category]
   new:
     params:
       title: Nouvel album
-      display: [name, comment]
+      display: [name, comment, category]
       actions:
         list: ~
   edit:
     params:
       title: You're editing the object "{{ Album.name }}"
-      display: [name, comment]
+      display: [name, comment, category]
       actions:
         list: ~
   delete: ~

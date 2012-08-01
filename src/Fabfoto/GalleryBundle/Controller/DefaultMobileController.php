@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
  *
  * @Route("/mobile")
  */
-class DefaultMobileController extends Controller
+class DefaultMobileController extends BaseController
 {
     /**
      * @Route("/", name="index_mobile")
@@ -19,10 +19,7 @@ class DefaultMobileController extends Controller
      */
     public function showArticlesAction()
     {
-        $articles = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Article')
-                ->findBy(array(), array('createdAt'=> 'DESC'));
+        $articles = $this->getNews();
 
         return $this->render('FabfotoGalleryBundle:Mobile:IndexArticle.html.twig',
                         array(
@@ -50,11 +47,8 @@ class DefaultMobileController extends Controller
      */
     public function indexAlbumsAction()
     {
-        $albums = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Album')
-                ->findBy(array(), array('createdAt'=> 'DESC'));
-
+        $albums = $this->getAlbums();
+        
         return $this->render('FabfotoGalleryBundle:Mobile:indexAlbum.html.twig',
                         array('albums' => $albums));
     }
@@ -65,18 +59,16 @@ class DefaultMobileController extends Controller
      */
     public function showAlbumAction($id)
     {
-        $pictures = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Picture')
-                ->findBy(array(
-            'album' => $id,
-            'isBackground' => false
-                ));
+        
         $album = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Album')
                 ->find($id);
-
+        if (!$album) {
+            throw $this->createNotFoundException("No article");
+        }
+        $pictures = $this->getAlbumPicture($album);
+        
         return $this->render('FabfotoGalleryBundle:Mobile:ShowAlbum.html.twig',
                         array(
                     'pictures' => $pictures,
@@ -89,18 +81,15 @@ class DefaultMobileController extends Controller
      */
     public function showAlbumAjaxAction($id)
     {
-        $pictures = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Picture')
-                ->findBy(array(
-            'album' => $id,
-            'isBackground' => false
-                ));
         $album = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Album')
                 ->find($id);
-
+        if (!$album) {
+            throw $this->createNotFoundException("No article");
+        }
+        $pictures = $this->getAlbumPicture($album);
+        
         return $this->render('FabfotoGalleryBundle:Mobile:ShowAlbumAjax.html.twig',
                         array(
                     'pictures' => $pictures,

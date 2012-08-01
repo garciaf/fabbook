@@ -17,9 +17,9 @@ params:
       formType: genemu_jquerychosen
       addFormOptions:
         class: "FabfotoGalleryBundle:Tag"
+        widget: entity    
         multiple: true
         required: false
-        widget: entity
 builders:
   list:
     params:
@@ -43,7 +43,7 @@ builders:
   edit:
     params:
       title: You're editing the object "{{ ArticleBlog.title }}"
-      display: [ isPublished, title, subtitle, content, tags, cover ]
+      display: [ isPublished, title, subtitle, content, tags ]
       actions:
         list: ~
   delete: ~
