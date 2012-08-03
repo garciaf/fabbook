@@ -33,10 +33,10 @@ class UserController extends BaseController
         if (!$user) {
             throw $this->createNotFoundException('Unable to find user');
         }
-        $vCard = $this->getVcardOfUser($user);
+        $vcard = $this->getVcardOfUser($user);
         return $this->render('FabfotoGalleryBundle:User:ShowAbout.html.twig', array(
                     'user' => $user,
-                    'vCard' => $vCard
+                    'vcard' => $vcard
                 ));
     }
 
