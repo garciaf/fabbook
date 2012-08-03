@@ -19,6 +19,9 @@
         {% if user.linkedLink is not empty %}
         <div class="span1" ><a class='helper' title="Linked" target="_blanck" href="{{user.linkedLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/linkedin.png')}}"/></a></div>
         {% endif %}
+        {% if user.viadeoLink is not empty %}
+        <div class="span1" ><a class='helper' title="Viadeo" target="_blanck" href="{{user.viadeoLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/viadeo.png')}}"/></a></div>
+        {% endif %}
         {% if user.email is not empty %}
         <div class="span1"><a class='helper' title="Contact me" href="mailto:{{user.email}}"><img src="{{asset('bundles/fabfotogallery/image/icon/mail.png')}}"/></a></div>
         {% endif %}
