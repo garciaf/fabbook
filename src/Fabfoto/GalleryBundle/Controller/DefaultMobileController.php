@@ -48,7 +48,7 @@ class DefaultMobileController extends BaseController
     public function indexAlbumsAction()
     {
         $albums = $this->getAlbums();
-        
+
         return $this->render('FabfotoGalleryBundle:Mobile:indexAlbum.html.twig',
                         array('albums' => $albums));
     }
@@ -59,16 +59,14 @@ class DefaultMobileController extends BaseController
      */
     public function showAlbumAction($id)
     {
-        
-        $album = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Album')
-                ->find($id);
+
+        $album = $this->getAlbumById($id);
+
         if (!$album) {
-            throw $this->createNotFoundException("No article");
+            throw $this->createNotFoundException("No album");
         }
         $pictures = $this->getAlbumPicture($album);
-        
+
         return $this->render('FabfotoGalleryBundle:Mobile:ShowAlbum.html.twig',
                         array(
                     'pictures' => $pictures,
@@ -81,15 +79,12 @@ class DefaultMobileController extends BaseController
      */
     public function showAlbumAjaxAction($id)
     {
-        $album = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Album')
-                ->find($id);
+        $album = $this->getAlbumById($id);
         if (!$album) {
             throw $this->createNotFoundException("No article");
         }
         $pictures = $this->getAlbumPicture($album);
-        
+
         return $this->render('FabfotoGalleryBundle:Mobile:ShowAlbumAjax.html.twig',
                         array(
                     'pictures' => $pictures,
@@ -101,10 +96,7 @@ class DefaultMobileController extends BaseController
      */
     public function indexBlogsAction()
     {
-        $articlesBlogs = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
-                ->findBy(array('isPublished' => true), array('createdAt'=> 'DESC'));
+        $articlesBlogs = $this->getBlogs();
 
         return $this->render('FabfotoGalleryBundle:Mobile:IndexArticleBlog.html.twig',
                         array(
@@ -116,10 +108,7 @@ class DefaultMobileController extends BaseController
      */
     public function showBlogArticleAction($slugblog)
     {
-        $article = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
-                ->findOneBy(array('slugblog' => $slugblog, 'isPublished' => true ));
+        $article = $this->getBlog($slugblog);
 
         return $this->render('FabfotoGalleryBundle:Mobile:ShowArticleBlog.html.twig',
                         array(

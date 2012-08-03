@@ -1,9 +1,9 @@
 {% extends 'FabfotoGalleryBundle::layoutUser.html.twig'%}
-{% block title %}{{author.firstName}} {{author.name}}{% endblock title %}
+{% block title %}{{user.firstName}} {{user.name}}{% endblock title %}
 {% block content %}
    {% include 'FabfotoGalleryBundle:User:UserDetail.html.twig' %}
 {% endblock content %}
 {% block carroussel %}
-{% set backgrounds = author.portrait %}
+{% set backgrounds = user.portrait %}
 {% include 'FabfotoGalleryBundle:User:BackgroundVegas.html.twig' %}
 {% endblock carroussel %}

@@ -34,7 +34,6 @@ class DefaultController extends BaseController
         $articlesBlogsQuery = $this->getBlogsQuery();
 
         $articlesBlog = $this->getBlogs($this->container->getParameter('nbArticle'));
-                
 
         return $this->render('FabfotoGalleryBundle:Default:IndexArticleBlog.html.twig', array(
                     'ArticlesBlogs' => $this->getPager($articlesBlogsQuery),
@@ -80,51 +79,39 @@ class DefaultController extends BaseController
      */
     public function indexAlbumsAction()
     {
-        if (!$this->testIsOnlyOneAlbum()) {
             $albumsQuery = $this->getAlbumsQuery();
 
             return $this->render('FabfotoGalleryBundle:Default:indexAlbum.html.twig', array('albums' => $this->getPager($albumsQuery)));
-        } else {
-            $album = $this->getAlbums(1);
-            $pictures = $this->getAlbumPicture($album);
-            $backgrounds = $this->getAlbumPicture($album, true);
- 
-            return $this->render('FabfotoGalleryBundle:Default:ShowAlbum.html.twig', array(
-                        'pictures' => $pictures,
-                        'album' => $album,
-                        'backgrounds' => $backgrounds
-                    ));
-        }
     }
 
     /**
-     * @var $album Album 
-     * @var $category Category 
+     * @var $album Album
+     * @var $category Category
      * @Route("{slug}/album", name="show_album")
      */
     public function showAlbumAction($slug)
     {
-        $album = $this->getAlbum($slug);
+        $album = $this->getAlbumBySlug($slug);
         if (!$album) {
             throw $this->createNotFoundException("no tag");
         }
         $pictures = $this->getAlbumPicture($album, false, true);
 
         $backgrounds = $this->getAlbumPicture($album, true);
-        
+
         $template = "FabfotoGalleryBundle:Default:ShowAlbum.html.twig";
-        
+
         $category = $album->getCategory();
-        if($category ){
-            if($category->getSlug() == $this->container->getParameter('slugNoteCategory') ) {
+        if ($category) {
+            if ($category->getSlug() == $this->container->getParameter('slugNoteCategory') ) {
                 $template = "FabfotoGalleryBundle:Default:ShowNoteBook.html.twig";
-            } else if($category->getSlug() == $this->container->getParameter('slugAlbumCategory') ){
+            } elseif ($category->getSlug() == $this->container->getParameter('slugAlbumCategory') ) {
                 $template = "FabfotoGalleryBundle:Default:ShowAlbum.html.twig";
             }
-            
+
         }
 
-        return $this->render($template, 
+        return $this->render($template,
                 array(
                     'pictures' => $pictures,
                     'album' => $album,
@@ -132,13 +119,9 @@ class DefaultController extends BaseController
                 ));
     }
 
-
     public function allBackgroundAction($max)
     {
-        $backgrounds = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Picture')
-                ->findByisBackground(true);
+        $backgrounds = $this->getAlbumPicture(null, true, false);
         shuffle($backgrounds);
 
         return $this->render('FabfotoGalleryBundle:Default:BackgroundVegas.html.twig', array(

@@ -1,10 +1,10 @@
 <div style="text-align:center">
 
-	<div style="text-align:center; width:50px"><img width="80px" src="{{ mopa_barcode_url('qr', author.vcard , true) }}"/></div>
+	<div style="text-align:center; width:50px"><img width="80px" src="{{ mopa_barcode_url('qr', vcard , true) }}"/></div>
 
         <div style="font-size:small; text-align:center; width:40px">
-            <h1 style="font-size:18px;">{{author.firstName}} {{author.name}}</h1>
-            <h2 style="font-size:12px;">{{author.title}}</h2>
-            <h3 style="font-size:10px;">{{author.email}}</h3>
+            <h1 style="font-size:18px;">{{user.firstName}} {{user.name}}</h1>
+            <h2 style="font-size:12px;">{{user.title}}</h2>
+            <h3 style="font-size:10px;">{{user.email}}</h3>
         </div>
 </div>

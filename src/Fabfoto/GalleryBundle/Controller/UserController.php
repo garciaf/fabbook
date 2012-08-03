@@ -5,20 +5,22 @@ namespace Fabfoto\GalleryBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class UserController extends Controller
+class UserController extends BaseController
 {
     /**
      * @Route("/{slug}/about", name="show_about")
      */
     public function showAboutAction($slug)
     {
-        $author = $this->getUserBySlug($slug);
-        if (!$author) {
+        $user = $this->getUserBySlug($slug);
+        if (!$user) {
             throw $this->createNotFoundException('Unable to find user');
         }
-
+        $vcard = $this->getVcardOfUser($user);
+        
         return $this->render('FabfotoGalleryBundle:Default:ShowAbout.html.twig', array(
-                    'author' => $author
+                    'user' => $user,
+                    'vcard' => $vcard
                 ));
     }
 
@@ -27,23 +29,15 @@ class UserController extends Controller
      */
     public function showUserAction($slug)
     {
-        $author = $this->getUserBySlug($slug);
-        if (!$author) {
+        $user = $this->getUserBySlug($slug);
+        if (!$user) {
             throw $this->createNotFoundException('Unable to find user');
         }
-
+        $vCard = $this->getVcardOfUser($user);
         return $this->render('FabfotoGalleryBundle:User:ShowAbout.html.twig', array(
-                    'author' => $author
+                    'user' => $user,
+                    'vCard' => $vCard
                 ));
     }
-    /**
-     * Function to retrieve user by slug name
-     */
-    protected function getUserBySlug($slug)
-    {
-        return $this
-                ->getDoctrine()
-                ->getRepository('FabfotoUserBundle:User')
-                ->findOneBySlug($slug);
-    }
+
 }

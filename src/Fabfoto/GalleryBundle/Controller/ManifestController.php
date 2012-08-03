@@ -10,7 +10,7 @@ use \Symfony\Component\HttpFoundation\Response as Response;
  * Article controller.
  *
  */
-class ManifestController extends Controller
+class ManifestController extends BaseController
 {
     /**
      * @Route("manifest/", name="manifest_mobile")
@@ -22,14 +22,9 @@ class ManifestController extends Controller
        $response->headers->set('Content-Type', 'text/cache-manifest');
        $response->sendHeaders();
 
-        $news = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Article')
-                ->findBy(array(), array('createdAt'=> 'DESC'));
-        $articles = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
-                ->findBy(array('isPublished' => true), array('createdAt'=> 'DESC'));
+        $news = $this->getNews();
+
+        $articles = $this->getBlogs();
 
         return $this->render('FabfotoGalleryBundle:Manifest:manifest.txt.twig',
                         array(

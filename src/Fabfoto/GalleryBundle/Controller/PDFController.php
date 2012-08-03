@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("/pdf")
  */
-class PDFController extends Controller
+class PDFController extends BaseController
 {
     /**
      *
@@ -22,12 +22,9 @@ class PDFController extends Controller
     {
         $format = $this->get('request')->get('_format');
         $pdfObj = $this->get("white_october.tcpdf")->create();
-        $article = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
-                ->findOneBySlugblog($slugblog);
+        $article = $this->getBlog($slugblog);
         if (!$article) {
-            throw $this->createNotFoundException("Pas d'article");
+            throw $this->createNotFoundException("No article");
         }
 
         $html = $this->renderView('FabfotoGalleryBundle:PDF:ShowArticleBlog.pdf.twig', array(
@@ -47,17 +44,15 @@ class PDFController extends Controller
     public function showPDFCardAction($slug)
     {
         $pdfObj = $this->get("white_october.tcpdf")->create();
-        $author = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoUserBundle:User')
-                ->findOneBy(array(
-            'slug' => $slug
-                ));
-        if (!$author) {
+        $user = $this->getUserBySlug($slug);
+
+        if (!$user) {
             throw $this->createNotFoundException("No user");
         }
+        $vcard= $this->getVcardOfUser($user);
         $html = $this->renderView('FabfotoGalleryBundle:User:ShowAbout.pdf.twig', array(
-            'author' => $author,
+            'user' => $user,
+            'vcard' =>$vcard
                 ));
         $pdfObj->SetFont('dejavusans', '', 6);
         $pdfObj->setPrintHeader(false);

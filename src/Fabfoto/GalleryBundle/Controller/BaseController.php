@@ -3,15 +3,16 @@
 namespace Fabfoto\GalleryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use \Fabfoto\GalleryBundle\Entity\Album as Album;
 use \Fabfoto\GalleryBundle\Entity\Tag as Tag;
+use \Fabfoto\UserBundle\Entity\User as User;
 use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\DoctrineORMAdapter as PagerAdapter;
 
 abstract class BaseController extends Controller
 {
-    protected function getNewsQuery() {
+    protected function getNewsQuery()
+    {
         return $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Article')
@@ -19,7 +20,8 @@ abstract class BaseController extends Controller
                 ->orderBy('b.createdAt', 'DESC')
                 ->getQuery();
     }
-    protected function getNews() {
+    protected function getNews()
+    {
         return $this->getNewsQuery()->execute();
     }
     protected function getAlbumsQuery($max = null)
@@ -29,12 +31,14 @@ abstract class BaseController extends Controller
                 ->getRepository('FabfotoGalleryBundle:Album')
                 ->createQueryBuilder('b')
                 ->orderBy('b.createdAt', 'DESC');
-         if($max){
+         if ($max) {
                 $albumsQuery->setMaxResults($max);
          }
+
                 return $albumsQuery->getQuery();
     }
-    protected function getAlbums($max = null) {
+    protected function getAlbums($max = null)
+    {
         return $this->getAlbumsQuery($max)->execute();
     }
 
@@ -44,26 +48,27 @@ abstract class BaseController extends Controller
                         ->getDoctrine()
                         ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                         ->createQueryBuilder('b');
-                        
-                        
-        if($tag){
+
+        if ($tag) {
             $query
                 ->leftJoin('b.tags', 't')
                 ->where('b.isPublished = true AND t.slug = :tagSlug')
                 ->setParameter('tagSlug', $tag->getSlug());
 
-        }else{
+        } else {
             $query->where('b.isPublished = true');
         }
         $query->orderBy('b.createdAt', 'DESC');
-        if($max) {
+        if ($max) {
         $query->setMaxResults($max);
-        
+
         }
+
         return $query->getQuery();
     }
-    
-    protected function getBlogs($max = null,Tag $tag = null) {
+
+    protected function getBlogs($max = null,Tag $tag = null)
+    {
         return $this->getBlogsQuery($max, $tag)->execute();
     }
 
@@ -81,12 +86,12 @@ abstract class BaseController extends Controller
         return $paginator;
     }
 
-    protected function getBlog($slugblog)
+    protected function getBlog($slugblog, $isPublished = true)
     {
         return $this
-                        ->getDoctrine()
-                        ->getRepository('FabfotoGalleryBundle:ArticleBlog')
-                        ->findOneBySlugblog($slugblog);
+                ->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
+                ->findOneBy(array('slugblog' => $slugblog, 'isPublished' => $isPublished ));
     }
 
     protected function getTag($tag_slug)
@@ -97,45 +102,60 @@ abstract class BaseController extends Controller
                         ->findOneBySlug($tag_slug);
     }
 
-    public function getAlbum($slug)
+    public function getAlbumBySlug($slug)
     {
         return $this
                         ->getDoctrine()
                         ->getRepository('FabfotoGalleryBundle:Album')
                         ->findOneBySlug($slug);
-        
-    }
 
-    protected function getAlbumPicture(Album $album, $isBackground = false, $orderByName = false)
+    }
+    public function getAlbumById($id)
+    {
+        return $this
+                        ->getDoctrine()
+                        ->getRepository('FabfotoGalleryBundle:Album')
+                        ->find($id);
+
+    }
+    /**
+     *
+     * @param  Album $album
+     * @param  type  $isBackground
+     * @param  type  $orderByName
+     * @return type
+     */
+    protected function getAlbumPicture(Album $album= null, $isBackground = false, $orderByName = false)
     {
 
         $query = $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Picture')
-                ->createQueryBuilder('p')
-                ->where('p.album = :idAlbum AND p.isBackground = :isBackground')
+                ->createQueryBuilder('p');
+        if ($album) {
+                $query->where('p.album = :idAlbum AND p.isBackground = :isBackground')
                 ->setParameter('idAlbum', $album->getId())
                 ->setParameter('isBackground', $isBackground);
-        if($orderByName){
+        } else {
+            $query->where('p.isBackground = :isBackground')
+             ->setParameter('isBackground', $isBackground);
+        }
+        if ($orderByName) {
             $query->orderBy('p.name', 'ASC');
         }
+
         return $query->getQuery()
                 ->execute();
     }
-
-    public function allBackgroundAction($max)
+    protected function getUserBySlug($slug)
     {
-        $backgrounds = $this
+        return $this
                 ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Picture')
-                ->findByisBackground(true);
-        shuffle($backgrounds);
-
-        return $this->render('FabfotoGalleryBundle:Default:BackgroundVegas.html.twig', array(
-                    'backgrounds' => $backgrounds
+                ->getRepository('FabfotoUserBundle:User')
+                ->findOneBy(array(
+            'slug' => $slug
                 ));
     }
-
     protected function testIsOnlyOneAlbum()
     {
         $albums = $this
@@ -148,6 +168,13 @@ abstract class BaseController extends Controller
         } else {
             return false;
         }
+    }
+    
+    protected function getVcardOfUser(User $user){
+        return $this->renderView('FabfotoGalleryBundle:Vcard:ShowAbout.vcf.twig', array(
+            'user' => $user
+                ));
+        
     }
 
 }

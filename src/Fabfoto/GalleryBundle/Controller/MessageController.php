@@ -8,7 +8,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Fabfoto\GalleryBundle\Entity\Message;
 use Fabfoto\GalleryBundle\Form\Type\MessageType;
-use Bundle\CaptchaBundle\Image as Captcha;
 
 /**
  * Message controller.
@@ -17,44 +16,6 @@ use Bundle\CaptchaBundle\Image as Captcha;
  */
 class MessageController extends Controller
 {
-
-    /**
-     * Lists all Message entities.
-     *
-     * @Route("admin/old/messages", name="contact")
-     * @Template()
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $entities = $em->getRepository('FabfotoGalleryBundle:Message')->findAll();
-
-        return array('entities' => $entities);
-    }
-
-    /**
-     * Finds and displays a Message entity.
-     *
-     * @Route("admin/old/{id}/showmessage", name="contact_show")
-     * @Template()
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $entity = $em->getRepository('FabfotoGalleryBundle:Message')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Message entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity' => $entity,
-            'delete_form' => $deleteForm->createView(),);
-    }
 
     /**
      * Displays a form to create a new Message entity.
@@ -66,12 +27,10 @@ class MessageController extends Controller
     {
         $entity = new Message();
         $form = $this->createForm(new MessageType(), $entity);
-        //$captcha = new Captcha();
-        //$captcha->setSession($this['session']);
+
         return $this->render('FabfotoGalleryBundle:Default:contact.html.twig',array(
             'entity' => $entity,
             'form' => $form->createView(),
-            //'captcha' => $captcha,
         ));
     }
 
@@ -106,112 +65,16 @@ class MessageController extends Controller
             'form' => $form->createView()
         );
     }
-
     /**
-     * Displays a form to edit an existing Message entity.
      *
-     * @Route("/old/{id}/edit", name="contact_edit")
-     * @Template()
+     * @param \Fabfoto\GalleryBundle\Entity\Message $message
      */
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $entity = $em->getRepository('FabfotoGalleryBundle:Message')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Message entity.');
-        }
-
-        $editForm = $this->createForm(new MessageType(), $entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity' => $entity,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-
-    /**
-     * Edits an existing Message entity.
-     *
-     * @Route("admin/old/{id}/update", name="contact_update")
-     * @Method("post")
-     * @Template("FabfotoGalleryBundle:Message:edit.html.twig")
-     */
-    public function updateAction($id)
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $entity = $em->getRepository('FabfotoGalleryBundle:Message')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Message entity.');
-        }
-
-        $editForm = $this->createForm(new MessageType(), $entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        $request = $this->getRequest();
-
-        $editForm->bindRequest($request);
-
-        if ($editForm->isValid()) {
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('contact_edit',
-                                    array('id' => $id)));
-        }
-
-        return array(
-            'entity' => $entity,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-
-    /**
-     * Deletes a Message entity.
-     *
-     * @Route("admin/old/{id}/delete", name="contact_delete")
-     * @Method("post")
-     */
-    public function deleteAction($id)
-    {
-        $form = $this->createDeleteForm($id);
-        $request = $this->getRequest();
-
-        $form->bindRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
-            $entity = $em->getRepository('FabfotoGalleryBundle:Message')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Message entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
-        }
-
-        return $this->redirect($this->generateUrl('contact'));
-    }
-
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder(array('id' => $id))
-                        ->add('id', 'hidden')
-                        ->getForm()
-        ;
-    }
     protected function sendMail(Message $message)
     {
         $messageToSend = \Swift_Message::newInstance()
         ->setSubject('[fabbook] from: '.$message->getSender().' : '.$message->getSubject())
         ->setFrom('fab0670312047@gmail.com')
+        ->setReplyTo($message->getSender())
         ->setTo('fab0670312047@gmail.com')
         ->setBody($message->getContent())
     ;

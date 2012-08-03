@@ -50,6 +50,10 @@ abstract class AbstractImage implements ImageInterface
         return 'uploads';
     }
 
+    public function getFileExtension(){
+        return pathinfo($this->getLocation(), PATHINFO_EXTENSION);
+    }
+    
     abstract public function getLocation();
     abstract public function setLocation($location);
 }

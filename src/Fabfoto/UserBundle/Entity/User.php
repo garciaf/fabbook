@@ -384,28 +384,4 @@ class User extends BaseUser
     {
         $this->portrait[] = $portrait;
     }
-
-    /**
-     * Get the vcard of the contact
-     */
-    public function getVcard()
-    {
-        return sprintf(
-"BEGIN:VCARD
-VERSION:3.0
-N:%s;%s;;;
-FN:%s %s
-TITLE:%s
-TEL;TYPE=CELL,VOICE: %s
-TEL;TYPE=HOME,VOICE:%s
-EMAIL;TYPE=PREF,INTERNET:%s
-REV:20080424T195243Z
-END:VCARD", $this->getName(), $this->getFirstName(),
-         $this->getFirstName(), $this->getName(),
-         $this->getTitle(),
-         $this->getPhone(),
-         $this->getPhone(),
-         $this->getEmail());
-
-    }
 }

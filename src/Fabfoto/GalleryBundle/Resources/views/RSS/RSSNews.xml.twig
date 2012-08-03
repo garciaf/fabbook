@@ -1,11 +1,11 @@
 {% extends 'FabfotoGalleryBundle::layoutRSS.xml.twig'%}
 {% block content %}
-  {%for article in articles%}
+  {%for new in news %}
         <item>
-            <title>{{article.title|raw}}</title>
-            <description>{{article.subtitle|raw}}</description>
-            <content:encoded><![CDATA[ {{article.content|raw}} ]]></content:encoded>
-            <pubDate>{{article.createdAt|date(constant('DATE_RFC822')) }}</pubDate>
+            <title>{{new.title|raw}}</title>
+            <description>{{new.subtitle|raw}}</description>
+            <content:encoded><![CDATA[ {{new.content|raw}} ]]></content:encoded>
+            <pubDate>{{new.createdAt|date(constant('DATE_RFC822')) }}</pubDate>
         </item>
         {%endfor%}
 {% endblock content %}

@@ -1,1 +1,16 @@
-{{author.vcard|raw}}
+BEGIN:VCARD
+VERSION:3.0
+N:{{user.name}};{{user.firstName}}
+FN:{{user}}
+ROLE:{{user.title}}
+TITLE:{{user.title}}
+{% if user.portrait.count >0 %}
+{% set photo = user.portrait.0 %}
+PHOTO;VALUE=URL;TYPE={{photo.fileExtension|upper}}:{{photo.webPath | imagine_filter("background", true)}}
+{% endif %}
+URL:{{url('show_vcard_from' , { 'slug': user.slug }) }}
+TEL;TYPE=CELL,VOICE: {{user.phone}}
+TEL;TYPE=HOME,VOICE:{{user.phone}}
+EMAIL;TYPE=PREF,INTERNET:{{user.email}}
+REV:{{user.lastLogin |date('Y-m-d')}}
+END:VCARD

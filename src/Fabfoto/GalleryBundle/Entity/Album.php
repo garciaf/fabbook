@@ -14,7 +14,7 @@ use Doctrine\Common\Collections\Collection;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Fabfoto\GalleryBundle\Entity\AlbumRepository")
  */
-class Album 
+class Album
 {
     protected $container;
     /**
@@ -220,15 +220,17 @@ class Album
     {
         return $this->category;
     }
-    
-    public function isCategorySlug($slugName){
+
+    public function isCategorySlug($slugName)
+    {
         $category = $this->getCategory();
-        if($category){
-            if($category->getSlug() == $slugName) {
+        if ($category) {
+            if ($category->getSlug() == $slugName) {
                 return true;
             }
         }
+
         return false;
-        
+
     }
 }
