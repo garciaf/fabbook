@@ -9,8 +9,8 @@ TITLE:{{user.title}}
 PHOTO;VALUE=URL;TYPE={{photo.fileExtension|upper}}:{{photo.webPath | imagine_filter("background", true)}}
 {% endif %}
 URL:{{url('show_vcard_from' , { 'slug': user.slug }) }}
-TEL;TYPE=CELL,VOICE: {{user.phone}}
+TEL;TYPE=CELL,VOICE: {{user.mobile}}
 TEL;TYPE=HOME,VOICE:{{user.phone}}
 EMAIL;TYPE=PREF,INTERNET:{{user.email}}
-REV:{{user.lastLogin |date('Y-m-d')}}
+REV:{{user.updatedAt |date('Y-m-d')}}
 END:VCARD

@@ -19,8 +19,10 @@ class UserType extends AbstractType
             ->add('facebookLink')
             ->add('gitHubLink')
             ->add('linkedLink')
+            ->add('viadeoLink')
             ->add('twitterLink')
             ->add('phone')
+            ->add('mobile')
         ;
     }
 

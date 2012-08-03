@@ -96,6 +96,13 @@ class User extends BaseUser
      * @ORM\Column(name="twitterLink", type="string", length=255, nullable=true)
      */
     private $twitterLink;
+    
+    /**
+     * @var string $viadeoLink
+     *
+     * @ORM\Column(name="viadeoLink", type="string", length=255, nullable=true)
+     */
+    private $viadeoLink;
 
     /**
      * @var string $firstname
@@ -103,7 +110,22 @@ class User extends BaseUser
      * @ORM\Column(name="phone", type="string", length=255, nullable=true)
      */
     private $phone;
-
+    
+    /**
+     * @var string $firstname
+     *
+     * @ORM\Column(name="mobile", type="string", length=255, nullable=true)
+     */
+    private $mobile;
+    
+    /**
+     * @var datetime $updatedAt
+     *
+     * @ORM\Column(name="updatedAt", type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     */
+    private $updatedAt;
+    
     public function __toString()
     {
         return $this->getFirstname().' '.$this->getName();
@@ -383,5 +405,65 @@ class User extends BaseUser
     public function addPortrait(\Fabfoto\UserBundle\Entity\Portrait $portrait)
     {
         $this->portrait[] = $portrait;
+    }
+
+    /**
+     * Set viadeoLink
+     *
+     * @param string $viadeoLink
+     */
+    public function setViadeoLink($viadeoLink)
+    {
+        $this->viadeoLink = $viadeoLink;
+    }
+
+    /**
+     * Get viadeoLink
+     *
+     * @return string 
+     */
+    public function getViadeoLink()
+    {
+        return $this->viadeoLink;
+    }
+
+    /**
+     * Set mobile
+     *
+     * @param string $mobile
+     */
+    public function setMobile($mobile)
+    {
+        $this->mobile = $mobile;
+    }
+
+    /**
+     * Get mobile
+     *
+     * @return string 
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param datetime $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return datetime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }
