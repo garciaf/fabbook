@@ -47,6 +47,10 @@ class ImportPicturesCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $albumName = $input->getArgument('albumName');
+        $newAlbum = new Album();
+        $newAlbum->setName($albumName);
+        $newAlbum->setComment($albumName);
+        
         $nbImported = $this->getContainer()->get('fabfoto_gallery.picture_importer')->import($albumName);
         $output->writeLn(sprintf(' - Import finished %d elements imported',
                         $nbImported));

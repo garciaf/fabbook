@@ -3,7 +3,8 @@
 namespace Fabfoto\UserBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-
+use Fabfoto\GalleryBundle\Entity\Album as Album;
+use Fabfoto\UserBundle\Form\Type\AlbumType as AlbumType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -44,13 +45,13 @@ class ImporterController extends Controller {
     {
 
         $request = $this->getRequest();
-        $form    = $this->createImportForm();
+        $album = new Album();
+        $form    = $this->createImportForm($album);
         $form->bindRequest($request);
-
+        
         if ($form->isValid()) {
             try {
-            $data = $form->getData();
-            $this->get('fabfoto_gallery.picture_importer')->import($data["name"]);
+            $this->get('fabfoto_gallery.picture_importer')->import($album);
             return $this->redirect($this->generateUrl('import_index'));
             } catch (\Exception $e) {
                 $this->get('session')->setFlash('error',  $e->getMessage() );
@@ -64,10 +65,10 @@ class ImporterController extends Controller {
                 );
     }
     
-    protected function createImportForm(){
-        return $this->createFormBuilder()
-        ->add('name', 'text')
-        ->getForm();
+    protected function createImportForm($album){
+        
+        return $this->createForm(new AlbumType(), $album);
+        
     }
 
 }

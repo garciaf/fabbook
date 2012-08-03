@@ -34,20 +34,23 @@ class PictureImporter
      *
      * @param type $albumName
      */
-    public function import($albumName)
+    public function import(Album $newAlbum)
     {
+        $albumName = $newAlbum->getName();
         if ($albumName) {
             $album = $this->em
                     ->getRepository('FabfotoGalleryBundle:Album')
                     ->findOneByName($albumName);
         }
-
+        
         if (!$album) {
-            $album = new Album();
-            $album->setName($albumName);
-            $album->setComment($albumName);
-            $this->em->persist($album);
+            $album = $newAlbum;
+        }else{
+            $album->setComment($newAlbum->getComment());
+            $album->setCategory($newAlbum->getCategory());
         }
+        $this->em->persist($album);
+        
         $index = 0;
         $finder = new Finder();
         $finder->files()->in($this->incomingFolder);

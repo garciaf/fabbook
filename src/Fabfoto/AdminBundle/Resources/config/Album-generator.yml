@@ -15,7 +15,7 @@ builders:
     params:
       title: List for AdminBundle
       sort: [ createdAt, DESC ]
-      display: ~
+      display: [name, comment, category, createdAt, slug]
       actions:
         new: ~
       object_actions:
