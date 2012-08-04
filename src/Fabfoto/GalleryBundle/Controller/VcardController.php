@@ -3,6 +3,7 @@
 namespace Fabfoto\GalleryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 /**
@@ -14,6 +15,7 @@ class VcardController extends BaseController
 {
 
     /**
+     * @Cache(expires="tomorrow")
      * @Route("/{slug}/vcard",defaults={"_format"="vcf"}, name="show_vcard_from")
      *
      */

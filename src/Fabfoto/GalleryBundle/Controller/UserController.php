@@ -3,11 +3,13 @@
 namespace Fabfoto\GalleryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class UserController extends BaseController
 {
     /**
+     * @Cache(expires="tomorrow")
      * @Route("/{slug}/about", name="show_about")
      */
     public function showAboutAction($slug)
@@ -25,6 +27,7 @@ class UserController extends BaseController
     }
 
     /**
+     * @Cache(expires="tomorrow")
      * @Route("/cv/{slug}", name="show_user")
      */
     public function showUserAction($slug)

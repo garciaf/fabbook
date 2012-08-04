@@ -3,6 +3,7 @@
 namespace Fabfoto\GalleryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -19,7 +20,7 @@ class MessageController extends Controller
 
     /**
      * Displays a form to create a new Message entity.
-     *
+     * @Cache(expires="tomorrow")
      * @Route("contact/", name="contact_new")
      * @Template()
      */

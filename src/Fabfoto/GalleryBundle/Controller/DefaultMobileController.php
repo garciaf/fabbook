@@ -3,6 +3,7 @@
 namespace Fabfoto\GalleryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -14,6 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultMobileController extends BaseController
 {
     /**
+     * @Cache(expires="+6 hours")
      * @Route("/", name="index_mobile")
      * @Template()
      */
@@ -27,6 +29,7 @@ class DefaultMobileController extends BaseController
                 ));
     }
     /**
+     * @Cache(expires="tomorrow")
      * @Route("/{id}/article", name="show_article_mobile")
      */
     public function showArticleAction($id)
@@ -42,6 +45,7 @@ class DefaultMobileController extends BaseController
                 ));
     }
     /**
+     * @Cache(expires="tomorrow")
      * @Route("/albums", name="albums_mobile")
      * @Template()
      */
@@ -54,6 +58,7 @@ class DefaultMobileController extends BaseController
     }
 
     /**
+     * @Cache(expires="tomorrow")
      * @Route("/{id}/album", name="show_album_mobile")
      * @Template()
      */
@@ -74,6 +79,7 @@ class DefaultMobileController extends BaseController
                 ));
     }
     /**
+     * @Cache(expires="tomorrow")
      * @Route("/{id}/ajaxalbum", name="show_album_mobile_ajax")
      * @Template()
      */
@@ -92,6 +98,7 @@ class DefaultMobileController extends BaseController
                 ));
     }
      /**
+      * @Cache(expires="tomorrow")
      * @Route("/blog", name="index_blog_mobile")
      */
     public function indexBlogsAction()
@@ -104,6 +111,7 @@ class DefaultMobileController extends BaseController
                 ));
     }
      /**
+     * @Cache(expires="tomorrow")
      * @Route("/{slugblog}/blogarticle", name="show_article_blog_mobile")
      */
     public function showBlogArticleAction($slugblog)

@@ -3,11 +3,13 @@
 namespace Fabfoto\GalleryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class RSSController extends BaseController
 {
     /**
+     * @Cache(expires="+6 hours")
      * @Route("rss", defaults={"_format"="xml"}, name="rss_news")
      */
     public function rssNewsAction()
@@ -17,6 +19,7 @@ class RSSController extends BaseController
         return $this->render('FabfotoGalleryBundle:RSS:RSSNews.xml.twig', array('news' => $news));
     }
     /**
+     * @Cache(expires="tomorrow")
      * @Route("rss/blog", defaults={"_format"="xml"}, name="rss_blog")
      */
     public function rssBlogAction()
@@ -26,6 +29,7 @@ class RSSController extends BaseController
         return $this->render('FabfotoGalleryBundle:RSS:RSSBlog.xml.twig', array('articles' => $articles));
     }
     /**
+     * @Cache(expires="tomorrow")
      * @Route("/feed/rss/album", defaults={"_format"="xml"}, name="rss_album")
      */
     public function rssAlbumAction()
@@ -35,6 +39,7 @@ class RSSController extends BaseController
         return $this->render('FabfotoGalleryBundle:RSS:RSSAlbum.xml.twig', array('albums' => $albums));
     }
     /**
+     * @Cache(expires="tomorrow")
      * @Route("rss/{tag_slug}/blog", defaults={"_format"="xml"}, name="rss_blog_tag")
      */
     public function showBlogArticleAction($tag_slug)

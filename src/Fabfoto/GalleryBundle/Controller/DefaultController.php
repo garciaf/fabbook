@@ -4,6 +4,7 @@ namespace Fabfoto\GalleryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Component\HttpFoundation\Request;
 use Fabfoto\GalleryBundle\Entity\Album  as Album;
 use Fabfoto\GalleryBundle\Entity\Category as Category;
@@ -11,6 +12,7 @@ class DefaultController extends BaseController
 {
 
     /**
+     * @Cache(expires="+ 3 hours")
      * @Route("/news", name="show_articles")
      */
     public function showHomePageAction()
@@ -42,6 +44,7 @@ class DefaultController extends BaseController
     }
 
     /**
+     * @Cache(expires="tomorrow")
      * @Route("/{slugblog}/blogarticle", name="show_article_blog")
      */
     public function showBlogArticleAction($slugblog)
@@ -58,6 +61,7 @@ class DefaultController extends BaseController
     }
 
     /**
+     * @Cache(expires="tomorrow")
      * @Route("/{tag_slug}/tag/blogarticle", name="show_articles_blog_by_tags")
      */
     public function showBlogArticleByTagAction($tag_slug)
@@ -75,6 +79,7 @@ class DefaultController extends BaseController
     }
 
     /**
+     * @Cache(expires="tomorrow")
      * @Route("albums", name="index_album")
      */
     public function indexAlbumsAction()
@@ -85,6 +90,7 @@ class DefaultController extends BaseController
     }
 
     /**
+     * @Cache(expires="tomorrow")
      * @var $album Album
      * @var $category Category
      * @Route("{slug}/album", name="show_album")
