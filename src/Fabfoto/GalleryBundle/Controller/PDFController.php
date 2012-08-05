@@ -3,6 +3,7 @@
 namespace Fabfoto\GalleryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -14,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 class PDFController extends BaseController
 {
     /**
-     *
+     * @Cache(expires="tomorrow")
      * @Route("/{slugblog}/blogarticle", defaults={"_format"="pdf"}, name="show_article_blog_pdf")
      *
      */
@@ -38,6 +39,7 @@ class PDFController extends BaseController
     }
 
     /**
+     * @Cache(expires="tomorrow")
      * @Route("/{slug}/pdfcard", name="show_about_pdf_from")
      *
      */

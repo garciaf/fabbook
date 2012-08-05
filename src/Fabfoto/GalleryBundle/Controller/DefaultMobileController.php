@@ -45,7 +45,7 @@ class DefaultMobileController extends BaseController
                 ));
     }
     /**
-     * @Cache(expires="tomorrow")
+     * @Cache(expires="+1 hours")
      * @Route("/albums", name="albums_mobile")
      * @Template()
      */

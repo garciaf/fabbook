@@ -12,7 +12,7 @@ class DefaultController extends BaseController
 {
 
     /**
-     * @Cache(expires="+ 3 hours")
+     * @Cache(expires="+ 1 hours")
      * @Route("/news", name="show_articles")
      */
     public function showHomePageAction()
@@ -29,6 +29,7 @@ class DefaultController extends BaseController
     }
 
     /**
+     * @Cache(expires="+ 1 hours")
      * @Route("blog", name="index_blog")
      */
     public function indexBlogsAction()
@@ -61,7 +62,7 @@ class DefaultController extends BaseController
     }
 
     /**
-     * @Cache(expires="tomorrow")
+     * @Cache(expires="+ 1 hours")
      * @Route("/{tag_slug}/tag/blogarticle", name="show_articles_blog_by_tags")
      */
     public function showBlogArticleByTagAction($tag_slug)
@@ -79,7 +80,7 @@ class DefaultController extends BaseController
     }
 
     /**
-     * @Cache(expires="tomorrow")
+     * @Cache(expires="+1 hours")
      * @Route("albums", name="index_album")
      */
     public function indexAlbumsAction()
