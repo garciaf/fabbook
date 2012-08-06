@@ -132,12 +132,6 @@ class DefaultController extends BaseController
                     'backgrounds' => $backgrounds
                 ));
     }
-    
-    public function menuUserAction(){
-        $template = "FabfotoGalleryBundle:Default:MenuUser.html.twig";
-        
-        return $this->render($template);
-    }
 
     /**
      * @Route("search", name="fabfoto_search")
