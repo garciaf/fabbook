@@ -4,8 +4,11 @@ namespace Fabfoto\GalleryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Fabfoto\GalleryBundle\Entity\ArticleBlog  as ArticleBlog;
+use Fabfoto\UserBundle\Entity\User as User;
 
 /**
  * Article controller.
@@ -17,16 +20,12 @@ class PDFController extends BaseController
     /**
      * @Cache(expires="tomorrow")
      * @Route("/{slugblog}/blogarticle", defaults={"_format"="pdf"}, name="show_article_blog_pdf")
-     *
+     * @ParamConverter("article", class="FabfotoGalleryBundle:ArticleBlog")
      */
-    public function showBlogArticleAction($slugblog)
+    public function showBlogArticleAction(ArticleBlog $article)
     {
         $format = $this->get('request')->get('_format');
         $pdfObj = $this->get("white_october.tcpdf")->create();
-        $article = $this->getBlog($slugblog);
-        if (!$article) {
-            throw $this->createNotFoundException("No article");
-        }
 
         $html = $this->renderView('FabfotoGalleryBundle:PDF:ShowArticleBlog.pdf.twig', array(
             'article' => $article
@@ -41,16 +40,11 @@ class PDFController extends BaseController
     /**
      * @Cache(expires="tomorrow")
      * @Route("/{slug}/pdfcard", name="show_about_pdf_from")
-     *
+     * @ParamConverter("user", class="FabfotoUserBundle:User")
      */
-    public function showPDFCardAction($slug)
+    public function showPDFCardAction(User $user)
     {
         $pdfObj = $this->get("white_october.tcpdf")->create();
-        $user = $this->getUserBySlug($slug);
-
-        if (!$user) {
-            throw $this->createNotFoundException("No user");
-        }
         $vcard= $this->getVcardOfUser($user);
         $html = $this->renderView('FabfotoGalleryBundle:User:ShowAbout.pdf.twig', array(
             'user' => $user,
@@ -64,7 +58,7 @@ class PDFController extends BaseController
         $pdfObj->writeHTML($html, true, false, true, false, '');
         $pdfObj->lastPage();
 
-        return $pdfObj->Output($slug.'carte.pdf');
+        return $pdfObj->Output($user->getSlug().'carte.pdf');
     }
 
 }

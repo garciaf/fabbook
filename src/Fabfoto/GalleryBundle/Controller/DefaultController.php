@@ -5,9 +5,13 @@ namespace Fabfoto\GalleryBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use Fabfoto\GalleryBundle\Entity\Album  as Album;
+use Fabfoto\GalleryBundle\Entity\Tag  as Tag;
+use Fabfoto\GalleryBundle\Entity\ArticleBlog  as ArticleBlog;
 use Fabfoto\GalleryBundle\Entity\Category as Category;
+
 class DefaultController extends BaseController
 {
 
@@ -47,15 +51,14 @@ class DefaultController extends BaseController
     /**
      * @Cache(expires="tomorrow")
      * @Route("/{slugblog}/blogarticle", name="show_article_blog")
+     * @ParamConverter("article", class="FabfotoGalleryBundle:ArticleBlog")
      */
-    public function showBlogArticleAction($slugblog)
+    public function showBlogArticleAction(ArticleBlog $article)
     {
-        $article = $this->getBlog($slugblog);
-
-        if (!$article) {
-            throw $this->createNotFoundException("No article");
+        //If the artcle is not published you can not access to it
+        if(!$article->getIsPublished()){
+            $this->createNotFoundException();
         }
-
         return $this->render('FabfotoGalleryBundle:Default:ShowArticleBlog.html.twig', array(
                     'article' => $article
                 ));
@@ -63,14 +66,11 @@ class DefaultController extends BaseController
 
     /**
      * @Cache(expires="+ 1 hours")
-     * @Route("/{tag_slug}/tag/blogarticle", name="show_articles_blog_by_tags")
+     * @Route("/{slug}/tag/blogarticle", name="show_articles_blog_by_tags")
+     * @ParamConverter("tag", class="FabfotoGalleryBundle:Tag")
      */
-    public function showBlogArticleByTagAction($tag_slug)
+    public function showBlogArticleByTagAction(Tag $tag)
     {
-        $tag = $this->getTag($tag_slug);
-        if (!$tag) {
-            throw $this->createNotFoundException("no tag");
-        }
         $articlesBlogs = $this->getBlogs(null, $tag);
 
         return $this->render('FabfotoGalleryBundle:Default:IndexTagArticleBlog.html.twig', array(
@@ -95,13 +95,10 @@ class DefaultController extends BaseController
      * @var $album Album
      * @var $category Category
      * @Route("{slug}/album", name="show_album")
+     * @ParamConverter("album", class="FabfotoGalleryBundle:Album")
      */
-    public function showAlbumAction($slug)
+    public function showAlbumAction(Album $album)
     {
-        $album = $this->getAlbumBySlug($slug);
-        if (!$album) {
-            throw $this->createNotFoundException("no tag");
-        }
         $pictures = $this->getAlbumPicture($album, false, true);
 
         $backgrounds = $this->getAlbumPicture($album, true);
@@ -134,6 +131,12 @@ class DefaultController extends BaseController
         return $this->render('FabfotoGalleryBundle:Default:BackgroundVegas.html.twig', array(
                     'backgrounds' => $backgrounds
                 ));
+    }
+    
+    public function menuUserAction(){
+        $template = "FabfotoGalleryBundle:Default:MenuUser.html.twig";
+        
+        return $this->render($template);
     }
 
     /**

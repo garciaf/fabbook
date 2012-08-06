@@ -4,8 +4,11 @@ namespace Fabfoto\GalleryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Fabfoto\UserBundle\Entity\User as User;
+
 /**
  * Vcard controller.
  *
@@ -17,14 +20,10 @@ class VcardController extends BaseController
     /**
      * @Cache(expires="tomorrow")
      * @Route("/{slug}/vcard",defaults={"_format"="vcf"}, name="show_vcard_from")
-     *
+     * @ParamConverter("user", class="FabfotoUserBundle:User")
      */
-    public function showVcardAction($slug)
+    public function showVcardAction(User $user)
     {
-            $user = $this->getUserBySlug($slug);
-            if (!$user) {
-                throw $this->createNotFoundException("No user") ;
-            }
             $response = new Response();
             $response->setStatusCode(200);
             $response->headers->set('Content-Type','text/x-vcard');

@@ -90,15 +90,11 @@
                         </form>
                         <ul class="nav pull-right">
                             <li class="divider-vertical"></li>
-                            <li class="dropdown-open"><a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ app.user ? app.user : 'connect'}}<b class="caret"></b></a>
+                            <li class="dropdown-open"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-plus"></i></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{{path('user_show')}}">{% trans %}connect{% endtrans %}</a></li>
                                     <li class="divider"></li>
-                                    {% if app.user %}
-                                    <li><a href="{{path('fabfoto_logout')}}">{% trans %}logout{% endtrans %}</a></li>
-                                    {% else %}
                                     <li><a href="{{path('fos_user_registration_register')}}">{% trans %}register{% endtrans %}</a></li>
-                                    {% endif %}
 
                                 </ul>
                             </li>

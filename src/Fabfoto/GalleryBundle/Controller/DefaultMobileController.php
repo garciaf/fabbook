@@ -4,8 +4,12 @@ namespace Fabfoto\GalleryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
+use Fabfoto\GalleryBundle\Entity\Album as Album;
+use Fabfoto\GalleryBundle\Entity\ArticleBlog as ArticleBlog;
 
 /**
  * Article controller.
@@ -60,16 +64,12 @@ class DefaultMobileController extends BaseController
     /**
      * @Cache(expires="tomorrow")
      * @Route("/{id}/album", name="show_album_mobile")
+     * @ParamConverter("album", class="FabfotoGalleryBundle:Album")
      * @Template()
      */
-    public function showAlbumAction($id)
+    public function showAlbumAction(Album $album)
     {
 
-        $album = $this->getAlbumById($id);
-
-        if (!$album) {
-            throw $this->createNotFoundException("No album");
-        }
         $pictures = $this->getAlbumPicture($album);
 
         return $this->render('FabfotoGalleryBundle:Mobile:ShowAlbum.html.twig',
@@ -81,14 +81,11 @@ class DefaultMobileController extends BaseController
     /**
      * @Cache(expires="tomorrow")
      * @Route("/{id}/ajaxalbum", name="show_album_mobile_ajax")
+     * @ParamConverter("album", class="FabfotoGalleryBundle:Album")
      * @Template()
      */
-    public function showAlbumAjaxAction($id)
+    public function showAlbumAjaxAction(Album $album)
     {
-        $album = $this->getAlbumById($id);
-        if (!$album) {
-            throw $this->createNotFoundException("No article");
-        }
         $pictures = $this->getAlbumPicture($album);
 
         return $this->render('FabfotoGalleryBundle:Mobile:ShowAlbumAjax.html.twig',
@@ -113,10 +110,13 @@ class DefaultMobileController extends BaseController
      /**
      * @Cache(expires="tomorrow")
      * @Route("/{slugblog}/blogarticle", name="show_article_blog_mobile")
+     * @ParamConverter("article", class="FabfotoGalleryBundle:ArticleBlog")
      */
-    public function showBlogArticleAction($slugblog)
+    public function showBlogArticleAction(ArticleBlog $article)
     {
-        $article = $this->getBlog($slugblog);
+        if(!$article->getIsPublished()){
+            $this->createNotFoundException();
+        }
 
         return $this->render('FabfotoGalleryBundle:Mobile:ShowArticleBlog.html.twig',
                         array(

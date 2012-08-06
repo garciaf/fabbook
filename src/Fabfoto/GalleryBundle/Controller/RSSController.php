@@ -4,7 +4,9 @@ namespace Fabfoto\GalleryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Fabfoto\GalleryBundle\Entity\Tag  as Tag;
 
 class RSSController extends BaseController
 {
@@ -40,9 +42,10 @@ class RSSController extends BaseController
     }
     /**
      * @Cache(expires="+1 hours")
-     * @Route("rss/{tag_slug}/blog", defaults={"_format"="xml"}, name="rss_blog_tag")
+     * @Route("rss/{slug}/blog", defaults={"_format"="xml"}, name="rss_blog_tag")
+     * @ParamConverter("tag", class="FabfotoGalleryBundle:Tag")
      */
-    public function showBlogArticleAction($tag_slug)
+    public function showBlogArticleAction(Tag $tag)
     {
         $tag = $this->getTag($tag_slug);
 

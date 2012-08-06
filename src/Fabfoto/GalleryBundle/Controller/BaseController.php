@@ -176,5 +176,8 @@ abstract class BaseController extends Controller
                 ));
         
     }
-
+    
+    protected function getCurrentUser(){
+        return $this->get('security.context')->getToken()->getUser();
+    }
 }
