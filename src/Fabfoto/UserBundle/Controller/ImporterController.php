@@ -27,8 +27,8 @@ class ImporterController extends Controller {
      */
     public function indexAction() {
         $files = $this->get('fabfoto_gallery.picture_importer')->getFileToImport();
-        
-        $form = $this->createImportForm();
+        $album = new Album();
+        $form = $this->createImportForm($album);
         return $this->render('FabfotoUserBundle:Import:index.html.twig', array(
                     'files' => $files,
                     'form' => $form->createView())

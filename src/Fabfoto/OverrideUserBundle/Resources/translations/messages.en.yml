@@ -1,0 +1,8 @@
+user:
+  register:
+    title: Register
+    subtitle: To get a personnal page with QRCode
+  login: 
+    title: Login
+    rememberMe: Keep me looged
+    forgot: forgot your password ?

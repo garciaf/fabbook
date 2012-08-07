@@ -1,0 +1,28 @@
+{% extends 'FabfotoGalleryBundle::layout.html.twig'%}
+{% block title %}Login{% endblock title %}
+{% block content %}
+
+<div class="hero-unit well-small">
+            <h1>{% trans %}user.login.title{% endtrans %}</h1>
+</div>
+<div class="main_content">
+{% if error %}
+    <div>{{ error }}</div>
+{% endif %}
+    <form action="{{ path('fos_user_security_check') }}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="_password" />
+    <div id="remember_me" class="form-inline">
+        <label  for="remember_me">{% trans %}user.login.rememberMe{% endtrans %}</label>
+        <input type="checkbox"  name="_remember_me" checked /> 
+    </div>
+    <input type="hidden" name="_target_path" value="{{url('user_show')}}" />
+
+    <input type="submit" class="btn btn-success btn-large" name="login" />
+    <a href="{{path('fos_user_resetting_request')}}">{% trans %}user.login.forgot{% endtrans %}</a>
+</form>
+</div>
+{% endblock content %}

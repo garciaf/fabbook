@@ -5,9 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block metainfo %}{% endblock metainfo %}
         <title> {% block title %}Fabbook{%endblock title%}</title>
-        <link rel="stylesheet" media="all" href="{{ asset('bundles/fabfotogallery/css/style.css')}}" />
+            <!-- Le styles -->
+
         {%block importcss %}{%endblock importcss %}
-        {% stylesheets '@FOSCommentBundle/Resources/assets/css/comments.css' %}
+        {% stylesheets 
+        '@FabfotoGalleryBundle/Resources/public/css/style.css'
+        '@FOSCommentBundle/Resources/assets/css/comments.css'
+        '@FabfotoGalleryBundle/Resources/public/vegas/jquery.vegas.css'
+        %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
         {% endstylesheets %}
         <!-- Le styles -->
@@ -19,10 +24,14 @@
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
+        {% javascripts
+        '@FabfotoGalleryBundle/Resources/public/jquery/jquery-1.7.1.js'
+        '@FabfotoGalleryBundle/Resources/public/vegas/jquery.vegas.js'
+        '@FabfotoGalleryBundle/Resources/public/bootstrap/js/bootstrap.min.js'
 
-        <script src="{{ asset('bundles/fabfotogallery/jquery/jquery-1.7.2.js')}}"></script>
-        <script src="{{ asset('bundles/fabfotogallery/vegas/jquery.vegas.js')}}"></script>
-        <script src="{{ asset('bundles/fabfotogallery/bootstrap/js/bootstrap.min.js')}}"></script>
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
         <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/vegas/jquery.vegas.css')}}"/>
         <link rel="icon" type="image/png" href="{{ asset('bundles/fabfotogallery/image/icon/iconemain.png')}}">
 

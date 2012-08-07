@@ -6,11 +6,11 @@
 
     <!--
     <parameters>
-        <parameter key="a5sys_project.example.class">A5sys\ProjectBundle\Example</parameter>
+        <parameter key="fabfoto_override_user.example.class">Fabfoto\OverrideUserBundle\Example</parameter>
     </parameters>
 
     <services>
-        <service id="a5sys_project.example" class="%a5sys_project.example.class%">
+        <service id="fabfoto_override_user.example" class="%fabfoto_override_user.example.class%">
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>
             <argument>%parameter_name%</argument>

@@ -33,17 +33,18 @@ class AppKernel extends Kernel
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Fabfoto\UserBundle\FabfotoUserBundle(),
-            new Admingenerator\UserBundle\AdmingeneratorUserBundle(),
+//            new Admingenerator\UserBundle\AdmingeneratorUserBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle($this),
             new FOS\CommentBundle\FOSCommentBundle(),
             new Exercise\HTMLPurifierBundle\ExerciseHTMLPurifierBundle(),
             new Fabfoto\I18nBundle\FabfotoI18nBundle(),
-            new Fabfoto\LastTweetBundle\FabfotoLastTweetBundle(),
 	    new Liip\ImagineBundle\LiipImagineBundle(),
             new Fabfoto\TrainTimingBundle\FabfotoTrainTimingBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new FBK\MobileDetectorBundle\FBKMobileDetectorBundle(),
+            new Abmundi\DatabaseCommandsBundle\AbmundiDatabaseCommandsBundle(),
+            new Fabfoto\OverrideUserBundle\FabfotoOverrideUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

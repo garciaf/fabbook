@@ -25,7 +25,7 @@ security:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
             logout:
-              path:   /security/logout
+              path:   /logout
               target: /albums
             anonymous:    true
 

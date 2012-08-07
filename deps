@@ -109,13 +109,6 @@
       target=buzz
       version=origin/v0.5
             
-[zend-filter]
-      git=git://github.com/KnpLabs/zend-filter.git
-      target=Zend/Filter
-
-[zend-feed]
-      git=git://github.com/KnpLabs/zend-feed.git
-      target=Zend/Feed
         
 [WhiteOctoberTCPDFBundle]
     git=git://github.com/whiteoctober/WhiteOctoberTCPDFBundle.git
@@ -124,11 +117,6 @@
 [TCPDF]
     git=git://tcpdf.git.sourceforge.net/gitroot/tcpdf/tcpdf
     target=tcpdf
-    
-[ZenstruckMobileBundle]
-    git=git://github.com/kbond/ZenstruckMobileBundle.git
-    target=bundles/Zenstruck/Bundle/MobileBundle    
-
 
 [KnpMenuBundle]
     git=http://github.com/KnpLabs/KnpMenuBundle.git
@@ -224,6 +212,6 @@
     git=git://github.com/FriendsOfSymfony/FOSJsRoutingBundle.git
     target=/bundles/FOS/JsRoutingBundle
 
-[TranslatorBundle]
-    git=git://github.com/docteurklein/TranslatorBundle.git
-    target=/bundles/Knp/Bundle/TranslatorBundle
+[ABMundiDatabaseCommandsBundle]
+    git=git://github.com/ABMundi/DatabaseCommands.git
+    target=bundles/Abmundi/DatabaseCommandsBundle

@@ -12,9 +12,13 @@
 
             {% block importcss %}
             {% endblock importcss %}
-            <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery/jquery-1.7.1.js')}}"></script>
-            <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0.1/jquery.mobile-1.0.1.js')}}"></script>
+            {% javascripts
+            '@FabfotoGalleryBundle/Resources/public/jquery/jquery-1.7.1.js'
+            '@FabfotoGalleryBundle/Resources/public/jquery.mobile-1.0.1/jquery.mobile-1.0.1.js'
 
+            %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
             {%block importjs %}
             {%endblock importjs%}
         </head>

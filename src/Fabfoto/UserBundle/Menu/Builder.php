@@ -29,7 +29,7 @@ class Builder extends ContainerAware
         $menu->addChild('Blog', array('route' => 'writter_blog'));
     }
     $menu->addChild('Logout', array(
-            'route' => 'fabfoto_logout',
+            'route' => 'fos_user_security_logout',
         ));
 
         // ... add more children
