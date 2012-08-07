@@ -4,17 +4,17 @@
     <head>
         <title>{% block titlepage %}Fabfoto {% endblock titlepage %}</title>
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel="stylesheet" href="{{asset('bundles/fabfotogallery/css/fabbook.css')}}" />
-            <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/jquery.mobile-1.0.1/jquery.mobile-1.0.1.min.css')}}" />
-            <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/css/ios_inspired/styles.css')}}" />
+            <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/jquery.mobile-1.1.1/jquery.mobile.custom.structure.css')}}" />
+            <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/jquery.mobile-1.1.1/jquery.mobile.custom.theme.min.css')}}" />
+            <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/jquery.mobile-1.1.1/jquery.mobile.custom.min.css')}}" />
             <link href="{{ asset('bundles/fabfotogallery/photoswipe/3.0.5/photoswipe.css')}}" type="text/css" rel="stylesheet" />
             <link href="{{ asset('bundles/fabfotogallery/photoswipe/3.0.5/jquery-mobile.css')}}" type="text/css" rel="stylesheet" />
 
             {% block importcss %}
             {% endblock importcss %}
             {% javascripts
-            '@FabfotoGalleryBundle/Resources/public/jquery/jquery-1.7.1.js'
-            '@FabfotoGalleryBundle/Resources/public/jquery.mobile-1.0.1/jquery.mobile-1.0.1.js'
+            '@FabfotoGalleryBundle/Resources/public/jquery/jquery-1.7.2.min.js'
+            '@FabfotoGalleryBundle/Resources/public/jquery.mobile-1.1.1/jquery.mobile.custom.min.js'
 
             %}
             <script type="text/javascript" src="{{ asset_url }}"></script>
@@ -26,10 +26,10 @@
     {% endblock header %}
         <body>
             <div data-role="page" {% block optionpage %}{% endblock optionpage %} data-theme="c" >
-                <div data-role="header" >
+                <div data-role="header" data-position="fixed">
                     <h1>{% block title %}Fabbook Mobile{%endblock title%}</h1>
                 </div>
-                <div data-role="content" >
+                <div data-role="content">
                     {% block content %}
                     Welcome on Fabfoto Mobile
                     {% endblock %}
@@ -38,7 +38,7 @@
                     <div data-role="navbar">
                     <ul>
                         <li><a data-iconpos="top"  data-icon="home" href="{{path('index_mobile')}}" >Home</a></li>
-                        <li><a id="tabB" data-icon="custom" href="{{path('albums_mobile')}}"rel="external">Albums</a></li>
+                        <li><a id="tabB" data-icon="custom" href="{{path('albums_mobile')}}">Albums</a></li>
                         <li><a id="tabC" data-icon="custom" href="{{path('index_blog_mobile')}}">Blog</a></li>
                         <li><a id="tabD" data-icon="custom" href="{{path('show_articles')}}"rel="external" >Classique</a></li>
                     </ul>

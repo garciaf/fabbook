@@ -3,16 +3,18 @@ CACHE MANIFEST
 # version
 
 # Style
-{{asset('bundles/fabfotogallery/css/fabbook.css')}}
-{{ asset('bundles/fabfotogallery/jquery.mobile-1.0.1/jquery.mobile-1.0.1.min.css')}}
-{{ asset('bundles/fabfotogallery/css/ios_inspired/styles.css')}}
+{{asset('bundles/fabfotogallery/jquery.mobile-1.1.1/jquery.mobile.custom.structure.css') }}
+{{ asset('bundles/fabfotogallery/jquery.mobile-1.1.1/jquery.mobile.custom.theme.min.css')}}
+{{ asset('bundles/fabfotogallery/jquery.mobile-1.1.1/jquery.mobile.custom.min.css') }}
 
-{{ asset('bundles/fabfotogallery/jquery.mobile-1.0.1/images/icons-18-white.png')}}
+# Javascript 
+{% javascripts
+'@FabfotoGalleryBundle/Resources/public/jquery/jquery-1.7.2.min.js'
+'@FabfotoGalleryBundle/Resources/public/jquery.mobile-1.1.1/jquery.mobile.custom.min.js'
 
-#Javascript
-{{ asset('bundles/fabfotogallery/jquery/jquery-1.7.1.js')}}
-{{ asset('bundles/fabfotogallery/jquery.mobile-1.0.1/jquery.mobile-1.0.1.js')}}
-
+%}
+{{ asset_url }}
+{% endjavascripts %}
 #index new
 {{ path('index_mobile') }}
 #link to each news
