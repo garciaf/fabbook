@@ -1,0 +1,95 @@
+<div>
+<h1>{{user}} </h1>
+
+</div>
+<div data-role="collapsible">
+<h2>{% trans %}user.details{% endtrans %}</h2>
+<ul data-role="listview">
+    <li>
+        {% if user.portrait.count >0 %}
+        {% set photo = user.portrait.0 %}
+            <img width="100px" src="{{ photo.webPath | imagine_filter('thumb_square')}}"/>
+        {% endif %}
+        <h1>{{user}}</h1>
+        <h2>{{user.title}}</h2>
+    </li>
+</ul>
+        <p>{{user.description | purify  }} </p>
+</div>
+
+<div data-role="collapsible">
+    <h2>Social link</h2>
+    <ul data-role="listview">
+        
+        {% if user.googleLink is not empty %}
+        <li><a title="Google plus" target="blanck" href="{{user.googleLink}}">
+                <img class="ui-li-icon" src="{{asset('bundles/fabfotogallery/image/icon/googleplus.png')}}"/>
+                Google plus
+            </a>
+        </li>
+        {% endif %}
+        {% if user.facebookLink is not empty %}
+        <li>
+            <a title="Facebook" target="blanck" href="{{user.facebookLink}}">
+                <img class="ui-li-icon" src="{{asset('bundles/fabfotogallery/image/icon/facebook.png')}}"/>
+                Facebook
+            </a>
+        </li>
+        {% endif %}
+        {% if user.gitHubLink is not empty %}
+        <li><a title="Fork me on github" target="blanck" href="{{user.gitHubLink}}">
+                <img class="ui-li-icon" src="{{asset('bundles/fabfotogallery/image/icon/github.png')}}"/>
+                Github
+            </a>
+        </li>
+        {% endif %}
+        {% if user.twitterLink is not empty %}
+        <li>
+            <a title="Follow me on twitter" target="blanck" href="{{user.twitterLink}}">
+                <img class="ui-li-icon" src="{{asset('bundles/fabfotogallery/image/icon/twitter.png')}}"/>
+                Twitter
+            </a>
+        </li>
+        {% endif %}
+        {% if user.linkedLink is not empty %}
+        <li>
+            <a title="Linked" target="blanck" href="{{user.linkedLink}}">
+                <img class="ui-li-icon" src="{{asset('bundles/fabfotogallery/image/icon/linkedin.png')}}"/>
+                Linked
+            </a>
+        </li>
+        {% endif %}
+        {% if user.viadeoLink is not empty %}
+        <li>
+            <a title="Viadeo" target="blanck" href="{{user.viadeoLink}}">
+                <img class="ui-li-icon" src="{{asset('bundles/fabfotogallery/image/icon/viadeo.png')}}"/>
+                Viadeo
+            </a>
+        </li>
+        {% endif %}
+        {% if user.email is not empty %}
+        <li>
+            <a title="Contact me" href="mailto:{{user.email}}">
+                <img class="ui-li-icon" src="{{asset('bundles/fabfotogallery/image/icon/mail.png')}}"/>
+                Mail
+            </a>
+        </li>
+        {% endif %}
+        <li>
+            <a title="Get my card on pdf" href="{{path('show_about_pdf_from', {'slug': user.slug })}}">
+                <img class="ui-li-icon" alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')}}"/>
+                Card pdf
+            </a>
+        </li>
+        <li>
+            <a title="Get my Vcard" href="{{path('show_vcard_from' , { 'slug': user.slug })}}">
+                <img class="ui-li-icon" alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/vcard.png')}}"/>
+                Vcard
+            </a>
+        <li>
+    	<div>
+            <h2>Share</h2>
+            <img alt="get my vcard" src="/{{ mopa_barcode_url("qr", vcard , true) }}"/>
+        </div>
+        </ul>
+    </div>

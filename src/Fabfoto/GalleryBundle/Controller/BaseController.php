@@ -93,7 +93,11 @@ abstract class BaseController extends Controller
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->findOneBy(array('slugblog' => $slugblog, 'isPublished' => $isPublished ));
     }
-
+    /**
+     * 
+     * @param string $tag_slug
+     * @return Tag
+     */
     protected function getTag($tag_slug)
     {
         return $this
@@ -101,7 +105,11 @@ abstract class BaseController extends Controller
                         ->getRepository('FabfotoGalleryBundle:Tag')
                         ->findOneBySlug($tag_slug);
     }
-
+    /**
+     * To get an album by slug name
+     * @param string $slug
+     * @return Album
+     */
     public function getAlbumBySlug($slug)
     {
         return $this

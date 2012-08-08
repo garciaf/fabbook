@@ -24,6 +24,21 @@ class UserController extends BaseController
                     'vcard' => $vcard
                 ));
     }
+    
+    /**
+     * @Cache(expires="tomorrow")
+     * @Route("mobile/{slug}/about", name="show_about")
+     * @ParamConverter("user", class="FabfotoUserBundle:User")
+     */
+    public function showMobileAboutAction(User $user)
+    {
+        $vcard = $this->getVcardOfUser($user);
+        
+        return $this->render('FabfotoGalleryBundle:Mobile:ShowAbout.html.twig', array(
+                    'user' => $user,
+                    'vcard' => $vcard
+                ));
+    }
 
     /**
      * @Cache(expires="tomorrow")

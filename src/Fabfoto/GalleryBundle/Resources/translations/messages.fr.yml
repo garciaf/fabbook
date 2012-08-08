@@ -22,3 +22,5 @@ message:
   send:
     success: Votre message a bien été envoyé
     fail: erreur dans le formulaire d'envoie
+user:
+  details: Description

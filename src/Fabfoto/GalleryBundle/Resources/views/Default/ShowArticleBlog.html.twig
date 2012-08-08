@@ -8,9 +8,11 @@
 <div  class="row">
 
     <div class="span12 columns">
+        {% if article.cover is not null %}
         <a href="#" class="thumbnail">
-            <img src="{{article.cover.webpath| imagine_filter('cover') }}" width="100%" alt="{{article.cover}}" />
+                <img src="{{article.cover.webpath| apply_filter('cover') }}" width="100%" alt="{{article.cover}}" />
         </a>
+        {% endif %}
     </div>
 </div>
 

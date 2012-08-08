@@ -24,12 +24,16 @@ class AdminMenu extends ContainerAware
      */
     public function createAdminMenu(Request $request)
     {
+        $currentUser = $this->container->get('security.context')->getToken()->getUser();
         $menu = $this->factory->createItem('root');
 
         //$menu->setCurrentUri($request->getRequestUri());
 
         $menu->setchildrenAttributes(array('id' => 'main_navigation', 'class'=>'menu'));
 
+        //Me
+        $me = $menu->addChild((string)$currentUser, array('route' => 'user_show'));
+        
         //Media part
         $media = $menu->addChild('Media', array('uri' => '#'));
         $media->setLinkAttributes(array('class'=>'sub main'));
@@ -47,8 +51,7 @@ class AdminMenu extends ContainerAware
         $blog->addChild('Comment', array('route' => 'Fabfoto_AdminBundle_Comment_list'));
         $blog->addChild('Messages', array('route' => 'Fabfoto_AdminBundle_Message_list'));
 
-        //Me
-        $me = $menu->addChild('You', array('route' => 'user_show'));
+        
         //User Part
         $user = $menu->addChild('User', array('route' => 'Fabfoto_AdminBundle_User_list'));
         $user->addChild('Portrait', array('route' => 'Fabfoto_AdminBundle_Portrait_list'));

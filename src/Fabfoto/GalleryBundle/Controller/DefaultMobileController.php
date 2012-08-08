@@ -19,7 +19,7 @@ use Fabfoto\GalleryBundle\Entity\ArticleBlog as ArticleBlog;
 class DefaultMobileController extends BaseController
 {
     /**
-     * @Cache(expires="+6 hours")
+     * @Cache(expires="tomorrow")
      * @Route("/", name="index_mobile")
      * @Template()
      */
@@ -49,7 +49,7 @@ class DefaultMobileController extends BaseController
                 ));
     }
     /**
-     * @Cache(expires="+1 hours")
+     * @Cache(expires="tomorrow")
      * @Route("/albums", name="albums_mobile")
      * @Template()
      */

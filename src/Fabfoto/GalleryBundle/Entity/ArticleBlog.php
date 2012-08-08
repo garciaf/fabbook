@@ -321,14 +321,7 @@ class ArticleBlog
      */
     public function getCover()
     {
-        if ($this->cover) {
-            return $this->cover;
-        } else {
-            $defaultCover = new Cover();
-            $defaultCover->setLocation(Cover::nameDefaultLocation);
-
-            return $defaultCover;
-        }
+        return $this->cover;
     }
 
     /**
