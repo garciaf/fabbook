@@ -42,15 +42,15 @@ class PictureImporter
                     ->getRepository('FabfotoGalleryBundle:Album')
                     ->findOneByName($albumName);
         }
-        
+
         if (!$album) {
             $album = $newAlbum;
-        }else{
+        } else {
             $album->setComment($newAlbum->getComment());
             $album->setCategory($newAlbum->getCategory());
         }
         $this->em->persist($album);
-        
+
         $index = 0;
         $finder = new Finder();
         $finder->files()->in($this->incomingFolder);

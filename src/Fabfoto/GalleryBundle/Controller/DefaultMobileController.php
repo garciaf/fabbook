@@ -114,7 +114,7 @@ class DefaultMobileController extends BaseController
      */
     public function showBlogArticleAction(ArticleBlog $article)
     {
-        if(!$article->getIsPublished()){
+        if (!$article->getIsPublished()) {
             $this->createNotFoundException();
         }
 

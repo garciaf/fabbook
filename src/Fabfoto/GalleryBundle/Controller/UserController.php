@@ -18,13 +18,13 @@ class UserController extends BaseController
     public function showAboutAction(User $user)
     {
         $vcard = $this->getVcardOfUser($user);
-        
+
         return $this->render('FabfotoGalleryBundle:Default:ShowAbout.html.twig', array(
                     'user' => $user,
                     'vcard' => $vcard
                 ));
     }
-    
+
     /**
      * @Cache(expires="tomorrow")
      * @Route("mobile/{slug}/about", name="show_about")
@@ -33,7 +33,7 @@ class UserController extends BaseController
     public function showMobileAboutAction(User $user)
     {
         $vcard = $this->getVcardOfUser($user);
-        
+
         return $this->render('FabfotoGalleryBundle:Mobile:ShowAbout.html.twig', array(
                     'user' => $user,
                     'vcard' => $vcard
@@ -48,6 +48,7 @@ class UserController extends BaseController
     public function showUserAction(User $user)
     {
         $vcard = $this->getVcardOfUser($user);
+
         return $this->render('FabfotoGalleryBundle:User:ShowAbout.html.twig', array(
                     'user' => $user,
                     'vcard' => $vcard

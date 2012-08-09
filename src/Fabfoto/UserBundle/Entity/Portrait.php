@@ -141,7 +141,6 @@ class Portrait extends AbstractImage
         return $this->user;
     }
 
-
     /**
      * Set location
      *

@@ -56,9 +56,10 @@ class DefaultController extends BaseController
     public function showBlogArticleAction(ArticleBlog $article)
     {
         //If the artcle is not published you can not access to it
-        if(!$article->getIsPublished()){
+        if (!$article->getIsPublished()) {
             $this->createNotFoundException();
         }
+
         return $this->render('FabfotoGalleryBundle:Default:ShowArticleBlog.html.twig', array(
                     'article' => $article
                 ));

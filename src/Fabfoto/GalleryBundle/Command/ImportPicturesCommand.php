@@ -50,7 +50,7 @@ class ImportPicturesCommand extends ContainerAwareCommand
         $newAlbum = new Album();
         $newAlbum->setName($albumName);
         $newAlbum->setComment($albumName);
-        
+
         $nbImported = $this->getContainer()->get('fabfoto_gallery.picture_importer')->import($albumName);
         $output->writeLn(sprintf(' - Import finished %d elements imported',
                         $nbImported));

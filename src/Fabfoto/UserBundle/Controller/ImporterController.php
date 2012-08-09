@@ -10,31 +10,32 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Fabfoto\UserBundle\Entity\Portrait;
-use Fabfoto\UserBundle\Form\Type\PortraitType;
 
 /**
  * Portrait controller.
  *
  * @Route("/admin/import")
  */
-class ImporterController extends Controller {
-
+class ImporterController extends Controller
+{
     /**
      * Lists all Portrait entities.
      *
      * @Route("/", name="import_index")
      * @Template()
      */
-    public function indexAction() {
+    public function indexAction()
+    {
         $files = $this->get('fabfoto_gallery.picture_importer')->getFileToImport();
         $album = new Album();
         $form = $this->createImportForm($album);
+
         return $this->render('FabfotoUserBundle:Import:index.html.twig', array(
                     'files' => $files,
                     'form' => $form->createView())
                 );
     }
-    
+
     /**
      * import pictures.
      *
@@ -48,10 +49,11 @@ class ImporterController extends Controller {
         $album = new Album();
         $form    = $this->createImportForm($album);
         $form->bindRequest($request);
-        
+
         if ($form->isValid()) {
             try {
             $this->get('fabfoto_gallery.picture_importer')->import($album);
+
             return $this->redirect($this->generateUrl('import_index'));
             } catch (\Exception $e) {
                 $this->get('session')->setFlash('error',  $e->getMessage() );
@@ -64,11 +66,11 @@ class ImporterController extends Controller {
                     'form' => $form->createView())
                 );
     }
-    
-    protected function createImportForm($album){
-        
+
+    protected function createImportForm($album)
+    {
         return $this->createForm(new AlbumType(), $album);
-        
+
     }
 
 }

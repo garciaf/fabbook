@@ -96,7 +96,7 @@ class User extends BaseUser
      * @ORM\Column(name="twitterLink", type="string", length=255, nullable=true)
      */
     private $twitterLink;
-    
+
     /**
      * @var string $viadeoLink
      *
@@ -110,14 +110,14 @@ class User extends BaseUser
      * @ORM\Column(name="phone", type="string", length=255, nullable=true)
      */
     private $phone;
-    
+
     /**
      * @var string $firstname
      *
      * @ORM\Column(name="mobile", type="string", length=255, nullable=true)
      */
     private $mobile;
-    
+
     /**
      * @var datetime $updatedAt
      *
@@ -125,7 +125,7 @@ class User extends BaseUser
      * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
-    
+
     public function __toString()
     {
         return $this->getFirstname().' '.$this->getName();
@@ -420,7 +420,7 @@ class User extends BaseUser
     /**
      * Get viadeoLink
      *
-     * @return string 
+     * @return string
      */
     public function getViadeoLink()
     {
@@ -440,7 +440,7 @@ class User extends BaseUser
     /**
      * Get mobile
      *
-     * @return string 
+     * @return string
      */
     public function getMobile()
     {
@@ -460,7 +460,7 @@ class User extends BaseUser
     /**
      * Get updatedAt
      *
-     * @return datetime 
+     * @return datetime
      */
     public function getUpdatedAt()
     {

@@ -94,8 +94,8 @@ abstract class BaseController extends Controller
                 ->findOneBy(array('slugblog' => $slugblog, 'isPublished' => $isPublished ));
     }
     /**
-     * 
-     * @param string $tag_slug
+     *
+     * @param  string $tag_slug
      * @return Tag
      */
     protected function getTag($tag_slug)
@@ -107,7 +107,7 @@ abstract class BaseController extends Controller
     }
     /**
      * To get an album by slug name
-     * @param string $slug
+     * @param  string $slug
      * @return Album
      */
     public function getAlbumBySlug($slug)
@@ -177,15 +177,17 @@ abstract class BaseController extends Controller
             return false;
         }
     }
-    
-    protected function getVcardOfUser(User $user){
+
+    protected function getVcardOfUser(User $user)
+    {
         return $this->renderView('FabfotoGalleryBundle:Vcard:ShowAbout.vcf.twig', array(
             'user' => $user
                 ));
-        
+
     }
-    
-    protected function getCurrentUser(){
+
+    protected function getCurrentUser()
+    {
         return $this->get('security.context')->getToken()->getUser();
     }
 }

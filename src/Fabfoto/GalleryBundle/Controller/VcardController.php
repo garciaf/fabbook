@@ -30,7 +30,7 @@ class VcardController extends BaseController
             $response->headers->set('Content-Disposition', 'attachment;filename="'.$user->getSlug().'Vcard.vcf"');
 
             $vcard= $this->getVcardOfUser($user);
-            
+
             $response->setContent($vcard);
 
             return $response;

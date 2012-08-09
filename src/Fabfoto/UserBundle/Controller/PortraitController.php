@@ -93,7 +93,7 @@ class PortraitController extends Controller
         $form->bindRequest($request);
 
         if ($form->isValid()) {
-            try{
+            try {
             $currentUser = $this->get('security.context')->getToken()->getUser();
             $entity->setUser($currentUser);
             $em = $this->getDoctrine()->getEntityManager();
@@ -103,8 +103,7 @@ class PortraitController extends Controller
 
             return $this->redirect($this->generateUrl('user_portrait_show',
                                     array('id' => $entity->getId())));
-            }
-            catch (Exception $e){
+            } catch (Exception $e) {
                 $this->get('session')->setFlash('error',  $this->get('translator')->trans("object.saved.error", array(), 'Admingenerator') );
             }
         }
