@@ -53,7 +53,7 @@ class ImporterController extends Controller
         if ($form->isValid()) {
             try {
             $this->get('fabfoto_gallery.picture_importer')->import($album);
-
+            $this->get('session')->setFlash('success', $this->get('translator')->trans("object.saved.success", array(), 'Admingenerator') );
             return $this->redirect($this->generateUrl('import_index'));
             } catch (\Exception $e) {
                 $this->get('session')->setFlash('error',  $e->getMessage() );
