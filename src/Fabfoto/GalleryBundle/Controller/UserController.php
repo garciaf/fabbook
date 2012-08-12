@@ -27,7 +27,7 @@ class UserController extends BaseController
 
     /**
      * @Cache(expires="tomorrow")
-     * @Route("mobile/{slug}/about", name="show_about")
+     * @Route("mobile/{slug}/about", name="show_about_mobile")
      * @ParamConverter("user", class="FabfotoUserBundle:User")
      */
     public function showMobileAboutAction(User $user)

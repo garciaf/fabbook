@@ -35,10 +35,10 @@ assetic:
     read_from:      %kernel.root_dir%/../www
     filters:
         cssrewrite: ~
-        # closure:
-        #     jar: %kernel.root_dir%/java/compiler.jar
-        # yui_css:
-        #     jar: %kernel.root_dir%/java/yuicompressor-2.4.2.jar
+        yui_css:
+            jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar"
+        yui_js:
+            jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar"
 
 # Doctrine Configuration
 doctrine:
@@ -76,12 +76,6 @@ fabfoto_gallery:
     nbArticle: 4
     nbAlbum: 3
 
-
-knp_last_tweets:
-    fetcher:
-        driver: api
-        options:
-            cache_name: knp_last_tweets
 avalanche_imagine:
     source_root:  %kernel.root_dir%/../www
     web_root:     %kernel.root_dir%/../www
