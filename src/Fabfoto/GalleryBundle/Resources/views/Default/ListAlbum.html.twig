@@ -1,12 +1,15 @@
 {% for album in albums%}
 <a href="{{path('show_album', {'slug':album.slug})}}" >
     {% if album.isCategorySlug(slugNoteCategory) %}
-    <div class="album_sum_up noteBook" style="background: url({{ album.picturecover.webpath | imagine_filter('cover') }})" >
+    <div class="album_sum_up noteBook">
     {% else %}
-    <div class="album_sum_up" style="background: url({{ album.picturecover.webpath | imagine_filter('cover') }})" >
+    <div class="album_sum_up">
     {% endif %}
-        <h1 class="album_title">{{album.name}}</h1>
-        <p class="album_comment">{{album.comment}}</p>
+        <img alt="{{album.name}}" src="{{ album.picturecover.webpath | imagine_filter('cover') }}" />
+        <div class="album_description">
+            <h1 class="album_title">{{album.name}}</h1>
+            <p class="album_comment">{{album.comment}}</p>
+        </div>
     </div>
 </a>
 
