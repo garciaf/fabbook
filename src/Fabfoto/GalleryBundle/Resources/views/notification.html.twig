@@ -1,0 +1,12 @@
+{% if app.session.flashes %}
+<div id="alert">
+    {% for type, message in app.session.flashes%}
+    <div class="alert alert-block alert-{{type}} fade in">
+        <a class="close" data-dismiss="alert">×</a>
+        <div class="wrap">
+            {{message}}
+        </div>
+    </div>
+    {% endfor%}
+</div>
+{% endif%}
