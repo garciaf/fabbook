@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
-use Fabfoto\GalleryBundle\Entity\expiresAlbum as Album;
+use Fabfoto\GalleryBundle\Entity\Album as Album;
 use Fabfoto\GalleryBundle\Entity\Tag as Tag;
 use Fabfoto\GalleryBundle\Entity\ArticleBlog as ArticleBlog;
 use Fabfoto\GalleryBundle\Entity\Category as Category;
@@ -76,7 +76,7 @@ class DefaultController extends BaseController {
     }
 
     /**
-     * @Cache(expires="+ 1 hours")
+     * @Cache(expires="tomorrow")
      * @Route("/{slug}/tag/blogarticle", name="show_articles_blog_by_tags")
      * @ParamConverter("tag", class="FabfotoGalleryBundle:Tag")
      */
@@ -90,7 +90,7 @@ class DefaultController extends BaseController {
     }
 
     /**
-     * @Cache(expires="+1 hours")
+     * @Cache(expires="tomorrow")
      * @Route("albums", name="index_album")
      */
     public function indexAlbumsAction() {
