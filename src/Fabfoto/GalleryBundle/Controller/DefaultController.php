@@ -19,20 +19,31 @@ class DefaultController extends BaseController {
     public function notificationAction() {
         return $this->render('FabfotoGalleryBundle::notification.html.twig');
     }
-
+    
+    public function lastContentAction($noAlbum = false, $noBlog = false){
+        $articlesBlog = array();
+        $lastAlbums = array();
+        if(!$noBlog){
+            $articlesBlog = $this->getBlogs($this->container->getParameter('nbArticle'));
+        }
+        if(!$noAlbum){
+            $lastAlbums = $this->getAlbums($this->container->getParameter('nbAlbum'));
+        }
+        return $this->render('FabfotoGalleryBundle:Default:LastContent.html.twig', array(
+                    'lastBlogs' => $articlesBlog,
+                    'lastAlbums' => $lastAlbums
+                ));
+    }
+    
     /**
      * @Cache(expires="tomorrow")
      * @Route("/news", name="show_articles")
      */
     public function showHomePageAction() {
         $articlesQuery = $this->getNewsQuery();
-        $articlesBlog = $this->getBlogs($this->container->getParameter('nbArticle'));
-        $albums = $this->getAlbums($this->container->getParameter('nbAlbum'));
 
         return $this->render('FabfotoGalleryBundle:Default:Home.html.twig', array(
                     'articles' => $this->getPager($articlesQuery),
-                    'lastBlogs' => $articlesBlog,
-                    'lastAlbums' => $albums
                 ));
     }
 
@@ -43,11 +54,8 @@ class DefaultController extends BaseController {
     public function indexBlogsAction() {
         $articlesBlogsQuery = $this->getBlogsQuery();
 
-        $articlesBlog = $this->getBlogs($this->container->getParameter('nbArticle'));
-
         return $this->render('FabfotoGalleryBundle:Default:IndexArticleBlog.html.twig', array(
                     'ArticlesBlogs' => $this->getPager($articlesBlogsQuery),
-                    'lastBlogs' => $articlesBlog
                 ));
     }
 
