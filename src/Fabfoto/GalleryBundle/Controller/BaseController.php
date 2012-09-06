@@ -133,7 +133,7 @@ abstract class BaseController extends Controller
      * @param  type  $orderByName
      * @return type
      */
-    protected function getAlbumPicture(Album $album= null, $isBackground = false, $orderByName = false)
+    protected function getAlbumPicture(Album $album= null, $isBackground = false, $orderByName = true)
     {
 
         $query = $this
