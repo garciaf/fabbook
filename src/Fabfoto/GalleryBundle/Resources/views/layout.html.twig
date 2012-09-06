@@ -114,28 +114,17 @@
             </div>
         </div>
         <div class="container" id={% block stylePage %}"page"{% endblock stylePage%}>
-             {% if app.session.flashes %}
-             <div id="alert">
-                               {% for type, message in app.session.flashes%}
-                               <div class="alert alert-block alert-{{type}} fade in">
-                               <a class="close" data-dismiss="alert">×</a>
-                               <div class="wrap">
-                                   {{message}}
-                               </div>
-                           </div>
-                           {% endfor%}
-                       </div>
-                       {% endif%}
-                       {% block content %}lipso lium{%endblock%}
-                       <div id="footer">
-                           <p id="legal">
-                               <a class="userInfo" href="{{path('fos_user_registration_register')}}" rel="tooltip" title="{% trans %}register{% endtrans %}"><i class="icon-book"></i></a>
-                               <a class="userInfo" href="{{path('user_show')}}" rel="tooltip" title="{% trans %}connect{% endtrans %}"><i class="icon-user"></i></a>
-                           </p>
-                           {% block rss %}
-                           <a  href="{{path('rss_news')}}"><img alt="rss_image" id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
-                           {%endblock rss%}
-                       </div>
+        {% render 'FabfotoGalleryBundle:Default:notification' with {}, {'standalone': true} %}
+        {% block content %}lipso lium{%endblock%}
+           <div id="footer">
+               <p id="legal">
+                   <a class="userInfo" href="{{path('fos_user_registration_register')}}" rel="tooltip" title="{% trans %}register{% endtrans %}"><i class="icon-book"></i></a>
+                   <a class="userInfo" href="{{path('user_show')}}" rel="tooltip" title="{% trans %}connect{% endtrans %}"><i class="icon-user"></i></a>
+               </p>
+               {% block rss %}
+               <a  href="{{path('rss_news')}}"><img alt="rss_image" id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
+               {%endblock rss%}
+           </div>
         </div>
 
         <script>

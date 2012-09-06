@@ -6,7 +6,7 @@ sensio_framework_extra:
   view:
     annotations: false
 framework:
-    #esi:             ~
+    esi: { enabled: true }
     translator:      { fallback: %locale% }
     secret:          %secret%
     charset:         UTF-8
