@@ -12,6 +12,7 @@ news: news
 last.article: last articles
 connect: connect to your account
 the: the
+by: By
 from:
   fabbook: from fabbook
   tweeter: from tweeter
@@ -24,3 +25,4 @@ message:
     fail: something went wron with your message
 user:
   details: Description
+  

@@ -13,9 +13,7 @@ use Fabfoto\GalleryBundle\Entity\ArticleBlog as ArticleBlog;
 use Fabfoto\GalleryBundle\Entity\Category as Category;
 
 class DefaultController extends BaseController {
-    /**
-     * @Cache(public=false, maxage= 1)
-     */
+
     public function notificationAction() {
         return $this->render('FabfotoGalleryBundle::notification.html.twig');
     }
@@ -36,7 +34,7 @@ class DefaultController extends BaseController {
     }
     
     /**
-     * @Cache(expires="+1 week")
+     * @Cache(expires="+1 week", public=true)
      * @Route("/news", name="show_articles")
      */
     public function showHomePageAction() {
@@ -48,7 +46,7 @@ class DefaultController extends BaseController {
     }
 
     /**
-     * @Cache(expires="tomorrow")
+     * @Cache(expires="tomorrow", public=true)
      * @Route("blog", name="index_blog")
      */
     public function indexBlogsAction() {
@@ -60,7 +58,7 @@ class DefaultController extends BaseController {
     }
 
     /**
-     * @Cache(expires="tomorrow")
+     * @Cache(expires="tomorrow", public=true)
      * @Route("/{slugblog}/blogarticle", name="show_article_blog")
      * @ParamConverter("article", class="FabfotoGalleryBundle:ArticleBlog")
      */
@@ -76,7 +74,7 @@ class DefaultController extends BaseController {
     }
 
     /**
-     * @Cache(expires="tomorrow")
+     * @Cache(expires="tomorrow", public=true)
      * @Route("/{slug}/tag/blogarticle", name="show_articles_blog_by_tags")
      * @ParamConverter("tag", class="FabfotoGalleryBundle:Tag")
      */
@@ -90,7 +88,7 @@ class DefaultController extends BaseController {
     }
 
     /**
-     * @Cache(expires="tomorrow")
+     * @Cache(expires="tomorrow", public=true)
      * @Route("albums", name="index_album")
      */
     public function indexAlbumsAction() {
@@ -100,7 +98,7 @@ class DefaultController extends BaseController {
     }
 
     /**
-     * @Cache(expires="tomorrow")
+     * @Cache(expires="tomorrow", public=true)
      * @var $album Album
      * @var $category Category
      * @Route("{slug}/album", name="show_album")

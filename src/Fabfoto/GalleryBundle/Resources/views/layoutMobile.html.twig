@@ -4,11 +4,15 @@
     <head>
         <title>{% block titlepage %}Fabbook Mobile{% endblock titlepage %}</title>
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/jquery.mobile-1.1.1/jquery.mobile.custom.structure.css')}}" />
-            <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/jquery.mobile-1.1.1/jquery.mobile.custom.theme.min.css')}}" />
-            <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/jquery.mobile-1.1.1/jquery.mobile.custom.min.css')}}" />
-            <link href="{{ asset('bundles/fabfotogallery/photoswipe/3.0.5/photoswipe.css')}}" type="text/css" rel="stylesheet" />
-            <link href="{{ asset('bundles/fabfotogallery/photoswipe/3.0.5/jquery-mobile.css')}}" type="text/css" rel="stylesheet" />
+            {% stylesheets
+            'bundles/fabfotogallery/jquery.mobile-1.1.1/jquery.mobile.custom.structure.css'
+            'bundles/fabfotogallery/jquery.mobile-1.1.1/jquery.mobile.custom.theme.min.css'
+            'bundles/fabfotogallery/jquery.mobile-1.1.1/jquery.mobile.custom.min.css'
+            'bundles/fabfotogallery/photoswipe/3.0.5/photoswipe.css'
+            'bundles/fabfotogallery/photoswipe/3.0.5/jquery-mobile.css'
+            %}
+            <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+            {% endstylesheets %}
 
             {% block importcss %}
             {% endblock importcss %}

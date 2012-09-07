@@ -27,7 +27,7 @@ class ArticleBlogController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $curentUser = $this->get('security.context')->getToken()->getUser();
         $entities = $em->getRepository('FabfotoGalleryBundle:ArticleBlog')
-                ->findByAuthorSlug($curentUser->getSlug());
+                ->findByAuthorUser($curentUser->getId());
 
         return array('entities' => $entities);
     }
@@ -87,8 +87,7 @@ class ArticleBlogController extends Controller
         if ($form->isValid()) {
             try {
                 $curentUser = $this->get('security.context')->getToken()->getUser();
-                $entity->setAuthor((string) $curentUser);
-                $entity->setAuthorSlug($curentUser->getSlug());
+                $entity->setAuthorUser($curentUser);
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($entity);
                 $em->flush();
@@ -119,7 +118,7 @@ class ArticleBlogController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $curentUser = $this->get('security.context')->getToken()->getUser();
         $entity = $em->getRepository('FabfotoGalleryBundle:ArticleBlog')
-                ->findOneBy(array('id' => $id, 'authorSlug' => $curentUser->getSlug()));
+                ->findOneBy(array('id' => $id, 'authorUser' => $curentUser->getId()));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find ArticleBlog entity.');
@@ -158,8 +157,7 @@ class ArticleBlogController extends Controller
         if ($editForm->isValid()) {
             try {
                 $curentUser = $this->get('security.context')->getToken()->getUser();
-                $entity->setAuthor((string) $curentUser);
-                $entity->setAuthorSlug($curentUser->getSlug());
+                $entity->setAuthorUser($curentUser);
                 $em->persist($entity);
                 $em->flush();
                 $this->get('session')->setFlash('success', $this->get('translator')->trans("object.saved.success", array(), 'Admingenerator') );

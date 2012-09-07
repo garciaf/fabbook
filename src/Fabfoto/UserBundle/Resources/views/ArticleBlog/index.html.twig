@@ -24,7 +24,7 @@
             <td>{% if entity.updatedAt %}{{ entity.updatedAt|date('Y-m-d H:i:s') }}{% endif%}</td>
             <td>{{ entity.title }}</td>
             <td>{{ entity.subtitle }}</td>
-            <td>{{ entity.author }}</td>
+            <td>{{ entity.authorUser }}</td>
             <td class="actions">
                 <a class="show" href="{{ path('writter_blog_show', { 'id': entity.id }) }}"></a>
                 <a class="edit" href="{{ path('writter_blog_edit', { 'id': entity.id }) }}"></a>
