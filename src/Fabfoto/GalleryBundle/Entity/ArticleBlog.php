@@ -10,6 +10,8 @@ use Doctrine\ORM\Mapping\JoinTable as JoinTable;
 use Doctrine\ORM\Mapping\ManyToMany as ManyToMany;
 use Doctrine\ORM\Mapping\ManyToOne as ManyToOne;
 use Fabfoto\GalleryBundle\Entity\Cover as Cover;
+use Fabfoto\UserBundle\Entity\User as User;
+
 
 /**
  * Fabfoto\GalleryBundle\Entity\ArticleBlog
@@ -71,19 +73,10 @@ class ArticleBlog
     private $cover;
 
     /**
-     * @var string $author
-     *
-     * @ORM\Column(name="author", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Fabfoto\UserBundle\Entity\User")
      */
-    private $author;
-
-    /**
-     * @var string $author
-     *
-     * @ORM\Column(name="authorSlug", type="string", length=255)
-     */
-    private $authorSlug;
-
+    private $authorUser;
+    
      /**
       *
       * @ORM\ManyToMany(targetEntity="Tag", inversedBy="articles")
@@ -265,46 +258,6 @@ class ArticleBlog
     }
 
     /**
-     * Set authorSlug
-     *
-     * @param string $authorSlug
-     */
-    public function setAuthorSlug($authorSlug)
-    {
-        $this->authorSlug = $authorSlug;
-    }
-
-    /**
-     * Get authorSlug
-     *
-     * @return string
-     */
-    public function getAuthorSlug()
-    {
-        return $this->authorSlug;
-    }
-
-    /**
-     * Set author
-     *
-     * @param string $author
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-    }
-
-    /**
-     * Get author
-     *
-     * @return string
-     */
-    public function getAuthor()
-    {
-        return $this->author;
-    }
-
-    /**
      * Set cover
      *
      * @param Fabfoto\GalleryBundle\Entity\Cover $cover
@@ -342,5 +295,25 @@ class ArticleBlog
     public function getIsPublished()
     {
         return $this->isPublished;
+    }
+
+    /**
+     * Set authorUser
+     *
+     * @param Fabfoto\GalleryBundle\Entity\User $authorUser
+     */
+    public function setAuthorUser(User $authorUser)
+    {
+        $this->authorUser = $authorUser;
+    }
+
+    /**
+     * Get authorUser
+     *
+     * @return Fabfoto\GalleryBundle\Entity\User 
+     */
+    public function getAuthorUser()
+    {
+        return $this->authorUser;
     }
 }
