@@ -34,11 +34,14 @@ assetic:
     use_controller: false
     read_from:      %kernel.root_dir%/../www
     filters:
-        cssrewrite: ~
+        cssrewrite: 
+          apply_to: "\.css$"
         yui_css:
             jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar"
+            apply_to: "\.css$"
         yui_js:
             jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar"
+            apply_to: "\.js$"
 
 # Doctrine Configuration
 doctrine:

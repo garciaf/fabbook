@@ -5,22 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block metainfo %}{% endblock metainfo %}
         <title> {% block title %}Fabbook{%endblock title%}</title>
-            <!-- Le styles -->
-
+        <!-- Le styles -->
         {%block importcss %}{%endblock importcss %}
         {% stylesheets
         '@FabfotoGalleryBundle/Resources/public/css/style.css'
         '@FOSCommentBundle/Resources/assets/css/comments.css'
-        '@FabfotoGalleryBundle/Resources/public/vegas/jquery.vegas.css'
-        filter='yui_css'
+        'bundles/fabfotogallery/vegas/jquery.vegas.css'
+        'bundles/fabfotogallery/bootstrap/css/bootstrap.css'
+        '@FabfotoGalleryBundle/Resources/public/bootstrap/css/bootstrap-responsive.css'
+        
         %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
         {% endstylesheets %}
-        <!-- Le styles -->
-        <link href="{{ asset('bundles/fabfotogallery/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
-        <link href="{{ asset('bundles/fabfotogallery/bootstrap/css/bootstrap-responsive.css')}}" rel="stylesheet">
-
-
+        
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -29,13 +26,10 @@
         '@FabfotoGalleryBundle/Resources/public/jquery/jquery-1.7.2.min.js'
         '@FabfotoGalleryBundle/Resources/public/vegas/jquery.vegas.js'
         '@FabfotoGalleryBundle/Resources/public/bootstrap/js/bootstrap.min.js'
-         filter='yui_js'
         %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
-        <link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/vegas/jquery.vegas.css')}}"/>
         <link rel="icon" type="image/png" href="{{ asset('bundles/fabfotogallery/image/icon/iconemain.png')}}">
-
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
