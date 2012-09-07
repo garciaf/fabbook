@@ -8,7 +8,7 @@
     <li>
         {% if user.portrait.count >0 %}
         {% set photo = user.portrait.0 %}
-            <img width="100px" src="{{ photo.webPath | imagine_filter('thumb_square')}}"/>
+            <img width="100px" src="{{ photo.webPath | apply_filter('thumb_square')}}"/>
         {% endif %}
         <h1>{{user}}</h1>
         <h2>{{user.title}}</h2>

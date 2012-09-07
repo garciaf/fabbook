@@ -29,7 +29,7 @@
         <tr>
             <td>{{ file.fileName }}</td>
             <td>{% if file.aTime %}{{ file.aTime|date('Y-m-d H:i:s') }}{% endif%}</td>
-            <td><img src="{{ file.webPath | imagine_filter('thumb_square') }}"/></td>
+            <td><img src="{{ file.webPath | apply_filter('thumb_square') }}"/></td>
         </tr>
         {% endfor %}
     </tbody>

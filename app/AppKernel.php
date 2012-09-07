@@ -37,7 +37,7 @@ class AppKernel extends Kernel
             new FOS\CommentBundle\FOSCommentBundle(),
             new Exercise\HTMLPurifierBundle\ExerciseHTMLPurifierBundle(),
             new Fabfoto\I18nBundle\FabfotoI18nBundle(),
-	    new Liip\ImagineBundle\LiipImagineBundle(),
+	    //new Liip\ImagineBundle\LiipImagineBundle(),
             new Fabfoto\TrainTimingBundle\FabfotoTrainTimingBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new FBK\MobileDetectorBundle\FBKMobileDetectorBundle(),

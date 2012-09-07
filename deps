@@ -83,10 +83,6 @@
     target=imagine
     version=v0.2.0
 
-[LiipImagineBundle]
-    git=http://github.com/liip/LiipImagineBundle.git
-    target=bundles/Liip/ImagineBundle
-
 [AvalancheImagineBundle]
     git=git://github.com/avalanche123/AvalancheImagineBundle.git
     target=bundles/Avalanche/Bundle/ImagineBundle
@@ -102,13 +98,7 @@
       
 [KnpLastTweetsBundles]
       git=git://github.com/KnpLabs/KnpLastTweetsBundle.git
-      target=/bundles/Knp/Bundle/LastTweetsBundle
-
-[Buzz]
-      git=git://github.com/kriswallsmith/Buzz.git
-      target=buzz
-      version=origin/v0.5
-            
+      target=/bundles/Knp/Bundle/LastTweetsBundle 
         
 [WhiteOctoberTCPDFBundle]
     git=git://github.com/whiteoctober/WhiteOctoberTCPDFBundle.git

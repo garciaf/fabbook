@@ -5,7 +5,7 @@
     {% else %}
     <div class="album_sum_up">
     {% endif %}
-        <img alt="{{album.name}}" src="{{ album.picturecover.webpath | imagine_filter('cover') }}" />
+        <img alt="{{album.name}}" src="{{ album.picturecover.webpath | apply_filter('cover') }}" />
         <div class="album_description">
             <h1 class="album_title">{{album.name}}</h1>
             <p class="album_comment">{{album.comment}}</p>

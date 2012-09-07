@@ -5,7 +5,7 @@
   delay:8000,
   backgrounds:[
 {% for background in backgrounds %}
-    { src:'{{background.webpath | imagine_filter("background") }}' , fade:4000 },
+    { src:'{{background.webpath | apply_filter("background") }}' , fade:4000 },
 {% endfor %}
 
   ]
@@ -13,7 +13,7 @@
 {% endif %}
 {% if backgrounds.count == 1  %}
 $.vegas({
-  src:'{{backgrounds[0].webpath}}'
+  src:'{{backgrounds[0].webpath | apply_filter("background")}}'
 });
 {% endif %}
 </script>

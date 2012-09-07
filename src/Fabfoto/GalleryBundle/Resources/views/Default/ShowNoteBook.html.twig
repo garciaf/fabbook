@@ -40,7 +40,7 @@
 </div>
 <div id="magazine">
         {% for picture in pictures%}
-        <div style="background-image:url({{picture.webpath | imagine_filter('page')}});"></div>
+        <div style="background-image:url({{picture.webpath | apply_filter('page')}});"></div>
         {% endfor %}
 </div>
 

@@ -36,7 +36,7 @@ class DefaultController extends BaseController {
     }
     
     /**
-     * @Cache(expires="tomorrow")
+     * @Cache(expires="+1 week")
      * @Route("/news", name="show_articles")
      */
     public function showHomePageAction() {
