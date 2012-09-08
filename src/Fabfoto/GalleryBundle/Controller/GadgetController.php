@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class GadgetController extends Controller
 {
     /**
-     * @Cache(expires="tomorrow")
+     * @Cache(expires="+1 week", public=true)
      * @Route("/gadget/list", name="gadget_index")
      */
     public function gadgetListAction()

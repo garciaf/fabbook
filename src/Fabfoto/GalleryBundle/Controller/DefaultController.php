@@ -46,7 +46,7 @@ class DefaultController extends BaseController {
     }
 
     /**
-     * @Cache(expires="tomorrow", public=true)
+     * @Cache(expires="+1 week", public=true)
      * @Route("blog", name="index_blog")
      */
     public function indexBlogsAction() {
@@ -58,7 +58,7 @@ class DefaultController extends BaseController {
     }
 
     /**
-     * @Cache(expires="tomorrow", public=true)
+     * @Cache(expires="+1 week", public=true)
      * @Route("/{slugblog}/blogarticle", name="show_article_blog")
      * @ParamConverter("article", class="FabfotoGalleryBundle:ArticleBlog")
      */
@@ -74,7 +74,7 @@ class DefaultController extends BaseController {
     }
 
     /**
-     * @Cache(expires="tomorrow", public=true)
+     * @Cache(expires="+1 week", public=true)
      * @Route("/{slug}/tag/blogarticle", name="show_articles_blog_by_tags")
      * @ParamConverter("tag", class="FabfotoGalleryBundle:Tag")
      */
@@ -88,7 +88,7 @@ class DefaultController extends BaseController {
     }
 
     /**
-     * @Cache(expires="tomorrow", public=true)
+     * @Cache(expires="+1 week", public=true)
      * @Route("albums", name="index_album")
      */
     public function indexAlbumsAction() {
@@ -98,7 +98,7 @@ class DefaultController extends BaseController {
     }
 
     /**
-     * @Cache(expires="tomorrow", public=true)
+     * @Cache(expires="+1 week", public=true)
      * @var $album Album
      * @var $category Category
      * @Route("{slug}/album", name="show_album")

@@ -11,7 +11,7 @@ use Fabfoto\UserBundle\Entity\User as User;
 class UserController extends BaseController
 {
     /**
-     * @Cache(expires="tomorrow")
+     * @Cache(expires="+1 week", public=true)
      * @Route("/{slug}/about", name="show_about")
      * @ParamConverter("user", class="FabfotoUserBundle:User")
      */
@@ -26,7 +26,7 @@ class UserController extends BaseController
     }
 
     /**
-     * @Cache(expires="tomorrow")
+     * @Cache(expires="+1 week", public=true)
      * @Route("mobile/{slug}/about", name="show_about_mobile")
      * @ParamConverter("user", class="FabfotoUserBundle:User")
      */
@@ -41,7 +41,7 @@ class UserController extends BaseController
     }
 
     /**
-     * @Cache(expires="tomorrow")
+     * @Cache(expires="+1 week", public=true)
      * @Route("/cv/{slug}", name="show_user")
      * @ParamConverter("user", class="FabfotoUserBundle:User")
      */

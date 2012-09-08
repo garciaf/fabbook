@@ -18,7 +18,7 @@ use Fabfoto\UserBundle\Entity\User as User;
 class PDFController extends BaseController
 {
     /**
-     * @Cache(expires="tomorrow")
+     * @Cache(expires="+1 week", public=true)
      * @Route("/{slugblog}/blogarticle", defaults={"_format"="pdf"}, name="show_article_blog_pdf")
      * @ParamConverter("article", class="FabfotoGalleryBundle:ArticleBlog")
      */
@@ -38,7 +38,7 @@ class PDFController extends BaseController
     }
 
     /**
-     * @Cache(expires="tomorrow")
+     * @Cache(expires="+1 week", public=true)
      * @Route("/{slug}/pdfcard", name="show_about_pdf_from")
      * @ParamConverter("user", class="FabfotoUserBundle:User")
      */

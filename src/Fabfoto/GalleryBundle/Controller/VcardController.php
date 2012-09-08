@@ -18,7 +18,7 @@ class VcardController extends BaseController
 {
 
     /**
-     * @Cache(expires="tomorrow")
+     * @Cache(expires="+1 week", public=true)
      * @Route("/{slug}/vcard",defaults={"_format"="vcf"}, name="show_vcard_from")
      * @ParamConverter("user", class="FabfotoUserBundle:User")
      */
