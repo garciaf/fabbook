@@ -1,0 +1,14 @@
+ALTER TABLE ArticleBlog ADD authorUser_id INT DEFAULT NULL;
+ALTER TABLE ArticleBlog ADD CONSTRAINT FK_39CF4B2A74233BA7 FOREIGN KEY (authorUser_id) REFERENCES fos_user(id);
+CREATE INDEX IDX_39CF4B2A74233BA7 ON ArticleBlog (authorUser_id);
+
+ALTER TABLE ArticleBlog DROP author, DROP authorSlug
+
+ALTER TABLE Article ADD author_id INT DEFAULT NULL, DROP author, DROP authorSlug;
+ALTER TABLE Article ADD CONSTRAINT FK_CD8737FAF675F31B FOREIGN KEY (author_id) REFERENCES fos_user(id);
+CREATE INDEX IDX_CD8737FAF675F31B ON Article (author_id);
+
+-- UPDATE DATA
+
+UPDATE ArticleBlog SET authorUser_id = 1;
+UPDATE Article SET author_id = 1;
