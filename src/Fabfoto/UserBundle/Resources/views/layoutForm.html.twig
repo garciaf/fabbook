@@ -26,13 +26,13 @@
                 <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
             {% endif %}
         </div>
-
-        {% for key, message in app.session.getFlashes() %}
-        <div class="{{ key }}">
-            {{ message|trans({}, 'FOSUserBundle') }}
-        </div>
+        {% for type, flashMessages in app.session.flashbag.all() %}
+            {% for flashMessage in flashMessages %}
+                <div class="{{ type }}">
+                    {{ flashMessage |trans({}, 'FOSUserBundle')}}
+                </div>
+            {% endfor %}
         {% endfor %}
-
         <div>
             {% block fos_user_content %}
             {% endblock fos_user_content %}

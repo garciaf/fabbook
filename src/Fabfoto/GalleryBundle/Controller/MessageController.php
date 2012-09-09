@@ -47,7 +47,7 @@ class MessageController extends Controller
         $entity = new Message();
         $request = $this->getRequest();
         $form = $this->createForm(new MessageType(), $entity);
-        $form->bindRequest($request);
+        $form->bind($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();

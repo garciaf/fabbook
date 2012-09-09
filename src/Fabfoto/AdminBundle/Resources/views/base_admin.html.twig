@@ -51,16 +51,13 @@
             </div>
             <div id="content">
                 {% block flashes %}
-                    {% if app.session.flash('success') %}
-                        <div class="notification_box success">
-                            {{ app.session.flash('success')|raw }}
+                {% for type, flashMessages in app.session.flashbag.all() %}
+                    {% for flashMessage in flashMessages %}
+                        <div class="notification_box {{ type }}">
+                            {{ flashMessage }}
                         </div>
-                    {% endif %}
-                    {% if app.session.flash('error') %}
-                        <div class="notification_box error">
-                            {{ app.session.flash('error')|raw }}
-                        </div>
-                    {% endif %}
+                    {% endfor %}
+                {% endfor %}
                 {% endblock %}
 
                 <div id="body_content">

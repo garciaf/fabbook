@@ -90,7 +90,7 @@ class PortraitController extends Controller
         $entity = new Portrait();
         $request = $this->getRequest();
         $form = $this->createForm(new PortraitType(), $entity);
-        $form->bindRequest($request);
+        $form->bind($request);
 
         if ($form->isValid()) {
             try {

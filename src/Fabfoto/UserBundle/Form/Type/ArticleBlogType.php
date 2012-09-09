@@ -3,11 +3,11 @@
 namespace Fabfoto\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormBuilderInterface;
 
 class ArticleBlogType extends AbstractType
 {
-    public function buildForm(FormBuilder $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
        $builder->add('isPublished', 'checkbox', array(  'required' => false,));
 

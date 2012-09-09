@@ -48,7 +48,7 @@ class ImporterController extends Controller
         $request = $this->getRequest();
         $album = new Album();
         $form    = $this->createImportForm($album);
-        $form->bindRequest($request);
+        $form->bind($request);
 
         if ($form->isValid()) {
             try {

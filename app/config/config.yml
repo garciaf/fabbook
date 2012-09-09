@@ -1,5 +1,5 @@
 imports:
-    - { resource: parameters.ini }
+    - { resource: parameters.yml }
     - { resource: security.yml }
 
 sensio_framework_extra:
@@ -9,17 +9,14 @@ framework:
     esi: { enabled: true }
     translator:      { fallback: %locale% }
     secret:          %secret%
-    charset:         UTF-8
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
     form:            true
     csrf_protection: true
     validation:      { enable_annotations: true }
     templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
-    session:
-        default_locale: %locale%
-        auto_start:     true
+    default_locale: %locale%
     translator: ~
-    
+    session: ~
 
 # Twig Configuration
 twig:
@@ -67,7 +64,6 @@ swiftmailer:
     password:  %mailer_password_dev%
 
 jms_security_extra:
-    secure_controllers:  true
     secure_all_services: false
 
 #GalleryBundle Configuration
@@ -111,6 +107,7 @@ admingenerator_generator:
     use_propel: false
     use_doctrine_orm: true
     use_doctrine_odm: false
+    templates_dirs: [ %kernel.root_dir%/../vendor/cedriclombardot/admingenerator-oldtheme-bundle/Admingenerator/OldThemeBundle/Resources/templates ]
 #admingenerator_user:
 #    login_template: AdmingeneratorGeneratorBundle::base_login_assetic_less.html.twig
 genemu_form:
@@ -159,13 +156,13 @@ fos_user:
           enabled: true
         form:
             type: fabfoto_user_registration    
-exercise_html_purifier:
-    default:
-        Cache.SerializerPath: '%kernel.cache_dir%/htmlpurifier'
-services:
-    markup.exercise_html_purifier:
-        class: FOS\CommentBundle\Markup\HtmlPurifier
-        arguments: [ @exercise_html_purifier.default ]        
+#exercise_html_purifier:
+#    default:
+#        Cache.SerializerPath: '%kernel.cache_dir%/htmlpurifier'
+#services:
+#    markup.exercise_html_purifier:
+#        class: FOS\CommentBundle\Markup\HtmlPurifier
+#        arguments: [ @exercise_html_purifier.default ]        
 fos_comment:
     acl: true
     service:
@@ -173,7 +170,7 @@ fos_comment:
             thread: fos_comment.acl.thread.roles
             comment: fos_comment.acl.comment.roles
             vote: fos_comment.acl.vote.roles
-        markup: markup.exercise_html_purifier         
+#        markup: markup.exercise_html_purifier         
     db_driver: orm
     class:
         model:
