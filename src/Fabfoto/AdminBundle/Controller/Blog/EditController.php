@@ -16,7 +16,6 @@ class EditController extends BaseEditController
     {
         $curentUser = $this->get('security.context')->getToken()->getUser();
         $ArticleBlog->setAuthorUser($curentUser);
-        
 
     }
 }

@@ -8,7 +8,6 @@ use Fabfoto\GalleryBundle\Entity\Picture;
 
 class PictureUploader
 {
-
     private $directory;
 
     public function __construct($directory)
@@ -16,7 +15,7 @@ class PictureUploader
         $this->directory = $directory;
     }
 
-    public function update(Picture $picture, $randomize= true)
+    public function update(Picture $picture, $randomize = true)
     {
         $file = $picture->getLocation();
 
@@ -32,7 +31,7 @@ class PictureUploader
         $picture->setLocation($fileName);
     }
 
-    public function upload(ImageInterface $picture, $randomize=true)
+    public function upload(ImageInterface $picture, $randomize = true)
     {
         $file = $picture->getLocation();
         if (!$file instanceof UploadedFile) {
@@ -44,22 +43,16 @@ class PictureUploader
 
         $file->move($this->directory, $fileName);
         $picture->setLocation($fileName);
-
     }
 
-    private function generateFilename(File $file, $randomize=false)
+    private function generateFilename(File $file, $randomize = true)
     {
-
         if ($randomize) {
-            $filename = sprintf(
-                    '%s.%s'
+            $filename = sprintf('%s.%s'
                     , md5(uniqid($file, true)), $file->guessExtension());
+
         } else {
-            $filename = sprintf('%s.%s', $file->getFilename(),
-                    $file->guessExtension());
-        }
-        if ($file instanceof UploadedFile || $randomize) {
-            $filename=sprintf('%s.%s', $filename,$file->guessExtension());
+            $filename = sprintf('%s.%s', $file->getBasename(), $file->guessExtension());
         }
 
         return $filename;

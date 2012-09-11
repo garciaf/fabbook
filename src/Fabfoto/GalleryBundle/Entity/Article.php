@@ -149,7 +149,6 @@ class Article
         return $this->content;
     }
 
-
     /**
      * Set author
      *
@@ -163,7 +162,7 @@ class Article
     /**
      * Get author
      *
-     * @return Fabfoto\UserBundle\Entity\User 
+     * @return Fabfoto\UserBundle\Entity\User
      */
     public function getAuthor()
     {

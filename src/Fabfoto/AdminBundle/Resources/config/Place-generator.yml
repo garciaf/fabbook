@@ -5,10 +5,9 @@ params:
   bundle_name: AdminBundle
   fields:
     category:
-      formType: genemu_jquerychosen
+      formType: genemu_jquerychosen_entity
       addFormOptions:
         class: "FabfotoTrainTimingBundle:Category"
-        widget: entity
 
 builders:
   list:

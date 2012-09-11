@@ -25,4 +25,3 @@ message:
     fail: something went wron with your message
 user:
   details: Description
-  

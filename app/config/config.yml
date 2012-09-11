@@ -147,6 +147,9 @@ jms_serializer:
         # expected path: @MyFooBundle/Resources/config/serializer/Entity.User.(yml|xml|php)
         auto_detection: true
 
+knp_last_tweets:
+    fetcher:
+        driver: array
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main

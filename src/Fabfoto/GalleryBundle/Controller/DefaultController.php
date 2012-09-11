@@ -12,32 +12,36 @@ use Fabfoto\GalleryBundle\Entity\Tag as Tag;
 use Fabfoto\GalleryBundle\Entity\ArticleBlog as ArticleBlog;
 use Fabfoto\GalleryBundle\Entity\Category as Category;
 
-class DefaultController extends BaseController {
-
-    public function notificationAction() {
+class DefaultController extends BaseController
+{
+    public function notificationAction()
+    {
         return $this->render('FabfotoGalleryBundle::notification.html.twig');
     }
-    
-    public function lastContentAction($noAlbum = false, $noBlog = false){
+
+    public function lastContentAction($noAlbum = false, $noBlog = false)
+    {
         $articlesBlog = array();
         $lastAlbums = array();
-        if(!$noBlog){
+        if (!$noBlog) {
             $articlesBlog = $this->getBlogs($this->container->getParameter('nbArticle'));
         }
-        if(!$noAlbum){
+        if (!$noAlbum) {
             $lastAlbums = $this->getAlbums($this->container->getParameter('nbAlbum'));
         }
+
         return $this->render('FabfotoGalleryBundle:Default:LastContent.html.twig', array(
                     'lastBlogs' => $articlesBlog,
                     'lastAlbums' => $lastAlbums
                 ));
     }
-    
+
     /**
      * @Cache(expires="+1 week", public=true)
      * @Route("/news", name="show_articles")
      */
-    public function showHomePageAction() {
+    public function showHomePageAction()
+    {
         $articlesQuery = $this->getNewsQuery();
 
         return $this->render('FabfotoGalleryBundle:Default:Home.html.twig', array(
@@ -49,7 +53,8 @@ class DefaultController extends BaseController {
      * @Cache(expires="+1 week", public=true)
      * @Route("blog", name="index_blog")
      */
-    public function indexBlogsAction() {
+    public function indexBlogsAction()
+    {
         $articlesBlogsQuery = $this->getBlogsQuery();
 
         return $this->render('FabfotoGalleryBundle:Default:IndexArticleBlog.html.twig', array(
@@ -62,7 +67,8 @@ class DefaultController extends BaseController {
      * @Route("/{slugblog}/blogarticle", name="show_article_blog")
      * @ParamConverter("article", class="FabfotoGalleryBundle:ArticleBlog")
      */
-    public function showBlogArticleAction(ArticleBlog $article) {
+    public function showBlogArticleAction(ArticleBlog $article)
+    {
         //If the artcle is not published you can not access to it
         if (!$article->getIsPublished()) {
             $this->createNotFoundException();
@@ -78,7 +84,8 @@ class DefaultController extends BaseController {
      * @Route("/{slug}/tag/blogarticle", name="show_articles_blog_by_tags")
      * @ParamConverter("tag", class="FabfotoGalleryBundle:Tag")
      */
-    public function showBlogArticleByTagAction(Tag $tag) {
+    public function showBlogArticleByTagAction(Tag $tag)
+    {
         $articlesBlogs = $this->getBlogs(null, $tag);
 
         return $this->render('FabfotoGalleryBundle:Default:IndexTagArticleBlog.html.twig', array(
@@ -91,7 +98,8 @@ class DefaultController extends BaseController {
      * @Cache(expires="+1 week", public=true)
      * @Route("albums", name="index_album")
      */
-    public function indexAlbumsAction() {
+    public function indexAlbumsAction()
+    {
         $albumsQuery = $this->getAlbumsQuery();
 
         return $this->render('FabfotoGalleryBundle:Default:indexAlbum.html.twig', array('albums' => $this->getPager($albumsQuery)));
@@ -104,7 +112,8 @@ class DefaultController extends BaseController {
      * @Route("{slug}/album", name="show_album")
      * @ParamConverter("album", class="FabfotoGalleryBundle:Album")
      */
-    public function showAlbumAction(Album $album) {
+    public function showAlbumAction(Album $album)
+    {
         $pictures = $this->getAlbumPicture($album, false, true);
 
         $backgrounds = $this->getAlbumPicture($album, true);
@@ -127,7 +136,8 @@ class DefaultController extends BaseController {
                 ));
     }
 
-    public function allBackgroundAction($max) {
+    public function allBackgroundAction($max)
+    {
         $backgrounds = $this->getAlbumPicture(null, true, false);
         shuffle($backgrounds);
 
@@ -139,7 +149,8 @@ class DefaultController extends BaseController {
     /**
      * @Route("search", name="fabfoto_search")
      */
-    public function searchAction(Request $request) {
+    public function searchAction(Request $request)
+    {
         $pictures = array();
         $albums = array();
         if ($request->query->get('q')) {

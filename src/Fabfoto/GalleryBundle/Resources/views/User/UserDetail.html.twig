@@ -2,7 +2,7 @@
         <h1>{{user.firstName}} {{user.name}} <small>{{user.title}}</small></h1>
     </div>
 
-    <p>{{user.description | purify  }} </p>
+    <p>{{user.description | raw }} </p>
     <div id ="social" class="row-fluid">
         {% if user.googleLink is not empty %}
         <div class="span1" ><a class='helper' title="Google plus" target="_blanck" href="{{user.googleLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/googleplus.png')}}"/></a></div>
@@ -30,12 +30,12 @@
         <img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/vcard.png')}}"/></a>
         </div>
         <div class="span1">
-            <a class="hidden-phone" id="qrlinkUser" rel="popover"  data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", vcard , true) }}"/>' data-original-title="Scan me">
+            <a class="hidden-phone" id="qrlinkUser" rel="popover"  data-content='<img alt="[QR Code]" src="{{ mopa_barcode_url("qr", vcard , true) }}"/>' data-original-title="Scan me">
                 <img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/barcode.png')}}"/>
             </a>
 
         </div>
     </div>
     	<div class="visible-phone">
-            <img alt="get my vcard" src="/{{ mopa_barcode_url("qr", vcard , true) }}"/>
+            <img alt="get my vcard" src="{{ mopa_barcode_url("qr", vcard , true) }}"/>
         </div>

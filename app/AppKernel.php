@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Admingenerator\GeneratorBundle\AdmingeneratorGeneratorBundle(),
             new Admingenerator\OldThemeBundle\AdmingeneratorOldThemeBundle(),
+            new Admingenerator\ActiveAdminThemeBundle\AdmingeneratorActiveAdminThemeBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
             new FOS\UserBundle\FOSUserBundle(),
@@ -41,6 +42,7 @@ class AppKernel extends Kernel
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new FBK\MobileDetectorBundle\FBKMobileDetectorBundle(),
             new Fabfoto\OverrideUserBundle\FabfotoOverrideUserBundle(),
+            new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

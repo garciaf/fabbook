@@ -2,10 +2,9 @@
 
 namespace Fabfoto\GalleryBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Fabfoto\GalleryBundle\Uploader\AbstractImage;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Doctrine\ORM\Mapping as ORM;
-use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
 
 /**
  * Fabfoto\GalleryBundle\Entity\Picture
