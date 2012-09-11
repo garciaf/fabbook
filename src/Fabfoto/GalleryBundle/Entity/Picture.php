@@ -9,8 +9,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Fabfoto\GalleryBundle\Entity\Picture
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Fabfoto\GalleryBundle\Entity\PictureRepository")
+ * 
+ *  * @ORM\Entity(repositoryClass="Fabfoto\GalleryBundle\Entity\PictureRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Picture extends AbstractImage
