@@ -10,6 +10,6 @@
 /www/media/
 /www/uploads/*
 /www/incoming/*
-/www/csss/*
+/www/css/*
 /www/js/*
 /src/Fabfoto/TrainTimingBundle/Resources/public/js/extjs-4.1.0/resources/sass/.sass-cache/
