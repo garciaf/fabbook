@@ -1,0 +1,22 @@
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     localhost
+    database_port:     ~
+    database_name:     fabbook
+    database_user:     root
+    database_password: root
+
+    mailer_transport:  smtp
+    mailer_host:       localhost
+    mailer_user:       ~
+    mailer_password:   ~
+
+    locale:            fr
+    secret:            ThisTokenIsNotSoSecretChangeIt
+    mailer_transport_dev: ~
+    mailer_user_dev: ~
+    mailer_password_dev: ~
+    upload_directory: uploads
+    mail_sender_adress: ~
+    incoming_directory: incoming
+    mail_sender_adress_dev: ~
