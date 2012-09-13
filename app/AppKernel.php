@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Fabfoto\GalleryBundle\FabfotoGalleryBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),		
             new Mopa\Bundle\BarcodeBundle\MopaBarcodeBundle(),
             //new WhiteOctober\TCPDFBundle\WhiteOctoberTCPDFBundle(),
