@@ -5,6 +5,7 @@ php:
   - 5.4
 
 before_script: 
+  - mysql -e 'create database fabbook;'
   - composer install
   - php app/console doctrine:schema:create
 script: phpunit app/
