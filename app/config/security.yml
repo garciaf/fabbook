@@ -26,7 +26,7 @@ security:
                 csrf_provider: form.csrf_provider
             logout:
               path:   /logout
-              target: /albums
+              target: /news
             anonymous:    true
 
     access_control:

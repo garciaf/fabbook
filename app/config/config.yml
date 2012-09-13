@@ -149,7 +149,7 @@ jms_serializer:
 
 knp_last_tweets:
     fetcher:
-        driver: array
+        driver: api 
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
@@ -159,13 +159,13 @@ fos_user:
           enabled: true
         form:
             type: fabfoto_user_registration    
-#exercise_html_purifier:
-#    default:
-#        Cache.SerializerPath: '%kernel.cache_dir%/htmlpurifier'
-#services:
-#    markup.exercise_html_purifier:
-#        class: FOS\CommentBundle\Markup\HtmlPurifier
-#        arguments: [ @exercise_html_purifier.default ]        
+exercise_html_purifier:
+    default:
+        Cache.SerializerPath: '%kernel.cache_dir%/htmlpurifier'
+services:
+    markup.exercise_html_purifier:
+        class: FOS\CommentBundle\Markup\HtmlPurifier
+        arguments: [ @exercise_html_purifier.default ]        
 fos_comment:
     acl: true
     service:

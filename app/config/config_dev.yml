@@ -17,8 +17,10 @@ monolog:
             level: debug
         firephp:
             type:  firephp
-            level: info
 
+knp_last_tweets:
+    fetcher:
+        driver: array
 assetic:
     use_controller: true
 

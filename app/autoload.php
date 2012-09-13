@@ -1,7 +1,7 @@
 <?php
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
-
+require_once __DIR__ . '/../vendor/ezyang/htmlpurifier/library/HTMLPurifier.auto.php';
 $loader = require __DIR__.'/../vendor/autoload.php';
 
 // intl

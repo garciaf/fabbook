@@ -44,6 +44,7 @@ class AppKernel extends Kernel
             new FBK\MobileDetectorBundle\FBKMobileDetectorBundle(),
             new Fabfoto\OverrideUserBundle\FabfotoOverrideUserBundle(),
             new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),
+	    new Exercise\HTMLPurifierBundle\ExerciseHTMLPurifierBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
