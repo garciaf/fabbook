@@ -7,8 +7,8 @@ doctrine:
         host:     %database_host%
         port:     %database_port%
         dbname:   %database_name%Test
-        user:     ~ 
-        password: %database_password%
+        user:     %database_user% 
+        password: ~
         charset:  UTF8
 
     orm:
