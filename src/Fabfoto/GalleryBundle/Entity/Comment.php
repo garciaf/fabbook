@@ -6,7 +6,6 @@ use FOS\CommentBundle\Entity\Comment as BaseComment;
 use FOS\CommentBundle\Model\SignedCommentInterface;
 use FOS\CommentBundle\Model\VotableCommentInterface;
 
-
 use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity
@@ -28,7 +27,7 @@ class Comment extends BaseComment implements SignedCommentInterface, VotableComm
      * @ORM\ManyToOne(targetEntity="Fabfoto\GalleryBundle\Entity\Thread")
      */
     protected $thread;
-    
+
      /**
      * @ORM\Column(type="integer")
      * @var int

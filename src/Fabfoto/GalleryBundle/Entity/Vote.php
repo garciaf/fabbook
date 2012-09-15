@@ -59,7 +59,7 @@ class Vote extends BaseVote implements SignedVoteInterface
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -69,20 +69,20 @@ class Vote extends BaseVote implements SignedVoteInterface
     /**
      * Set comment
      *
-     * @param Fabfoto\GalleryBundle\Entity\Comment $comment
+     * @param  Fabfoto\GalleryBundle\Entity\Comment $comment
      * @return Vote
      */
     public function setComment(VotableCommentInterface $comment)
     {
         $this->comment = $comment;
-    
+
         return $this;
     }
 
     /**
      * Get comment
      *
-     * @return Fabfoto\GalleryBundle\Entity\Comment 
+     * @return Fabfoto\GalleryBundle\Entity\Comment
      */
     public function getComment()
     {

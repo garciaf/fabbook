@@ -61,8 +61,9 @@ class Picture extends AbstractImage
      * @ORM\Column(name="is_background", type="boolean")
      */
     private $isBackground;
-    
-    public function __construct() {
+
+    public function __construct()
+    {
         $this->setCreatedAt(new \DateTime());
     }
 

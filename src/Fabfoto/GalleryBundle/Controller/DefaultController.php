@@ -4,7 +4,6 @@ namespace Fabfoto\GalleryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use Fabfoto\GalleryBundle\Entity\Album as Album;
@@ -153,9 +152,9 @@ class DefaultController extends BaseController
         if ($response->isNotModified($this->getRequest())) {
             // return the 304 Response immediately
             return $response;
-            
+
         } else {
-            
+
         $pictures = $this->getAlbumPicture($album, false, true);
 
         $backgrounds = $this->getAlbumPicture($album, true);

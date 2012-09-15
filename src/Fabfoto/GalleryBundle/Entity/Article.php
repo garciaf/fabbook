@@ -66,8 +66,9 @@ class Article
      * @ORM\ManyToOne(targetEntity="Fabfoto\UserBundle\Entity\User")
      */
     private $author;
-    
-    public function __construct() {
+
+    public function __construct()
+    {
         $this->setCreatedAt(new \DateTime());
         $this->setUpdatedAt(new \DateTime());
     }

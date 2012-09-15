@@ -30,9 +30,9 @@ abstract class BaseController extends Controller
     protected function getLastNews()
     {
         $lastNews = $this->getNewsQuery(1)->getSingleResult();
-        if($lastNews){
+        if ($lastNews) {
             return $lastNews;
-        }else{
+        } else {
             return new Article();
         }
     }
@@ -42,9 +42,9 @@ abstract class BaseController extends Controller
         $lastPicture =  $this->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Picture')
                 ->findLastPicture();
-        if($lastPicture){
+        if ($lastPicture) {
             return $lastPicture;
-        }else{
+        } else {
             return new Picture();
         }
     }
@@ -111,13 +111,14 @@ abstract class BaseController extends Controller
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->findOneBy(array('slugblog' => $slugblog, 'isPublished' => $isPublished ));
     }
-    
-    protected function getLastUpdatedBlog(){
+
+    protected function getLastUpdatedBlog()
+    {
         $lastBlog =  $this->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->getQueryOrderByUpdatedAt(1)
                 ->getSingleResult();
-        if($lastBlog) {
+        if ($lastBlog) {
             return $lastBlog;
         } else {
             return new ArticleBlog();
