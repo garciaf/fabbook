@@ -3,7 +3,7 @@
     Created on : 26 oct. 2011, 18:49:01
     Author     : garciaf
     Description:
-        Purpose of the stylesheet follows.
+        Custom for desktop version of fabbook
 */
 
 /* 
@@ -13,9 +13,6 @@
 
 root { 
     display: block;
-}
-img{
-    border: none;
 }
 a{
     text-decoration: none!important;
@@ -77,21 +74,6 @@ html, body {
     border-style:solid;
     border-width:thin;
 }
-#fullscreen {
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-#fullscreen img {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: -400;
-}
 
 #nav {
     z-index: 540;
@@ -108,16 +90,6 @@ html, body {
     border-bottom-left-radius: 10px 10px;
     border-bottom-right-radius: 10px 10px;
     height: 110px;
-}
-#nav ul{
-    padding-left: 20px;
-    margin: 0;
-}
-#nav li {
-    float: left;
-    width: 100px;
-    display: inline;
-    text-align: center;
 }
 #nav a{
     width: 40px;
@@ -165,7 +137,6 @@ html, body {
 .list_album a:hover{
     text-decoration: none;
 }
-
 
 .title_album{
     text-align: center;
@@ -304,28 +275,6 @@ html, body {
     text-align: right;
     padding-right: 8em;
 }
-/*fieldset {
-    padding:20px;
-    margin-bottom:10px;
-}
-legend {
-    color:#a0522d;
-    font-weight:bold
-}
-label {
-    margin-top:20px;
-    display:block;
-}
-label.inline {
-    display:inline
-}
-input {
-    border:1px solid black;
-    background-color: whitesmoke;
-}
-input:focus {
-    background-color: lightgray;
-}*/
 select, option {
     background-color: whitesmoke;
 }
@@ -363,8 +312,6 @@ textarea:focus {
     background: -ms-linear-gradient(-45deg,  #ffffff 0%,#e5e5e5 100%); /* IE10+ */
     background: linear-gradient(-45deg,  #ffffff 0%,#e5e5e5 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
-
 }
 .extra_info_blog{
     font-size: 12px;
