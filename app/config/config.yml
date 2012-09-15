@@ -178,7 +178,8 @@ fos_comment:
     class:
         model:
             comment: Fabfoto\GalleryBundle\Entity\Comment
-            thread: Fabfoto\GalleryBundle\Entity\Thread        
+            thread: Fabfoto\GalleryBundle\Entity\Thread 
+            vote: Fabfoto\GalleryBundle\Entity\Vote
     acl_roles:
         comment:
             create: IS_AUTHENTICATED_ANONYMOUSLY
