@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Fabfoto\GalleryBundle\Entity\Album as Album;
 use Fabfoto\GalleryBundle\Entity\Tag as Tag;
 use Fabfoto\GalleryBundle\Entity\ArticleBlog as ArticleBlog;
-use Fabfoto\GalleryBundle\Entity\Category as Category;
 
 class DefaultController extends BaseController
 {
@@ -37,38 +36,56 @@ class DefaultController extends BaseController
     }
 
     /**
-     * @Cache(expires="+1 week", public=true)
      * @Route("/news", name="show_articles")
      */
     public function showHomePageAction()
     {
+        $lastNews  = $this->getLastNews();
+        $response = $this->getResponseHeader($lastNews->getUpdatedAt());
+
+        if ($response->isNotModified($this->getRequest())) {
+            // return the 304 Response immediately
+            return $response;
+        } else {
         $articlesQuery = $this->getNewsQuery();
 
         return $this->render('FabfotoGalleryBundle:Default:Home.html.twig', array(
                     'articles' => $this->getPager($articlesQuery),
                 ));
+        }
     }
 
     /**
-     * @Cache(expires="+1 week", public=true)
      * @Route("blog", name="index_blog")
      */
     public function indexBlogsAction()
     {
+        $lastBlog= $this->getLastUpdatedBlog();
+        $response = $this->getResponseHeader($lastBlog->getUpdatedAt());
+        if ($response->isNotModified($this->getRequest())) {
+            // return the 304 Response immediately
+            return $response;
+        } else {
         $articlesBlogsQuery = $this->getBlogsQuery();
 
         return $this->render('FabfotoGalleryBundle:Default:IndexArticleBlog.html.twig', array(
                     'ArticlesBlogs' => $this->getPager($articlesBlogsQuery),
                 ));
+        }
     }
 
     /**
-     * @Cache(expires="+1 week", public=true)
      * @Route("/{slugblog}/blogarticle", name="show_article_blog")
      * @ParamConverter("article", class="FabfotoGalleryBundle:ArticleBlog")
      */
     public function showBlogArticleAction(ArticleBlog $article)
     {
+        $response = $this->getResponseHeader($article->getUpdatedAt());
+        if ($response->isNotModified($this->getRequest())) {
+            // return the 304 Response immediately
+            return $response;
+        } else {
+
         //If the artcle is not published you can not access to it
         if (!$article->getIsPublished()) {
             $this->createNotFoundException();
@@ -77,36 +94,53 @@ class DefaultController extends BaseController
         return $this->render('FabfotoGalleryBundle:Default:ShowArticleBlog.html.twig', array(
                     'article' => $article
                 ));
+        }
     }
 
     /**
-     * @Cache(expires="+1 week", public=true)
      * @Route("/{slug}/tag/blogarticle", name="show_articles_blog_by_tags")
      * @ParamConverter("tag", class="FabfotoGalleryBundle:Tag")
      */
     public function showBlogArticleByTagAction(Tag $tag)
     {
+        $lastBlog= $this->getLastUpdatedBlog();
+        $response = $this->getResponseHeader($lastBlog->getUpdatedAt());
+        if ($response->isNotModified($this->getRequest())) {
+            // return the 304 Response immediately
+            return $response;
+        } else {
         $articlesBlogs = $this->getBlogs(null, $tag);
 
         return $this->render('FabfotoGalleryBundle:Default:IndexTagArticleBlog.html.twig', array(
                     'ArticlesBlogs' => $articlesBlogs,
                     'tag' => $tag,
                 ));
+        }
     }
 
     /**
-     * @Cache(expires="+1 week", public=true)
      * @Route("albums", name="index_album")
      */
     public function indexAlbumsAction()
     {
+        $lastPicture = $this->getLastPictureAdded();
+        // If there is no picture the page is not cached
+        $response = $this->getResponseHeader($lastPicture->getCreatedAt());
+
+        if ($response->isNotModified($this->getRequest())) {
+            // return the 304 Response immediately
+            return $response;
+        } else {
+
         $albumsQuery = $this->getAlbumsQuery();
 
-        return $this->render('FabfotoGalleryBundle:Default:indexAlbum.html.twig', array('albums' => $this->getPager($albumsQuery)));
+        return $this->render('FabfotoGalleryBundle:Default:indexAlbum.html.twig', array(
+            'albums' => $this->getPager($albumsQuery)
+                ));
+        }
     }
 
     /**
-     * @Cache(expires="+1 week", public=true)
      * @var $album Album
      * @var $category Category
      * @Route("{slug}/album", name="show_album")
@@ -114,6 +148,14 @@ class DefaultController extends BaseController
      */
     public function showAlbumAction(Album $album)
     {
+        $response = $this->getResponseHeader($album->getUpdatedAt());
+
+        if ($response->isNotModified($this->getRequest())) {
+            // return the 304 Response immediately
+            return $response;
+            
+        } else {
+            
         $pictures = $this->getAlbumPicture($album, false, true);
 
         $backgrounds = $this->getAlbumPicture($album, true);
@@ -134,6 +176,7 @@ class DefaultController extends BaseController
                     'album' => $album,
                     'backgrounds' => $backgrounds
                 ));
+        }
     }
 
     public function allBackgroundAction($max)

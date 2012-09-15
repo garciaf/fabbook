@@ -9,7 +9,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Fabfoto\GalleryBundle\Entity\Picture
  *
- * 
+ *
  *  * @ORM\Entity(repositoryClass="Fabfoto\GalleryBundle\Entity\PictureRepository")
  * @ORM\HasLifecycleCallbacks
  */
@@ -48,7 +48,7 @@ class Picture extends AbstractImage
      * @var date $createdAt
      *
      * @Gedmo\Timestampable(on="create")
-     * @ORM\Column(name="createdAt", type="date", nullable=true)
+     * @ORM\Column(name="createdAt", type="datetime", nullable=true)
      */
     private $createdAt;
 
@@ -61,6 +61,10 @@ class Picture extends AbstractImage
      * @ORM\Column(name="is_background", type="boolean")
      */
     private $isBackground;
+    
+    public function __construct() {
+        $this->setCreatedAt(new \DateTime());
+    }
 
     /**
      * Get id

@@ -5,37 +5,55 @@ namespace Fabfoto\GalleryBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use \Fabfoto\GalleryBundle\Entity\Album as Album;
 use \Fabfoto\GalleryBundle\Entity\Tag as Tag;
+use \Fabfoto\GalleryBundle\Entity\Article as Article;
 use \Fabfoto\UserBundle\Entity\User as User;
+use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
+use \Fabfoto\GalleryBundle\Entity\ArticleBlog as ArticleBlog;
 use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\DoctrineORMAdapter as PagerAdapter;
+use Symfony\Component\HttpFoundation\Response;
 
 abstract class BaseController extends Controller
 {
-    protected function getNewsQuery()
+    protected function getNewsQuery($max = null)
     {
         return $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Article')
-                ->createQueryBuilder('b')
-                ->orderBy('b.createdAt', 'DESC')
-                ->getQuery();
+                ->getQueryOrderBydate($max);
     }
-    protected function getNews()
+    protected function getNews($max = null)
     {
-        return $this->getNewsQuery()->execute();
+        return $this->getNewsQuery($max)->execute();
+    }
+
+    protected function getLastNews()
+    {
+        $lastNews = $this->getNewsQuery(1)->getSingleResult();
+        if($lastNews){
+            return $lastNews;
+        }else{
+            return new Article();
+        }
+    }
+
+    protected function getLastPictureAdded()
+    {
+        $lastPicture =  $this->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:Picture')
+                ->findLastPicture();
+        if($lastPicture){
+            return $lastPicture;
+        }else{
+            return new Picture();
+        }
     }
     protected function getAlbumsQuery($max = null)
     {
-         $albumsQuery = $this
+         return $this
                 ->getDoctrine()
                 ->getRepository('FabfotoGalleryBundle:Album')
-                ->createQueryBuilder('b')
-                ->orderBy('b.createdAt', 'DESC');
-         if ($max) {
-                $albumsQuery->setMaxResults($max);
-         }
-
-                return $albumsQuery->getQuery();
+                ->getQueryOrderByCreatedAt($max);
     }
     protected function getAlbums($max = null)
     {
@@ -72,7 +90,7 @@ abstract class BaseController extends Controller
         return $this->getBlogsQuery($max, $tag)->execute();
     }
 
-    protected function getPager($query)
+    protected function getPager($query, $maxPerPage = 9)
     {
         $Currentpage = 1;
         if ($this->get("request")->query->get('page')) {
@@ -80,7 +98,7 @@ abstract class BaseController extends Controller
         }
 
         $paginator = new Pagerfanta(new PagerAdapter($query));
-        $paginator->setMaxPerPage(9);
+        $paginator->setMaxPerPage($maxPerPage);
         $paginator->setCurrentPage($Currentpage, false, true);
 
         return $paginator;
@@ -93,6 +111,19 @@ abstract class BaseController extends Controller
                 ->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->findOneBy(array('slugblog' => $slugblog, 'isPublished' => $isPublished ));
     }
+    
+    protected function getLastUpdatedBlog(){
+        $lastBlog =  $this->getDoctrine()
+                ->getRepository('FabfotoGalleryBundle:ArticleBlog')
+                ->getQueryOrderByUpdatedAt(1)
+                ->getSingleResult();
+        if($lastBlog) {
+            return $lastBlog;
+        } else {
+            return new ArticleBlog();
+        }
+    }
+
     /**
      *
      * @param  string $tag_slug
@@ -185,7 +216,28 @@ abstract class BaseController extends Controller
                 ));
 
     }
+    /**
+     * Get a response with a header to use cache
+     *
+     * @param  \DateTime                                  $lastUpdated
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    protected function getResponseHeader(\DateTime $lastUpdated)
+    {
+        // create a Response with a ETag and/or a Last-Modified header
+        $response = new Response();
+        $response->setLastModified($lastUpdated);
 
+        // Set response as public. Otherwise it will be private by default.
+        $response->setPublic();
+
+        return $response;
+    }
+
+    /**
+     * Return the current user
+     * @return User
+     */
     protected function getCurrentUser()
     {
         return $this->get('security.context')->getToken()->getUser();

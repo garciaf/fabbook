@@ -31,15 +31,15 @@ assetic:
     use_controller: false
     read_from:      %kernel.root_dir%/../www
     filters:
-        cssrewrite: 
-          apply_to: "\.css$"
         yui_css:
             jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar"
             apply_to: "\.css$"
         yui_js:
             jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar"
             apply_to: "\.js$"
-
+        cssembed:
+            jar: %kernel.root_dir%/Resources/java/cssembed-0.4.5.jar
+            apply_to: "\.css"
 # Doctrine Configuration
 doctrine:
     dbal:

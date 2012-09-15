@@ -315,4 +315,14 @@ class ArticleBlog
     {
         return $this->authorUser;
     }
+
+    /**
+     * Remove tags
+     *
+     * @param Fabfoto\GalleryBundle\Entity\Tag $tags
+     */
+    public function removeTag(\Fabfoto\GalleryBundle\Entity\Tag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
 }

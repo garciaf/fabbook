@@ -36,11 +36,20 @@ class ArticleBlogRepository extends EntityRepository
     {
         return $this->queryOrderBydate()->execute();
     }
-
     private function queryOrderBydate()
     {
         return $this->_em
                         ->createQuery('SELECT s FROM FabfotoGalleryBundle:ArticleBlog s ORDER BY s.createdAt DESC');
     }
+    
+    public function getQueryOrderByUpdatedAt($max = null)
+    {
+        $query = $this->createQueryBuilder('n')
+                ->add('orderBy', 'n.updatedAt DESC');
+        if ($max) {
+            $query->setMaxResults($max);
+        }
 
+        return $query->getQuery();
+    }
 }

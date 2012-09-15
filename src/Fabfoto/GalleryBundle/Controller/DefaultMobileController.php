@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Fabfoto\GalleryBundle\Entity\Album as Album;
 use Fabfoto\GalleryBundle\Entity\ArticleBlog as ArticleBlog;
+use Fabfoto\GalleryBundle\Entity\Article as Article;
 
 /**
  * Article controller.
@@ -19,30 +20,33 @@ use Fabfoto\GalleryBundle\Entity\ArticleBlog as ArticleBlog;
 class DefaultMobileController extends BaseController
 {
     /**
-     * @Cache(expires="+1 week")
      * @Route("/", name="index_mobile")
      * @Template()
      */
     public function showArticlesAction()
     {
+        $lastNews  = $this->getLastNews();
+        $response = $this->getResponseHeader($lastNews->getUpdatedAt());
+
+        if ($response->isNotModified($this->getRequest())) {
+            // return the 304 Response immediately
+            return $response;
+        } else {
         $articles = $this->getNews();
 
         return $this->render('FabfotoGalleryBundle:Mobile:IndexArticle.html.twig',
                         array(
                     'articles' => $articles
                 ));
+        }
     }
     /**
      * @Cache(expires="+1 week")
      * @Route("/{id}/article", name="show_article_mobile")
+     * @ParamConverter("article", class="FabfotoGalleryBundle:Article")
      */
-    public function showArticleAction($id)
+    public function showArticleAction(Article $article)
     {
-        $article = $this
-                ->getDoctrine()
-                ->getRepository('FabfotoGalleryBundle:Article')
-                ->find($id);
-
         return $this->render('FabfotoGalleryBundle:Mobile:showArticle.html.twig',
                         array(
                     'article' => $article

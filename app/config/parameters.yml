@@ -4,7 +4,7 @@ parameters:
     database_port:     ~
     database_name:     fabbook
     database_user:     root
-    database_password: root
+    database_password: 
 
     mailer_transport:  smtp
     mailer_host:       localhost
@@ -13,9 +13,9 @@ parameters:
 
     locale:            fr
     secret:            ThisTokenIsNotSoSecretChangeIt
-    mailer_transport_dev: ~
-    mailer_user_dev: ~
-    mailer_password_dev: ~
+    mailer_transport_dev: gmail
+    mailer_user_dev: fab0670312047
+    mailer_password_dev: leevuasa
     upload_directory: uploads
     mail_sender_adress: ~
     incoming_directory: incoming

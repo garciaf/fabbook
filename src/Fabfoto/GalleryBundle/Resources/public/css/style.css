@@ -33,14 +33,6 @@ html, body {
     margin: 0px 0px 0px 0px;
     padding:0px;
 }
-#header {
-    width: 100%;
-    height: 100px;
-    margin: 0px 0px 0px 0px;
-    background-attachment: fixed;
-    background: url(../image/header.png) no-repeat left bottom;
-    background-position: top center;
-}
 #logo {
     text-align: center;    
     padding: 20px 0 0 15px;
@@ -581,4 +573,16 @@ border-radius: 10px;
 }
 .noteBook{
     -moz-box-shadow: #23441e 10px;
+}
+/* Change the docs' brand */
+body > .navbar .brand {
+  color: #777;
+  text-decoration:none;
+    -webkit-transition: color .1s ease-in;
+    -moz-transition: color .1s ease-in;
+    -o-transition: color .1s ease-in;
+    transition: color .1s ease-in;
+}
+body > .navbar .brand:hover {
+  color: black;  
 }

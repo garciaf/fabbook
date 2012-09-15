@@ -27,3 +27,6 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+swiftmailer:
+    disable_delivery: true
