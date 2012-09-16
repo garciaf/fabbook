@@ -25,7 +25,6 @@
         {% if user.email is not empty %}
         <div class="span1"><a class='helper' title="Contact me" href="mailto:{{user.email}}"><img src="{{asset('bundles/fabfotogallery/image/icon/mail.png')}}"/></a></div>
         {% endif %}
-        <div class="span1"><a class='helper' title="Get my card on pdf" href="{{path('show_about_pdf_from', {'slug': user.slug })}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')}}"/></a></div>
         <div class="span1"><a class='helper' title="Get my Vcard" href="{{path('show_vcard_from' , { 'slug': user.slug })}}">
         <img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/vcard.png')}}"/></a>
         </div>
