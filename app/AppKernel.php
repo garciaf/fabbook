@@ -45,6 +45,7 @@ class AppKernel extends Kernel
             new Fabfoto\OverrideUserBundle\FabfotoOverrideUserBundle(),
             new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),
 	    new Exercise\HTMLPurifierBundle\ExerciseHTMLPurifierBundle(),
+	    new Ps\PdfBundle\PsPdfBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

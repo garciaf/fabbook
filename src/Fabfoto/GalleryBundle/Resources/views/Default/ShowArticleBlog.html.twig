@@ -27,7 +27,6 @@
         {{article.content|raw}}
     </div>
     <div class="signature_blog">{% if article.authorUser is not null %}{% trans %}by{% endtrans %} <a target="_blanck" href="{{ path('show_about', { 'slug': article.authorUser.slug }) }}">{{article.authorUser}}</a> - {% endif %}{{article.createdAt|date('d/m/Y')}} - Mise à jour : {{article.updatedAt|date('d/m/Y') }}</div>
-    <div class="pdf"><a href="{{path('show_article_blog_pdf', {'slugblog':article.slugblog})}}"><img src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')}}"/></a> </div>
     {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': article.id} %}
 </div>
 {% endblock content %}
