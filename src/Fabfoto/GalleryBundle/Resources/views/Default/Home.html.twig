@@ -28,6 +28,10 @@
             {% endif %}
         </div>
         {% endfor %}
+ 	 <div class="span12 center">
+        {{ pagerfanta(articles, 'twitter_bootstrap_translated') }}
+    	</div>
+
     </div>
     <div class="page-header">
         <h1>{% trans %}news{% endtrans %} <small>{% trans %}from.tweeter{% endtrans %}</small></h1>
@@ -37,9 +41,6 @@
         <div class="span12 columns">
             {% render "KnpLastTweetsBundle:Twitter:lastTweets" with {'username': 'FabbookFr'} , {'standalone': true}%}
         </div>
-    </div>
-    <div class="span12 center">
-        {{ pagerfanta(articles, 'twitter_bootstrap_translated') }}
     </div>
 </div>
 {% endblock content %}
