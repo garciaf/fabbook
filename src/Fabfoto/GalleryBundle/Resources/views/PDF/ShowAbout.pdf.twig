@@ -1,10 +1,12 @@
 <pdf Author="Fabbook" Title="{{user}}">
-    <dynamic-page>
-        <img src="{{ mopa_barcode_url('qr', vcard , true) }}" />
-        <div>
+    <page page-size="126mm:80mm">
+        <div float="left" width="49%">
+	    <img width="100%" src="{{ mopa_barcode_url('qr', vcard , true) }}" />
+	</div>
+        <div float="right" width="40%">
             <h1>{{user.firstName}} {{user.name}}</h1>
             <h2>{{user.title}}</h2>
             <h3>{{user.email}}</h3>
         </div>
-    </dynamic-page>
+    </page>
 </pdf>

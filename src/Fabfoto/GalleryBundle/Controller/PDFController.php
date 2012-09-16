@@ -20,7 +20,7 @@ class PDFController extends BaseController
 
     /**
      * @Pdf()
-     * @Route("/{slug}/pdfcard", name="show_about_pdf_from")
+     * @Route("/{slug}/pdfcard", name="show_about_pdf_from", defaults={"_format"="pdf"})
      * @ParamConverter("user", class="FabfotoUserBundle:User")
      */
     public function showPDFCardAction(User $user)
