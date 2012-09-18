@@ -26,7 +26,7 @@ class UserController extends BaseController
         return $this->render('FabfotoGalleryBundle:Default:ShowAbout.html.twig', array(
                     'user' => $user,
                     'vcard' => $vcard
-                ));
+                ), $response);
         }
     }
 
@@ -47,7 +47,7 @@ class UserController extends BaseController
         return $this->render('FabfotoGalleryBundle:Mobile:ShowAbout.html.twig', array(
                     'user' => $user,
                     'vcard' => $vcard
-                ));
+                ), $response);
         }
     }
 
@@ -68,7 +68,7 @@ class UserController extends BaseController
         return $this->render('FabfotoGalleryBundle:User:ShowAbout.html.twig', array(
                     'user' => $user,
                     'vcard' => $vcard
-                ));
+                ), $response);
         }
     }
 

@@ -20,7 +20,7 @@ class MessageController extends Controller
 
     /**
      * Displays a form to create a new Message entity.
-     * @Cache(expires="tomorrow")
+     * @Cache(expires="+1 week", public=true )
      * @Route("contact/", name="contact_new")
      * @Template()
      */

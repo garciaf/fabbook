@@ -5,6 +5,7 @@ namespace Fabfoto\GalleryBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Component\HttpFoundation\Request;
 use Fabfoto\GalleryBundle\Entity\Album as Album;
 use Fabfoto\GalleryBundle\Entity\Tag as Tag;
@@ -50,11 +51,12 @@ class DefaultController extends BaseController
 
         return $this->render('FabfotoGalleryBundle:Default:Home.html.twig', array(
                     'articles' => $this->getPager($articlesQuery),
-                ));
+                ), $response);
         }
     }
 
     /**
+     * 
      * @Route("blog", name="index_blog")
      */
     public function indexBlogsAction()
@@ -69,7 +71,7 @@ class DefaultController extends BaseController
 
         return $this->render('FabfotoGalleryBundle:Default:IndexArticleBlog.html.twig', array(
                     'ArticlesBlogs' => $this->getPager($articlesBlogsQuery),
-                ));
+                ), $response);
         }
     }
 
@@ -92,7 +94,7 @@ class DefaultController extends BaseController
 
         return $this->render('FabfotoGalleryBundle:Default:ShowArticleBlog.html.twig', array(
                     'article' => $article
-                ));
+                ), $response);
         }
     }
 
@@ -113,7 +115,7 @@ class DefaultController extends BaseController
         return $this->render('FabfotoGalleryBundle:Default:IndexTagArticleBlog.html.twig', array(
                     'ArticlesBlogs' => $articlesBlogs,
                     'tag' => $tag,
-                ));
+                ), $response);
         }
     }
 
@@ -135,13 +137,12 @@ class DefaultController extends BaseController
 
         return $this->render('FabfotoGalleryBundle:Default:indexAlbum.html.twig', array(
             'albums' => $this->getPager($albumsQuery)
-                ));
+                ), $response);
         }
     }
 
     /**
      * @var $album Album
-     * @var $category Category
      * @Route("{slug}/album", name="show_album")
      * @ParamConverter("album", class="FabfotoGalleryBundle:Album")
      */
@@ -174,7 +175,7 @@ class DefaultController extends BaseController
                     'pictures' => $pictures,
                     'album' => $album,
                     'backgrounds' => $backgrounds
-                ));
+                ), $response);
         }
     }
 
@@ -189,6 +190,7 @@ class DefaultController extends BaseController
     }
 
     /**
+     * @Cache(expires="tomorrow", public=true)
      * @Route("search", name="fabfoto_search")
      */
     public function searchAction(Request $request)
