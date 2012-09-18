@@ -42,8 +42,7 @@ class GalleryFixture implements FixtureInterface, ContainerAwareInterface
         $new->setTitle("Une news");
         $new->setSubtitle("sous - titre ");
         $new->setContent("Le contenu de la nouvelle");
-        $new->setAuthor((string) $user);
-        $new->setAuthorSlug($user->getSlug());
+        $new->setAuthor( $user);
         $manager->persist($new);
 
         $blog = new ArticleBlog();
@@ -51,8 +50,7 @@ class GalleryFixture implements FixtureInterface, ContainerAwareInterface
         $blog->setSubtitle("sous titre");
         $blog->setIsPublished(true);
         $blog->setContent("Le contenu !!");
-        $blog->setAuthor("Fabien");
-        $blog->setAuthorSlug("fabien");
+        $blog->setAuthorUser($user);
         $manager->persist($blog);
 
         $manager->flush();

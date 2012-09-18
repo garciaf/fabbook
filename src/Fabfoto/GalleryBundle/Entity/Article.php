@@ -10,7 +10,7 @@ use Fabfoto\UserBundle\Entity\User as User;
  * Fabfoto\GalleryBundle\Entity\Article
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Fabfoto\GalleryBundle\Entity\ArticleRepository")
  */
 class Article
 {
@@ -41,9 +41,17 @@ class Article
      * @var date $createdAt
      *
      * @Gedmo\Timestampable(on="create")
-     * @ORM\Column(name="createdAt", type="date")
+     * @ORM\Column(name="createdAt", type="datetime")
      */
     private $createdAt;
+
+    /**
+     * @var datetime $updatedAt
+     *
+     * @ORM\Column(name="updatedAt", type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     */
+    private $updatedAt;
 
     /**
      * @var string $content
@@ -58,6 +66,12 @@ class Article
      * @ORM\ManyToOne(targetEntity="Fabfoto\UserBundle\Entity\User")
      */
     private $author;
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+        $this->setUpdatedAt(new \DateTime());
+    }
 
     /**
      * Get id
@@ -112,7 +126,7 @@ class Article
     /**
      * Set createdAt
      *
-     * @param date $createdAt
+     * @param \DateTime $createdAt
      */
     public function setCreatedAt($createdAt)
     {
@@ -122,7 +136,7 @@ class Article
     /**
      * Get createdAt
      *
-     * @return date
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -149,7 +163,6 @@ class Article
         return $this->content;
     }
 
-
     /**
      * Set author
      *
@@ -163,10 +176,33 @@ class Article
     /**
      * Get author
      *
-     * @return Fabfoto\UserBundle\Entity\User 
+     * @return Fabfoto\UserBundle\Entity\User
      */
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param  \DateTime $updatedAt
+     * @return Article
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

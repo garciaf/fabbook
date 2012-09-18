@@ -25,17 +25,17 @@
     <body>
 
         <div id="pageAbout">
-            {% if app.session.flashes %}
+            {% for type, flashMessages in app.session.flashbag.all() %}
             <div id="flashes">
-                {% for type, message in app.session.flashes%}
-                <div class="flash {{type}}">
-                    <div class="wrap">
-                        {{message}}
+                {% for flashMessage in flashMessages %}
+                    <div class="flash-{{ type }}">
+                        <div class="wrap">
+                        {{ flashMessage }}
+                        </div>
                     </div>
-                </div>
-                {% endfor%}
+                {% endfor %}
             </div>
-            {% endif%}
+            {% endfor %}
 
             {% block content %}lipso lium{%endblock%}
 
@@ -48,7 +48,8 @@
         </div>
         <script>
             $('#qrlinkUser').popover({
-                placement: 'top'
+                placement: 'top',
+                trigger: 'hover'
             });
 	    $('.helper').tooltip({
                 placement: 'top'

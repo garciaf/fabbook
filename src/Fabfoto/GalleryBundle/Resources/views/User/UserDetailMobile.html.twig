@@ -14,7 +14,7 @@
         <h2>{{user.title}}</h2>
     </li>
 </ul>
-        <p>{{user.description | purify  }} </p>
+        <p>{{user.description | raw }} </p>
 </div>
 
 <div data-role="collapsible">
@@ -89,7 +89,7 @@
         <li>
     	<div>
             <h2>Share</h2>
-            <img alt="get my vcard" src="/{{ mopa_barcode_url("qr", vcard , true) }}"/>
+            <img alt="get my vcard" src="{{ mopa_barcode_url("qr", vcard , true) }}"/>
         </div>
         </ul>
     </div>

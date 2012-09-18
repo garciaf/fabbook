@@ -82,7 +82,7 @@ class ArticleBlogController extends Controller
 
         $request = $this->getRequest();
         $form = $this->createForm(new ArticleBlogType(), $entity);
-        $form->bindRequest($request);
+        $form->bind($request);
 
         if ($form->isValid()) {
             try {
@@ -152,7 +152,7 @@ class ArticleBlogController extends Controller
 
         $request = $this->getRequest();
 
-        $editForm->bindRequest($request);
+        $editForm->bind($request);
 
         if ($editForm->isValid()) {
             try {

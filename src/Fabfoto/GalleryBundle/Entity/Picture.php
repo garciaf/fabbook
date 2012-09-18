@@ -2,16 +2,15 @@
 
 namespace Fabfoto\GalleryBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Fabfoto\GalleryBundle\Uploader\AbstractImage;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Doctrine\ORM\Mapping as ORM;
-use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
 
 /**
  * Fabfoto\GalleryBundle\Entity\Picture
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Fabfoto\GalleryBundle\Entity\PictureRepository")
+ *
+ *  * @ORM\Entity(repositoryClass="Fabfoto\GalleryBundle\Entity\PictureRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Picture extends AbstractImage
@@ -49,7 +48,7 @@ class Picture extends AbstractImage
      * @var date $createdAt
      *
      * @Gedmo\Timestampable(on="create")
-     * @ORM\Column(name="createdAt", type="date", nullable=true)
+     * @ORM\Column(name="createdAt", type="datetime", nullable=true)
      */
     private $createdAt;
 
@@ -62,6 +61,11 @@ class Picture extends AbstractImage
      * @ORM\Column(name="is_background", type="boolean")
      */
     private $isBackground;
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+    }
 
     /**
      * Get id

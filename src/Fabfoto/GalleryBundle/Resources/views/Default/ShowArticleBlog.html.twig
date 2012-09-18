@@ -27,7 +27,6 @@
         {{article.content|raw}}
     </div>
     <div class="signature_blog">{% if article.authorUser is not null %}{% trans %}by{% endtrans %} <a target="_blanck" href="{{ path('show_about', { 'slug': article.authorUser.slug }) }}">{{article.authorUser}}</a> - {% endif %}{{article.createdAt|date('d/m/Y')}} - Mise à jour : {{article.updatedAt|date('d/m/Y') }}</div>
-    <div class="pdf"><a href="{{path('show_article_blog_pdf', {'slugblog':article.slugblog})}}"><img src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')}}"/></a> </div>
     {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': article.id} %}
 </div>
 {% endblock content %}
@@ -38,7 +37,7 @@
 {% endblock metainfo %}
 
 {%block qrLink %}
-<a id="qrlink" rel="popover" href="{{path('show_article_blog_mobile', { 'slugblog': article.slugblog }) }}" data-content='<img alt="[QR Code]" src="/{{ mopa_barcode_url("qr", url("show_article_blog_mobile", { "slugblog": article.slugblog }) ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">
+<a id="qrlink" rel="popover" href="{{path('show_article_blog_mobile', { 'slugblog': article.slugblog }) }}" data-content='<img alt="[QR Code]" src="{{ mopa_barcode_url("qr", url("show_article_blog_mobile", { "slugblog": article.slugblog }) ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">
     <div class="visible-desktop"><i class="icon-qrcode icon-black"></i></div>
     <div class="hidden-desktop"><i class="icon-qrcode icon-black"></i> {% trans %}mobile{% endtrans %}</div>
 </a>

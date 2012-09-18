@@ -12,7 +12,6 @@ use Doctrine\ORM\Mapping\ManyToOne as ManyToOne;
 use Fabfoto\GalleryBundle\Entity\Cover as Cover;
 use Fabfoto\UserBundle\Entity\User as User;
 
-
 /**
  * Fabfoto\GalleryBundle\Entity\ArticleBlog
  *
@@ -76,7 +75,7 @@ class ArticleBlog
      * @ORM\ManyToOne(targetEntity="Fabfoto\UserBundle\Entity\User")
      */
     private $authorUser;
-    
+
      /**
       *
       * @ORM\ManyToMany(targetEntity="Tag", inversedBy="articles")
@@ -310,10 +309,20 @@ class ArticleBlog
     /**
      * Get authorUser
      *
-     * @return Fabfoto\GalleryBundle\Entity\User 
+     * @return Fabfoto\GalleryBundle\Entity\User
      */
     public function getAuthorUser()
     {
         return $this->authorUser;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param Fabfoto\GalleryBundle\Entity\Tag $tags
+     */
+    public function removeTag(\Fabfoto\GalleryBundle\Entity\Tag $tags)
+    {
+        $this->tags->removeElement($tags);
     }
 }

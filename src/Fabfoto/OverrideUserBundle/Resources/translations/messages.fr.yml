@@ -2,7 +2,7 @@ user:
   register:
     title: Enregistrez vous
     subtitle: Pour obtenir une page personnel avec QRCode
-  login: 
+  login:
     title: Connexion
     rememberMe: Se souvenir de moi
     forgot: Mot de pass oublié ?

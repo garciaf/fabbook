@@ -1,7 +1,12 @@
 language: php
 
 php: 
-  - 5.3
+  - 5.3.3
   - 5.4
 
-before_script: php /bin/vendors install
+before_script: 
+  - mysql -e 'create database fabbookTest;'
+  - composer install
+  - php app/console doctrine:schema:create --env=test
+  - php app/console doctrine:fixtures:load --env=test --no-interaction
+script: phpunit -c app/

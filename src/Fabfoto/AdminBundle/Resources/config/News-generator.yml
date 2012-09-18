@@ -9,10 +9,9 @@ params:
       addFormOptions:
         required: false
     author:
-      formType: genemu_jquerychosen
+      formType: genemu_jquerychosen_entity
       addFormOptions:
         class: "FabfotoUserBundle:User"
-        widget: entity 
 builders:
   list:
     params:

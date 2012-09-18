@@ -1,5 +1,5 @@
 imports:
-    - { resource: parameters.ini }
+    - { resource: parameters.yml }
     - { resource: security.yml }
 
 sensio_framework_extra:
@@ -9,17 +9,14 @@ framework:
     esi: { enabled: true }
     translator:      { fallback: %locale% }
     secret:          %secret%
-    charset:         UTF-8
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
     form:            true
     csrf_protection: true
     validation:      { enable_annotations: true }
     templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
-    session:
-        default_locale: %locale%
-        auto_start:     true
+    default_locale: %locale%
     translator: ~
-    
+    session: ~
 
 # Twig Configuration
 twig:
@@ -34,15 +31,15 @@ assetic:
     use_controller: false
     read_from:      %kernel.root_dir%/../www
     filters:
-        cssrewrite: 
-          apply_to: "\.css$"
         yui_css:
             jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar"
             apply_to: "\.css$"
         yui_js:
             jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar"
             apply_to: "\.js$"
-
+        cssembed:
+            jar: %kernel.root_dir%/Resources/java/cssembed-0.4.5.jar
+            apply_to: "\.css"
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -67,7 +64,6 @@ swiftmailer:
     password:  %mailer_password_dev%
 
 jms_security_extra:
-    secure_controllers:  true
     secure_all_services: false
 
 #GalleryBundle Configuration
@@ -111,6 +107,7 @@ admingenerator_generator:
     use_propel: false
     use_doctrine_orm: true
     use_doctrine_odm: false
+    templates_dirs: [ %kernel.root_dir%/../vendor/cedriclombardot/admingenerator-oldtheme-bundle/Admingenerator/OldThemeBundle/Resources/templates ]
 #admingenerator_user:
 #    login_template: AdmingeneratorGeneratorBundle::base_login_assetic_less.html.twig
 genemu_form:
@@ -150,6 +147,9 @@ jms_serializer:
         # expected path: @MyFooBundle/Resources/config/serializer/Entity.User.(yml|xml|php)
         auto_detection: true
 
+knp_last_tweets:
+    fetcher:
+        driver: api 
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
@@ -173,12 +173,13 @@ fos_comment:
             thread: fos_comment.acl.thread.roles
             comment: fos_comment.acl.comment.roles
             vote: fos_comment.acl.vote.roles
-        markup: markup.exercise_html_purifier         
+#        markup: markup.exercise_html_purifier         
     db_driver: orm
     class:
         model:
             comment: Fabfoto\GalleryBundle\Entity\Comment
-            thread: Fabfoto\GalleryBundle\Entity\Thread        
+            thread: Fabfoto\GalleryBundle\Entity\Thread 
+            vote: Fabfoto\GalleryBundle\Entity\Vote
     acl_roles:
         comment:
             create: IS_AUTHENTICATED_ANONYMOUSLY
@@ -196,3 +197,15 @@ fos_comment:
             edit: ROLE_ADMIN
             delete: ROLE_ADMIN         
      
+ps_pdf:
+    nodes_file: ~
+    fonts_file: ~
+    complex_attributes_file: ~
+    colors_file: ~
+    use_cache_in_stylesheet: ~
+    cache:
+      type: ~
+      options: ~
+    markdown_stylesheet_filepath: ~
+    markdown_document_template_filepath: ~
+    document_parser_type: ~

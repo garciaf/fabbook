@@ -4,8 +4,15 @@
 /app/cache/*
 /app/logs/*
 /vendor/
-/app/config/parameters.ini
+/app/config/parameters.yml
 /www/bundles/
+/web/media/
 /www/media/
-/www/uploads/
+/www/uploads/*
+/www/incoming/*
+/www/css/*
+/www/js/*
+/bin/
+composer.lock
 /src/Fabfoto/TrainTimingBundle/Resources/public/js/extjs-4.1.0/resources/sass/.sass-cache/
+/app/config/parameters_prod.yml

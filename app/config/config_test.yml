@@ -7,8 +7,8 @@ doctrine:
         host:     %database_host%
         port:     %database_port%
         dbname:   %database_name%Test
-        user:     %database_user%
-        password: %database_password%
+        user:     %database_user% 
+        password: ~
         charset:  UTF8
 
     orm:
@@ -24,6 +24,9 @@ framework:
 web_profiler:
     toolbar: false
     intercept_redirects: false
+
+swiftmailer:
+    disable_delivery: true
 
 swiftmailer:
     disable_delivery: true

@@ -3,11 +3,11 @@
 namespace Fabfoto\GalleryBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormBuilderInterface;
 
 class MessageType extends AbstractType
 {
-    public function buildForm(FormBuilder $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('sender','email', array(
@@ -27,6 +27,7 @@ class MessageType extends AbstractType
                 'attr' => array('class' => 'control-label input-xlarge'),
             ))
            ->add('captcha', 'genemu_recaptcha',array(
+               "label" => 'message.capcha',
                "property_path" => false,
                'attr' => array('class' => 'control-label input-xlarge'),
                ))

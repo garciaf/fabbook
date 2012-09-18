@@ -48,12 +48,13 @@ class ImporterController extends Controller
         $request = $this->getRequest();
         $album = new Album();
         $form    = $this->createImportForm($album);
-        $form->bindRequest($request);
+        $form->bind($request);
 
         if ($form->isValid()) {
             try {
             $this->get('fabfoto_gallery.picture_importer')->import($album);
             $this->get('session')->setFlash('success', $this->get('translator')->trans("object.saved.success", array(), 'Admingenerator') );
+
             return $this->redirect($this->generateUrl('import_index'));
             } catch (\Exception $e) {
                 $this->get('session')->setFlash('error',  $e->getMessage() );

@@ -38,7 +38,7 @@ class Tag
     private $articles;
 
     /**
-     * @gedmo:Sluggable(slugField="name")
+     * @gedmo\Slug(fields={"name"})
      * @ORM\Column(name="slug", type="string", length=255 )
      */
     protected $slug;

@@ -13,7 +13,6 @@
                 <script>window.jQuery || document.write('<script src="{{ asset("bundles/admingeneratorgenerator/javascripts/jquery-1.6.4.min.js") }}">\x3C/script>')</script>
                 <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/js/jquery-ui-1.8.16.custom.min.js') }}"></script>
                 <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/tiny_mce/jquery.tinymce.js') }}"></script>
-                <script src="{{ asset('bundles/genemuform/js/genemuFormBundle.js') }}"></script>
 
             {% if form is defined %}
                 {{ form_javascript(form) }}
@@ -51,16 +50,13 @@
             </div>
             <div id="content">
                 {% block flashes %}
-                    {% if app.session.flash('success') %}
-                        <div class="notification_box success">
-                            {{ app.session.flash('success')|raw }}
+                {% for type, flashMessages in app.session.flashbag.all() %}
+                    {% for flashMessage in flashMessages %}
+                        <div class="notification_box {{ type }}">
+                            {{ flashMessage }}
                         </div>
-                    {% endif %}
-                    {% if app.session.flash('error') %}
-                        <div class="notification_box error">
-                            {{ app.session.flash('error')|raw }}
-                        </div>
-                    {% endif %}
+                    {% endfor %}
+                {% endfor %}
                 {% endblock %}
 
                 <div id="body_content">

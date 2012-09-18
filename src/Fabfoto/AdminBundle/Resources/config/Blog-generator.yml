@@ -9,22 +9,19 @@ params:
       addFormOptions:
         required: false
     cover:
-      formType: genemu_jquerychosen
+      formType: genemu_jquerychosen_entity
       addFormOptions:
         class: "FabfotoGalleryBundle:Cover"
-        widget: entity
     tags:
-      formType: genemu_jquerychosen
+      formType: genemu_jquerychosen_entity
       addFormOptions:
         class: "FabfotoGalleryBundle:Tag"
-        widget: entity    
         multiple: true
         required: false
     authorUser:
-      formType: genemu_jquerychosen
+      formType: genemu_jquerychosen_entity
       addFormOptions:
         class: "FabfotoUserBundle:User"
-        widget: entity        
 builders:
   list:
     params:

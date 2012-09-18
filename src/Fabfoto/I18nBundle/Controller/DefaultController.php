@@ -4,7 +4,6 @@ namespace Fabfoto\I18nBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class DefaultController extends Controller
 {
@@ -14,11 +13,11 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $mobileDetector = $this->get('mobile_detector');
-        if($mobileDetector->isMobile()){
+        if ($mobileDetector->isMobile()) {
             return $this->redirect($this->generateUrl('index_mobile'));
-        }else{
+        } else {
             return $this->redirect($this->generateUrl('show_articles'));
         }
-        
+
     }
 }

@@ -1,12 +1,12 @@
-{% if app.session.flashes %}
+{% for type, flashMessages in app.session.flashbag.all() %}
 <div id="alert">
-    {% for type, message in app.session.flashes%}
-    <div class="alert alert-block alert-{{type}} fade in">
-        <a class="close" data-dismiss="alert">×</a>
-        <div class="wrap">
-            {{message}}
+    {% for flashMessage in flashMessages %}
+        <div class="alert alert-block alert-{{ type }} fade in">
+            <a class="close" data-dismiss="alert">×</a>
+            <div class="wrap">
+            {{ flashMessage }}
+            </div>
         </div>
-    </div>
-    {% endfor%}
+    {% endfor %}
 </div>
-{% endif%}
+{% endfor %}

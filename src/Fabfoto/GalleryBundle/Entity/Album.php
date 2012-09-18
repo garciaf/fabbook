@@ -43,9 +43,17 @@ class Album
      * @var date $createdAt
      *
      * @Gedmo\Timestampable(on="create")
-     * @ORM\Column(name="createdAt", type="date", nullable=true)
+     * @ORM\Column(name="createdAt", type="datetime", nullable=true)
      */
     private $createdAt;
+
+    /**
+     * @var datetime $updatedAt
+     *
+     * @ORM\Column(name="updatedAt", type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     */
+    private $updatedAt;
 
     /**
      *
@@ -134,7 +142,7 @@ class Album
     /**
      * Get createdAt
      *
-     * @return date
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -232,5 +240,38 @@ class Album
 
         return false;
 
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param  \DateTime $updatedAt
+     * @return Album
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Remove pictures
+     *
+     * @param Fabfoto\GalleryBundle\Entity\Picture $pictures
+     */
+    public function removePicture(Picture $pictures)
+    {
+        $this->pictures->removeElement($pictures);
     }
 }

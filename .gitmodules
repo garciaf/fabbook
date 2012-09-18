@@ -1,6 +1,3 @@
-[submodule "src/Bundle/CaptchaBundle"]
-	path = src/Bundle/CaptchaBundle
-	url = git://github.com/biGGer/CaptchaBundle.git
 [submodule "src/App/MobileDetectorBundle"]
-	path = src/App/MobileDetectorBundle
-	url = git@github.com:garciaf/MobileDetectorBundle.git
+	path = src/FBK/MobileDetectorBundle
+	url = git://github.com/garciaf/MobileDetectorBundle.git
