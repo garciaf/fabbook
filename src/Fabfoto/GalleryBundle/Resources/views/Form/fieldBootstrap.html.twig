@@ -1,0 +1,68 @@
+{% block field_row %}
+{% spaceless %}
+{{ form_errors(form) }}
+    <div class="control-group">
+        {{ form_label(form) }}
+                    <div class="controls">
+        {{ form_widget(form) }}
+                    </div>
+    </div>
+{% endspaceless %}
+{% endblock field_row %}
+
+{% block field_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+            {% for error in errors %}
+    <div>
+        <div class="alert alert-block alert-error fade in">
+            <a class="close" data-dismiss="alert">×</a>
+
+            <div class="wrap">
+              {{ error.messageTemplate|trans(error.messageParameters, 'validators') }}
+            </div>
+        </div>
+    </div>
+            {% endfor %}
+        {% endif %}
+    {% endspaceless %}
+{% endblock field_errors %}
+    
+{%block field_label %}
+<label class="control-label">{{label|trans}}</label>
+{%endblock%}
+
+
+{% block genemu_recaptcha_row %}
+{% spaceless %}
+{{ form_errors(form) }}
+    <div class="control-group">
+        {{ form_label(form) }}
+            <div class="controls">
+        {{ form_widget(form) }}
+            </div>
+    </div>
+{% endspaceless %}
+{% endblock%}
+
+{%block genemu_recaptcha_label %}
+<label class="control-label">{{label|trans}}</label>
+{%endblock%}
+
+{% block genemu_recaptcha_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+            {% for error in errors %}
+    <div>
+        <div class="alert alert-block alert-error fade in">
+            <a class="close" data-dismiss="alert">×</a>
+
+            <div class="wrap">
+              {{ error.messageTemplate|trans(error.messageParameters, 'validators') }}
+            </div>
+        </div>
+    </div>
+            {% endfor %}
+        {% endif %}
+    {% endspaceless %}
+{% endblock genemu_recaptcha_errors %}

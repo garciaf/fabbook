@@ -1,27 +1,29 @@
-register: Register
-about: about us
-album: Album
 home: home
-logout: Logout
+album: Album
 blog: Blog
-mobile: Mobile version
-contact: contact me
+contact: 'contact me'
+gadget: newgadget
+about: 'about us'
 search: search
-about.it: about IT and more ...
+connect: 'connect to your account'
+register: Register
+mobile: 'Mobile version'
+user.details: Description
+Gadget: newGadget
+from.fabbook: 'from fabbook'
+about.it: 'about IT and more ...'
+contact.form.placeholder.mail: mail@exemple.com
+contact.form.placeholder.subject: Critics, proposal ...
+contact.form.placeholder.content: bla bla bla ...
 news: news
-last.article: last articles
-connect: connect to your account
+last.article: 'last articles'
 the: the
+from.tweeter: 'from tweeter'
 by: By
-from:
-  fabbook: from fabbook
-  tweeter: from tweeter
-message:
-  email: Your email
-  subject: Title
-  content: Your message
-  send:
-    success: message sended
-    fail: something went wron with your message
-user:
-  details: Description
+logout: Logout
+message.email: 'Your email'
+message.subject: Title
+message.content: 'Your message'
+message.capcha: Capcha
+message.send.success: 'message sended'
+message.send.fail: 'something went wron with your message'

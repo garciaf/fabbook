@@ -1,27 +1,29 @@
-register: Enregistrez vous
-about: A propos
-album: Album
 home: Accueil
-logout: Se déconnecter
+album: Album
 blog: blog
-mobile: Version mobile
-contact: me contacter
+contact: 'me contacter'
+gadget: newgadget
+about: 'A propos'
 search: rechercher
-about.it: à propos d'informatique et plus ...
+connect: 'Se connecter à son espace'
+register: 'Enregistrez vous'
+mobile: 'Version mobile'
+user.details: Description
+Gadget: newGadget
+from.fabbook: 'de fabbook'
+about.it: 'à propos d''informatique et plus ...'
+contact.form.placeholder.mail: votre eMail
+contact.form.placeholder.subject: Critique, idées et autres
+contact.form.placeholder.content: Ba bla bla ...
 news: nouvelles
-last.article: derniers articles
-connect: Se connecter à son espace
+last.article: 'derniers articles'
 the: le
+from.tweeter: 'de tweeter'
 by: Par
-from:
-  fabbook: de fabbook
-  tweeter: de tweeter
-message:
-  email: Votre email
-  subject: le sujet
-  content: Votre message
-  send:
-    success: Votre message a bien été envoyé
-    fail: erreur dans le formulaire d'envoie
-user:
-  details: Description
+logout: 'Se déconnecter'
+message.email: 'Votre email'
+message.subject: 'le sujet'
+message.content: 'Votre message'
+message.capcha: Capcha
+message.send.success: 'Votre message a bien été envoyé'
+message.send.fail: 'erreur dans le formulaire d''envoie'

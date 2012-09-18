@@ -27,6 +27,7 @@ class MessageType extends AbstractType
                 'attr' => array('class' => 'control-label input-xlarge'),
             ))
            ->add('captcha', 'genemu_recaptcha',array(
+               "label" => 'message.capcha',
                "property_path" => false,
                'attr' => array('class' => 'control-label input-xlarge'),
                ))
