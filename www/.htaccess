@@ -1,16 +1,16 @@
 # Activate filter
-SetOutputFilter DEFLATE
+#SetOutputFilter DEFLATE
 
 # Some probleme with some browser
-BrowserMatch ^Mozilla/4 gzip-only-text/html
-BrowserMatch ^Mozilla/4\.0[678] no-gzip
-BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+#BrowserMatch ^Mozilla/4 gzip-only-text/html
+#BrowserMatch ^Mozilla/4\.0[678] no-gzip
+#BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
 
 # Picture don't need to be compress
-SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+#SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
 
 # Pour les proxy
-Header append Vary User-Agent env=!dont-vary
+#Header append Vary User-Agent env=!dont-vary
 <IfModule mod_rewrite.c>
     Options -MultiViews
 
