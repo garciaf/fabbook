@@ -56,7 +56,7 @@ class DefaultController extends BaseController
     }
 
     /**
-     * 
+     *
      * @Route("blog", name="index_blog")
      */
     public function indexBlogsAction()

@@ -10,11 +10,11 @@ class ArticleBlogTest extends WebTestCase
     public function testNewBlogPage()
     {
         $client = $this->getAuthenticatedClient();
-        
+
         $crawler = $client->request('GET', '/writer/blog/new');
-        
+
         $this->assertGreaterThan(0, $crawler->filter('html:contains("content")')->count(), "The user form is not displayed");
-        
+
     }
     /**
      * Creates a Client.
@@ -22,21 +22,23 @@ class ArticleBlogTest extends WebTestCase
      *
      * @return Client A Client instance
      */
-    protected function getAuthenticatedClient(){
+    protected function getAuthenticatedClient()
+    {
         $client = static::createClient();
-        
+
         $crawler = $client->request('GET', '/login');
-        
+
         $buttonCrawlerNode = $crawler->selectButton('login');
-        
+
         $form = $buttonCrawlerNode->form();
-        
+
         // submit the form
         $client->submit($form, array(
             '_username' => 'toto',
-            '_password' => 'test', 
+            '_password' => 'test',
             '_remember_me' => true
         ));
+
         return $client;
     }
 }
