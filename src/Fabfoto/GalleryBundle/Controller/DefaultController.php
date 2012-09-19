@@ -41,7 +41,7 @@ class DefaultController extends BaseController
     public function showHomePageAction()
     {
         $lastNews  = $this->getLastNews();
-        $response = $this->getResponseHeader($lastNews->getUpdatedAt());
+	$response = $this->getResponseHeader($lastNews->getUpdatedAt());
 
         if ($response->isNotModified($this->getRequest())) {
             // return the 304 Response immediately
@@ -56,7 +56,7 @@ class DefaultController extends BaseController
     }
 
     /**
-     * 
+     *
      * @Route("blog", name="index_blog")
      */
     public function indexBlogsAction()

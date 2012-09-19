@@ -2,14 +2,13 @@ home: home
 album: Album
 blog: Blog
 contact: 'contact me'
-gadget: newgadget
+gadget: Goodies
 about: 'about us'
 search: search
 connect: 'connect to your account'
 register: Register
 mobile: 'Mobile version'
 user.details: Description
-Gadget: newGadget
 from.fabbook: 'from fabbook'
 about.it: 'about IT and more ...'
 contact.form.placeholder.mail: mail@exemple.com

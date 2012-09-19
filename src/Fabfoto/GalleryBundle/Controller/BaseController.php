@@ -228,7 +228,7 @@ abstract class BaseController extends Controller
         // create a Response with a ETag and/or a Last-Modified header
         $response = new Response();
         $response->setLastModified($lastUpdated);
-
+        $response->setMaxAge(3600*24*7);
         // Set response as public. Otherwise it will be private by default.
         $response->setPublic();
 

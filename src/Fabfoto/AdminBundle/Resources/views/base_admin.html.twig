@@ -3,17 +3,20 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>{% block title %}Super Admin Fabbook{% endblock %}</title>
-        {% block stylesheets %}
-        	<link rel="stylesheet" href="{{ asset('bundles/admingeneratoractiveadmintheme/css/all.css') }}" type="text/css" media="all" />
-        	<link rel="stylesheet" href="{{ asset('bundles/fabfotogallery/chosen/chosen.css') }}" type="text/css" media="all" />
-        {% endblock %}
-
-                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-                <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/chosen/chosen.jquery.js') }}"></script>
-                <script>window.jQuery || document.write('<script src="{{ asset("bundles/admingeneratorgenerator/javascripts/jquery-1.6.4.min.js") }}">\x3C/script>')</script>
-                <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/js/jquery-ui-1.8.16.custom.min.js') }}"></script>
-                <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/tiny_mce/jquery.tinymce.js') }}"></script>
-
+        {% stylesheets 
+            '@AdmingeneratorActiveAdminThemeBundle/Resources/public/css/all.css'
+            '@FabfotoGalleryBundle/Resources/public/chosen/chosen.css'
+            %}
+                <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+        {% endstylesheets %}
+        {% javascripts
+        '@FabfotoGalleryBundle/Resources/public/jquery/jquery-1.7.2.min.js'
+        '@FabfotoGalleryBundle/Resources/public/chosen/chosen.jquery.js'
+        '@FabfotoGalleryBundle/Resources/public/js/jquery-ui-1.8.16.custom.min.js'
+        '@FabfotoGalleryBundle/Resources/public/tiny_mce/jquery.tinymce.js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
             {% if form is defined %}
                 {{ form_javascript(form) }}
             {% endif %}

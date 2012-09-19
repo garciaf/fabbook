@@ -16,13 +16,14 @@ use Fabfoto\GalleryBundle\Entity\Article as Article;
  *
  * @Route("/mobile")
  */
-class DefaultMobileController extends BaseController {
-
+class DefaultMobileController extends BaseController
+{
     /**
      * @Route("/", name="index_mobile")
      * @Template()
      */
-    public function showArticlesAction() {
+    public function showArticlesAction()
+    {
         $lastNews = $this->getLastNews();
         $response = $this->getResponseHeader($lastNews->getUpdatedAt());
 
@@ -42,14 +43,14 @@ class DefaultMobileController extends BaseController {
      * @Route("/{id}/article", name="show_article_mobile")
      * @ParamConverter("article", class="FabfotoGalleryBundle:Article")
      */
-    public function showArticleAction(Article $article) {
+    public function showArticleAction(Article $article)
+    {
         $response = $this->getResponseHeader($article->getUpdatedAt());
 
         if ($response->isNotModified($this->getRequest())) {
             // return the 304 Response immediately
             return $response;
         } else {
-
             return $this->render('FabfotoGalleryBundle:Mobile:showArticle.html.twig', array(
                         'article' => $article
                             ), $response);
@@ -61,7 +62,8 @@ class DefaultMobileController extends BaseController {
      * @Route("/albums", name="albums_mobile")
      * @Template()
      */
-    public function indexAlbumsAction() {
+    public function indexAlbumsAction()
+    {
         $lastPicture = $this->getLastPictureAdded();
         $response = $this->getResponseHeader($lastPicture->getCreatedAt());
 
@@ -80,7 +82,8 @@ class DefaultMobileController extends BaseController {
      * @ParamConverter("album", class="FabfotoGalleryBundle:Album")
      * @Template()
      */
-    public function showAlbumAction(Album $album) {
+    public function showAlbumAction(Album $album)
+    {
         $response = $this->getResponseHeader($album->getUpdatedAt());
 
         if ($response->isNotModified($this->getRequest())) {
@@ -103,7 +106,8 @@ class DefaultMobileController extends BaseController {
      * @ParamConverter("album", class="FabfotoGalleryBundle:Album")
      * @Template()
      */
-    public function showAlbumAjaxAction(Album $album) {
+    public function showAlbumAjaxAction(Album $album)
+    {
         $response = $this->getResponseHeader($album->getUpdatedAt());
 
         if ($response->isNotModified($this->getRequest())) {
@@ -123,7 +127,8 @@ class DefaultMobileController extends BaseController {
      * @Cache(expires="+1 week")
      * @Route("/blog", name="index_blog_mobile")
      */
-    public function indexBlogsAction() {
+    public function indexBlogsAction()
+    {
         $articlesBlogs = $this->getBlogs();
 
         return $this->render('FabfotoGalleryBundle:Mobile:IndexArticleBlog.html.twig', array(
@@ -136,7 +141,8 @@ class DefaultMobileController extends BaseController {
      * @Route("/{slugblog}/blogarticle", name="show_article_blog_mobile")
      * @ParamConverter("article", class="FabfotoGalleryBundle:ArticleBlog")
      */
-    public function showBlogArticleAction(ArticleBlog $article) {
+    public function showBlogArticleAction(ArticleBlog $article)
+    {
         $response = $this->getResponseHeader($article->getUpdatedAt());
         if ($response->isNotModified($this->getRequest())) {
             // return the 304 Response immediately
@@ -145,6 +151,7 @@ class DefaultMobileController extends BaseController {
             if (!$article->getIsPublished()) {
                 $this->createNotFoundException();
             }
+
             return $this->render('FabfotoGalleryBundle:Mobile:ShowArticleBlog.html.twig', array(
                         'article' => $article
                             ), $response);

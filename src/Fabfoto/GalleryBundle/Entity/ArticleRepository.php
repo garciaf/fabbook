@@ -19,7 +19,10 @@ class ArticleRepository extends EntityRepository
     public function getQueryOrderBydate($max = null)
     {
         $query = $this->createQueryBuilder('n')
-                ->add('orderBy', 'n.createdAt DESC');
+        ->add('orderBy', 'n.updatedAt DESC')
+        ->add('orderBy', 'n.createdAt DESC');
+
+
         if ($max) {
             $query->setMaxResults($max);
         }

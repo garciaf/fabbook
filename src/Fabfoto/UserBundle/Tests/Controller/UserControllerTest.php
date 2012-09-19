@@ -9,17 +9,17 @@ class UserControllerTest extends WebTestCase
     public function testPrivatePage()
     {
         $client = static::createClient();
-        
+
         $crawler = $client->request('GET', '/login');
-        
+
         $buttonCrawlerNode = $crawler->selectButton('login');
-        
+
         $form = $buttonCrawlerNode->form();
-        
+
         // submit the form
         $client->submit($form, array(
             '_username' => 'toto',
-            '_password' => 'test', 
+            '_password' => 'test',
             '_remember_me' => true
         ));
         $crawler = $client->request('GET', '/user/');

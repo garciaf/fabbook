@@ -4,10 +4,10 @@
 <h1>Contact</h1>
 <div class="span8">
     <form action="{{ path('contact_create') }}" method="post" class="form-horizontal" {{ form_enctype(form) }} >
-    {{form_row(form.sender)}}        
-    {{form_row(form.subject)}}        
-    {{form_row(form.content)}}        
-    {{form_row(form.captcha)}}        
+    {{form_row(form.sender)}}
+    {{form_row(form.subject)}}
+    {{form_row(form.content)}}
+    {{form_row(form.captcha)}}
 
             {{ form_rest(form) }}
             <div class="control-group">
