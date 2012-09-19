@@ -9,7 +9,6 @@ connect: 'Se connecter à son espace'
 register: 'Enregistrez vous'
 mobile: 'Version mobile'
 user.details: Description
-Gadget: newGadget
 from.fabbook: 'de fabbook'
 about.it: 'à propos d''informatique et plus ...'
 contact.form.placeholder.mail: votre eMail
