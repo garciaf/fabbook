@@ -38,17 +38,19 @@
 	"symfony/twig-bundle": "2.*",
 	"knplabs/knp-last-tweets-bundle": "dev-master",
 	"friendsofsymfony/jsrouting-bundle": "dev-master",
-	"jms/serializer-bundle": "dev-master",
+	"jms/serializer-bundle": "0.9.0",
 	"gedmo/doctrine-extensions": "dev-master",
         "friendsofsymfony/user-bundle": "dev-master",
         "friendsofsymfony/comment-bundle": "dev-master",
         "exercise/htmlpurifier-bundle": "dev-master",
         "genemu/form-bundle": "dev-master",
         "avalanche123/imagine-bundle": "dev-master",
+	"friendsofsymfony/rest-bundle": "dev-master",
         "friendsofsymfony/comment-bundle": "dev-master",
         "stof/doctrine-extensions-bundle": "dev-master",
 	"ptachoire/cssembed": "dev-master",
-	"psliwa/pdf-bundle": "dev-master"
+	"psliwa/pdf-bundle": "dev-master",
+	"coresphere/console-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

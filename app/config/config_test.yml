@@ -8,7 +8,7 @@ doctrine:
         port:     %database_port%
         dbname:   %database_name%Test
         user:     %database_user% 
-        password: ~
+        password: %database_password%
         charset:  UTF8
 
     orm:
@@ -30,3 +30,8 @@ swiftmailer:
 
 swiftmailer:
     disable_delivery: true
+
+knp_last_tweets:
+    fetcher:
+        driver: array
+    

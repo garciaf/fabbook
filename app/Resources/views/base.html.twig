@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block metainfo %}{% endblock metainfo %}
+        <title> {% block title %}Fabbook{%endblock title%}</title>
+        <!-- Le styles -->
+        {%block stylesheets %}{%endblock stylesheets %}
+        {% stylesheets
+        '@FabfotoGalleryBundle/Resources/public/css/style.css'
+        '@FOSCommentBundle/Resources/assets/css/comments.css'
+        'bundles/fabfotogallery/vegas/jquery.vegas.css'
+        'bundles/fabfotogallery/bootstrap/css/bootstrap.css'
+        '@FabfotoGalleryBundle/Resources/public/bootstrap/css/bootstrap-responsive.css'
+
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        {% javascripts
+        '@FabfotoGalleryBundle/Resources/public/jquery/jquery-1.7.2.min.js'
+        '@FabfotoGalleryBundle/Resources/public/vegas/jquery.vegas.js'
+        '@FabfotoGalleryBundle/Resources/public/bootstrap/js/bootstrap.min.js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <link rel="icon" type="image/png" href="{{ asset('bundles/fabfotogallery/image/icon/iconemain.png')}}">
+    </head>
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar pull-right hidden-desktop" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="{{path('show_articles')}}">Fabbook</a>
+                    <div class="nav-collapse">
+                        <ul class="nav" >
+                            <li>
+                                <a class="helper" href="{{path('show_articles')}}" rel="tooltip" title="{% trans %}home{% endtrans %}">
+                                    <div class="visible-desktop"><i class="icon-home icon-black"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-home icon-black"></i> {% trans %}home{% endtrans %}</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="helper" href="{{path('index_album')}}" rel="tooltip" title="{% trans %}album{% endtrans %}">
+                                    <div class="visible-desktop"><i class="icon-picture icon-black"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-picture icon-black"></i> {% trans %}album{% endtrans %}</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="helper" href="{{path('index_blog')}}" rel="tooltip" title="{% trans %}blog{% endtrans %}">
+                                    <div class="visible-desktop"><i class="icon-pencil icon-black"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-pencil icon-black"></i> {% trans %}blog{% endtrans %}</div>
+
+                                </a>
+                            </li>
+                            <li>
+                                <a class="helper" href="{{path('contact_new')}}" rel="tooltip" title="{% trans %}contact{% endtrans %}">
+                                    <div class="visible-desktop"><i class="icon-envelope icon-black"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-envelope icon-black"></i> {% trans %}contact{% endtrans %}</div>
+                                </a>
+                            </li>
+                            <li>
+                                {%block qrLink %}
+                                <a id="qrlink" rel="popover" href="{{path('index_mobile')}}" data-content='<img alt="[QR Code]" src="{{ mopa_barcode_url("qr", url("index_mobile") ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">
+                                    <div class="visible-desktop"><i class="icon-qrcode icon-black"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-qrcode icon-black"></i> {% trans %}mobile{% endtrans %}</div>
+                                </a>
+                                {%endblock qrLink %}
+                            </li>
+                            <li>
+                                <a class="helper" href="{{path('gadget_index')}}" rel="tooltip" title="{% trans %}gadget{% endtrans %}">
+                                    <div class="visible-desktop"><i class="icon-gift icon-black"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-gift icon-black"></i> {% trans %}gadget{% endtrans %}</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="helper" href="{{path('show_about', {'slug':'fabien-garcia'})}}" rel="tooltip" title="{% trans %}about{% endtrans %}">
+                                    <div class="visible-desktop"><i class="icon-user icon-black"></i></div>
+                                    <div class="hidden-desktop"><i class="icon-user icon-black"></i> {% trans %}about{% endtrans %}</div>
+                                </a>
+                            </li>
+                        </ul>
+                        <form class="navbar-search pull-left form-search" method="get" action="{{path('fabfoto_search')}}">
+                            <div class="input-append">
+                                <input type="text" class="search-query span2" name="q" placeholder="{% trans %}search{% endtrans %}" value="{% block search_query %}{%endblock search_query%}"/>
+                                <button type="submit" class="btn">Go</button>
+                            </div>
+                        </form>
+                        <ul class="nav pull-right">
+                            <li class="divider-vertical"></li>
+                            <li class="dropdown-open"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-plus"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{path('user_show')}}">{% trans %}connect{% endtrans %}</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="{{path('fos_user_registration_register')}}">{% trans %}register{% endtrans %}</a></li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" id={% block stylePage %}"page"{% endblock stylePage%}>
+        {% render 'FabfotoGalleryBundle:Default:notification' with {}, {'standalone': true} %}
+        {% block content %}lipso lium{%endblock%}
+           <div id="footer">
+               <p id="legal">
+                   <a class="userInfo" href="{{path('fos_user_registration_register')}}" rel="tooltip" title="{% trans %}register{% endtrans %}"><i class="icon-book"></i></a>
+                   <a class="userInfo" href="{{path('user_show')}}" rel="tooltip" title="{% trans %}connect{% endtrans %}"><i class="icon-user"></i></a>
+               </p>
+               {% block rss %}
+               <a  href="{{path('rss_news')}}"><img alt="rss_image" id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
+               {%endblock rss%}
+           </div>
+        </div>
+
+        <script>
+            $('#qrlink').popover({
+                placement: 'bottom',
+		trigger: 'hover'
+            });
+            $('#qrlinkUser').popover({
+                placement: 'top',
+		trigger: 'hover'
+            });
+            $('#qrCode').popover({
+                placement: 'top',
+		trigger: 'hover'
+            });
+            $('.userInfo').tooltip({
+                placement: 'top'
+            });
+            $('.helper').tooltip({
+                placement: 'bottom'
+            });
+            $(".collapse").collapse();
+            $(".alert").alert();
+            $('.carousel').carousel({
+                interval: 5000
+            });
+        </script>
+        {%block javascripts %}
+        {%endblock javascripts %}
+
+    </body>
+</html>
