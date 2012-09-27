@@ -188,10 +188,12 @@ html, body {
     color: #23441e;
     text-shadow: 0 1px 0 rgba(255,255,255,0.5);
 }
+
 #rss{
     margin-left: 95%;
     height: 20px;
 }
+
 #download{
     height:20px;
 }

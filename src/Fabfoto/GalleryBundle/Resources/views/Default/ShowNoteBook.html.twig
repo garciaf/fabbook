@@ -38,7 +38,7 @@
 <div class="page-header">
     <h1>{{album}} <small>{{album.comment}}</small></h1>
 </div>
-<a class="helper" href="{{path('zip_album',{ 'slug': album.slug })}}" rel="tooltip" data-original-title="Download Album" ><img alt="download" id="download" src="{{ asset('bundles/fabfotogallery/image/icon/download.png')}}" /></a>
+<a class="helper" href="{{path('zip_album',{ 'slug': album.slug })}}" rel="tooltip" data-original-title="Download Album" ><img alt="download" id="download" src="{{ asset('bundles/fabfotogallery/image/icon/download.png') | apply_filter('icon_small') }}" /></a>
 
 <div id="magazine">
         {% for picture in pictures%}
@@ -56,6 +56,6 @@
 {%endblock qrLink %}
 
 {% block rss %}
-<a  href="{{path('rss_album')}}"><img alt="rss_image" id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
+{{path('rss_album')}}
 {%endblock rss%}
 {% block stylePage %}"bookPage"{% endblock stylePage%}

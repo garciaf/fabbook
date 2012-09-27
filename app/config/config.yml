@@ -93,6 +93,12 @@ avalanche_imagine:
         background:
             type:    thumbnail
             options: { size: [1024, 768], mode: inset }            
+        icon_small:
+            type:    thumbnail
+            options: { size: [20, 20], mode: inset }            
+        icon:
+            type:    thumbnail
+            options: { size: [44, 44], mode: inset }            
 stof_doctrine_extensions:
     default_locale: fr_FR
     orm:
