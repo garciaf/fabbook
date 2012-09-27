@@ -118,8 +118,7 @@
                    <a class="userInfo" href="{{path('fos_user_registration_register')}}" rel="tooltip" title="{% trans %}register{% endtrans %}"><i class="icon-book"></i></a>
                    <a class="userInfo" href="{{path('user_show')}}" rel="tooltip" title="{% trans %}connect{% endtrans %}"><i class="icon-user"></i></a>
                </p>
-               
-               <a  href="{% block rss %}{{path('rss_news')}}{%endblock rss%}"><img alt="rss_image" id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png') | apply_filter('icon_small')}}" /></a>
+               <a  href="{% block rss %}{{path('rss_news')}}{% endblock rss %}"><img alt="rss_image" id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png') | apply_filter('icon_small')}}"/></a>
                
            </div>
         </div>
