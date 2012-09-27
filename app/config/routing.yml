@@ -1,3 +1,8 @@
+fbk_zip:
+    resource: "@FBKZipBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 FabfotoI18nBundle:
     resource: "@FabfotoI18nBundle/Controller/"
     type:     annotation

@@ -165,7 +165,11 @@ exercise_html_purifier:
 services:
     markup.exercise_html_purifier:
         class: FOS\CommentBundle\Markup\HtmlPurifier
-        arguments: [ @exercise_html_purifier.default ]        
+        arguments: [ @exercise_html_purifier.default ]  
+    fbk.zipbundle.listener.request:
+        class: FBK\ZipBundle\Listener\RequestListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
 fos_comment:
     acl: true
     service:
@@ -209,3 +213,9 @@ ps_pdf:
     markdown_stylesheet_filepath: ~
     markdown_document_template_filepath: ~
     document_parser_type: ~
+
+igorw_file_serve:
+    factory: xsendfile
+    
+fbk_zip:
+  archive_directory: %kernel.root_dir%/../www/zip

@@ -20,7 +20,9 @@
 {% block content %}
 <div class="page-header">
     <h1>{{album}} <small>{{album.comment}}</small></h1>
+    <h2><a href="{{path('zip_album',{ 'slug': album.slug })}}">Save</a></h2>
 </div>
+
 {% include 'FabfotoGalleryBundle:Default:ListPicture.html.twig' with pictures %}
 {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': album.slug} %}
 {% endblock content %}

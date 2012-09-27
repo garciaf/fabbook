@@ -46,6 +46,8 @@ class AppKernel extends Kernel
             new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),
 	    new Exercise\HTMLPurifierBundle\ExerciseHTMLPurifierBundle(),
 	    new Ps\PdfBundle\PsPdfBundle(),
+	    new Igorw\FileServeBundle\IgorwFileServeBundle(),
+            new FBK\ZipBundle\FBKZipBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
