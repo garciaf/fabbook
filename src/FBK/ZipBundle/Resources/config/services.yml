@@ -1,0 +1,5 @@
+services:
+
+    fbk.zip:
+        class:      FBK\ZipBundle\Compressor\Zip
+        arguments:  [%fbk_zip.archive_directory%]

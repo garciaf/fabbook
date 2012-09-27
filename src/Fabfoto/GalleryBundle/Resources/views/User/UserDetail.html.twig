@@ -5,37 +5,37 @@
     <p>{{user.description | purify }} </p>
     <div id ="social" class="row-fluid">
         {% if user.googleLink is not empty %}
-        <div class="span1" ><a class='helper' title="Google plus" target="_blanck" href="{{user.googleLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/googleplus.png')}}"/></a></div>
+        <div class="span1" ><a class='helper' title="Google plus" target="_blanck" href="{{user.googleLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/googleplus.png') | apply_filter('icon')}}"/></a></div>
         {% endif %}
         {% if user.facebookLink is not empty %}
-        <div class="span1"><a class='helper' title="Facebook" target="_blanck" href="{{user.facebookLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/facebook.png')}}"/></a></div>
+        <div class="span1"><a class='helper' title="Facebook" target="_blanck" href="{{user.facebookLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/facebook.png') | apply_filter('icon')}}"/></a></div>
         {% endif %}
         {% if user.gitHubLink is not empty %}
-        <div class="span1" ><a class='helper' title="Fork me on github" target="_blanck" href="{{user.gitHubLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/github.png')}}"/></a></div>
+        <div class="span1" ><a class='helper' title="Fork me on github" target="_blanck" href="{{user.gitHubLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/github.png') | apply_filter('icon')}}"/></a></div>
         {% endif %}
         {% if user.twitterLink is not empty %}
-        <div class="span1" ><a class='helper' title="Follow me on twitter" target="_blanck" href="{{user.twitterLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/twitter.png')}}"/></a></div>
+        <div class="span1" ><a class='helper' title="Follow me on twitter" target="_blanck" href="{{user.twitterLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/twitter.png') | apply_filter('icon')}}"/></a></div>
         {% endif %}
         {% if user.linkedLink is not empty %}
-        <div class="span1" ><a class='helper' title="Linked" target="_blanck" href="{{user.linkedLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/linkedin.png')}}"/></a></div>
+        <div class="span1" ><a class='helper' title="Linked" target="_blanck" href="{{user.linkedLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/linkedin.png') | apply_filter('icon')}}"/></a></div>
         {% endif %}
         {% if user.viadeoLink is not empty %}
-        <div class="span1" ><a class='helper' title="Viadeo" target="_blanck" href="{{user.viadeoLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/viadeo.png')}}"/></a></div>
+        <div class="span1" ><a class='helper' title="Viadeo" target="_blanck" href="{{user.viadeoLink}}"><img src="{{asset('bundles/fabfotogallery/image/icon/viadeo.png') | apply_filter('icon')}}"/></a></div>
         {% endif %}
         {% if user.email is not empty %}
-        <div class="span1"><a class='helper' title="Contact me" href="mailto:{{user.email}}"><img src="{{asset('bundles/fabfotogallery/image/icon/mail.png')}}"/></a></div>
+        <div class="span1"><a class='helper' title="Contact me" href="mailto:{{user.email}}"><img src="{{asset('bundles/fabfotogallery/image/icon/mail.png') | apply_filter('icon')}}"/></a></div>
         {% endif %}
-        <div class="span1"><a class='helper' title="Get my card on pdf" href="{{path('show_about_pdf_from', {'slug': user.slug })}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')}}"/></a></div>
+        <div class="span1"><a class='helper' title="Get my card on pdf" href="{{path('show_about_pdf_from', {'slug': user.slug })}}"><img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/pdf.png') | apply_filter('icon')}}"/></a></div>
         <div class="span1"><a class='helper' title="Get my Vcard" href="{{path('show_vcard_from' , { 'slug': user.slug })}}">
-        <img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/vcard.png')}}"/></a>
+        <img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/vcard.png') | apply_filter('icon')}}"/></a>
         </div>
         <div class="span1">
             <a class="hidden-phone" id="qrlinkUser" rel="popover"  data-content='<img alt="[QR Code]" src="{{ mopa_barcode_url("qr", vcard , true) }}"/>' data-original-title="Scan me">
-                <img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/barcode.png')}}"/>
+                <img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/barcode.png') | apply_filter('icon')}}"/>
             </a>
 
         </div>
     </div>
     	<div class="visible-phone">
-            <img alt="get my vcard" src="{{ mopa_barcode_url("qr", vcard , true) }}"/>
+            <img alt="get my vcard" src="{{ mopa_barcode_url('qr', vcard , true) }}"/>
         </div>

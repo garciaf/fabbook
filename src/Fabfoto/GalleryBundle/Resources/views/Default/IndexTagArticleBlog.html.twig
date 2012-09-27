@@ -14,5 +14,5 @@
 </a>
 {%endblock qrLink %}
 {% block rss %}
-<a  href="{{path('rss_blog_tag', {'slug':tag.slug} )}}"><img alt="rss_image" id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
+{{path('rss_blog_tag', {'slug':tag.slug} )}}
 {%endblock rss%}

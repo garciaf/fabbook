@@ -6,7 +6,7 @@
         {% block metainfo %}{% endblock metainfo %}
         <title> {% block title %}Fabbook{%endblock title%}</title>
         <!-- Le styles -->
-        {%block importcss %}{%endblock importcss %}
+        {%block stylesheets %}{%endblock stylesheets %}
         {% stylesheets
         '@FabfotoGalleryBundle/Resources/public/css/style.css'
         '@FOSCommentBundle/Resources/assets/css/comments.css'
@@ -118,8 +118,9 @@
                    <a class="userInfo" href="{{path('fos_user_registration_register')}}" rel="tooltip" title="{% trans %}register{% endtrans %}"><i class="icon-book"></i></a>
                    <a class="userInfo" href="{{path('user_show')}}" rel="tooltip" title="{% trans %}connect{% endtrans %}"><i class="icon-user"></i></a>
                </p>
-               <a  href="{% block rss %}{{path('rss_news')}}{% endblock rss %}"><img alt="rss_image" id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png') | apply_filter('icon_small')}}"/></a>
-               
+               {% block rss %}
+               <a  href="{{path('rss_news')}}"><img alt="rss_image" id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
+               {%endblock rss%}
            </div>
         </div>
 
@@ -148,10 +149,8 @@
                 interval: 5000
             });
         </script>
-        {%block importjs %}
-        {%endblock importjs%}
-        {% block carroussel %}
-        {% endblock carroussel %}
+        {%block javascripts %}
+        {%endblock javascripts %}
 
     </body>
 </html>

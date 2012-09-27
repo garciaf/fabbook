@@ -21,6 +21,9 @@
 <div class="page-header">
     <h1>{{album}} <small>{{album.comment}}</small></h1>
 </div>
+    <a class="helper" href="{{path('zip_album',{ 'slug': album.slug })}}" rel="tooltip" data-original-title="Download Album" ><img alt="download" id="download" src="{{ asset('bundles/fabfotogallery/image/icon/download.png') | apply_filter('icon_small')}}" /></a>
+
+</a>
 {% include 'FabfotoGalleryBundle:Default:ListPicture.html.twig' with pictures %}
 {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': album.slug} %}
 {% endblock content %}
@@ -36,5 +39,5 @@
 {% include 'FabfotoGalleryBundle:Default:BackgroundVegas.html.twig' %}
 {% endblock carroussel %}
 {% block rss %}
-<a  href="{{path('rss_album')}}"><img alt="rss_image" id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png')}}" /></a>
+{{path('rss_album')}}
 {%endblock rss%}

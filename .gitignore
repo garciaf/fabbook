@@ -12,6 +12,7 @@
 /www/incoming/*
 /www/css/*
 /www/js/*
+/www/zip/*
 /bin/
 composer.lock
 /src/Fabfoto/TrainTimingBundle/Resources/public/js/extjs-4.1.0/resources/sass/.sass-cache/

@@ -46,12 +46,15 @@ class AppKernel extends Kernel
             new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),
 	    new Exercise\HTMLPurifierBundle\ExerciseHTMLPurifierBundle(),
 	    new Ps\PdfBundle\PsPdfBundle(),
+	    new Igorw\FileServeBundle\IgorwFileServeBundle(),
+            new FBK\ZipBundle\FBKZipBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+	    $bundles[] = new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle();
         }
         return $bundles;
     }
