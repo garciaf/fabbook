@@ -14,8 +14,8 @@ parameters:
     locale:            fr
     secret:            ThisTokenIsNotSoSecretChangeIt
     mailer_transport_dev: gmail
-    mailer_user_dev: fab0670312047
-    mailer_password_dev: leevuasa
+    mailer_user_dev: 
+    mailer_password_dev:
     upload_directory: uploads
     mail_sender_adress: ~
     incoming_directory: incoming
