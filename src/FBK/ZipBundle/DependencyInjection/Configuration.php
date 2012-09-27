@@ -19,7 +19,7 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('fbk_zip');
-        
+
           $rootNode
                 ->children()
                 ->scalarNode('archive_directory')->isRequired()->end();

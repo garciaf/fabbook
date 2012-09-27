@@ -21,9 +21,9 @@ class FBKZipExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-     
+
         $container->setParameter('fbk_zip.archive_directory', $config['archive_directory']);
-        
+
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }

@@ -16,7 +16,6 @@ class ZipController extends BaseController {
      * @ParamConverter("album", class="FabfotoGalleryBundle:Album")
      */
     public function showAlbumAction(Album $album) {
-        $response = $this->getResponseHeader($album->getUpdatedAt());
 
         $zip = $this->get('fbk.zip');
 	$zipName = $album->getSlug().'.zip';
@@ -32,8 +31,6 @@ class ZipController extends BaseController {
             $this->get('session')->setFlash('error', $e->getMessage());
         }
 	return $zip->getResponse();
-//        return $this->get('igorw_file_serve.response_factory')
- //   ->create("../www/zip/".$zip->getFileName());
     }
 
 }

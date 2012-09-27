@@ -20,9 +20,10 @@
 {% block content %}
 <div class="page-header">
     <h1>{{album}} <small>{{album.comment}}</small></h1>
-    <h2><a href="{{path('zip_album',{ 'slug': album.slug })}}">Save</a></h2>
 </div>
+    <a class="helper" href="{{path('zip_album',{ 'slug': album.slug })}}" rel="tooltip" data-original-title="Download Album" ><img alt="download" id="download" src="{{ asset('bundles/fabfotogallery/image/icon/download.png')}}" /></a>
 
+</a>
 {% include 'FabfotoGalleryBundle:Default:ListPicture.html.twig' with pictures %}
 {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': album.slug} %}
 {% endblock content %}

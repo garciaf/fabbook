@@ -192,6 +192,9 @@ html, body {
     margin-left: 95%;
     height: 20px;
 }
+#download{
+    height:20px;
+}
 .album_title{
     margin-top: 20px;
     margin-bottom: 10px;
@@ -219,7 +222,6 @@ html, body {
     position: relative;
     margin-bottom: 7px;
     background-size: 100% auto;
-/*    opacity:0.2; */
     width: 100%;
     clip: rect(0px, 50px, 50px, 0px); 
     filter:alpha(opacity=20); /* For IE8 and earlier */
