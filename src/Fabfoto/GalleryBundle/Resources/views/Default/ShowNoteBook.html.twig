@@ -38,6 +38,8 @@
 <div class="page-header">
     <h1>{{album}} <small>{{album.comment}}</small></h1>
 </div>
+<a class="helper" href="{{path('zip_album',{ 'slug': album.slug })}}" rel="tooltip" data-original-title="Download Album" ><img alt="download" id="download" src="{{ asset('bundles/fabfotogallery/image/icon/download.png')}}" /></a>
+
 <div id="magazine">
         {% for picture in pictures%}
         <div style="background-image:url({{picture.webpath | apply_filter('page')}});"></div>
