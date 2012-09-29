@@ -42,8 +42,9 @@ class Zip
 
     public function addFile($filePath, $targetPath = null)
     {
-        $this->zip->addFile($filePath, $targetPath);
-
+        if(is_readable($filePath)){
+            $this->zip->addFile($filePath, $targetPath);
+        }
         return $this;
     }
 
@@ -59,7 +60,10 @@ class Zip
 
     public function getResponse()
     {
-        $response = new Response();
+        if(!is_readable($this->getAbsolutePath())){
+            throw new ZipException("Can't read archive filezip");
+        }
+        $response = new Response();   
 
         return $this->setResponseHeaders($response);
     }
@@ -71,7 +75,8 @@ class Zip
     {
         $response->headers->set('Cache-Control', 'public');
         $response->headers->set('Content-Type', "application/zip");
-        $d = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $this->getFileName());
+        $d = $response->headers->makeDisposition(
+                ResponseHeaderBag::DISPOSITION_ATTACHMENT, $this->getFileName());
         $response->headers->set('Content-Disposition', $d);
         $response->setContent($this->getContent());
 

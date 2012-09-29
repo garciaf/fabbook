@@ -22,7 +22,6 @@ class ArticleRepository extends EntityRepository
         ->add('orderBy', 'n.updatedAt DESC')
         ->add('orderBy', 'n.createdAt DESC');
 
-
         if ($max) {
             $query->setMaxResults($max);
         }
