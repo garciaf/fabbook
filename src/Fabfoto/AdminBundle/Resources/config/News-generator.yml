@@ -17,7 +17,7 @@ builders:
     params:
       title: List of News
       sort: [ createdAt, DESC ]
-      display: [id, title, subtitle, createdAt, author]
+      display: [id, title, subtitle, createdAt, updatedAt, author]
       actions:
         new: ~
       object_actions:

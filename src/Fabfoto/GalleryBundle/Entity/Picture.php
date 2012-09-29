@@ -5,7 +5,7 @@ namespace Fabfoto\GalleryBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Fabfoto\GalleryBundle\Uploader\AbstractImage;
 use Gedmo\Mapping\Annotation as Gedmo;
-
+use Fabfoto\GalleryBundle\Entity\PictureRepository;
 /**
  * Fabfoto\GalleryBundle\Entity\Picture
  *

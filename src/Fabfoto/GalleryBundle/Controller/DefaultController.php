@@ -40,8 +40,8 @@ class DefaultController extends BaseController
      */
     public function showHomePageAction()
     {
-        $lastNews  = $this->getLastNews();
-	$response = $this->getResponseHeader($lastNews->getUpdatedAt());
+        $lastNews = $this->getLastNews();
+    $response = $this->getResponseHeader($lastNews->getUpdatedAt());
 
         if ($response->isNotModified($this->getRequest())) {
             // return the 304 Response immediately
