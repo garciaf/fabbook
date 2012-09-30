@@ -13,15 +13,7 @@
             <h2>{% trans %}train_app.subtitle{% endtrans %}</h2>
             <p>{% trans %}train_app.content{% endtrans %}</p>
             <h6>{% trans %}train_app.origine{% endtrans %}</h6>
-            <a target="blanck" href="{{path('when_train_app')}}" class="btn btn-primary btn-large">Desktop version »</a>
             <a id="mobApp" class="btn btn-success btn-large" rel="popover" href="{{path('mobile_when_train_app')}}" data-content='<img alt="[QR Code]" src="{{ mopa_barcode_url("qr", url("mobile_when_train_app") ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">Mobile version »</a>
-        </div>
-        <div class="hero-unit well-small">
-            <h1>{% trans %}parking_nantes.title{% endtrans %}</h1>
-            <h2>{% trans %}parking_nantes.subtitle{% endtrans %}</h2>
-            <p>{% trans %}parking_nantes.content{% endtrans %}</p>
-            <h6>{% trans %}parking_nantes.origine{% endtrans %}</h6>
-            <a href="{{path('where_park_app')}}" class="btn btn-primary btn-large">Desktop version »</a>
         </div>
     </div>
 </div>
