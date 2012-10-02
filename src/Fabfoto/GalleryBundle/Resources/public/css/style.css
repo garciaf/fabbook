@@ -56,7 +56,7 @@ html, body {
     clear: both;
     width: 100%;
     margin: 0 auto;
-    padding: 40px 0 0 0;
+    padding: 10px 0 0 0;
     background-position: top center;
     color: black;
 }
@@ -421,7 +421,7 @@ blockquote{
 }
 
 #pageAbout {
-    margin-top: 130px;
+    margin-top: 90px;
     margin-left: 30px;
     display: block;
     z-index: 300;
