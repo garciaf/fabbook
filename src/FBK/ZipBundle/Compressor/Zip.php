@@ -39,7 +39,10 @@ class Zip
             throw new ZipException("Can't create zip archive");
         }
     }
-
+    /**
+    * Function to add a file with a control if the file exist
+    *
+    **/
     public function addFile($filePath, $targetPath = null)
     {
         if(is_readable($filePath)){

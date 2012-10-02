@@ -3,7 +3,9 @@
 <h1>
     <div class="imagesUser">
     {% for image in entity.portrait %}
-        <img width="100px" src="{{ image.filterPath | apply_filter('thumb_square')}}"/>
+        <a href="{{ path('user_portrait_show', { 'id': image.id }) }}">
+	    <img width="100px" src="{{ image.filterPath | apply_filter('thumb_square')}}"/>
+	</a>
     {% endfor %}
     </div>
     <div class="userTitle">{{ entity.firstname }} {{ entity.name }}</div>
