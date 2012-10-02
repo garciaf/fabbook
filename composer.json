@@ -74,6 +74,7 @@
     "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
-        "symfony-web-dir": "www"
+        "symfony-web-dir": "www",
+        "symfony-assets-install": "symlink"
     }
 }
