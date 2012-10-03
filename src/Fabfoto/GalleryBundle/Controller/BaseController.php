@@ -60,21 +60,23 @@ abstract class BaseController extends Controller
         return $this->getAlbumsQuery($max)->execute();
     }
 
-    protected function getBlogsQuery($max=null, Tag $tag = null)
+    protected function getBlogsQuery($max=null, Tag $tag = null, ArticleBlog $noBlog= null)
     {
         $query = $this
                         ->getDoctrine()
                         ->getRepository('FabfotoGalleryBundle:ArticleBlog')
-                        ->createQueryBuilder('b');
-
+                        ->createQueryBuilder('b')
+                        ->where('b.isPublished = true');
         if ($tag) {
             $query
                 ->leftJoin('b.tags', 't')
-                ->where('b.isPublished = true AND t.slug = :tagSlug')
+                ->andWhere('t.slug = :tagSlug')
                 ->setParameter('tagSlug', $tag->getSlug());
-
-        } else {
-            $query->where('b.isPublished = true');
+        }
+        if($noBlog){
+            $query
+                    ->andWhere('b.id NOT IN (:idNoBlog)')
+                    ->setParameter('idNoBlog', $noBlog->getId());
         }
         $query->orderBy('b.createdAt', 'DESC');
         if ($max) {
@@ -85,9 +87,9 @@ abstract class BaseController extends Controller
         return $query->getQuery();
     }
 
-    protected function getBlogs($max = null,Tag $tag = null)
+    protected function getBlogs($max = null,Tag $tag = null, ArticleBlog $noBlog = null)
     {
-        return $this->getBlogsQuery($max, $tag)->execute();
+        return $this->getBlogsQuery($max, $tag, $noBlog)->execute();
     }
 
     protected function getPager($query, $maxPerPage = 9)

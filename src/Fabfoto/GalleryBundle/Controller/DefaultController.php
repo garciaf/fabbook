@@ -91,9 +91,10 @@ class DefaultController extends BaseController
         if (!$article->getIsPublished()) {
             $this->createNotFoundException();
         }
-
+        $lastBlogs = $this->getBlogs(3, null, $article);
         return $this->render('FabfotoGalleryBundle:Default:ShowArticleBlog.html.twig', array(
-                    'article' => $article
+                    'article' => $article, 
+                    'lastBlogs'=> $lastBlogs,
                 ), $response);
         }
     }

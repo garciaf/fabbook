@@ -27,6 +27,8 @@
         {{article.content|raw}}
     </div>
     <div class="signature_blog">{% if article.authorUser is not null %}{% trans %}by{% endtrans %} <a target="_blanck" href="{{ path('show_about', { 'slug': article.authorUser.slug }) }}">{{article.authorUser}}</a> - {% endif %}{{article.createdAt|date('d/m/Y')}} - Mise à jour : {{article.updatedAt|date('d/m/Y') }}</div>
+{% trans %}last.blog{% endtrans %}:
+    {% include 'FabfotoGalleryBundle:Default:LastBlog.html.twig' %} 	
     {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': article.id} %}
 </div>
 {% endblock content %}
