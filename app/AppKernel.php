@@ -48,6 +48,7 @@ class AppKernel extends Kernel
 	    new Ps\PdfBundle\PsPdfBundle(),
 	    new Igorw\FileServeBundle\IgorwFileServeBundle(),
             new FBK\ZipBundle\FBKZipBundle(),
+            new FBK\JsLibBundle\FBKJsLibBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

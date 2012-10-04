@@ -6,7 +6,6 @@
         {% block metainfo %}{% endblock metainfo %}
         <title> {% block title %}Fabbook{%endblock title%}</title>
         <!-- Le styles -->
-        {%block importcss %}{%endblock importcss %}
         {% stylesheets
         '@FabfotoGalleryBundle/Resources/public/css/style.css'
         '@FOSCommentBundle/Resources/assets/css/comments.css'
@@ -17,20 +16,25 @@
         %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
         {% endstylesheets %}
-
+        {%block importcss %}{%endblock importcss %}
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         {% javascripts
-        '@FabfotoGalleryBundle/Resources/public/jquery/jquery-1.7.2.min.js'
+        '@FBKJsLibBundle/Resources/public/jquery/jquery-1.8.2.min.js'
         '@FabfotoGalleryBundle/Resources/public/vegas/jquery.vegas.js'
-        '@FabfotoGalleryBundle/Resources/public/bootstrap/js/bootstrap.min.js'
+        '@FabfotoGalleryBundle/Resources/public/bootstrap/js/bootstrap.js'
+	'@FBKJsLibBundle/Resources/public/jquerymousewheel/*.js'
+   	'@FBKJsLibBundle/Resources/public/fancybox/*.js'
+   	'@FBKJsLibBundle/Resources/public/fancybox/helpers/*.js'
+
 	'@FabfotoGalleryBundle/Resources/public/js/googleAnalityc.js'
+	
         %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
-        <link rel="icon" type="image/png" href="{{ asset('bundles/fabfotogallery/image/icon/iconemain.png')}}">
+	<link rel="icon" type="image/png" href="{{ asset('bundles/fabfotogallery/image/icon/iconemain.png')}}">
     </head>
     <body>
         <div class="navbar navbar-fixed-top">

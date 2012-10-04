@@ -1,0 +1,5 @@
+{% for blog in lastBlogs %}
+<div>
+<a href="{{path('show_article_blog', {'slugblog': blog.slugblog})}}">{{blog.title}}</a>
+</div>
+{% endfor %}
