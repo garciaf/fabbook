@@ -27,3 +27,7 @@ message.content: 'Your message'
 message.capcha: Capcha
 message.send.success: 'message sended'
 message.send.fail: 'something went wron with your message'
+Ispublished: Is published?
+Title: Title
+Subtitle: Sub-title
+Cover: Cover

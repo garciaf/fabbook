@@ -27,3 +27,8 @@ message.content: 'Votre message'
 message.capcha: Capcha
 message.send.success: 'Votre message a bien été envoyé'
 message.send.fail: 'erreur dans le formulaire d''envoie'
+Ispublished: Est publié ?
+Title: Titre
+Subtitle: Sous-titre
+Content: Contenu
+Cover: Couverture
