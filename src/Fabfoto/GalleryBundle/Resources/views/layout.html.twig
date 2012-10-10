@@ -116,7 +116,7 @@
                 </div>
             </div>
         </div>
-        <div class="container" id={% block stylePage %}"page"{% endblock stylePage%}>
+        <div class="{% block classPage %}container{% endblock classPage %}" id={% block stylePage %}"page"{% endblock stylePage%}>
         {% render 'FabfotoGalleryBundle:Default:notification' with {}, {'standalone': true} %}
         {% block content %}lipso lium{%endblock%}
            <div id="footer">
@@ -132,6 +132,10 @@
         <script>
             $('#qrlink').popover({
                 placement: 'bottom',
+		trigger: 'hover'
+            });
+            $('.qrlink').popover({
+                placement: 'top',
 		trigger: 'hover'
             });
             $('#qrlinkUser').popover({

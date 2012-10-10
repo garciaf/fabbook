@@ -35,14 +35,15 @@ class PortraitController extends Controller
                     ))
                 ;
 
-        return array('entities' => $entities);
+        return $this->render('FabfotoUserBundle:Portrait:index.html.twig', array(
+		'entities' => $entities
+		));
     }
 
     /**
      * Finds and displays a Portrait entity.
      *
      * @Route("/{id}/show", name="user_portrait_show")
-     * @Template()
      */
     public function showAction($id)
     {
@@ -56,26 +57,26 @@ class PortraitController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
+        return $this->render('FabfotoUserBundle:Portrait:show.html.twig', array(
             'entity' => $entity,
-            'delete_form' => $deleteForm->createView(),);
+            'delete_form' => $deleteForm->createView()
+		));
     }
 
     /**
      * Displays a form to create a new Portrait entity.
      *
      * @Route("/new", name="user_portrait_new")
-     * @Template()
      */
     public function newAction()
     {
         $entity = new Portrait();
         $form = $this->createForm(new PortraitType(), $entity);
 
-        return array(
+        return $this->render('FabfotoUserBundle:Portrait:new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView()
-        );
+	));
     }
 
     /**
@@ -100,6 +101,7 @@ class PortraitController extends Controller
             $this->get('fabfoto_gallery.picture_uploader')->upload($entity);
             $em->persist($entity);
             $em->flush();
+	    $this->get('session')->setFlash('success', $this->get('translator')->trans("object.saved.success", array(), 'Ad    mingenerator') );
 
             return $this->redirect($this->generateUrl('user_portrait_show',
                                     array('id' => $entity->getId())));
@@ -108,10 +110,10 @@ class PortraitController extends Controller
             }
         }
 
-        return array(
+        return $this->render('FabfotoUserBundle:Portrait:new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView()
-        );
+	));
     }
 
     /**
@@ -132,6 +134,7 @@ class PortraitController extends Controller
 
         $em->remove($entity);
         $em->flush();
+        $this->get('session')->setFlash('success', $this->get('translator')->trans("object.delete.success", array(), 'Ad    mingenerator') );
 
         return $this->redirect($this->generateUrl('user_portrait'));
     }

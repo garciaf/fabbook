@@ -26,11 +26,19 @@
     <div class="blog_content">
         {{article.content|raw}}
     </div>
-    <div class="signature_blog">{% if article.authorUser is not null %}{% trans %}by{% endtrans %} <a target="_blanck" href="{{ path('show_about', { 'slug': article.authorUser.slug }) }}">{{article.authorUser}}</a> - {% endif %}{{article.createdAt|date('d/m/Y')}} - Mise à jour : {{article.updatedAt|date('d/m/Y') }}</div>
+<p><i class="icon-tags icon-black"></i>  :
+        {% for tag in article.tags %}
+        <a href="{{path('show_articles_blog_by_tags', {'slug':tag.slug})}} ">
+		<span class="label label-info">{{tag}}</span>
+	</a>
+        {% endfor %}
+	| <i class="icon-user"></i><a href="{{path('show_about', {'slug': article.authorUser.slug})}}">{{article.authorUser}}</a>
+	| <i class="icon-calendar"></i>Crée le : {{article.createdAt|date('d/m/Y')}} 
+	| <i class="icon-calendar"></i>Mise à jour : {{article.updatedAt|date('d/m/Y')}}
+</p>
 {% trans %}last.blog{% endtrans %}:
-    {% include 'FabfotoGalleryBundle:Default:LastBlog.html.twig' %} 	
        <div class="pdf offset11"><a href="{{path('show_article_blog_pdf', {'slugblog':article.slugblog})}}"><img src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')| apply_filter('icon')}}"/></a> </div>
- 
+    {% include 'FabfotoGalleryBundle:Default:ListArticleBlog.html.twig' %} 	
     {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': article.id} %}
 </div>
 {% endblock content %}
@@ -39,7 +47,6 @@
 <meta name="Keywords" CONTENT="{% for tag in article.tags %} {{ tag }},{% endfor %}" />
 <meta name="Description" CONTENT="{{ article.subtitle }}" />
 {% endblock metainfo %}
-
 {%block qrLink %}
 <a id="qrlink" rel="popover" href="{{path('show_article_blog_mobile', { 'slugblog': article.slugblog }) }}" data-content='<img alt="[QR Code]" src="{{ mopa_barcode_url("qr", url("show_article_blog_mobile", { "slugblog": article.slugblog }) ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">
     <div class="visible-desktop"><i class="icon-qrcode icon-black"></i></div>

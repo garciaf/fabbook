@@ -94,7 +94,7 @@ class DefaultController extends BaseController
         $lastBlogs = $this->getBlogs(3, null, $article);
         return $this->render('FabfotoGalleryBundle:Default:ShowArticleBlog.html.twig', array(
                     'article' => $article, 
-                    'lastBlogs'=> $lastBlogs,
+                    'ArticlesBlogs'=> $lastBlogs,
                 ), $response);
         }
     }

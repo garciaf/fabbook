@@ -20,7 +20,6 @@ class UserController extends Controller
      * Finds and displays a User entity.
      *
      * @Route("/", name="user_show")
-     * @Template()
      */
     public function showAction()
     {
@@ -34,9 +33,9 @@ class UserController extends Controller
             throw $this->createNotFoundException('Unable to find User entity.');
         }
 
-        return array(
+        return $this->render('FabfotoUserBundle:User:show.html.twig', array(
             'entity'      => $entity,
-            );
+            ));
     }
 
     /**
@@ -59,10 +58,10 @@ class UserController extends Controller
 
         $editForm = $this->createForm(new UserType(), $entity);
 
-        return array(
+        return $this->render('FabfotoUserBundle:User:edit.html.twig', array(
             'entity'      => $entity,
-                'form'   => $editForm->createView(),
-        );
+            'form'   => $editForm->createView(),
+        ));
     }
 
     /**
@@ -70,7 +69,6 @@ class UserController extends Controller
      *
      * @Route("/update", name="user_update")
      * @Method("post")
-     * @Template("FabfotoUserBundle:User:edit.html.twig")
      */
     public function updateAction()
     {
@@ -92,14 +90,15 @@ class UserController extends Controller
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
+            $this->get('session')->setFlash('success', $this->get('translator')->trans("object.saved.success", array(), 'Ad    mingenerator'));
 
             return $this->redirect($this->generateUrl('user_show'));
         }
 
-        return array(
+        return $this->render('FabfotoUserBundle:User:edit.html.twig', array(
             'entity'      => $entity,
             'form'   => $editForm->createView(),
-        );
+        ));
     }
 
 }

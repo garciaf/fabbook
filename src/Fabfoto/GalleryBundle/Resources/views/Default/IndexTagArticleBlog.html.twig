@@ -1,11 +1,18 @@
 {% extends 'FabfotoGalleryBundle::layout.html.twig'%}
 {% block title %} {{tag}} {% endblock title %}
+{% block classPage %}{% endblock classPage %}
+{% block stylePage %}{% endblock stylePage %}
 {% block content %}
-
-<div class="page-header">
-    <h1>Blog <small>about {{tag|lower}} </small></h1>
+<div class="jumbotron masthead">
+<div class="container">
+    <h1>{% trans %}Blog{% endtrans %}</h1>
+    <p>about {{tag|lower}}</p>
+  </div>
 </div>
+<hr>
+<div class="container">
 {% include "FabfotoGalleryBundle:Default:ListArticleBlog.html.twig" %}
+</div>
 {% endblock content %}
 {%block qrLink %}
 <a id="qrlink" rel="popover" href="{{path('index_blog_mobile') }}" data-content='<img alt="[QR Code]" src="{{ mopa_barcode_url("qr", url("index_blog_mobile") ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">

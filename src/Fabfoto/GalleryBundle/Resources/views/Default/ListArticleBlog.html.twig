@@ -1,23 +1,47 @@
-
-
-<div  class="row">
     {% for article in ArticlesBlogs %}
-    <div class="span3  well">
-
-        <h3>{{article.title}}</h3>
-        <h4>{{article.subtitle}}</h4>
-            {% if article.authorUser is not null %}
-    	<h6><a href="{{ path('show_about', { 'slug': article.authorUser.slug }) }}">{{article.authorUser}}</a></h6>
-            {% endif %}
-        <h6>Le {{article.createdAt|date('d/m/Y')}}</h6>
-        <p><i class="icon-tags icon-black"></i> :
+<div  class="row">
+    <div class="span8">
+	<div  class="row">
+	    <div class="span8">
+        <h4><strong>{{article.title}}</strong></h4>
+	    </div>
+	</div>
+	<div class="row">
+	    <div class="span2">
+	        <a class="thumbnail" href="{{path('show_article_blog', {'slugblog':article.slugblog})}}">
+                {% if article.cover is not null %}
+                    <img src="{{article.cover.webpath| apply_filter('cover_small') }}" alt="{{article.cover}}" />
+                {% endif %}
+                {% if article.cover is null %}
+                    <img src="{{asset('bundles/fabfotogallery/image/defaultCover.png') | apply_filter('cover_small')}}" />
+                {% endif %}
+		</a>
+	    </div>
+	    <div class="span6">
+	        <p>
+        	{{article.subtitle}}
+	        </p>
+	        <p><a class="btn" href="{{path('show_article_blog', {'slugblog':article.slugblog})}}">Read More</a><p>
+	    </div>
+	</div>
+	<div class="row">
+	    <div class="span8">
+		<p></p>
+	        <p>
+		    <i class="icon-user"></i>
+    		    <a href="{{ path('show_about', { 'slug': article.authorUser.slug }) }}">{{article.authorUser}}</a>
+        |<i class="icon-calendar"></i>{{article.createdAt|date('F jS, Y')}}
+	|
+<a class="qrlink" rel="popover" href="#" data-content='<img alt="[QR Code]" src="{{ mopa_barcode_url("qr", url("show_article_blog_mobile", { "slugblog": article.slugblog }) ) }}" />'/><i class="icon-qrcode"></i> </a>
+	|<i class="icon-tags"></i> Tags : 
         {% for tag in article.tags %}
         <a href="{{path('show_articles_blog_by_tags', {'slug':tag.slug})}} "> <span class="label label-info">{{tag}}</span></a>
         {% endfor %}
-        </p>
-        <a class="btn" href="{{path('show_article_blog', {'slugblog':article.slugblog})}}">Read More</a>
-
+                </p>
+	    </div>
+        </div>
     </div>
+</div>
+<hr>
     {% endfor %}
 
-</div>

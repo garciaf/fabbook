@@ -51,18 +51,7 @@
                 {{ knp_menu_render('FabfotoUserBundle:Builder:userMenu') }}
             </div>
             <div class="main_content" >
-                {% if app.session.flashes %}
-                 <div id="alert">
-                                   {% for type, message in app.session.flashes%}
-                                   <a class="close" data-dismiss="alert">×</a>
-                                   <div class="alert alert-{{type}}">
-                                   <div class="wrap">
-                                       {{message}}
-                                   </div>
-                               </div>
-                               {% endfor%}
-                           </div>
-                {% endif%}
+        {% render 'FabfotoGalleryBundle:Default:notification' %}
                 <div id="body_content">
                     {% block content %}
                     Welcome on Fabbook

@@ -87,6 +87,9 @@ avalanche_imagine:
         cover:
             type:    thumbnail
             options: { size: [650, 180], mode: outbound }            
+        cover_small:
+            type:    thumbnail
+            options: { size: [260, 180], mode: outbound }            
         page:
             type:    thumbnail
             options: { size: [940, 1329], mode: outbound }            

@@ -1,6 +1,16 @@
 {% extends 'FabfotoGalleryBundle::layout.html.twig'%}
+{% block classPage %}{% endblock classPage %}
+{% block stylePage %}{% endblock stylePage %}
 {% block title %}Fabbook Home{% endblock title %}
 {% block content %}
+<div class="jumbotron masthead">
+<div class="container">
+    <h1>{% trans %}fabbook.title{% endtrans %}</h1>
+    <p>{% trans %}fabbook.subtitle{% endtrans %}</p>
+  </div>
+</div>
+<hr>
+<div class="container">
 <div class="list_articles">
     <div class="page-header">
         <h1>{% trans %}news{% endtrans %} <small>{% trans %}last.article{% endtrans %}</small></h1>
@@ -14,30 +24,29 @@
     <div class="page-header">
         <h1>{% trans %}news{% endtrans %} <small>{% trans %}from.fabbook{% endtrans %}</small></h1>
     </div>
+
+    {% for article in articles %}
     <div  class="row">
-
-        {% for article in articles %}
-        <div class="span3 well-small">
+        <div class="span8">
             <h3>{{article.title}}</h3>
-            <h4>{{article.subtitle}}</h4>
-            <h6>{% trans %}the{% endtrans %} {{article.createdAt|date('d/m/Y')}}</h6>
-
+	    <h4>{{article.subtitle}}</h4>
             <p>{{article.content|raw}}</p>
-            {% if article.author is not null %}
-            <h3 class="author"><a href="{{ path('show_about', { 'slug': article.author.slug }) }}">{{article.author}}</a></h3>
-            {% endif %}
+            <span class="badge badge-info">{{article.createdAt|date('F jS, Y')}}</span>
         </div>
-        {% endfor %}
+    </div>
+    <hr>
+    {% endfor %}
  	 <div class="span12 center">
         {{ pagerfanta(articles, 'twitter_bootstrap_translated') }}
     	</div>
-
     </div>
+</div>
+<hr>
+<div class="container">
     <div class="page-header">
         <h1>{% trans %}news{% endtrans %} <small>{% trans %}from.tweeter{% endtrans %}</small></h1>
     </div>
     <div  class="row">
-
         <div class="span12 columns">
             {% render "KnpLastTweetsBundle:Twitter:lastTweets" with {'username': 'FabbookFr'} , {'standalone': true}%}
         </div>

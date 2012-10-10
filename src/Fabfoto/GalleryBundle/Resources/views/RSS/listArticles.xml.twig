@@ -4,7 +4,7 @@
 <link>{{url('show_article_blog', {'slugblog':article.slugblog})}}</link>
 <description>{{article.subtitle|raw}}</description>
 <content:encoded><![CDATA[ {{article.content|raw}} ]]></content:encoded>
-<author>{{article.author}}</author>
+<author>{{article.authorUser}}</author>
 <pubDate>{{article.createdAt|date(constant('DATE_RFC822')) }}</pubDate>
 </item>
 {%endfor%}

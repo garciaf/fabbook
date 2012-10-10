@@ -5,6 +5,7 @@ last.blog: Derniers articles
 contact: 'me contacter'
 gadget: Gadget
 about: 'A propos'
+about.all: Sur tout ...
 search: rechercher
 connect: 'Se connecter à son espace'
 register: 'Enregistrez vous'
@@ -32,3 +33,5 @@ Title: Titre
 Subtitle: Sous-titre
 Content: Contenu
 Cover: Couverture
+fabbook.title: Le Fabbook
+fabbook.subtitle: Blog de developpeur mais pas que ...
