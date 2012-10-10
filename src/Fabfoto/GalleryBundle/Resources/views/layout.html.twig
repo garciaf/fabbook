@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block metainfo %}{% endblock metainfo %}
-        <title> {% block title %}Fabbook{%endblock title%}</title>
+        <title>{% block title %}Fabbook{%endblock title%}</title>
         <!-- Le styles -->
         {% stylesheets
         '@FabfotoGalleryBundle/Resources/public/css/style.css'
@@ -117,16 +117,15 @@
             </div>
         </div>
         {% render 'FabfotoGalleryBundle:Default:notification' with {}, {'standalone': true} %}
-        {% block content %}lipso lium{%endblock%}
-           <div id="footer">
-               <p id="legal">
-                   <a class="userInfo" href="{{path('fos_user_registration_register')}}" rel="tooltip" title="{% trans %}register{% endtrans %}"><i class="icon-book"></i></a>
-                   <a class="userInfo" href="{{path('user_show')}}" rel="tooltip" title="{% trans %}connect{% endtrans %}"><i class="icon-user"></i></a>
-               </p>
-               <a  href="{% block rss %}{{path('rss_news')}}{% endblock rss %}"><img alt="rss_image" id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png') | apply_filter('icon_small')}}"/></a>
-
-           </div>
-        
+        {% block content %}lipso lium{%endblock content%}
+        {% block footer %}
+	<hr>
+	<div class="container footer">
+                   <a class="pull-right" href="{% block rss %}{{path('rss_news')}}{% endblock rss %}">
+	<img alt="rss_image" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png') | apply_filter('icon_small')}}"/>
+		    </a>
+         </div>
+        {% endblock footer %}
         <script>
             $('#qrlink').popover({
                 placement: 'bottom',

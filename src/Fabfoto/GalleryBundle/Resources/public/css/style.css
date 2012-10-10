@@ -6,14 +6,6 @@
         Custom for desktop version of fabbook
 */
 
-/* 
-   TODO customize this sample style
-   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
-*/
-
-root { 
-    display: block;
-}
 a{
     text-decoration: none!important;
     color: black;
@@ -30,67 +22,7 @@ html, body {
     margin: 0px 0px 0px 0px;
     padding:0px;
 }
-#logo {
-    text-align: center;    
-    padding: 20px 0 0 15px;
-}
-#logo h1 {
-    margin: 0;
-    padding: 0;
-    font: italic 36px "Trebuchet MS", Arial, Helvetica, sans-serif;
-}
-#logo h2 {
-    margin: -5px 0 0 0;
-    padding: 0;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 10px;
-    font-weight: bold;
-    color: black;
-}
-#logo a {
-    text-decoration: none;
-    color: black;
-}
-#footer {
-    clear: both;
-    width: 100%;
-    margin: 0 auto;
-    padding: 10px 0 0 0;
-    background-position: top center;
-    color: black;
-}
-#footer p {
-    margin: 0;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    text-align: center;
-    font-size: 77%;
-}
-#content{
-    margin: 0 auto;
-    border-style:solid;
-    border-width:thin;
-}
 
-#nav {
-    z-index: 540;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background-color: white;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-    -moz-border-radius: 20px;
-    border-bottom-left-radius: 10px 10px;
-    border-bottom-right-radius: 10px 10px;
-    height: 110px;
-}
 #nav a{
     width: 40px;
     text-decoration: none;
@@ -100,9 +32,6 @@ html, body {
 #nav a:hover{
     text-decoration: none;
     color: darkgray;
-}
-.navbarLink{
-    width: 40px;
 }
 #page {
     margin-top: 50px;
@@ -149,49 +78,6 @@ html, body {
 #subtitle_album{
     text-align: center;
     font-weight: lighter;
-}
-
-#search {
-    float: right; margin: 60px 10px;
-    border-radius: 50px;
-    -moz-border-radius: 50px;
-    -webkit-border-radius: 50px;
-    -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
-}
-#search input {
-    float: left;
-    width: 180px;
-    padding: 5px 9px;
-    height: 23px;
-    border-radius: 50px 0 0 50px;
-    -moz-border-radius: 50px 0 0 50px;
-    -webkit-border-radius: 50px 0 0 50px;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
-#search button {
-    background: whitesmoke;
-    -moz-border-radius: 3px 50px 50px 3px;
-    border-radius: 3px 50px 50px 3px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #7eba7c #578e57 #447d43;
-    height: 35px;
-    margin: 0;
-    padding: 0;
-    width: 90px;
-    cursor: pointer;
-    font: bold 14px Arial, Helvetica;
-    color: #23441e;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
-}
-
-#rss{
-    margin-left: 95%;
-    height: 20px;
 }
 
 #download{
@@ -348,11 +234,6 @@ textarea:focus {
 
 .blog_content{
     margin-left: 20px;
-}
-.signature_blog{
-    text-align: right;
-    font-size: 12px;
-    font-style: italic;
 }
 blockquote{
     background-color: black;
