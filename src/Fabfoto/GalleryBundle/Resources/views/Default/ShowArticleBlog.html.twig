@@ -1,10 +1,11 @@
 {% extends 'FabfotoGalleryBundle::layout.html.twig'%}
 {% block title %} {{article.title}} {% endblock title %}
 {% block content %}
+<div class="container" id="pageArticle">
 <div class="page-header">
     <h1>{{article.title}} <small> {{article.subtitle}}</small></h1>
 </div>
-
+<lr>
 <div  class="row">
 
     <div class="span12 columns">
@@ -41,6 +42,8 @@
     {% include 'FabfotoGalleryBundle:Default:ListArticleBlog.html.twig' %} 	
     {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': article.id} %}
 </div>
+</div>
+<lr>
 {% endblock content %}
 
 {% block metainfo %}

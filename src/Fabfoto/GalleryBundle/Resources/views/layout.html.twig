@@ -116,7 +116,6 @@
                 </div>
             </div>
         </div>
-        <div class="{% block classPage %}container{% endblock classPage %}" id={% block stylePage %}"page"{% endblock stylePage%}>
         {% render 'FabfotoGalleryBundle:Default:notification' with {}, {'standalone': true} %}
         {% block content %}lipso lium{%endblock%}
            <div id="footer">
@@ -127,8 +126,7 @@
                <a  href="{% block rss %}{{path('rss_news')}}{% endblock rss %}"><img alt="rss_image" id="rss" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png') | apply_filter('icon_small')}}"/></a>
 
            </div>
-        </div>
-
+        
         <script>
             $('#qrlink').popover({
                 placement: 'bottom',

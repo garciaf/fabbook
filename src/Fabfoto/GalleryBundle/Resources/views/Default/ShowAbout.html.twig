@@ -1,7 +1,9 @@
 {% extends 'FabfotoGalleryBundle::layout.html.twig'%}
 {% block title %} About me {% endblock title %}
 {% block content %}
+<div class="container" id="pageAbout">
    {% include 'FabfotoGalleryBundle:User:UserDetail.html.twig' %}
+</div>
 {% endblock content %}
 {% block stylePage%}"pageAbout"{% endblock stylePage%}
 {% block carroussel %}
