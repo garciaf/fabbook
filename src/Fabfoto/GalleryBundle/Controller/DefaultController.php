@@ -190,6 +190,15 @@ class DefaultController extends BaseController
                 ));
     }
 
+    public function allTagsAction(){
+
+        $tags = $this->getTags();
+        
+        return $this->render('FabfotoGalleryBundle:Default:Tags.html.twig', array(
+                    'tags' => $tags,
+                ));
+    }
+
     /**
      * @Cache(expires="tomorrow", public=true)
      * @Route("search", name="fabfoto_search")

@@ -1,0 +1,8 @@
+<div class="pull-right">
+<i class="icon-tags icon-black"></i>
+{% for tag in tags %}
+    <a href="{{path('show_articles_blog_by_tags', {'slug':tag.slug})}}">
+        <span class="label label-info">{{tag}}</span>
+    </a>
+{% endfor %}
+</div>

@@ -47,11 +47,6 @@ class RSSController extends BaseController
      */
     public function showBlogArticleAction(Tag $tag)
     {
-        $tag = $this->getTag($tag_slug);
-
-        if (!$tag) {
-            throw $this->createNotFoundException("no tag");
-        }
         $articles = $this->getBlogs(null, $tag);
 
         return $this->render('FabfotoGalleryBundle:RSS:RSSBlogTag.xml.twig', array(

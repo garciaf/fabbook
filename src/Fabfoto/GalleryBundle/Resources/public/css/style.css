@@ -455,6 +455,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#606c88', end
 
 
 }
+.jumbotron .container {
+    position: relative;
+    z-index: 2;
+  }
 .jumbotron::after {
 content: '';
 display: block;
@@ -483,4 +487,28 @@ line-height: 1.25;
 }
 #pageArticle {
     margin-top: 50px;
+}
+.contact:after {
+content: '';
+display: block;
+position: absolute;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+background-image: url('/images/mail.png') ;
+background-attachment: initial;
+background-repeat: no-repeat;
+background-position-x: 95%;
+background-position-y: 80%;
+background-origin: initial;
+background-clip: initial;
+background-color: initial;
+opacity: .8;
+}
+.footer{
+ padding: 20px 0;
+ margin-top: 20px;
+ background-color: whiteSmoke;
+ border-top: 1px solid #E5E5E5;
 }

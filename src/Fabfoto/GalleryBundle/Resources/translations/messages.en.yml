@@ -8,13 +8,15 @@ about.it: 'about IT and more ...'
 news: news
 last.article: 'last articles'
 article: Article
-about.all: Every articles 
-contact.title: Contact 
-contact.details: Leave a message 
+about.all: 'Every articles'
+contact.title: Contact
+contact.details: 'Leave a message'
 fabbook.title: 'Le Fabbook'
 fabbook.subtitle: 'Blog of developper but not only...'
 from.fabbook: 'from fabbook'
 from.tweeter: 'from tweeter'
+result: Result
+blog.for: For your request
 gadget: Goodies
 home: home
 album: Album

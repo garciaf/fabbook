@@ -30,10 +30,15 @@
 {%endblock importcss %}
 
 {% block content %}
-{% if ArticlesBlogs is not empty %}
-<div class="page-header">
-    <h1>Result <small>for blog </small></h1>
+<div class="jumbotron masthead blog">
+<div class="container">
+    <h1>{% trans %}result{% endtrans %}</h1>
+    <p>{% trans %}blog.for{% endtrans %}</p>
+  </div>
 </div>
+<hr>
+<div class="container">
+{% if ArticlesBlogs is not empty %}
 {% include 'FabfotoGalleryBundle:Default:ListArticleBlog.html.twig' with ArticlesBlogs %}
 {% endif %}
 {% if albums is not empty %}
@@ -50,8 +55,7 @@
 </div>
 {% include 'FabfotoGalleryBundle:Default:ListPicture.html.twig' with pictures %}
 {% endif %}
-
-
+</div>
 {% endblock content %}
 {% block search_query %}
 {{keywords}}

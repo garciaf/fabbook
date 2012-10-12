@@ -37,8 +37,8 @@
 	| <i class="icon-calendar"></i>Crée le : {{article.createdAt|date('d/m/Y')}} 
 	| <i class="icon-calendar"></i>Mise à jour : {{article.updatedAt|date('d/m/Y')}}
 </p>
-{% trans %}last.blog{% endtrans %}:
        <div class="pdf offset11"><a href="{{path('show_article_blog_pdf', {'slugblog':article.slugblog})}}"><img src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')| apply_filter('icon')}}"/></a> </div>
+<h1><small>{% trans %}last.blog{% endtrans %}:</small></h1>
     {% include 'FabfotoGalleryBundle:Default:ListArticleBlog.html.twig' %} 	
     {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': article.id} %}
 </div>

@@ -1,11 +1,13 @@
 {% extends 'FabfotoGalleryBundle::layout.html.twig'%}
 {% block title %}Login{% endblock title %}
 {% block content %}
-
-<div class="hero-unit well-small">
-            <h1>{% trans %}user.login.title{% endtrans %}</h1>
+<div class="jumbotron masthead">
+<div class="container">
+    <h1>{% trans %}user.login.title{% endtrans %}</h1>
+  </div>
 </div>
-<div class="main_content">
+<hr>
+<div class="container">
 {% if error %}
     <div>{{ error }}</div>
 {% endif %}
@@ -24,5 +26,6 @@
     <input type="submit" class="btn btn-success btn-large" name="login" />
     <a href="{{path('fos_user_resetting_request')}}">{% trans %}user.login.forgot{% endtrans %}</a>
 </form>
+</div>
 </div>
 {% endblock content %}

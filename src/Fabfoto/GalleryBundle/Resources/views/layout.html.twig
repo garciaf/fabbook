@@ -1,3 +1,13 @@
+{% macro linkNavBar(image, url, title ) %}
+ <a href="{{ url }}" rel="tooltip" title="{{ title | trans }}" class="helper" >
+    <div class="visible-desktop">
+        <i class="{{image}} icon-black"></i>
+    </div>
+    <div class="hidden-desktop">
+        <i class="{{image}} icon-black"></i> 
+    </div>
+</a>
+{% endmacro %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,7 +19,7 @@
         {% stylesheets
         '@FabfotoGalleryBundle/Resources/public/css/style.css'
         '@FOSCommentBundle/Resources/assets/css/comments.css'
-   	'@FBKJsLibBundle/Resources/public/vegas/*.css'
+       	'@FBKJsLibBundle/Resources/public/vegas/*.css'
         'bundles/fabfotogallery/bootstrap/css/bootstrap.css'
         '@FabfotoGalleryBundle/Resources/public/bootstrap/css/bootstrap-responsive.css'
 
@@ -46,54 +56,23 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="{{path('show_articles')}}">Fabbook</a>
-                    <div class="nav-collapse">
-                        <ul class="nav" >
-                            <li>
-                                <a class="helper" href="{{path('show_articles')}}" rel="tooltip" title="{% trans %}home{% endtrans %}">
-                                    <div class="visible-desktop"><i class="icon-home icon-black"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-home icon-black"></i> {% trans %}home{% endtrans %}</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="helper" href="{{path('index_album')}}" rel="tooltip" title="{% trans %}album{% endtrans %}">
-                                    <div class="visible-desktop"><i class="icon-picture icon-black"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-picture icon-black"></i> {% trans %}album{% endtrans %}</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="helper" href="{{path('index_blog')}}" rel="tooltip" title="{% trans %}blog{% endtrans %}">
-                                    <div class="visible-desktop"><i class="icon-pencil icon-black"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-pencil icon-black"></i> {% trans %}blog{% endtrans %}</div>
-
-                                </a>
-                            </li>
-                            <li>
-                                <a class="helper" href="{{path('contact_new')}}" rel="tooltip" title="{% trans %}contact{% endtrans %}">
-                                    <div class="visible-desktop"><i class="icon-envelope icon-black"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-envelope icon-black"></i> {% trans %}contact{% endtrans %}</div>
-                                </a>
-                            </li>
-                            <li>
-                                {%block qrLink %}
-                                <a id="qrlink" rel="popover" href="{{path('index_mobile')}}" data-content='<img alt="[QR Code]" src="{{ mopa_barcode_url("qr", url("index_mobile") ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">
+                  <a class="brand" href="{{path('show_articles')}}">Fabbook</a>
+                  <div class="nav-collapse">
+                    <ul class="nav" >
+                      <li>{{ _self.linkNavBar('icon-home', path('show_articles'), 'home') }}</li>
+                      <li>{{ _self.linkNavBar('icon-picture', path('index_album'), 'album') }}</li>
+                      <li>{{ _self.linkNavBar('icon-pencil', path('index_blog'), 'blog') }}</li>
+                      <li>{{ _self.linkNavBar('icon-envelope', path('contact_new'), 'contact') }}</li>
+                      <li>
+                      {%block qrLink %}
+                      <a id="qrlink" rel="popover" href="{{path('index_mobile')}}" data-content='<img alt="[QR Code]" src="{{ mopa_barcode_url("qr", url("index_mobile") ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">
                                     <div class="visible-desktop"><i class="icon-qrcode icon-black"></i></div>
                                     <div class="hidden-desktop"><i class="icon-qrcode icon-black"></i> {% trans %}mobile{% endtrans %}</div>
                                 </a>
                                 {%endblock qrLink %}
                             </li>
-                            <li>
-                                <a class="helper" href="{{path('gadget_index')}}" rel="tooltip" title="{% trans %}gadget{% endtrans %}">
-                                    <div class="visible-desktop"><i class="icon-gift icon-black"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-gift icon-black"></i> {% trans %}gadget{% endtrans %}</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="helper" href="{{path('show_about', {'slug':'fabien-garcia'})}}" rel="tooltip" title="{% trans %}about{% endtrans %}">
-                                    <div class="visible-desktop"><i class="icon-user icon-black"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-user icon-black"></i> {% trans %}about{% endtrans %}</div>
-                                </a>
-                            </li>
+                      <li>{{ _self.linkNavBar('icon-gift', path('gadget_index'), 'gadget') }}</li>
+                      <li>{{ _self.linkNavBar('icon-user', path('show_about', {'slug':'fabien-garcia'}), 'about') }}</li>
                         </ul>
                         <form class="navbar-search pull-left form-search" method="get" action="{{path('fabfoto_search')}}">
                             <div class="input-append">
@@ -119,12 +98,19 @@
         {% render 'FabfotoGalleryBundle:Default:notification' with {}, {'standalone': true} %}
         {% block content %}lipso lium{%endblock content%}
         {% block footer %}
-	<hr>
-	<div class="container footer">
-                   <a class="pull-right" href="{% block rss %}{{path('rss_news')}}{% endblock rss %}">
-	<img alt="rss_image" src="{{ asset('bundles/fabfotogallery/image/icon/rss-icon.png') | apply_filter('icon_small')}}"/>
+    <footer class="footer">
+	<div class="container">
+        <div class="pull-left">
+                   <a href="{% block rss %}{{path('rss_news')}}{% endblock rss %}">
+	<img alt="rss_image" src="{{ asset('bundles/fabfotogallery/image/icon/rss-black.png') }}"/>
 		    </a>
+                   <a href="https://twitter.com/#!/FabbookFr">
+	<img alt="twitter_link" src="{{ asset('bundles/fabfotogallery/image/icon/twitter-black.png') }}"/>
+		    </a>
+    </div>
+    {% render 'FabfotoGalleryBundle:Default:allTags' %}
          </div>
+    </footer>
         {% endblock footer %}
         <script>
             $('#qrlink').popover({
