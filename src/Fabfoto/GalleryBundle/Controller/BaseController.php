@@ -140,6 +140,20 @@ abstract class BaseController extends Controller
                         ->findOneBySlug($tag_slug);
     }
     /**
+     *
+     * @return Tag
+     */
+    protected function getTags()
+    {
+        return $this
+                        ->getDoctrine()
+                        ->getRepository('FabfotoGalleryBundle:Tag')
+                        ->createQueryBuilder('t')
+                        ->add('orderBy', 't.name DESC')
+                        ->getQuery()
+                        ->execute();
+    }
+    /**
      * To get an album by slug name
      * @param  string $slug
      * @return Album

@@ -1,10 +1,14 @@
 {% extends 'FabfotoGalleryBundle::layout.html.twig'%}
-{% block titlepage %}Fabfoto-gadget{% endblock titlepage %}
+{% block title %}Fabbook-Gadget{% endblock title %}
 {% block content %}
-<div class="list_articles">
-    <div class="page-header">
-        <h1>{% trans %}gadget{% endtrans %} <small>{% trans %}from.fabbook{% endtrans %}</small></h1>
-    </div>
+<div class="jumbotron masthead">
+<div class="container">
+    <h1>{% trans %}gadget{% endtrans %}</h1>
+    <p>{% trans %}from.fabbook{% endtrans %}</p>
+  </div>
+</div>
+<hr>
+<div class="container">
         <div  class="row">
         <div class="span12 columns">
 
@@ -16,6 +20,7 @@
             <a id="mobApp" class="btn btn-success btn-large" href="{{path('mobile_when_train_app')}}" data-original-title="{% trans %}mobile{% endtrans %}">go »</a>
         </div>
     </div>
+</div>
 </div>
 </div>
 <script>

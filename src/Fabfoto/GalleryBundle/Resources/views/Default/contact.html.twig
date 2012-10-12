@@ -1,7 +1,15 @@
 {% extends 'FabfotoGalleryBundle::layout.html.twig'%}
+{% block title %}Fabbook-Contact{% endblock title %}
 {% block content %}
 {% form_theme form 'FabfotoGalleryBundle:Form:fieldBootstrap.html.twig' %}
-<h1>Contact</h1>
+<div class="jumbotron masthead contact">
+<div class="container">
+    <h1>{% trans %}contact.title{% endtrans %}</h1>
+    <p>{% trans %}contact.details{% endtrans %}</p>
+  </div>
+</div>
+<hr>
+<div class="container">
 <div class="span8">
     <form action="{{ path('contact_create') }}" method="post" class="form-horizontal" {{ form_enctype(form) }} >
     {{form_row(form.sender)}}
@@ -17,6 +25,8 @@
             </div>
     </form>
 </div>
+</div>
 {{ form_javascript(form) }}
 {{ form_stylesheet(form) }}
+</div>
 {% endblock content %}

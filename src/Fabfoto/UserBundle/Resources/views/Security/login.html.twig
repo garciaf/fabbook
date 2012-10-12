@@ -1,9 +1,13 @@
 {% extends 'FabfotoUserBundle::layoutLogin.html.twig'%}
 {% block body %}
-<div class="row">
-<div class="span8">
-<div class="hero-unit">
-	<h2>Fabbook login </h2>
+<div class="jumbotron masthead">
+<div class="container">
+    <h1>{% trans %}fabbook.title{% endtrans %}</h1>
+    <p>{% trans %}fabbook.subtitle{% endtrans %}</p>
+  </div>
+</div>
+<hr>
+<div class="container">
     <form action="{{ path('fabfoto_login_check') }}" method="post" class="form-horizontal">
     <fieldset>
     <legend>Se connecter</legend>

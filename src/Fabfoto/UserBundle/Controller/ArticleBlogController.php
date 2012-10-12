@@ -29,7 +29,9 @@ class ArticleBlogController extends Controller
         $entities = $em->getRepository('FabfotoGalleryBundle:ArticleBlog')
                 ->findByAuthorUser($curentUser->getId());
 
-        return array('entities' => $entities);
+        return $this->render('FabfotoUserBundle:ArticleBlog:index.html.twig', array(
+            'entities'      => $entities,
+            ));
     }
 
     /**
@@ -48,9 +50,9 @@ class ArticleBlogController extends Controller
             throw $this->createNotFoundException('Unable to find ArticleBlog entity.');
         }
 
-        return array(
-            'entity' => $entity,
-        );
+        return $this->render('FabfotoUserBundle:ArticleBlog:edit.html.twig', array(
+            'entity'      => $entity,
+            ));
     }
 
     /**
@@ -64,10 +66,10 @@ class ArticleBlogController extends Controller
         $entity = new ArticleBlog();
         $form = $this->createForm(new ArticleBlogType(), $entity);
 
-        return array(
+        return $this->render('FabfotoUserBundle:ArticleBlog:new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView()
-        );
+            ));
     }
 
     /**
@@ -101,10 +103,10 @@ class ArticleBlogController extends Controller
             $this->get('session')->setFlash('error',  $this->get('translator')->trans("object.saved.error", array(), 'Admingenerator') );
         }
 
-        return array(
+        return $this->render('FabfotoUserBundle:ArticleBlog:new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView()
-        );
+            ));
     }
 
     /**
@@ -126,10 +128,10 @@ class ArticleBlogController extends Controller
 
         $editForm = $this->createForm(new ArticleBlogType(), $entity);
 
-        return array(
+        return $this->render('FabfotoUserBundle:ArticleBlog:edit.html.twig', array(
             'entity' => $entity,
-            'form' => $editForm->createView(),
-        );
+            'form' => $editForm->createView()
+            ));
     }
 
     /**
@@ -170,10 +172,10 @@ class ArticleBlogController extends Controller
             $this->get('session')->setFlash('error',  $this->get('translator')->trans("object.saved.error", array(), 'Admingenerator') );
         }
 
-        return array(
+        return $this->render('FabfotoUserBundle:ArticleBlog:edit.html.twig', array(
             'entity' => $entity,
-            'edit_form' => $editForm->createView(),
-        );
+            'form' => $editForm->createView()
+            ));
     }
 
     /**

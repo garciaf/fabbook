@@ -1,15 +1,30 @@
 {% extends 'FabfotoGalleryBundle::layout.html.twig'%}
 {% block title %}Fabbook-Blog{% endblock title %}
+{% block classPage %}{% endblock classPage %}
+{% block stylePage %}{% endblock stylePage %}
 {% block content %}
-
-<div class="page-header">
-    <h1>Blog <small>{% trans %}about.it{% endtrans %}</small></h1>
+<div class="jumbotron masthead blog">
+<div class="container">
+    <h1>{% trans %}Blog{% endtrans %}</h1>
+    <p>{% trans %}about.it{% endtrans %}</p>
+  </div>
 </div>
+<hr>
+<div class="container">
+    <div class="page-header">
+        <h1>{% trans %}news{% endtrans %} <small>{% trans %}last.article{% endtrans %}</small></h1>
+    </div>
 {% render 'FabfotoGalleryBundle:Default:lastContent' with { noAlbum : true }%}
-
+</div>
+<hr>
+<div class="container">
+    <div class="page-header">
+        <h1>{% trans %}article{% endtrans %} <small>{% trans %}about.all{% endtrans %}</small></h1>
+    </div>
 {% include "FabfotoGalleryBundle:Default:ListArticleBlog.html.twig" %}
 <div class="center">
     {{ pagerfanta(ArticlesBlogs, 'twitter_bootstrap_translated') }}
+</div>
 </div>
 {% endblock content %}
 {%block qrLink %}

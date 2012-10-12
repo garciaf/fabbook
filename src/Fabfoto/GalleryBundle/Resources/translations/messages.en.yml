@@ -1,24 +1,33 @@
+user.details: Description
+register: Register
+connect: 'connect to your account'
+last.blog: 'last articles'
+mobile: 'Mobile version'
+Blog: Blog
+about.it: 'about IT and more ...'
+news: news
+last.article: 'last articles'
+article: Article
+about.all: 'Every articles'
+contact.title: Contact
+contact.details: 'Leave a message'
+fabbook.title: 'Le Fabbook'
+fabbook.subtitle: 'Blog of developper but not only...'
+from.fabbook: 'from fabbook'
+from.tweeter: 'from tweeter'
+result: Result
+blog.for: For your request
+gadget: Goodies
 home: home
 album: Album
 blog: Blog
-last.blog: last articles
 contact: 'contact me'
-gadget: Goodies
 about: 'about us'
 search: search
-connect: 'connect to your account'
-register: Register
-mobile: 'Mobile version'
-user.details: Description
-from.fabbook: 'from fabbook'
-about.it: 'about IT and more ...'
 contact.form.placeholder.mail: mail@exemple.com
-contact.form.placeholder.subject: Critics, proposal ...
-contact.form.placeholder.content: bla bla bla ...
-news: news
-last.article: 'last articles'
+contact.form.placeholder.subject: 'Critics, proposal ...'
+contact.form.placeholder.content: 'bla bla bla ...'
 the: the
-from.tweeter: 'from tweeter'
 by: By
 logout: Logout
 message.email: 'Your email'
@@ -27,3 +36,7 @@ message.content: 'Your message'
 message.capcha: Capcha
 message.send.success: 'message sended'
 message.send.fail: 'something went wron with your message'
+Ispublished: 'Is published?'
+Title: Title
+Subtitle: Sub-title
+Cover: Cover

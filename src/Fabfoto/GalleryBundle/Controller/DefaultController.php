@@ -94,7 +94,7 @@ class DefaultController extends BaseController
         $lastBlogs = $this->getBlogs(3, null, $article);
         return $this->render('FabfotoGalleryBundle:Default:ShowArticleBlog.html.twig', array(
                     'article' => $article, 
-                    'lastBlogs'=> $lastBlogs,
+                    'ArticlesBlogs'=> $lastBlogs,
                 ), $response);
         }
     }
@@ -187,6 +187,15 @@ class DefaultController extends BaseController
 
         return $this->render('FabfotoGalleryBundle:Default:BackgroundVegas.html.twig', array(
                     'backgrounds' => $backgrounds
+                ));
+    }
+
+    public function allTagsAction(){
+
+        $tags = $this->getTags();
+        
+        return $this->render('FabfotoGalleryBundle:Default:Tags.html.twig', array(
+                    'tags' => $tags,
                 ));
     }
 

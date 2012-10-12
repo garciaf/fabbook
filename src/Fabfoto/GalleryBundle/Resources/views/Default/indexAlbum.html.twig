@@ -1,6 +1,7 @@
 {% extends 'FabfotoGalleryBundle::layout.html.twig'%}
 {% block title %}Fabbook-Albums{% endblock title %}
 {% block content %}
+<div class="container" id="page">
 <div class="list_album">
     <div class="page-header">
         <h1>Album <small>quelques photos</small></h1>
@@ -11,6 +12,7 @@
 <div class="center">
         {{ pagerfanta(albums, 'twitter_bootstrap_translated') }}
     </div>
+</div>
 </div>
 {% endblock content %}
 {%block qrLink %}

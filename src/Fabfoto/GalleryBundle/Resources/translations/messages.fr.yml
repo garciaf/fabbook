@@ -1,24 +1,33 @@
+user.details: Description
+register: 'Enregistrez vous'
+connect: 'Se connecter à son espace'
+last.blog: 'Derniers articles'
+mobile: 'Version mobile'
+Blog: Blog
+about.it: 'à propos d''informatique et plus ...'
+news: nouvelles
+last.article: 'derniers articles'
+article: Article
+about.all: 'Sur tout ...'
+contact.title: Contact
+contact.details: 'Si vous voulez laisser un message'
+fabbook.title: 'Le Fabbook'
+fabbook.subtitle: 'Blog de developpeur mais pas que ...'
+from.fabbook: 'de fabbook'
+from.tweeter: 'de tweeter'
+result: Resultats
+blog.for: Pour votre recherche
+gadget: Gadget
 home: Accueil
 album: Album
 blog: blog
-last.blog: Derniers articles
 contact: 'me contacter'
-gadget: Gadget
 about: 'A propos'
 search: rechercher
-connect: 'Se connecter à son espace'
-register: 'Enregistrez vous'
-mobile: 'Version mobile'
-user.details: Description
-from.fabbook: 'de fabbook'
-about.it: 'à propos d''informatique et plus ...'
-contact.form.placeholder.mail: votre eMail
-contact.form.placeholder.subject: Critique, idées et autres
-contact.form.placeholder.content: Ba bla bla ...
-news: nouvelles
-last.article: 'derniers articles'
+contact.form.placeholder.mail: 'votre eMail'
+contact.form.placeholder.subject: 'Critique, idées et autres'
+contact.form.placeholder.content: 'Ba bla bla ...'
 the: le
-from.tweeter: 'de tweeter'
 by: Par
 logout: 'Se déconnecter'
 message.email: 'Votre email'
@@ -27,3 +36,8 @@ message.content: 'Votre message'
 message.capcha: Capcha
 message.send.success: 'Votre message a bien été envoyé'
 message.send.fail: 'erreur dans le formulaire d''envoie'
+Ispublished: 'Est publié ?'
+Title: Titre
+Subtitle: Sous-titre
+Content: Contenu
+Cover: Couverture

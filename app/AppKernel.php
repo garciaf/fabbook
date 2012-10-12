@@ -24,7 +24,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),		
             new Mopa\Bundle\BarcodeBundle\MopaBarcodeBundle(),
-            //new WhiteOctober\TCPDFBundle\WhiteOctoberTCPDFBundle(),
+            new WhiteOctober\TCPDFBundle\WhiteOctoberTCPDFBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Fabfoto\AdminBundle\FabfotoAdminBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
@@ -45,8 +45,6 @@ class AppKernel extends Kernel
             new Fabfoto\OverrideUserBundle\FabfotoOverrideUserBundle(),
             new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),
 	    new Exercise\HTMLPurifierBundle\ExerciseHTMLPurifierBundle(),
-	    new Ps\PdfBundle\PsPdfBundle(),
-	    new Igorw\FileServeBundle\IgorwFileServeBundle(),
             new FBK\ZipBundle\FBKZipBundle(),
             new FBK\JsLibBundle\FBKJsLibBundle(),
         );

@@ -51,7 +51,7 @@ class Portrait extends AbstractImage
      * @var date $createdAt
      *
      * @Gedmo\Timestampable(on="create")
-     * @ORM\Column(name="createdAt", type="date", nullable=true)
+     * @ORM\Column(name="createdAt", type="datetime", nullable=true)
      */
     private $createdAt;
     /**

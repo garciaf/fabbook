@@ -1,10 +1,18 @@
 {% extends 'FabfotoGalleryBundle::layout.html.twig'%}
-{% block title %} About me {% endblock title %}
+{% block title %}About {{ user }}{% endblock title %}
 {% block content %}
+<div class="container" id="pageAbout">
    {% include 'FabfotoGalleryBundle:User:UserDetail.html.twig' %}
+</div>
 {% endblock content %}
 {% block stylePage%}"pageAbout"{% endblock stylePage%}
 {% block carroussel %}
 {% set backgrounds = user.portrait %}
 {% include 'FabfotoGalleryBundle:User:BackgroundVegas.html.twig' %}
 {% endblock carroussel %}
+{% block metainfo %}
+<meta name="Keywords" CONTENT="{{ user.name }},{{user.firstName }}" />
+<meta name="Description" CONTENT="{{ user.title }}" />
+{% endblock metainfo %}
+{% block footer %}
+{% endblock footer %}        

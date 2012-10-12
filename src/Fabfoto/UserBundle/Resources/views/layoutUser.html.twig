@@ -7,15 +7,24 @@
         <link href="{{ asset('bundles/fabfotogallery/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
         {% block importcss %}
         {% endblock importcss %}
-        <link rel="stylesheet" href="{{ asset('bundles/fabfotouser/css/AdminUser.css')}}"/>
         <link rel="stylesheet" href="{{asset('bundles/fabfotogallery/css/smoothness/jquery-ui-1.8.16.custom.css')}}" />
-        <link rel="stylesheet" href="{{asset('bundles/fabfotogallery/chosen/chosen.css')}}" />
+        {% stylesheets 
+            '@AdmingeneratorActiveAdminThemeBundle/Resources/public/css/all.css'
+            '@FabfotoGalleryBundle/Resources/public/chosen/chosen.css'
+            '@AdmingeneratorActiveAdminThemeBundle/Resources/public/css/all.css'
+        %}
+               <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+        {% endstylesheets %}
 
-        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/jquery/jquery-1.7.1.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/js/jquery-ui-1.8.16.custom.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/tiny_mce/jquery.tinymce.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('bundles/fabfotogallery/chosen/chosen.jquery.js') }}"></script>
-        <script src="{{ asset('bundles/genemuform/js/genemuFormBundle.js') }}"></script>
+        {% javascripts
+        '@FBKJsLibBundle/Resources/public/jquery/jquery-1.8.2.min.js'
+        '@FabfotoGalleryBundle/Resources/public/chosen/chosen.jquery.js'
+        '@FabfotoGalleryBundle/Resources/public/js/jquery-ui-1.8.16.custom.min.js'
+        '@FBKJsLibBundle/Resources/public/tinyMce/jquery.tinymce.js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+	<script src="{{ asset('bundles/genemuform/js/genemuFormBundle.js') }}"></script>
         <script src="{{ asset('bundles/fabfotogallery/bootstrap/js/bootstrap.min.js')}}"></script>
         <script>
             $(".alert").alert();
@@ -42,18 +51,7 @@
                 {{ knp_menu_render('FabfotoUserBundle:Builder:userMenu') }}
             </div>
             <div class="main_content" >
-                {% if app.session.flashes %}
-                 <div id="alert">
-                                   {% for type, message in app.session.flashes%}
-                                   <a class="close" data-dismiss="alert">×</a>
-                                   <div class="alert alert-{{type}}">
-                                   <div class="wrap">
-                                       {{message}}
-                                   </div>
-                               </div>
-                               {% endfor%}
-                           </div>
-                {% endif%}
+        {% render 'FabfotoGalleryBundle:Default:notification' %}
                 <div id="body_content">
                     {% block content %}
                     Welcome on Fabbook
