@@ -1,13 +1,4 @@
-{% macro linkNavBar(image, url, title ) %}
- <a href="{{ url }}" rel="tooltip" title="{{ title | trans }}" class="helper" >
-    <div class="visible-desktop">
-        <i class="{{image}} icon-black"></i>
-    </div>
-    <div class="hidden-desktop">
-        <i class="{{image}} icon-black"></i> 
-    </div>
-</a>
-{% endmacro %}
+{% import 'FabfotoGalleryBundle:Macro:link.html.twig' as helper %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -59,10 +50,10 @@
                   <a class="brand" href="{{path('show_articles')}}">Fabbook</a>
                   <div class="nav-collapse">
                     <ul class="nav" >
-                      <li>{{ _self.linkNavBar('icon-home', path('show_articles'), 'home') }}</li>
-                      <li>{{ _self.linkNavBar('icon-picture', path('index_album'), 'album') }}</li>
-                      <li>{{ _self.linkNavBar('icon-pencil', path('index_blog'), 'blog') }}</li>
-                      <li>{{ _self.linkNavBar('icon-envelope', path('contact_new'), 'contact') }}</li>
+                      <li>{{ helper.linkNavBar('icon-home', path('show_articles'), 'home') }}</li>
+                      <li>{{ helper.linkNavBar('icon-picture', path('index_album'), 'album') }}</li>
+                      <li>{{ helper.linkNavBar('icon-pencil', path('index_blog'), 'blog') }}</li>
+                      <li>{{ helper.linkNavBar('icon-envelope', path('contact_new'), 'contact') }}</li>
                       <li>
                       {%block qrLink %}
                       <a id="qrlink" rel="popover" href="{{path('index_mobile')}}" data-content='<img alt="[QR Code]" src="{{ mopa_barcode_url("qr", url("index_mobile") ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">
@@ -71,8 +62,8 @@
                                 </a>
                                 {%endblock qrLink %}
                             </li>
-                      <li>{{ _self.linkNavBar('icon-gift', path('gadget_index'), 'gadget') }}</li>
-                      <li>{{ _self.linkNavBar('icon-user', path('show_about', {'slug':'fabien-garcia'}), 'about') }}</li>
+                      <li>{{ helper.linkNavBar('icon-gift', path('gadget_index'), 'gadget') }}</li>
+                      <li>{{ helper.linkNavBar('icon-user', path('show_about', {'slug':'fabien-garcia'}), 'about') }}</li>
                         </ul>
                         <form class="navbar-search pull-left form-search" method="get" action="{{path('fabfoto_search')}}">
                             <div class="input-append">
@@ -82,7 +73,7 @@
                         </form>
                         <ul class="nav pull-right">
                             <li class="divider-vertical"></li>
-                            <li class="dropdown-open"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-plus"></i></a>
+                            <li class="dropdown-open"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-plus visible-desktop"></i></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{{path('user_show')}}">{% trans %}connect{% endtrans %}</a></li>
                                     <li class="divider"></li>
@@ -100,7 +91,8 @@
         {% block footer %}
     <footer class="footer">
 	<div class="container">
-        <div class="pull-left">
+        <div class="row">
+        <div class="span2">
                    <a href="{% block rss %}{{path('rss_news')}}{% endblock rss %}">
 	<img alt="rss_image" src="{{ asset('bundles/fabfotogallery/image/icon/rss-black.png') }}"/>
 		    </a>
@@ -108,8 +100,11 @@
 	<img alt="twitter_link" src="{{ asset('bundles/fabfotogallery/image/icon/twitter-black.png') }}"/>
 		    </a>
     </div>
+    <div class="span10">
     {% render 'FabfotoGalleryBundle:Default:allTags' %}
          </div>
+         </div>
+    </div>
     </footer>
         {% endblock footer %}
         <script>

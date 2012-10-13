@@ -149,7 +149,7 @@ abstract class BaseController extends Controller
                         ->getDoctrine()
                         ->getRepository('FabfotoGalleryBundle:Tag')
                         ->createQueryBuilder('t')
-                        ->add('orderBy', 't.name DESC')
+                        ->add('orderBy', 't.name ASC')
                         ->getQuery()
                         ->execute();
     }

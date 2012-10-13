@@ -1,0 +1,21 @@
+{% macro linkNavBar(image, url, title ) %}
+ <a href="{{ url }}" rel="tooltip" title="{{ title | trans }}" class="helper" >
+    <div class="visible-desktop">
+        <i class="{{image}} icon-black"></i>
+    </div>
+    <div class="hidden-desktop">
+        <i class="{{image}} icon-black"></i> 
+        {{ title | trans }}
+    </div>
+</a>
+{% endmacro %}
+
+{% macro link(title, link, image) %}
+{% if link is not empty %}
+<div class="span1" >
+    <a class='helper' title="{{title}}" target="_blanck" href="{{link}}">
+    <img src="{{ image | apply_filter('icon')}}"/>
+    </a>
+</div>
+{% endif %}
+{% endmacro %}
