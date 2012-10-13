@@ -73,7 +73,7 @@
                         </form>
                         <ul class="nav pull-right">
                             <li class="divider-vertical"></li>
-                            <li class="dropdown-open"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-plus"></i></a>
+                            <li class="dropdown-open"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-plus visible-desktop"></i></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{{path('user_show')}}">{% trans %}connect{% endtrans %}</a></li>
                                     <li class="divider"></li>
@@ -91,7 +91,8 @@
         {% block footer %}
     <footer class="footer">
 	<div class="container">
-        <div class="pull-left">
+        <div class="row">
+        <div class="span2">
                    <a href="{% block rss %}{{path('rss_news')}}{% endblock rss %}">
 	<img alt="rss_image" src="{{ asset('bundles/fabfotogallery/image/icon/rss-black.png') }}"/>
 		    </a>
@@ -99,8 +100,11 @@
 	<img alt="twitter_link" src="{{ asset('bundles/fabfotogallery/image/icon/twitter-black.png') }}"/>
 		    </a>
     </div>
+    <div class="span10">
     {% render 'FabfotoGalleryBundle:Default:allTags' %}
          </div>
+         </div>
+    </div>
     </footer>
         {% endblock footer %}
         <script>
