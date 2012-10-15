@@ -19,3 +19,10 @@
 </div>
 {% endif %}
 {% endmacro %}
+
+{% macro linkNavBarQrLink(url, title ) %}
+<a id="qrlink" rel="popover" href="{{ url }}" data-content='<img alt="[QR Code]" src="{{ mopa_barcode_url("qr", url ) }}"/>' data-original-title="{{ title | trans }}" >
+<div class="visible-desktop"><i class="icon-qrcode icon-black"></i></div>
+<div class="hidden-desktop"><i class="icon-qrcode icon-black"></i>{{title | trans}}</div>
+</a>
+{% endmacro %}

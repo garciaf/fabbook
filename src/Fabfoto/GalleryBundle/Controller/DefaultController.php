@@ -50,7 +50,7 @@ class DefaultController extends BaseController
         $articlesQuery = $this->getNewsQuery();
 
         return $this->render('FabfotoGalleryBundle:Default:Home.html.twig', array(
-                    'articles' => $this->getPager($articlesQuery),
+                    'articles' => $this->getPager($articlesQuery, 4),
                 ), $response);
         }
     }

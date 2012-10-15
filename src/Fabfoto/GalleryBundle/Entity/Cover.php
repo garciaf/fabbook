@@ -2,7 +2,7 @@
 
 namespace Fabfoto\GalleryBundle\Entity;
 
-use Fabfoto\GalleryBundle\Uploader\AbstractImage;
+use Fabfoto\GalleryBundle\Entity\AbstractImage;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -12,7 +12,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table()
  * @ORM\Entity()
- * @ORM\HasLifecycleCallbacks
  */
 class Cover extends AbstractImage
 {
@@ -21,12 +20,6 @@ class Cover extends AbstractImage
         return (string) $this->getName();
     }
     /**
-     * @var string $location
-     * @Assert\File(maxSize="1M")
-     */
-
-    private $path;
-    /**
      * @var integer $id
      *
      * @ORM\Column(name="id", type="integer")
@@ -34,13 +27,6 @@ class Cover extends AbstractImage
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string $location
-     *
-     * @ORM\Column(name="location", type="string", length=255)
-     */
-    private $location;
 
     /**
      * @var date $createdAt
@@ -64,26 +50,6 @@ class Cover extends AbstractImage
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set location
-     *
-     * @param string $location
-     */
-    public function setLocation($location)
-    {
-        $this->location = $location;
-    }
-
-    /**
-     * Get location
-     *
-     * @return string
-     */
-    public function getLocation()
-    {
-        return $this->location;
     }
 
     /**
@@ -124,16 +90,5 @@ class Cover extends AbstractImage
     public function getName()
     {
         return $this->name;
-    }
-    /**
-     * @ORM\PostRemove()
-     */
-    public function removeUpload()
-    {
-        if (file_exists($this->getAbsolutePath())) {
-            if ($file = $this->getAbsolutePath()) {
-                unlink($file);
-            }
-        }
     }
 }

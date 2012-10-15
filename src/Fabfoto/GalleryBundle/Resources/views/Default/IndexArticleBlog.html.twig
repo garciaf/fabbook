@@ -1,4 +1,5 @@
 {% extends 'FabfotoGalleryBundle::layout.html.twig'%}
+{% import 'FabfotoGalleryBundle:Macro:link.html.twig' as helper %}
 {% block title %}Fabbook-Blog{% endblock title %}
 {% block classPage %}{% endblock classPage %}
 {% block stylePage %}{% endblock stylePage %}
@@ -27,11 +28,9 @@
 </div>
 </div>
 {% endblock content %}
+
 {%block qrLink %}
-<a id="qrlink" rel="popover" href="{{path('index_blog_mobile') }}" data-content='<img alt="[QR Code]" src="{{ mopa_barcode_url("qr", url("index_blog_mobile") ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">
-    <div class="visible-desktop"><i class="icon-qrcode icon-black"></i></div>
-    <div class="hidden-desktop"><i class="icon-qrcode icon-black"></i> {% trans %}mobile{% endtrans %}</div>
-</a>
+{{ helper.linkNavBarQrLink(path('index_blog_mobile'), 'mobile') }}
 {%endblock qrLink %}
 
 {% block rss %}{{path('rss_blog')}}{%endblock rss%}

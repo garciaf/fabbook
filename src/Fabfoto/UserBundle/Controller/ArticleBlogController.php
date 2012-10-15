@@ -50,7 +50,7 @@ class ArticleBlogController extends Controller
             throw $this->createNotFoundException('Unable to find ArticleBlog entity.');
         }
 
-        return $this->render('FabfotoUserBundle:ArticleBlog:edit.html.twig', array(
+        return $this->render('FabfotoUserBundle:ArticleBlog:show.html.twig', array(
             'entity'      => $entity,
             ));
     }
