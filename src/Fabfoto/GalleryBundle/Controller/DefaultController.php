@@ -111,10 +111,10 @@ class DefaultController extends BaseController
             // return the 304 Response immediately
             return $response;
         } else {
-        $articlesBlogs = $this->getBlogs(null, $tag);
+        $articlesBlogsQuery = $this->getBlogsQuery(null, $tag);
 
         return $this->render('FabfotoGalleryBundle:Default:IndexTagArticleBlog.html.twig', array(
-                    'ArticlesBlogs' => $articlesBlogs,
+                    'ArticlesBlogs' => $this->getPager($articlesBlogsQuery),
                     'tag' => $tag,
                 ), $response);
         }
