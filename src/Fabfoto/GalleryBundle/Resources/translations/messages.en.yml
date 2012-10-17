@@ -1,8 +1,8 @@
 user.details: Description
+scan.me: Scan me
 register: Register
 connect: 'connect to your account'
 last.blog: 'last articles'
-mobile: 'Mobile version'
 Blog: Blog
 about.it: 'about IT and more ...'
 news: news
@@ -16,14 +16,20 @@ fabbook.subtitle: 'Blog of developper but not only...'
 from.fabbook: 'from fabbook'
 from.tweeter: 'from tweeter'
 result: Result
-blog.for: For your request
+blog.for: 'For your request'
 gadget: Goodies
+link.github: Fork me on github
+link.contact: Send me a mail
+link.twitter: Follow me on tweeter
+link.card: My card
+link.vcard: My Vcard
+mobile: 'Mobile version'
+search: search
 home: home
 album: Album
 blog: Blog
 contact: 'contact me'
 about: 'about us'
-search: search
 contact.form.placeholder.mail: mail@exemple.com
 contact.form.placeholder.subject: 'Critics, proposal ...'
 contact.form.placeholder.content: 'bla bla bla ...'

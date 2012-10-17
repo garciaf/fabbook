@@ -1,8 +1,8 @@
 user.details: Description
+scan.me: 'Scannez moi'
 register: 'Enregistrez vous'
 connect: 'Se connecter à son espace'
 last.blog: 'Derniers articles'
-mobile: 'Version mobile'
 Blog: Blog
 about.it: 'à propos d''informatique et plus ...'
 news: nouvelles
@@ -16,14 +16,20 @@ fabbook.subtitle: 'Blog de developpeur mais pas que ...'
 from.fabbook: 'de fabbook'
 from.tweeter: 'de tweeter'
 result: Resultats
-blog.for: Pour votre recherche
+blog.for: 'Pour votre recherche'
 gadget: Gadget
+link.github: Fork me sur github
+link.contact: Envoyer un mail
+link.twitter: Suivez moi sur tweeter
+link.card: Ma carte
+link.vcard: Ma Vcard
+mobile: 'Version mobile'
+search: rechercher
 home: Accueil
 album: Album
 blog: blog
 contact: 'me contacter'
 about: 'A propos'
-search: rechercher
 contact.form.placeholder.mail: 'votre eMail'
 contact.form.placeholder.subject: 'Critique, idées et autres'
 contact.form.placeholder.content: 'Ba bla bla ...'

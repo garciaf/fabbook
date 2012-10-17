@@ -13,7 +13,7 @@
 {% macro link(title, link, image) %}
 {% if link is not empty %}
 <div class="span1" >
-    <a class='helper' title="{{title}}" target="_blanck" href="{{link}}">
+    <a class='helper' title="{{title | trans }}" target="_blanck" href="{{link}}">
     <img src="{{ image | apply_filter('icon')}}"/>
     </a>
 </div>

@@ -6,15 +6,15 @@
     <div id ="social" class="row-fluid">
 {{ helper.link('Google plus', user.googleLink, asset('bundles/fabfotogallery/image/icon/googleplus.png')) }}
 {{ helper.link('Facebook', user.facebookLink, asset('bundles/fabfotogallery/image/icon/facebook.png')) }}
-{{ helper.link('Fork me on github', user.gitHubLink, asset('bundles/fabfotogallery/image/icon/github.png')) }}
-{{ helper.link('Follow me on twitter', user.twitterLink, asset('bundles/fabfotogallery/image/icon/twitter.png')) }}
+{{ helper.link('link.github', user.gitHubLink, asset('bundles/fabfotogallery/image/icon/github.png')) }}
+{{ helper.link('link.twitter', user.twitterLink, asset('bundles/fabfotogallery/image/icon/twitter.png')) }}
 {{ helper.link('Linked', user.linkedLink, asset('bundles/fabfotogallery/image/icon/linkedin.png')) }}
 {{ helper.link('Viadeo', user.viadeoLink, asset('bundles/fabfotogallery/image/icon/viadeo.png')) }}
-{{ helper.link('Contact me', "mailto:{{user.email}}", asset('bundles/fabfotogallery/image/icon/mail.png')) }}
-{{ helper.link('Get my card', path('show_about_pdf_from',{'slug': user.slug }), asset('bundles/fabfotogallery/image/icon/pdf.png')) }}
-{{ helper.link('Get my Vcard', path('show_vcard_from',{'slug': user.slug} ), asset('bundles/fabfotogallery/image/icon/vcard.png')) }}
+{{ helper.link('link.contact', "mailto:{{user.email}}", asset('bundles/fabfotogallery/image/icon/mail.png')) }}
+{{ helper.link('link.card', path('show_about_pdf_from',{'slug': user.slug }), asset('bundles/fabfotogallery/image/icon/pdf.png')) }}
+{{ helper.link('link.vcard', path('show_vcard_from',{'slug': user.slug} ), asset('bundles/fabfotogallery/image/icon/vcard.png')) }}
  <div class="span1">
-     <a class="hidden-phone" id="qrlinkUser" rel="popover"  data-content='<img alt="[QR Code]" src="{{ mopa_barcode_url("qr", vcard , true) }}"/>' data-original-title="Scan me">
+     <a class="hidden-phone" id="qrlinkUser" rel="popover"  data-content='<img alt="[QR Code]" src="{{ mopa_barcode_url("qr", vcard , true) }}"/>' data-original-title="{% trans %}scan.me{% endtrans %}">
           <img alt="get my vcard" src="{{asset('bundles/fabfotogallery/image/icon/barcode.png') | apply_filter('icon')}}"/>
       </a>
   </div>
