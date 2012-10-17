@@ -35,8 +35,9 @@
 {% endblock importjs %}
 {% block title %}{{album}}{%endblock title%}
 {% block content %}
+<div class="container" id="pageArticle">
 <div class="page-header">
-    <h1>{{album}} <small>{{album.comment}}</small></h1>
+    <h1>{{album}} <small> {{album.comment}}</small></h1>
 </div>
 <a class="helper" href="{{path('zip_album',{ 'slug': album.slug })}}" rel="tooltip" data-original-title="Download Album" ><img alt="download" id="download" src="{{ asset('bundles/fabfotogallery/image/icon/download.png') | apply_filter('icon_small') }}" /></a>
 
@@ -45,7 +46,7 @@
         <div style="background-image:url({{picture.webpath | apply_filter('page')}});"></div>
         {% endfor %}
 </div>
-
+</div>
 {% endblock content %}
 
 {%block qrLink %}
