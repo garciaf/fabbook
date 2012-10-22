@@ -10,7 +10,7 @@
 {{ helper.link('link.twitter', user.twitterLink, asset('bundles/fabfotogallery/image/icon/twitter.png')) }}
 {{ helper.link('Linked', user.linkedLink, asset('bundles/fabfotogallery/image/icon/linkedin.png')) }}
 {{ helper.link('Viadeo', user.viadeoLink, asset('bundles/fabfotogallery/image/icon/viadeo.png')) }}
-{{ helper.link('link.contact', "mailto:{{user.email}}", asset('bundles/fabfotogallery/image/icon/mail.png')) }}
+{{ helper.link('link.contact', 'mailto:'~user.email, asset('bundles/fabfotogallery/image/icon/mail.png')) }}
 {{ helper.link('link.card', path('show_about_pdf_from',{'slug': user.slug }), asset('bundles/fabfotogallery/image/icon/pdf.png')) }}
 {{ helper.link('link.vcard', path('show_vcard_from',{'slug': user.slug} ), asset('bundles/fabfotogallery/image/icon/vcard.png')) }}
  <div class="span1">

@@ -3,7 +3,7 @@ parameters:
      nbAlbum: %fabfoto_gallery.nbAlbum%
      slugNoteCategory : note
      slugAlbumCategory : album
-
+     mailsender: %fabfoto_gallery.mailsender%
 services:
 
     fabfoto_gallery.picture_uploader:

@@ -47,6 +47,7 @@ class AppKernel extends Kernel
 	    new Exercise\HTMLPurifierBundle\ExerciseHTMLPurifierBundle(),
             new FBK\ZipBundle\FBKZipBundle(),
             new FBK\JsLibBundle\FBKJsLibBundle(),
+            new Knp\Bundle\TimeBundle\KnpTimeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

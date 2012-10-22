@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
 {% endstylesheets %}
 {%endblock importcss %}
-{% block title %}{{album}}{%endblock title%}
+{% block title %}{{album}} {{album.comment}} - Album{% endblock title %}
 {% block content %}
 <div id="page" class="container">
 <div class="page-header">
@@ -44,6 +44,9 @@
 </div>
 {% endblock content %}
 
+{% block metainfo %}
+<meta name="Description" CONTENT="{{ album }} {{album.comment}}" />
+{% endblock metainfo %}
 {%block qrLink %}
 {{ helper.linkNavBarQrLink(path('albums_mobile'), 'mobile') }}
 {%endblock qrLink %}

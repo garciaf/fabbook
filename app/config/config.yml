@@ -59,9 +59,13 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: %mailer_transport_dev%
-    username:  %mailer_user_dev%
-    password:  %mailer_password_dev%
+    transport:  smtp
+    encryption: ssl
+    auth_mode:  login
+    host:       ssl0.ovh.net
+    port:       465 
+    username:  %mailer_user%
+    password:  %mailer_password%
 
 jms_security_extra:
     secure_all_services: false
@@ -212,3 +216,5 @@ fos_comment:
      
 fbk_zip:
   archive_directory: %kernel.root_dir%/../www/zip
+
+knp_time: ~ 
