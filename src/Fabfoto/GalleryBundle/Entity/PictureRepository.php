@@ -31,6 +31,7 @@ class PictureRepository extends EntityRepository
     {
         return $this->getQueryOrderByCreatedAt(1)->getSingleResult();
     }
+
     public function getQueryOrderByCreatedAt( $max = null, $isBackground = null)
     {
         $query = $this->createQueryBuilder('p')

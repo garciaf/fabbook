@@ -56,12 +56,9 @@
                       <li>{{ helper.linkNavBar('icon-envelope', path('contact_new'), 'contact') }}</li>
                       <li>
                       {%block qrLink %}
-                      <a id="qrlink" rel="popover" href="{{path('index_mobile')}}" data-content='<img alt="[QR Code]" src="{{ mopa_barcode_url("qr", url("index_mobile") ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">
-                                    <div class="visible-desktop"><i class="icon-qrcode icon-black"></i></div>
-                                    <div class="hidden-desktop"><i class="icon-qrcode icon-black"></i> {% trans %}mobile{% endtrans %}</div>
-                                </a>
-                                {%endblock qrLink %}
-                            </li>
+                      {{ helper.linkNavBarQrLink(path('index_mobile'), 'mobile') }}
+                      {%endblock qrLink %}
+                      </li>
                       <li>{{ helper.linkNavBar('icon-gift', path('gadget_index'), 'gadget') }}</li>
                       <li>{{ helper.linkNavBar('icon-user', path('show_about', {'slug':'fabien-garcia'}), 'about') }}</li>
                         </ul>

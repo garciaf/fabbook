@@ -61,10 +61,10 @@ class MessageController extends Controller
         $this->get('session')->setFlash('error', $this->get('translator')->trans("message.send.fail") );
     }
 
-        return array(
+        return $this->render('FabfotoGalleryBundle:Default:contact.html.twig',array(
             'entity' => $entity,
             'form' => $form->createView()
-        );
+        ));
     }
     /**
      *
@@ -74,7 +74,7 @@ class MessageController extends Controller
     {
         $messageToSend = \Swift_Message::newInstance()
         ->setSubject('[fabbook] from: '.$message->getSender().' : '.$message->getSubject())
-        ->setFrom('fab0670312047@gmail.com')
+        ->setFrom($this->container->getParameter('mailsender'))
         ->setReplyTo($message->getSender())
         ->setTo('fab0670312047@gmail.com')
         ->setBody($message->getContent())

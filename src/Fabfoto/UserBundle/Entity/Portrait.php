@@ -5,7 +5,7 @@ namespace Fabfoto\UserBundle\Entity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use \Fabfoto\GalleryBundle\Entity\Picture as Picture;
-use Fabfoto\GalleryBundle\Uploader\AbstractImage as AbstractImage;
+use Fabfoto\GalleryBundle\Entity\AbstractImage as AbstractImage;
 use Fabfoto\UserBundle\Entity\User as User;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
@@ -13,7 +13,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table()
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
  */
 class Portrait extends AbstractImage
 {
@@ -23,15 +22,6 @@ class Portrait extends AbstractImage
         return (string) $this->id;
     }
     /**
-     * @var string $location
-     * @Assert\File(
-    maxSize="1M",
-    mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
-    )
-     */
-
-    private $path;
-    /**
      * @var integer $id
      *
      * @ORM\Column(name="id", type="integer")
@@ -39,13 +29,6 @@ class Portrait extends AbstractImage
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string $location
-     *
-     * @ORM\Column(name="location", type="string", length=255)
-     */
-    private $location;
 
     /**
      * @var date $createdAt
@@ -69,26 +52,6 @@ class Portrait extends AbstractImage
     }
 
     /**
-     * Set location
-     *
-     * @param string $location
-     */
-    public function setLocation($location)
-    {
-        $this->location = $location;
-    }
-
-    /**
-     * Get location
-     *
-     * @return string
-     */
-    public function getLocation()
-    {
-        return $this->location;
-    }
-
-    /**
      * Set createdAt
      *
      * @param date $createdAt
@@ -109,19 +72,6 @@ class Portrait extends AbstractImage
     }
 
     /**
-     * @ORM\PostRemove()
-     */
-    public function removeUpload()
-    {
-        if (file_exists($this->getAbsolutePath())) {
-            if ($file = $this->getAbsolutePath()) {
-
-                unlink($file);
-            }
-        }
-    }
-
-    /**
      * Set user
      *
      * @param Fabfoto\UserBundle\Entity\User $user
@@ -139,25 +89,5 @@ class Portrait extends AbstractImage
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * Set location
-     *
-     * @param string $location
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-    }
-
-    /**
-     * Get location
-     *
-     * @return string
-     */
-    public function getPath()
-    {
-        return $this->path;
     }
 }

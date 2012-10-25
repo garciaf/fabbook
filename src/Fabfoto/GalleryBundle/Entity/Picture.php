@@ -3,7 +3,7 @@
 namespace Fabfoto\GalleryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Fabfoto\GalleryBundle\Uploader\AbstractImage;
+use Fabfoto\GalleryBundle\Entity\AbstractImage;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Fabfoto\GalleryBundle\Entity\PictureRepository;
 /**
@@ -36,13 +36,6 @@ class Picture extends AbstractImage
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
-
-    /**
-     * @var string $location
-     *
-     * @ORM\Column(name="location", type="string", length=255)
-     */
-    private $location;
 
     /**
      * @var date $createdAt
@@ -135,36 +128,6 @@ class Picture extends AbstractImage
     public function getAlbum()
     {
         return $this->album;
-    }
-    /**
-     * Set location
-     *
-     * @param string $location
-     */
-    public function setLocation($location)
-    {
-        $this->location = $location;
-    }
-
-    /**
-     * Get location
-     *
-     * @return string
-     */
-    public function getLocation()
-    {
-        return $this->location;
-    }
-    /**
-     * @ORM\PostRemove()
-     */
-    public function removeUpload()
-    {
-        if (file_exists($this->getAbsolutePath())) {
-            if ($file = $this->getAbsolutePath()) {
-                unlink($file);
-            }
-        }
     }
 
     /**

@@ -1,18 +1,57 @@
 <?php
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+namespace Fabfoto\GalleryBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+ 
+use Fabfoto\GalleryBundle\Uploader\ImageInterface as ImageInterface;
 /**
- * Description of AbstractImage
+ * Test\TestBundle\Entity\AbstractGMapEntity
  *
  * @author garciaf
+ *
+ * @ORM\MappedSuperclass
+ * @ORM\HasLifecycleCallbacks()
  */
-namespace Fabfoto\GalleryBundle\Uploader;
-
 abstract class AbstractImage implements ImageInterface
 {
+    /**
+     * @var string $location
+     *
+     * @ORM\Column(name="location", type="string", length=255)
+     */
+    protected $location;
+    /**
+     * Set location
+     *
+     * @param string $location
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+    }
+
+    /**
+     * Get location
+     *
+     * @return string
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+ 
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if (file_exists($this->getAbsolutePath())) {
+            if ($file = $this->getAbsolutePath()) {
+                unlink($file);
+            }
+        }
+    }
+
     public function getWebPath()
     {
         return null === $this->getLocation() ? null : '/'.$this->getUploadDir() . '/' . $this->getLocation();
@@ -55,6 +94,4 @@ abstract class AbstractImage implements ImageInterface
         return pathinfo($this->getLocation(), PATHINFO_EXTENSION);
     }
 
-    abstract public function getLocation();
-    abstract public function setLocation($location);
 }

@@ -26,12 +26,8 @@ assetic:
 
 fabfoto_gallery:
     picture_directory: %upload_directory%
-    mailsender: %mail_sender_adress_dev%    
+    mailsender: %mail_sender_adress%    
 # Swiftmailer Configuration
-swiftmailer:
-    transport: %mailer_transport_dev%
-    username:  %mailer_user_dev%
-    password:  %mailer_password_dev%
 admingenerator_generator:
     overwrite_if_exists: true    
              

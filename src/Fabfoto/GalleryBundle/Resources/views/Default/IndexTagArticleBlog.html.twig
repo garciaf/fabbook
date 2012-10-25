@@ -10,13 +10,13 @@
 <hr>
 <div class="container">
 {% include "FabfotoGalleryBundle:Default:ListArticleBlog.html.twig" %}
+    <div class="center">
+        {{ pagerfanta(ArticlesBlogs, 'twitter_bootstrap_translated') }}
+    </div>
 </div>
 {% endblock content %}
 {%block qrLink %}
-<a id="qrlink" rel="popover" href="{{path('index_blog_mobile') }}" data-content='<img alt="[QR Code]" src="{{ mopa_barcode_url("qr", url("index_blog_mobile") ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">
-    <div class="visible-desktop"><i class="icon-qrcode icon-black"></i></div>
-    <div class="hidden-desktop"><i class="icon-qrcode icon-black"></i> {% trans %}mobile{% endtrans %}</div>
-</a>
+ <li>{{ helper.linkNavBarQrLink(path('index_blog_mobile'), 'mobile') }}</li>
 {%endblock qrLink %}
 {% block rss %}
 {{path('rss_blog_tag', {'slug':tag.slug} )}}

@@ -5,7 +5,7 @@ namespace Fabfoto\GalleryBundle\Uploader;
 interface ImageInterface
 {
 
-     public function getWebPath();
+    public function getWebPath();
 
     public function getThumbPath();
 

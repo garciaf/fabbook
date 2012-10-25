@@ -1,9 +1,10 @@
 {% extends 'FabfotoGalleryBundle::layout.html.twig'%}
+{% import 'FabfotoGalleryBundle:Macro:link.html.twig' as helper %}
 {% block title %} {{article.title}} {% endblock title %}
 {% block content %}
 <div class="container" id="pageArticle">
 <div class="page-header">
-    <h1>{{article.title}} <small> {{article.subtitle}}</small></h1>
+    <h1>{{article.title}}<small>{{article.subtitle}}</small></h1>
 </div>
 <lr>
 <div  class="row">
@@ -35,7 +36,7 @@
         {% endfor %}
 	| <i class="icon-user"></i><a href="{{path('show_about', {'slug': article.authorUser.slug})}}">{{article.authorUser}}</a>
 	| <i class="icon-calendar"></i>Crée le : {{article.createdAt|date('d/m/Y')}} 
-	| <i class="icon-calendar"></i>Mise à jour : {{article.updatedAt|date('d/m/Y')}}
+	| <i class="icon-calendar"></i>Mise à jour : {{ article.updatedAt|date('d/m/Y') }}
 </p>
        <div class="pdf offset11"><a href="{{path('show_article_blog_pdf', {'slugblog':article.slugblog})}}"><img src="{{asset('bundles/fabfotogallery/image/icon/pdf.png')| apply_filter('icon')}}"/></a> </div>
 <h1><small>{% trans %}last.blog{% endtrans %}:</small></h1>
@@ -51,10 +52,7 @@
 <meta name="Description" CONTENT="{{ article.subtitle }}" />
 {% endblock metainfo %}
 {%block qrLink %}
-<a id="qrlink" rel="popover" href="{{path('show_article_blog_mobile', { 'slugblog': article.slugblog }) }}" data-content='<img alt="[QR Code]" src="{{ mopa_barcode_url("qr", url("show_article_blog_mobile", { "slugblog": article.slugblog }) ) }}"/>' data-original-title="{% trans %}mobile{% endtrans %}">
-    <div class="visible-desktop"><i class="icon-qrcode icon-black"></i></div>
-    <div class="hidden-desktop"><i class="icon-qrcode icon-black"></i> {% trans %}mobile{% endtrans %}</div>
-</a>
+{{ helper.linkNavBarQrLink(path('show_article_blog_mobile', {'slugblog': article.slugblog }), 'mobile') }}
 {%endblock qrLink %}
 {% block rss %}
 {{path('rss_blog')}}
