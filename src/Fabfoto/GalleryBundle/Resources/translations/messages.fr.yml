@@ -5,7 +5,8 @@ connect: 'Se connecter à son espace'
 last.blog: 'Derniers articles'
 Blog: Blog
 about.it: 'à propos d''informatique et plus ...'
-news: nouvelles
+news: Nouvelles
+thought: Pensées ...
 last.article: 'derniers articles'
 article: Article
 about.all: 'Sur tout ...'

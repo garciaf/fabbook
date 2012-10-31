@@ -11,7 +11,7 @@
 <div class="container">
 <div class="list_articles">
     <div class="page-header">
-        <h1>{% trans %}news{% endtrans %} <small>{% trans %}last.article{% endtrans %}</small></h1>
+        <h1>{% trans %}news{% endtrans %} <small>{% trans %}from.fabbook{% endtrans %}</small></h1>
     </div>
     <div  class="row">
 
@@ -20,26 +20,17 @@
         </div>
     </div>
     <div class="page-header">
-        <h1>{% trans %}news{% endtrans %} <small>{% trans %}from.fabbook{% endtrans %}</small></h1>
+        <h1>{% trans %}thought{% endtrans %}</h1>
     </div>
-
-    {% for article in articles %}
-    <div  class="row">
-        <div class="span8">
-            <h3>{{article.title}}</h3>
-	    <h4>{{article.subtitle}}</h4>
-            <p>{{article.content|raw}}</p>
-            <span class="badge badge-info">{{article.createdAt|date('F jS, Y')}}</span>
-        </div>
-    </div>
-    <hr>
-    {% endfor %}
+    
+    {% include "FabfotoGalleryBundle:Default:ListNews.html.twig" %}
  	 <div class="span12 center">
         {{ pagerfanta(articles, 'twitter_bootstrap_translated') }}
     	</div>
     </div>
 </div>
 <hr>
+{# This bundle do not work on ovh server
 <div class="container">
     <div class="page-header">
         <h1>{% trans %}news{% endtrans %} <small>{% trans %}from.tweeter{% endtrans %}</small></h1>
@@ -50,6 +41,7 @@
         </div>
     </div>
 </div>
+#}
 {% endblock content %}
 {% block rss %}
 {{path('rss_news')}}
