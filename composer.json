@@ -16,7 +16,7 @@
 ],
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "2.1.2",
+        "symfony/symfony": "2.1.3",
         "doctrine/orm": ">=2.2.3,<2.4-dev",
         "doctrine/doctrine-bundle": "1.0.*",
         "twig/extensions": "1.0.*",
@@ -43,7 +43,7 @@
         "friendsofsymfony/user-bundle": "dev-master",
         "friendsofsymfony/comment-bundle": "dev-master",
         "exercise/htmlpurifier-bundle": "dev-master",
-        "genemu/form-bundle": "dev-master",
+        "genemu/form-bundle": "2.1.x-dev",
         "avalanche123/imagine-bundle": "dev-master",
 	"friendsofsymfony/rest-bundle": "dev-master",
         "friendsofsymfony/comment-bundle": "dev-master",

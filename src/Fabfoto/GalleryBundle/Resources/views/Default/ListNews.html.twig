@@ -1,0 +1,18 @@
+{% for article in articles %}
+<div  class="row thought">
+   <div class="span11">
+        <h3 class="center">{{article.title}}</h3>
+    {% if article.author.portrait.count >0 %}
+        {% set photo = article.author.portrait.0 %}
+        <div class="span2">
+            <img class="img-rounded visible-desktop" src="{{photo.webpath| apply_filter('thumb_square') }}" alt="{{article.author}}" />
+        </div>
+    {% endif %}
+      <div class="span8 lead">
+        {{article.content|raw}}
+      </div>
+        <span class="pull-right"><em>{{article.createdAt|date('F jS, Y')}}</em></span>
+     </div>
+ </div>
+ <hr>
+{% endfor %}

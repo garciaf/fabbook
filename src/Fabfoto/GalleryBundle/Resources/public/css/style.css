@@ -147,16 +147,6 @@ html, body {
 .article{
     font-family: 'Terminal Dosis', Arial, sans-serif;
 }
-.article h1{
-    font-size: 1.8em;
-    text-align: center;
-}
-.article h2{
-    font-size: 1.1em;
-}
-.article p{
-    font-size: 0.9em;
-}
 .author{
     font-size: 0.9em;
     font-style: oblique;
@@ -177,13 +167,6 @@ textarea:focus {
 }
 .article_blog h1, .article_blog_full h1{
     padding-left: 20px;    
-    margin-bottom: 0px;
-}
-.article_blog h2, .article_blog_full h2{
-    font-style: oblique;
-    font-size: 1.3em;
-    margin-left: 20px;
-    margin-top: 0px;
     margin-bottom: 0px;
 }
 .article_blog{
@@ -511,4 +494,12 @@ opacity: .8;
  margin-top: 20px;
  background-color: whiteSmoke;
  border-top: 1px solid #E5E5E5;
+}
+
+.thought{
+-webkit-box-shadow: 5px 5px 5px 2px rgba(100, 100, 100, 0.4);
+box-shadow: 5px 5px 5px 2px rgba(100, 100, 100, 0.4);
+border-radius: 10px;
+padding: 10px;
+background-color: whiteSmoke;
 }

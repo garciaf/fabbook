@@ -5,7 +5,8 @@ connect: 'connect to your account'
 last.blog: 'last articles'
 Blog: Blog
 about.it: 'about IT and more ...'
-news: news
+news: News
+thought: Thought ...
 last.article: 'last articles'
 article: Article
 about.all: 'Every articles'

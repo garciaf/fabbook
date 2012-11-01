@@ -112,7 +112,9 @@
         </div>
         <div class="container" id={% block stylePage %}"page"{% endblock stylePage%}>
         {% render 'FabfotoGalleryBundle:Default:notification' with {}, {'standalone': true} %}
+        <div class="row">
         {% block content %}lipso lium{%endblock%}
+        </div>
            <div id="footer">
                <p id="legal">
                    <a class="userInfo" href="{{path('fos_user_registration_register')}}" rel="tooltip" title="{% trans %}register{% endtrans %}"><i class="icon-book"></i></a>
