@@ -12,9 +12,10 @@
                 {% endif %}
                 </a>
             <div class="carousel-caption">
-                <a href="{{path('show_article_blog', {'slugblog': blog.slugblog})}}">
-                <h4>{{blog.title}}</h4>
-                <p>{{blog.subtitle}}</p>
+                <h2>{{blog.title}}</h2>
+                <p class="lead">{{blog.subtitle}}</p>
+                <a class="btn btn-large btn-primary" href="{{path('show_article_blog', {'slugblog': blog.slugblog})}}">
+                Read It
                 </a>
             </div>
         </div>
@@ -25,9 +26,10 @@
             <img src="{{album.picturecover.webpath | apply_filter('cover') }}" width="100%" alt="{{album.name}}" />
                 </a>
         <div class="carousel-caption">
-                <a href="{{path('show_album', {'slug':album.slug})}}">
-                <h4>{{album.name}}</h4>
-                <p>{{album.comment}}</p>
+                <h2>{{album.name}}</h2>
+                <p class="lead">{{album.comment}}</p>
+                <a class="btn btn-large btn-primary" href="{{path('show_album', {'slug':album.slug})}}">
+                View Gallery
                 </a>
             </div>
         </div>
