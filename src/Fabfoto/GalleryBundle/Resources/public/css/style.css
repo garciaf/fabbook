@@ -503,3 +503,6 @@ border-radius: 10px;
 padding: 10px;
 background-color: whiteSmoke;
 }
+.carousel-caption h2{
+  color: white;
+}
