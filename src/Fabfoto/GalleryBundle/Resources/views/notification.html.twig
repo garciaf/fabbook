@@ -1,12 +1,13 @@
 {% for type, flashMessages in app.session.flashbag.all() %}
-<div id="alert">
-    {% for flashMessage in flashMessages %}
-        <div class="alert alert-block alert-{{ type }} fade in">
-            <a class="close" data-dismiss="alert">×</a>
-            <div class="wrap">
-            {{ flashMessage }}
-            </div>
-        </div>
-    {% endfor %}
-</div>
+<script>
+$(document).ready(function() {
+{% for flashMessage in flashMessages %}
+$.pnotify({
+    title: '{{type}} message',
+    text: '{{ flashMessage }}',
+    type: '{{type}}'
+});
+{% endfor %}
+});
+</script>
 {% endfor %}
