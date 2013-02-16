@@ -55,7 +55,7 @@
                       <li>{{ helper.linkNavBar('icon-envelope', path('contact_new'), 'contact') }}</li>
                       <li>
                       {%block qrLink %}
-                      {{ helper.linkNavBarQrLink(path('index_mobile'), 'mobile') }}
+                      {{ helper.linkNavBarQrLink(url('index_mobile'), 'mobile') }}
                       {%endblock qrLink %}
                       </li>
                       <li>{{ helper.linkNavBar('icon-gift', path('gadget_index'), 'gadget') }}</li>
@@ -113,7 +113,7 @@
 		trigger: 'hover'
             });
             $('#qrlinkUser').popover({
-                placement: 'top',
+                placement: 'top',t
 		trigger: 'hover'
             });
             $('#qrCode').popover({
