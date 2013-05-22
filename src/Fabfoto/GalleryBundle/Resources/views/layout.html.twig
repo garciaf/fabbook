@@ -13,7 +13,7 @@
        	'@FBKJsLibBundle/Resources/public/vegas/*.css'
         'bundles/fabfotogallery/bootstrap/css/bootstrap.css'
         '@FabfotoGalleryBundle/Resources/public/bootstrap/css/bootstrap-responsive.css'
-
+        '@FBKJsLibBundle/Resources/public/pnotify/jquery.pnotify.default.css'
         %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
         {% endstylesheets %}
@@ -30,9 +30,8 @@
 	'@FBKJsLibBundle/Resources/public/jquerymousewheel/*.js'
    	'@FBKJsLibBundle/Resources/public/fancybox/*.js'
    	'@FBKJsLibBundle/Resources/public/fancybox/helpers/*.js'
-
+    '@FBKJsLibBundle/Resources/public/pnotify/jquery.pnotify.js'
 	'@FabfotoGalleryBundle/Resources/public/js/googleAnalityc.js'
-	
         %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
@@ -56,7 +55,7 @@
                       <li>{{ helper.linkNavBar('icon-envelope', path('contact_new'), 'contact') }}</li>
                       <li>
                       {%block qrLink %}
-                      {{ helper.linkNavBarQrLink(path('index_mobile'), 'mobile') }}
+                      {{ helper.linkNavBarQrLink(url('index_mobile'), 'mobile') }}
                       {%endblock qrLink %}
                       </li>
                       <li>{{ helper.linkNavBar('icon-gift', path('gadget_index'), 'gadget') }}</li>
@@ -115,7 +114,7 @@
             });
             $('#qrlinkUser').popover({
                 placement: 'top',
-		trigger: 'hover'
+		        trigger: 'hover'
             });
             $('#qrCode').popover({
                 placement: 'top',

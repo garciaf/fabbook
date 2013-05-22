@@ -48,7 +48,7 @@
 <meta name="Description" CONTENT="{{ album }} {{album.comment}}" />
 {% endblock metainfo %}
 {%block qrLink %}
-{{ helper.linkNavBarQrLink(path('albums_mobile'), 'mobile') }}
+{{ helper.linkNavBarQrLink(url('albums_mobile'), 'mobile') }}
 {%endblock qrLink %}
 
 {% block carroussel %}

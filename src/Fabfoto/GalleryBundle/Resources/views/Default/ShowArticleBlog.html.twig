@@ -52,7 +52,7 @@
 <meta name="Description" CONTENT="{{ article.subtitle }}" />
 {% endblock metainfo %}
 {%block qrLink %}
-{{ helper.linkNavBarQrLink(path('show_article_blog_mobile', {'slugblog': article.slugblog }), 'mobile') }}
+{{ helper.linkNavBarQrLink(url('show_article_blog_mobile', {'slugblog': article.slugblog }), 'mobile') }}
 {%endblock qrLink %}
 {% block rss %}
 {{path('rss_blog')}}
